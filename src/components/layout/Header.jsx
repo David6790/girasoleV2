@@ -4,7 +4,7 @@ import Logo from "./Logo";
 
 const Header = () => {
   return (
-    <div className="w-full h-[70px] flex flex-row justify-between items-center   ">
+    <div className="w-full h-[70px] flex flex-row justify-between items-center px-5 ">
       <div className="w-6/12 h-full">
         <Logo />
       </div>

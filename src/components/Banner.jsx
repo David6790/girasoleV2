@@ -16,7 +16,7 @@ const Banner = () => {
           opacity: isInView ? 1 : 0,
           x: isInView ? 0 : -200,
 
-          transition: "all   ease-in 0.9s ",
+          transition: "all   ease-in 0.8s ",
         }}
       >
         <img
@@ -32,7 +32,7 @@ const Banner = () => {
           transform: isInView ? "none" : "opacity:0  ",
           opacity: isInView ? 1 : 0,
 
-          transition: "all 0.5s   ease-in 0.9s ",
+          transition: "all 0.5s   ease-in 0.8s ",
         }}
       >
         <h1 className=" xl:text-7xl lg:text-7xl md:text-4xl sm:text-2xl text-4xl font-bold  mb-2">

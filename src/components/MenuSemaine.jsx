@@ -37,11 +37,12 @@ const MenuSemaine = () => {
         </motion.div>
       </div>
       <motion.div
-        className="xl:w-1/2 lg:w-1/2 md:w-1/2 sm:w-1/2 w-full h-full overflow-hidden "
+        className="xl:w-1/2 lg:w-1/2 md:w-1/2 sm:w-1/2 w-full h-full overflow-hidden shadow-md shadow-gray-700 "
         ref={ref4}
         style={{
-          transform: isInView ? "none" : "opacity:0   ",
+          transform: isInView ? "none" : "opacity:0 translateX:200px  ",
           opacity: isInView ? 1 : 0,
+          x: isInView ? 0 : 200,
 
           transition: "all   ease-in 0.6s ",
         }}
