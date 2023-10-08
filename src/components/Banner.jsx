@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
+import ButtonResa from "./ButtonResa";
 
 const Banner = () => {
   const ref1 = useRef(null);
@@ -41,9 +42,7 @@ const Banner = () => {
         <h2 className=" text-my-gold   xl:text-4xl lg:text-4xl md:text-2xl text-2xl italic font-title-font">
           -La trattoria revisitée-
         </h2>
-        <button className="px-5 py-2 border-solid border-black border-2 mt-5 mb-5 text-xl rounded-md  ">
-          Réserver en ligne
-        </button>
+        <ButtonResa />
         <p>Ou par SMS au : 06.29.84.84.36</p>
       </motion.div>
     </>

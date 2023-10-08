@@ -13,11 +13,10 @@ const FindUs = () => {
           className=" xl:w-10/12 lg:w-10/12 md:w-10/12 sm:w-10/12 w-full h-full flex flex-col gap-2 justify-center xl:items-end lg:items-end md:items-end sm:items-end items-center xl:text-right lg:text-right md:text-right sm:text-right text-center"
           ref={ref1}
           style={{
-            transform: isInView ? "none" : "opacity:0, translateX:-200px   ",
+            transform: isInView ? "none" : "opacity:0,   ",
             opacity: isInView ? 1 : 0,
-            x: isInView ? 0 : -200,
 
-            transition: "all  ease-in 0.5s ",
+            transition: "all  ease-in 0.8s ",
           }}
         >
           <h1 className="xl:text-4xl lg:text-3xl md:text-2xl sm:text-2xl text-2xl text-my-gold font-title-font">
@@ -50,7 +49,7 @@ const FindUs = () => {
           transform: isInView ? "none" : "opacity:0   ",
           opacity: isInView ? 1 : 0,
 
-          transition: "all  ease-in 0.5s ",
+          transition: "all  ease-in 0.8s ",
         }}
       >
         <img
