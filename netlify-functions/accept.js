@@ -10,7 +10,7 @@ exports.handler = async (event, context) => {
   // Paramètres EmailJS
   const params = {
     from_name: "IL GIRASOLE STRASBOURG",
-    to_name: email, // email du destinataire
+    to_email: email, // email du destinataire
     message: "Votre réservation a été acceptée!", // Ou tout autre message que vous souhaitez envoyer
   };
 
