@@ -16,7 +16,7 @@ exports.handler = async (event, context) => {
 
   const serviceID = "service_tm1wxto";
   const templateID = "template_ua6d1za"; // C'est votre ID de modèle d'email spécifique, vous devrez peut-être le changer.
-  const userID = "I5f0O3BoNI4d1FJPP";
+  const userID = "ul9HmgBqkEGllW-SqPpkp";
 
   try {
     // Envoyer l'email via EmailJS
@@ -27,7 +27,7 @@ exports.handler = async (event, context) => {
       body: "Email sent successfully!",
     };
   } catch (error) {
-    console.error("Error sending email:", error);
+    console.error("Error sending email:", error.message);
     return {
       statusCode: 500,
       body: "Error sending email",
