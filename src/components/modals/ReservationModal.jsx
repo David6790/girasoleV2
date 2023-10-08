@@ -11,6 +11,7 @@ const ReservationModal = ({ isOpen, onClose }) => {
   const [email, setEmail] = useState(null);
   const [message, setMessage] = useState("");
   const [numberOfGuest, setNumberOfGuest] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const sendEmail = (e) => {
     const data = {
@@ -21,12 +22,19 @@ const ReservationModal = ({ isOpen, onClose }) => {
       message: message,
     };
     e.preventDefault();
+    setIsLoading(true);
 
     emailjs
       .send("service_tm1wxto", "template_clc96rm", data, "I5f0O3BoNI4d1FJPP")
       .then(
         (result) => {
           console.log(result.text);
+          setEmail("");
+          setMessage("");
+          setName("");
+          setResDate("");
+          setNumberOfGuest("");
+          setIsLoading(false);
         },
         (error) => {
           console.log(error.text);
@@ -77,6 +85,7 @@ const ReservationModal = ({ isOpen, onClose }) => {
                 <label>Nom de la réservation</label>
                 <input
                   placeholder="Votre Nom"
+                  value={name}
                   type="text"
                   name="name"
                   onChange={(e) => setName(e.target.value)}
@@ -85,12 +94,14 @@ const ReservationModal = ({ isOpen, onClose }) => {
                 <label>Date de la réservation</label>
                 <DatePicker
                   selected={resDate}
+                  value={resDate}
                   onChange={(date) => setResDate(date)}
                   className=" bg-white  border-black h-[40px]  mb-2 "
                 />
                 <label className=" mb-0">Nombre de personne</label>
                 <input
                   placeholder="Nombre de personnes"
+                  value={numberOfGuest}
                   type="number"
                   name="number"
                   onChange={(e) => setNumberOfGuest(e.target.value)}
@@ -99,6 +110,7 @@ const ReservationModal = ({ isOpen, onClose }) => {
                 <label>Email</label>
                 <input
                   placeholder="Votre E-mail"
+                  value={email}
                   type="email"
                   name="email"
                   onChange={(e) => setEmail(e.target.value)}
@@ -119,9 +131,9 @@ const ReservationModal = ({ isOpen, onClose }) => {
 
             <button
               type="submit"
-              className=" border-2 border-black w-1/2 m-auto"
+              className=" border-2 border-black w-1/2 m-auto h-[50px]"
             >
-              Valider
+              {isLoading ? "En cours..." : "Envoyer"}
             </button>
           </form>
         </div>
