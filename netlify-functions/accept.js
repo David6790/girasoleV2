@@ -11,7 +11,7 @@ exports.handler = async (event, context) => {
   const msg = {
     to: email,
     from: "david@ilgirasole.fr", // Votre email d'expéditeur
-    subject: "Confirmation de réservation",
+
     templateId: "d-f6110fab2fb04b05b3924760f999ce4f",
   };
 
