@@ -1,4 +1,4 @@
-const emailjs = require("emailjs-com");
+import emailjs from "@emailjs/nodejs";
 
 exports.handler = async (event, context) => {
   if (event.httpMethod !== "GET") {
