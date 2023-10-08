@@ -14,13 +14,18 @@ exports.handler = async (event, context) => {
     message: "Votre réservation a été acceptée!", // Ou tout autre message que vous souhaitez envoyer
   };
 
-  const serviceID = "service_tm1wxto";
-  const templateID = "template_ua6d1za"; // C'est votre ID de modèle d'email spécifique, vous devrez peut-être le changer.
-  const userID = "ul9HmgBqkEGllW-SqPpkp";
+  //   const serviceID = "service_tm1wxto";
+  //   const templateID = "template_ua6d1za"; // C'est votre ID de modèle d'email spécifique, vous devrez peut-être le changer.
+  //   const userID = "I5f0O3BoNI4d1FJPP";
 
   try {
     // Envoyer l'email via EmailJS
-    await emailjs.send(serviceID, templateID, params, userID);
+    await emailjs.send(
+      "service_tm1wxto",
+      "template_ua6d1za",
+      params,
+      "I5f0O3BoNI4d1FJPP"
+    );
 
     return {
       statusCode: 200,
