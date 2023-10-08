@@ -11,7 +11,7 @@ exports.handler = async (event, context) => {
   const msg = {
     to: email,
     from: "david@ilgirasole.fr", // Votre email d'expéditeur
-    templateId: "d-f6110fab2fb04b05b3924760f999ce4f",
+    templateId: " d-f13022b3fbde406badd256068c5ce6bf",
   };
 
   try {

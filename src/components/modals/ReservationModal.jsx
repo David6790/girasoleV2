@@ -3,8 +3,9 @@ import DatePicker from "react-date-picker";
 import "react-date-picker/dist/DatePicker.css";
 import "react-calendar/dist/Calendar.css";
 import emailjs from "@emailjs/browser";
+import { motion, AnimatePresence } from "framer-motion";
 
-const ReservationModal = () => {
+const ReservationModal = ({ isOpen, onClose }) => {
   const [resDate, setResDate] = useState(new Date());
   const [name, setName] = useState(null);
   const [email, setEmail] = useState(null);
@@ -32,45 +33,101 @@ const ReservationModal = () => {
         }
       );
   };
-  return (
-    <div className=" fixed top-0 left-0 bg-test h-screen w-screen px-40   py-20 z-10">
-      <div className="w-full h-full bg-myGrey rounded-2xl ">
-        <form onSubmit={sendEmail} className=" flex flex-col">
-          <label>Name</label>
-          <input
-            type="text"
-            name="user_name"
-            onChange={(e) => setName(e.target.value)}
-          />
-          <DatePicker
-            selected={resDate}
-            value={resDate}
-            onChange={(date) => setResDate(date)}
-            className=" bg-red-300 h-[300px]"
-          />
-          <label>Nombre de personne</label>
-          <input
-            type="number"
-            name="number"
-            onChange={(e) => setNumberOfGuest(e.target.value)}
-          />
-          <label>Email</label>
-          <input
-            type="email"
-            name="email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <label>Message</label>
-          <textarea
-            name="message"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          />
-          <input type="submit" value="Send" />
-        </form>
-      </div>
-    </div>
-  );
+  return isOpen ? (
+    <AnimatePresence>
+      <motion.div
+        className=" fixed top-0 left-0 bg-test h-screen w-screen px-40 py-20 z-50"
+        initial={{
+          opacity: 0,
+          scale: 0,
+        }}
+        animate={{
+          opacity: 1,
+          scale: 1,
+          transition: {
+            ease: "easeOut",
+            duration: 0.45,
+          },
+        }}
+        exit={{
+          opacity: 0,
+          scale: 0.75,
+          transition: {
+            ease: "easeIn",
+            duration: 0.55,
+          },
+        }}
+      >
+        <div className="w-full h-full bg-myGrey rounded-2xl flex flex-col justify-around items-center  ">
+          <div className=" w-full flex flex-row justify-between px-10">
+            <h1 className=" text-3xl font-title-font text-my-gold ">
+              Réservation en ligne
+            </h1>
+            <button className="text-3xl" onClick={onClose}>
+              X
+            </button>
+          </div>
+
+          <form
+            onSubmit={sendEmail}
+            className=" flex flex-col justify-around px-10 w-full h-[80%] "
+          >
+            <div className=" flex flex-row justify-around items-center h-[80%] ">
+              <div className="flex  flex-col w-[40%] h-full  ">
+                <label>Nom de la réservation</label>
+                <input
+                  placeholder="Votre Nom"
+                  type="text"
+                  name="name"
+                  onChange={(e) => setName(e.target.value)}
+                  className="border-[1px] border-black h-[40px] mb-2 "
+                />
+                <label>Date de la réservation</label>
+                <DatePicker
+                  selected={resDate}
+                  onChange={(date) => setResDate(date)}
+                  className=" bg-white  border-black h-[40px]  mb-2 "
+                />
+                <label className=" mb-0">Nombre de personne</label>
+                <input
+                  placeholder="Nombre de personnes"
+                  type="number"
+                  name="number"
+                  onChange={(e) => setNumberOfGuest(e.target.value)}
+                  className="border-[1px] border-black h-[40px]  mb-2 "
+                />
+                <label>Email</label>
+                <input
+                  placeholder="Votre E-mail"
+                  type="email"
+                  name="email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="border-[1px] border-black h-[40px]  mb-2 "
+                />
+              </div>
+              <div className=" flex flex-col w-[40%] h-full ">
+                <label className="text-base">Commentaires</label>
+                <textarea
+                  name="message"
+                  placeholder="Une demande spéciale ? Laissez-nous un commentaire, nous ferrons au mieux pour vous satisfaire"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  className=" h-[250px] focus:outline-none  resize-none border-[1px] border-black  p-2"
+                />
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              className=" border-2 border-black w-1/2 m-auto"
+            >
+              Valider
+            </button>
+          </form>
+        </div>
+      </motion.div>
+    </AnimatePresence>
+  ) : null;
 };
 
 export default ReservationModal;
