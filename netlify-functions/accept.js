@@ -1,41 +1,29 @@
-import emailjs from "@emailjs/nodejs";
+const emailjs = require("emailjs-com/nodejs"); // Assurez-vous d'importer la version correcte
 
 exports.handler = async (event, context) => {
-  if (event.httpMethod !== "GET") {
-    return { statusCode: 405, body: "Method Not Allowed" };
-  }
+  emailjs.init("YOUR_USER_ID"); // Remplacez par votre userID
 
-  const { email } = event.queryStringParameters;
-
-  // Paramètres EmailJS
-  const params = {
-    from_name: "IL GIRASOLE STRASBOURG",
-    email: email, // email du destinataire
-    message: "Votre réservation a été acceptée!", // Ou tout autre message que vous souhaitez envoyer
+  const data = {
+    service_id: "service_tm1wxto",
+    template_id: "template_ua6d1za",
+    user_id: "I5f0O3BoNI4d1FJPP",
+    template_params: {
+      from_name: "IL GIRASOLE STRASBOURG",
+      to_email: "david.lb90@gmail.com",
+      message_html: "Test message",
+    },
   };
 
-  //   const serviceID = "service_tm1wxto";
-  //   const templateID = "template_ua6d1za"; // C'est votre ID de modèle d'email spécifique, vous devrez peut-être le changer.
-  //   const userID = "I5f0O3BoNI4d1FJPP";
-
   try {
-    // Envoyer l'email via EmailJS
-    await emailjs.send(
-      "service_tm1wxto",
-      "template_ua6d1za",
-      params,
-      "I5f0O3BoNI4d1FJPP"
-    );
-
+    const response = await emailjs.send(data);
     return {
       statusCode: 200,
-      body: "Email sent successfully!",
+      body: JSON.stringify({ message: "Email sent successfully!" }),
     };
   } catch (error) {
-    console.error("Error sending email:", error.message);
     return {
       statusCode: 500,
-      body: "Error sending email",
+      body: JSON.stringify({ error: error.message }),
     };
   }
 };
