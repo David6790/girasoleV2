@@ -57,11 +57,13 @@ const ReservationModal = ({ isOpen, onClose }) => {
       setTime("");
       setIsLoading(false);
     } else if (time > "21:45") {
-      alert("Nous ne prenons plus de réservation après cette heure");
+      alert("Nous ne prenons plus de réservation après 21h45");
       setTime("");
       setIsLoading(false);
     } else if (time < "12:00") {
-      alert("Nous ouvrons nos portes à partir de midi");
+      alert(
+        "Nous ouvrons nos portes à partir de midi. Veuillez choisir un autre créneau"
+      );
       setTime("");
       setIsLoading(false);
     } else {
@@ -88,7 +90,7 @@ const ReservationModal = ({ isOpen, onClose }) => {
   return isOpen ? (
     <AnimatePresence>
       <motion.div
-        className=" fixed top-0 left-0 bg-test h-screen w-screen xl:px-40 lg:px-40 md:px-20 sm:px-20 px-5 xl:py-20 lg:py-20 md:py-20 sm:py-20 py-10 z-50 text-left "
+        className=" fixed top-0 left-0 bg-test h-full w-screen xl:px-40 lg:px-40 md:px-20 sm:px-20 px-5 xl:py-20 lg:py-40   md:py-20 sm:py-20 py-16 z-50 text-left "
         initial={{
           opacity: 0,
           scale: 0,
