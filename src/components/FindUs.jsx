@@ -6,7 +6,7 @@ import ButtonResa from "./ButtonResa";
 const FindUs = () => {
   const ref1 = useRef(null);
   const ref2 = useRef(null);
-  const isInView = useInView(ref1, ref2, { once: false });
+  const isInView = useInView(ref1, ref2, { once: true });
   return (
     <>
       <div className="xl:w-1/2 lg:w-1/2 md:w-1/2 sm:w-1/2 w-full xl:h-full lg:h-full md:h-full sm:h-full h-1/2 pt-5  ">

@@ -12,7 +12,7 @@ const ReservationModal = ({ isOpen, onClose }) => {
   const [message, setMessage] = useState("");
   const [numberOfGuest, setNumberOfGuest] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [time, setTime] = useState("");
+  const [time, setTime] = useState("12:00");
   const [tel, setTel] = useState("");
 
   useEffect(() => {
@@ -29,23 +29,27 @@ const ReservationModal = ({ isOpen, onClose }) => {
   }, [isOpen]);
 
   const handleTimeChange = (e) => {
-    const selectedTime = e.target.value;
-
-    if (selectedTime > "13:45" && selectedTime <= "19:00") {
-      alert(
-        "Nous sommes en pause de 14h00 à 19h00. Veuillez choisir un autre créneau."
-      );
-      setTime("");
-    } else if (selectedTime > "21:45") {
-      alert("Nous ne prenons plus de réservation après cette heure");
-      setTime("");
-    } else if (selectedTime < "12:00") {
-      alert("Nous ouvrons nos portes à partir de midi");
-      setTime("");
-    } else {
-      setTime(selectedTime);
-    }
+    setTime(e.target.value);
   };
+
+  // const handleTimeChange = (e) => {
+  //   const selectedTime = e.target.value;
+
+  //   if (selectedTime > "13:45" && selectedTime <= "19:00") {
+  //     alert(
+  //       "Nous sommes en pause de 14h00 à 19h00. Veuillez choisir un autre créneau."
+  //     );
+  //     setTime("");
+  //   } else if (selectedTime > "21:45") {
+  //     alert("Nous ne prenons plus de réservation après cette heure");
+  //     setTime("");
+  //   } else if (selectedTime < "12:00") {
+  //     alert("Nous ouvrons nos portes à partir de midi");
+  //     setTime("");
+  //   } else {
+  //     setTime(selectedTime);
+  //   }
+  // };
 
   const sendEmail = (e) => {
     const data = {
@@ -58,30 +62,45 @@ const ReservationModal = ({ isOpen, onClose }) => {
     };
     e.preventDefault();
     setIsLoading(true);
-
-    emailjs
-      .send("service_tm1wxto", "template_clc96rm", data, "I5f0O3BoNI4d1FJPP")
-      .then(
-        (result) => {
-          console.log(result.text);
-          setEmail("");
-          setMessage("");
-          setName("");
-          setResDate("");
-          setNumberOfGuest("");
-          setTime("");
-          setTel("");
-          setIsLoading(false);
-        },
-        (error) => {
-          console.log(error.text);
-        }
+    if (time > "13:45" && time <= "19:00") {
+      alert(
+        "Nous sommes en pause de 14h00 à 19h00. Veuillez choisir un autre créneau."
       );
+      setTime("");
+      setIsLoading(false);
+    } else if (time > "21:45") {
+      alert("Nous ne prenons plus de réservation après cette heure");
+      setTime("");
+      setIsLoading(false);
+    } else if (time < "12:00") {
+      alert("Nous ouvrons nos portes à partir de midi");
+      setTime("");
+      setIsLoading(false);
+    } else {
+      emailjs
+        .send("service_tm1wxto", "template_clc96rm", data, "I5f0O3BoNI4d1FJPP")
+        .then(
+          (result) => {
+            console.log(result.text);
+            setEmail("");
+            setMessage("");
+            setName("");
+            setResDate("");
+            setNumberOfGuest("");
+            setTime("");
+            setTel("");
+            setIsLoading(false);
+          },
+          (error) => {
+            console.log(error.text);
+          }
+        );
+    }
   };
   return isOpen ? (
     <AnimatePresence>
       <motion.div
-        className=" fixed top-0 left-0 bg-test h-screen w-screen xl:px-40 lg:px-40 md:px-20 sm:px-20 px-5 xl:py-20 lg:py-20 md:py-20 sm:py-20 py-10 z-50 "
+        className=" fixed top-0 left-0 bg-test h-screen w-screen xl:px-40 lg:px-40 md:px-20 sm:px-20 px-5 xl:py-20 lg:py-20 md:py-20 sm:py-20 py-10 z-50 text-left "
         initial={{
           opacity: 0,
           scale: 0,

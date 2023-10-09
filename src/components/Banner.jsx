@@ -6,7 +6,7 @@ import ButtonResa from "./ButtonResa";
 const Banner = () => {
   const ref1 = useRef(null);
   const ref2 = useRef(null);
-  const isInView = useInView(ref1, ref2, { once: false });
+  const isInView = useInView(ref1, ref2, { once: true });
   return (
     <>
       <motion.div

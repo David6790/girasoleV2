@@ -6,7 +6,7 @@ const MenuSemaine = () => {
   const ref3 = useRef(null);
   const ref4 = useRef(null);
   const ref5 = useRef(null);
-  const isInView = useInView(ref3, ref4, { once: false });
+  const isInView = useInView(ref3, ref4, { once: true });
 
   return (
     <>
