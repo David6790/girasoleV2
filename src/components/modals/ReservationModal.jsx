@@ -81,7 +81,7 @@ const ReservationModal = ({ isOpen, onClose }) => {
   return isOpen ? (
     <AnimatePresence>
       <motion.div
-        className=" fixed top-0 left-0 bg-test h-screen w-screen xl:px-40 lg:px-40 md:px-20 sm:px-20 px-10 xl:py-20 lg:py-20 md:py-20 sm:py-20 py-5 z-50 "
+        className=" fixed top-0 left-0 bg-test h-screen w-screen xl:px-40 lg:px-40 md:px-20 sm:px-20 px-5 xl:py-20 lg:py-20 md:py-20 sm:py-20 py-10 z-50 "
         initial={{
           opacity: 0,
           scale: 0,
