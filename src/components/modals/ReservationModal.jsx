@@ -17,13 +17,20 @@ const ReservationModal = ({ isOpen, onClose }) => {
 
   useEffect(() => {
     if (isOpen) {
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${window.scrollY}px`;
       document.body.style.overflow = "hidden";
     } else {
+      const scrollY = document.body.style.top;
+      document.body.style.position = "";
+      document.body.style.top = "";
       document.body.style.overflow = "auto";
+      window.scrollTo(0, parseInt(scrollY || "0") * -1);
     }
 
-    // Nettoyage lorsque le composant est démonté
     return () => {
+      document.body.style.position = "";
+      document.body.style.top = "";
       document.body.style.overflow = "auto";
     };
   }, [isOpen]);
@@ -31,25 +38,6 @@ const ReservationModal = ({ isOpen, onClose }) => {
   const handleTimeChange = (e) => {
     setTime(e.target.value);
   };
-
-  // const handleTimeChange = (e) => {
-  //   const selectedTime = e.target.value;
-
-  //   if (selectedTime > "13:45" && selectedTime <= "19:00") {
-  //     alert(
-  //       "Nous sommes en pause de 14h00 à 19h00. Veuillez choisir un autre créneau."
-  //     );
-  //     setTime("");
-  //   } else if (selectedTime > "21:45") {
-  //     alert("Nous ne prenons plus de réservation après cette heure");
-  //     setTime("");
-  //   } else if (selectedTime < "12:00") {
-  //     alert("Nous ouvrons nos portes à partir de midi");
-  //     setTime("");
-  //   } else {
-  //     setTime(selectedTime);
-  //   }
-  // };
 
   const sendEmail = (e) => {
     const data = {
