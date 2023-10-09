@@ -17,7 +17,7 @@ const ReservationModal = ({ isOpen, onClose }) => {
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.position = "fixed";
+      // document.body.style.position = "fixed";
       document.body.style.top = `-${window.scrollY}px`;
       document.body.style.overflow = "hidden";
     } else {
