@@ -12,6 +12,27 @@ const ReservationModal = ({ isOpen, onClose }) => {
   const [message, setMessage] = useState("");
   const [numberOfGuest, setNumberOfGuest] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [time, setTime] = useState("");
+  const [tel, setTel] = useState("");
+
+  const handleTimeChange = (e) => {
+    const selectedTime = e.target.value;
+
+    if (selectedTime > "13:45" && selectedTime <= "19:00") {
+      alert(
+        "Nous sommes en pause de 14h00 à 19h00. Veuillez choisir un autre créneau."
+      );
+      setTime("");
+    } else if (selectedTime > "21:45") {
+      alert("Nous ne prenons plus de réservation après cette heure");
+      setTime("");
+    } else if (selectedTime < "12:00") {
+      alert("Nous ouvrons nos portes à partir de midi");
+      setTime("");
+    } else {
+      setTime(selectedTime);
+    }
+  };
 
   const sendEmail = (e) => {
     const data = {
@@ -20,6 +41,7 @@ const ReservationModal = ({ isOpen, onClose }) => {
       number: numberOfGuest,
       email: email,
       message: message,
+      phone: tel,
     };
     e.preventDefault();
     setIsLoading(true);
@@ -34,6 +56,8 @@ const ReservationModal = ({ isOpen, onClose }) => {
           setName("");
           setResDate("");
           setNumberOfGuest("");
+          setTime("");
+          setTel("");
           setIsLoading(false);
         },
         (error) => {
@@ -90,6 +114,7 @@ const ReservationModal = ({ isOpen, onClose }) => {
                   name="name"
                   onChange={(e) => setName(e.target.value)}
                   className="border-[1px] border-black h-[40px] mb-2 "
+                  required
                 />
                 <label>Date de la réservation</label>
                 <DatePicker
@@ -97,7 +122,18 @@ const ReservationModal = ({ isOpen, onClose }) => {
                   value={resDate}
                   onChange={(date) => setResDate(date)}
                   className=" bg-white  border-black h-[40px]  mb-2 "
+                  required
                 />
+                <label>Heure d'arrivé</label>
+                <input
+                  type="time"
+                  name="resTime"
+                  className=" bg-white  border-black border-[1px] h-[40px]  mb-2 "
+                  value={time}
+                  onChange={handleTimeChange}
+                  required
+                />
+
                 <label className=" mb-0">Nombre de personne</label>
                 <input
                   placeholder="Nombre de personnes"
@@ -106,6 +142,7 @@ const ReservationModal = ({ isOpen, onClose }) => {
                   name="number"
                   onChange={(e) => setNumberOfGuest(e.target.value)}
                   className="border-[1px] border-black h-[40px]  mb-2 "
+                  required
                 />
                 <label>Email</label>
                 <input
@@ -115,6 +152,17 @@ const ReservationModal = ({ isOpen, onClose }) => {
                   name="email"
                   onChange={(e) => setEmail(e.target.value)}
                   className="border-[1px] border-black h-[40px]  mb-2 "
+                  required
+                />
+                <label>Télephone</label>
+                <input
+                  placeholder="Un numéro pour vous joindre"
+                  value={tel}
+                  type="tel"
+                  name="phone"
+                  onChange={(e) => setTel(e.target.value)}
+                  className="border-[1px] border-black h-[40px]  mb-2 "
+                  required
                 />
               </div>
               <div className=" flex flex-col w-[40%] h-full ">

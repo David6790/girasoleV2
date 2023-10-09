@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
+import ButtonResa from "./ButtonResa";
 
 const FindUs = () => {
   const ref1 = useRef(null);
@@ -37,9 +38,7 @@ const FindUs = () => {
             <p>Soir : 19h - 22h </p>
           </div>
 
-          <button className="px-5 py-2 border-solid border-black border-2 mt-5 mb-5 rounded-md xl:text-xl lg:text-xl md:text-xl sm:text-sm text-xs  ">
-            Réserver en ligne
-          </button>
+          <ButtonResa />
         </motion.div>
       </div>
       <motion.div
