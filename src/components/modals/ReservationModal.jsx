@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DatePicker from "react-date-picker";
 import "react-date-picker/dist/DatePicker.css";
 import "react-calendar/dist/Calendar.css";
@@ -7,13 +7,26 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const ReservationModal = ({ isOpen, onClose }) => {
   const [resDate, setResDate] = useState(new Date());
-  const [name, setName] = useState(null);
-  const [email, setEmail] = useState(null);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [numberOfGuest, setNumberOfGuest] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [time, setTime] = useState("");
   const [tel, setTel] = useState("");
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    // Nettoyage lorsque le composant est démonté
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
 
   const handleTimeChange = (e) => {
     const selectedTime = e.target.value;
@@ -68,7 +81,7 @@ const ReservationModal = ({ isOpen, onClose }) => {
   return isOpen ? (
     <AnimatePresence>
       <motion.div
-        className=" fixed top-0 left-0 bg-test h-screen w-screen px-40 py-20 z-50"
+        className=" fixed top-0 left-0 bg-test h-screen w-screen xl:px-40 lg:px-40 md:px-20 sm:px-20 px-10 xl:py-20 lg:py-20 md:py-20 sm:py-20 py-5 z-50 "
         initial={{
           opacity: 0,
           scale: 0,
@@ -91,21 +104,24 @@ const ReservationModal = ({ isOpen, onClose }) => {
         }}
       >
         <div className="w-full h-full bg-myGrey rounded-2xl flex flex-col justify-around items-center  ">
-          <div className=" w-full flex flex-row justify-between px-10">
-            <h1 className=" text-3xl font-title-font text-my-gold ">
+          <div className=" w-full flex flex-row justify-between xl:px-10 lg:px-10 md:px-10 sm:px-10 px-2">
+            <h1 className=" xl:text-3xl lg:text-3xl md:text-3xl sm:text-3xl text-xl font-title-font text-my-gold ">
               Réservation en ligne
             </h1>
-            <button className="text-3xl" onClick={onClose}>
+            <button
+              className="lg:text-2xl xl:text-2xl md:text-2xl sm:text-2xl text-lg "
+              onClick={onClose}
+            >
               X
             </button>
           </div>
 
           <form
             onSubmit={sendEmail}
-            className=" flex flex-col justify-around px-10 w-full h-[80%] "
+            className=" flex flex-col justify-between xl:px-10 lg:px-10 md:px-10 sm:px-10 px-2 w-full h-[80%] overflow-scroll  "
           >
-            <div className=" flex flex-row justify-around items-center h-[80%] ">
-              <div className="flex  flex-col w-[40%] h-full  ">
+            <div className=" flex xl:flex-row lg:flex-row md:flex-row sm:flex-row flex-col justify-between items-center h-[80%] ">
+              <div className="flex  flex-col xl:w-[48%] lg:w-[48%] md:w-[48%] sm:w-[48%] w-full h-full  ">
                 <label>Nom de la réservation</label>
                 <input
                   placeholder="Votre Nom"
@@ -165,24 +181,23 @@ const ReservationModal = ({ isOpen, onClose }) => {
                   required
                 />
               </div>
-              <div className=" flex flex-col w-[40%] h-full ">
+              <div className=" flex flex-col xl:w-[48%] lg:w-[48%] md:w-[48%] sm:w-[48%] w-full h-full ">
                 <label className="text-base">Commentaires</label>
                 <textarea
                   name="message"
                   placeholder="Une demande spéciale ? Laissez-nous un commentaire, nous ferrons au mieux pour vous satisfaire"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  className=" h-[250px] focus:outline-none  resize-none border-[1px] border-black  p-2"
+                  className=" h-[70%] focus:outline-none  resize-none border-[1px] border-black  p-2"
                 />
+                <button
+                  type="submit"
+                  className=" border-2 border-black w-full m-auto h-[50px] bg-myGrey hover:bg-my-gold mt-5 "
+                >
+                  {isLoading ? "En cours..." : "Envoyer"}
+                </button>
               </div>
             </div>
-
-            <button
-              type="submit"
-              className=" border-2 border-black w-1/2 m-auto h-[50px]"
-            >
-              {isLoading ? "En cours..." : "Envoyer"}
-            </button>
           </form>
         </div>
       </motion.div>
