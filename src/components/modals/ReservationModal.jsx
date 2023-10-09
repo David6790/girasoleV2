@@ -80,6 +80,8 @@ const ReservationModal = ({ isOpen, onClose }) => {
             setTime("");
             setTel("");
             setIsLoading(false);
+            alert("Demande de réservation envoyée");
+            onClose();
           },
           (error) => {
             console.log(error.text);
