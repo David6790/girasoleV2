@@ -1,0 +1,549 @@
+{
+  "menu": [
+    {
+      "price": "13,50€",
+      "category": "antipasti",
+      "name": "BRUSCHETTA GENOVA",
+      "englishName": "",
+      "description": "Pesto vert , tomates cerises, parmesan et roquette"
+    },
+    {
+      "price": "14,00€",
+      "category": "antipasti",
+      "name": "BRUSCHETTA AL LIMONE",
+      "englishName": "",
+      "description": "Huile d’olive, jambon de parme, Burrata citron et roquette"
+    },
+    {
+      "price": "14,00€",
+      "category": "antipasti",
+      "name": "BRUSCHETTA TARTUFO",
+      "englishName": "",
+      "description": "Crème truffée, tomates séchées, champignons, mozzarella et roquette"
+    },
+    {
+      "price": "19,50€",
+      "category": "antipasti",
+      "name": "ANTIPASTI ITALIANI (grande planchette)",
+      "englishName": "",
+      "description": "Charcuteries italiennes, salade, légumes marinés et fromages italiens, servis avec de la pizza pan."
+    },
+    {
+      "price": "16,50€",
+      "category": "antipasti",
+      "name": "ANTIPASTI ITALIANI (petite planchette)",
+      "englishName": "",
+      "description": "Charcuteries italiennes, salade, légumes marinés et fromages italiens, servis avec de la pizza pan."
+    },
+    {
+      "price": "14,50€",
+      "category": "antipasti",
+      "name": "Tarte Flambée italienne",
+      "englishName": "",
+      "description": "Crème truffée, oignons, mozzarella, champignons et poulet"
+    },
+    {
+      "price": "7,00€",
+      "category": "antipasti",
+      "name": "PANZEROTTI ( 4 pièces)",
+      "englishName": "",
+      "description": "Mini-chausson de pizza farci"
+    },
+    {
+      "price": "7,00€",
+      "category": "antipasti",
+      "name": "SPEDINI ETE ( 5 pièces)",
+      "englishName": "",
+      "description": "Billes de mozzarella, melon, jambon de parme et tomates cerises"
+    },
+    {
+      "price": "6,50€",
+      "category": "antipasti",
+      "name": "PATATAS ITALIANI",
+      "englishName": "",
+      "description": "avec sauce italienne"
+    },
+
+    {
+      "price": "6,50€",
+      "category": "antipasti",
+      "name": "MINI PIZZA",
+      "englishName": "",
+      "description": "Mini margherita"
+    },
+    {
+      "price": "6,50€",
+      "category": "antipasti",
+      "name": "TAPENADE D’OLIVES VERTES",
+      "englishName": "",
+      "description": "avec sticks de pizza"
+    },
+    {
+      "price": "7,00€",
+      "category": "antipasti",
+      "name": "MINI-BRUSCHETTA GAMBERETTO",
+      "englishName": "",
+      "description": "Guacamole/crevettes"
+    },
+    {
+      "price": "7,50€",
+      "category": "antipasti",
+      "name": "MINI-BRUSCHETTA SALMONE",
+      "englishName": "",
+      "description": "Ricotta/ saumon fumé"
+    },
+    {
+      "price": "7,50€",
+      "category": "antipasti",
+      "name": "CALAMAR ROMONA",
+      "englishName": "",
+      "description": "sauce aïoli"
+    },
+    {
+      "price": "6,00€",
+      "category": "antipasti",
+      "name": "CROQUETTES ITALIENNES",
+      "englishName": "",
+      "description": "Cocktail de croquettes de pomme de terre farcies et sauce maison."
+    },
+    {
+      "price": "26,00€",
+      "category": "antipasti",
+      "name": "BOX À TAPAS",
+      "englishName": "",
+      "description": "Box avec 4 tapas au choix"
+    },
+    {
+      "price": "6,00€",
+      "category": "antipasti",
+      "name": "Pizza Pan blanche",
+      "englishName": "",
+      "description": "Pizza blanche aromatisée à l’origan et huile d’olives"
+    },
+    {
+      "price": "7,50€",
+      "category": "antipasti",
+      "name": "Pizza Pan Pesto Basilic",
+      "englishName": "",
+      "description": "Pizza blanche aromatisée au pesto vert , basilic , tomates cerises et parmesan"
+    },
+    {
+      "price": "7,50€",
+      "category": "antipasti",
+      "name": "Pizza Pan Pesto Rouge",
+      "englishName": "",
+      "description": "Pizza blanche aromatisée au pesto rouge, tomates cerises et parmesan"
+    },
+
+    {
+      "price": "6,50€",
+      "category": "antipasti",
+      "name": "Bowl Pizza fromaggio",
+      "englishName": "",
+      "description": "Boule de Pizza blanche farcie au fromage italien"
+    },
+    {
+      "price": "11,00€",
+      "category": "antipasti",
+      "name": "Carpaccio Di Manzo (entrée)",
+      "englishName": "",
+      "description": "Fines tranches de bœuf cru, huile d’olive, concombre frais, piment, cornichon, oignons de printemps, câpres et roquette."
+    },
+    {
+      "price": "16,00€",
+      "category": "carpaccio",
+      "name": "Carpaccio Di Manzo (plat)",
+      "englishName": "",
+      "description": "Fines tranches de bœuf cru, huile d’olive, concombre frais, piment, cornichon, oignons de printemps, câpres et roquette."
+    },
+    {
+      "price": "12,00€",
+      "category": "antipasti",
+      "name": "Carpaccio Salmone (entrée)",
+      "englishName": "",
+      "description": "Fines tranches de saumon cru, huile d’olive, citron, radis, baie rose et roquette"
+    },
+    {
+      "price": "17,50€",
+      "category": "carpaccio",
+      "name": "Carpaccio Salmone (plat)",
+      "englishName": "",
+      "description": "Fines tranches de saumon cru, huile d’olive, citron, radis, baie rose et roquette"
+    },
+    {
+      "price": "14,50€",
+      "category": "insalate",
+      "name": "CAPRESE",
+      "englishName": "",
+      "description": "Mozzarella di buffala, tomates rouges, huile d’olive, crème balsamique et basili"
+    },
+    {
+      "price": "16,50€",
+      "category": "insalate",
+      "name": "LITTLE GIRASOLE",
+      "englishName": "",
+      "description": "Tomates cerises, jambon de parme, burrata, olives cagnesch, basilic et huile d’olive"
+    },
+    {
+      "price": "16,00€",
+      "category": "insalate",
+      "name": "DI RAVIOLI",
+      "englishName": "",
+      "description": "Mini-ravioli, mâche, tomates cerises, jambon blanc"
+    },
+    {
+      "price": "16,50€",
+      "category": "insalate",
+      "name": "BURRATA DES POUILLES",
+      "englishName": "",
+      "description": "Burrata, tomates cerises, pesto et roquette et jambon de parme"
+    },
+    {
+      "price": "17,50€",
+      "category": "specialite",
+      "name": "TREE DI SAPORI",
+      "englishName": "",
+      "description": "Salade, burrata, cannellonis à la ricotta et épinards, lasagnes d'aubergines"
+    },
+
+    {
+      "price": "16,50€",
+      "category": "specialite",
+      "name": "LASAGNE ALLA BOLOGNESE",
+      "description": "Viande de bœuf, sauce tomate et gratiné à la mozzarella avec salade verte"
+    },
+    {
+      "price": "19,00€",
+      "category": "specialite",
+      "name": "LA NOSTRA SPECIALITÀ",
+      "description": "Maxi gnocchis farcis aux fromages, sauce crème truffée avec ses copeaux de truffes"
+    },
+    {
+      "price": "18,00€",
+      "category": "specialite",
+      "name": "RAVIOLI AL TARTUFO",
+      "description": "Pâtes farcies à la truffe, sauce crème truffée et champignons"
+    },
+    {
+      "price": "17,00€",
+      "category": "specialite",
+      "name": "RAVIOLI MELANZANA",
+      "description": "Pâtes farcies à l’aubergine et mozzarella sauce méditerranéenne, poivron, crevettes, oignons, pesto rouge et crème."
+    },
+    {
+      "price": "23,50€",
+      "category": "pesce",
+      "name": "POISSON DU MOMENT GRILLE",
+      "description": "Poisson du moment grillé, sauce citronnée"
+    },
+    {
+      "price": "24,00€",
+      "category": "pesce",
+      "name": "SAUMON A LA TOSCANE",
+      "description": "Épinards, tomates séchées et crème"
+    },
+    {
+      "price": "25,00€",
+      "category": "pesce",
+      "name": "TRILOGIE DE POISSONS",
+      "description": "Calamars, gambas et filet de poisson du moment sauce aglio e olio"
+    },
+    {
+      "price": "25,00€",
+      "category": "carne",
+      "name": "FILETTO DI MANZO TARTUFO",
+      "description": "Filet de bœuf, sauce crème truffée et ses copeaux de parmesan"
+    },
+    {
+      "price": "24,00€",
+      "category": "carne",
+      "name": "CONTROFILETTO",
+      "description": "Faux filet de bœuf sauce gorgonzola"
+    },
+    {
+      "price": "19,50€",
+      "category": "carne",
+      "name": "ESCALOPE DE POULET À LA SICILIENNE",
+      "description": "Olives, oignon, tomates cerises, poivron, romarin, zest de citron et persil servi avec des orecchiettes"
+    },
+
+    {
+      "price": "24,50€",
+      "category": "carne",
+      "name": "CORDON BLEU ITALIA",
+      "description": "Escalope de veau farcie à la mozzarella et tomates séchées, pané et frit sauce crème champignons"
+    },
+    {
+      "price": "16,00€",
+      "category": "pasta",
+      "name": "LINGUINE CON CARBONARA",
+      "description": "Pancetta, ail, crème légère, et jaune d’œuf"
+    },
+    {
+      "price": "15,50€",
+      "category": "pasta",
+      "name": "LINGUINE AGLIO E OLIO",
+      "description": "Huile d’olives, basilic, tomates cerises, olives italiennes , ail et piment concassé"
+    },
+    {
+      "price": "19,00€",
+      "category": "pasta",
+      "name": "PENNE AL SALMONE",
+      "description": "Sauce crème, ail et filet de saumon frais et basilic"
+    },
+    {
+      "price": "15,50€",
+      "category": "pasta",
+      "name": "TAGLIATELLES BOLOGNAISE",
+      "description": "Viande de bœuf, sauce tomate, basilic et persil"
+    },
+    {
+      "price": "20,50€",
+      "category": "pasta",
+      "name": "LINGUINE VONGOLE",
+      "description": "Palourdes, ail, réduit au vin blanc, courgettes et basilic"
+    },
+    {
+      "price": "17,50€",
+      "category": "pasta",
+      "name": "PENNE AUX 3 FROMAGES",
+      "description": "Sauce crème, fromage gorgonzola, parmesan et scamorza"
+    },
+    {
+      "price": "16,50€",
+      "category": "pasta",
+      "name": "AGNOLOTTI AL PIN AU FROMAGE",
+      "description": "thym, baie rose, huile d’olive, citron et parmesan"
+    },
+    {
+      "price": "22,00€",
+      "category": "risotto",
+      "name": "RISOTTO AL TARTUFO",
+      "description": "Riz arborio, bouillon de légumes, crème truffée, champignons, parmesan."
+    },
+    {
+      "price": "22,50€",
+      "category": "risotto",
+      "name": "RISOTTO PUGLIESE",
+      "description": "Riz arborio, bouillon de légumes, crevettes , chorizo, parmesan."
+    },
+
+    {
+      "price": "12,50€",
+      "category": "pizza",
+      "name": "MARGHERITA",
+      "description": "Sauce tomate, mozzarella et olives"
+    },
+    {
+      "price": "13,50€",
+      "category": "pizza",
+      "name": "REGINA",
+      "description": "Sauce tomate, mozzarella, jambon et champignons"
+    },
+    {
+      "price": "13,00€",
+      "category": "pizza",
+      "name": "ALLE VERDURE",
+      "description": "Sauce tomate, mozzarella et légumes grillés"
+    },
+    {
+      "price": "14,50€",
+      "category": "pizza",
+      "name": "SALAME PICCANTE",
+      "description": "Sauce tomate, mozzarella, spianata calabrese"
+    },
+    {
+      "price": "15,50€",
+      "category": "pizza",
+      "name": "GIRASOLE",
+      "description": "Sauce tomate, mozzarella, jambon, salami, œuf, artichauts et olives"
+    },
+    {
+      "price": "15,00€",
+      "category": "pizza",
+      "name": "IL POLLO",
+      "description": "Pesto vert, tranches de poulet, tomates cerises et olives noires"
+    },
+    {
+      "price": "15,00€",
+      "category": "pizza",
+      "name": "NAPOLITAINE",
+      "description": "Sauce tomate, mozzarella, basilic, anchois, câpres et olives"
+    },
+    {
+      "price": "15,00€",
+      "category": "pizza",
+      "name": "BUFFALA",
+      "description": "Sauce tomate, tomates cerises, mozzarella di Buffala entière"
+    },
+    {
+      "price": "17,00€",
+      "category": "pizza",
+      "name": "BUFFALA PARMA",
+      "description": "Sauce tomate, tomates cerises, mozzarella di Buffala entière avec jambon de parme"
+    },
+    {
+      "price": "15,50€",
+      "category": "pizza",
+      "name": "DI CAPRA PICCANTE",
+      "description": "Pesto, fromage de chèvre, tomates cerises, mozzarella, olives noires et basilic"
+    },
+
+    {
+      "price": "16,00€",
+      "category": "pizza",
+      "name": "QUATTRO FROMAGGI",
+      "description": "Sauce tomate, mozzarella, parmesan, scamorza et gorgonzola"
+    },
+    {
+      "price": "17,50€",
+      "category": "pizza",
+      "name": "TARTUFATA",
+      "description": "Tomates cerises, mozzarella, bresaola, crème truffée, copeaux de parmesan et roquette"
+    },
+    {
+      "price": "18,00€",
+      "category": "pizza",
+      "name": "FRUTTI DI MARE",
+      "description": "Sauce tomate, mozzarella, crevettes, moules, calamars, palourdes, ail et persil"
+    },
+    {
+      "price": "16,50€",
+      "category": "pizza",
+      "name": "PARMA",
+      "description": "Sauce tomate, mozzarella, jambon de parme, copeaux de parmesan et roquette"
+    },
+    {
+      "price": "17,00€",
+      "category": "pizza",
+      "name": "CARNIVORO",
+      "description": "Merguez, poulet, viande bolognaise, oignons, mozzarella et poivrons"
+    },
+    {
+      "price": "18,00€",
+      "category": "pizza",
+      "name": "SALMONE",
+      "description": "Base blanche ou tomate au choix,saumon frais, persil, ail et mozzarella"
+    },
+    {
+      "price": "15,50€",
+      "category": "pizza",
+      "name": "CALZONE DU CHEF",
+      "description": "Sauce tomate, mozzarella, jambon, salami, artichaut, œuf et olives noires"
+    },
+    {
+      "price": "14,50€",
+      "category": "pizza",
+      "name": "CALZONE REGINA",
+      "description": "Sauce tomate, mozzarella, jambon et champignons"
+    },
+    {
+      "price": "7,00€",
+      "category": "dessert",
+      "name": "Petit plateau de 3 fromages italiens",
+      "description": ""
+    },
+    {
+      "price": "7,00€",
+      "category": "dessert",
+      "name": "Tiramisu maison",
+      "description": ""
+    },
+    {
+      "price": "6,50€",
+      "category": "dessert",
+      "name": "Cheesecake du moment maison",
+      "description": ""
+    },
+    {
+      "price": "6,00€",
+      "category": "dessert",
+      "name": "Crème brûlée du chef",
+      "description": ""
+    },
+    {
+      "price": "6,00€",
+      "category": "dessert",
+      "name": "Panna cotta du Chef",
+      "description": ""
+    },
+    {
+      "price": "6,00€",
+      "category": "dessert",
+      "name": "1/2 Pizza Nutella",
+      "description": ""
+    },
+    {
+      "price": "10,50€",
+      "category": "dessert",
+      "name": "Pizza Nutella",
+      "description": ""
+    },
+    {
+      "price": "6,00€",
+      "category": "dessert",
+      "name": "Tarte du jour",
+      "description": ""
+    },
+    {
+      "price": "7,00€",
+      "category": "dessert",
+      "name": "Fondant au chocolat",
+      "description": ""
+    },
+    {
+      "price": "8,00€",
+      "category": "dessert",
+      "name": "Profiteroles italiennes au chocolat",
+      "description": ""
+    },
+    {
+      "price": "7,50€",
+      "category": "dessert",
+      "name": "Soufflé glacé à l’orange et au cognac",
+      "description": ""
+    },
+    {
+      "price": "7,50€",
+      "category": "dessert",
+      "name": "Soufflé glacé au nougat",
+      "description": ""
+    },
+    {
+      "price": "7,50€",
+      "category": "dessert",
+      "name": "Sorbet citron arrosé au Limoncello",
+      "description": ""
+    },
+    {
+      "price": "8,50€",
+      "category": "dessert",
+      "name": "Café ou Thé gourmand",
+      "description": ""
+    },
+    {
+      "price": "2,50€",
+      "category": "dessert",
+      "name": "Boule de glace (parfum au choix)",
+      "description": ""
+    },
+    {
+      "price": "6,50€",
+      "category": "dessert",
+      "name": "Café liégeois",
+      "description": ""
+    },
+    {
+      "price": "8,50€",
+      "category": "dessert",
+      "name": "Irish Coffee",
+      "description": ""
+    },
+    {
+      "price": "8,50€",
+      "category": "dessert",
+      "name": "Girasole Coffee (à base de grappa)",
+      "description": ""
+    }
+  ]
+}

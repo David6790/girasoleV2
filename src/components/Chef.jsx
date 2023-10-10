@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
+import { NavLink } from "react-router-dom";
 
 const Chef = () => {
   const ref1 = useRef(null);
@@ -46,9 +47,11 @@ const Chef = () => {
             sophistiqués pour passer un moment agréable. Au Il Girasole, nous
             vous proposons une cuisine simple et faite avec amour.
           </p>
-          <button className=" px-5 py-2 border-[1px] rounded-md border-black xl:text-xl lg:text-xl md:text-xl sm:text-sm text-xs  mt-8">
-            Consulter la Carte
-          </button>
+          <NavLink to="/menu">
+            <button className=" px-5 py-2 border-[1px] rounded-md border-black xl:text-xl lg:text-xl md:text-xl sm:text-sm text-xs  mt-8">
+              Consulter la Carte
+            </button>
+          </NavLink>
         </div>
       </motion.div>
     </>
