@@ -117,15 +117,15 @@ const ModalReservation = ({ isOpen, onClose }) => {
           },
         }}
       >
-        <div className=" w-full flex flex-row justify-between xl:px-10 lg:px-10 md:px-10 sm:px-10 px-2 ">
-          <h1 className=" xl:text-3xl lg:text-3xl md:text-3xl sm:text-3xl text-xl font-title-font text-my-gold ">
+        <div className=" w-full flex flex-row justify-between items-center git xl:px-10 lg:px-10 md:px-10 sm:px-10 px-2 ">
+          <h1 className=" xl:text-3xl lg:text-3xl md:text-3xl sm:text-3xl text-xl font-title-font text-my-gold font-bold ">
             Réservation en ligne
           </h1>
           <button
-            className="lg:text-2xl xl:text-2xl md:text-2xl sm:text-2xl text-lg "
+            className=" px-4 py-2 bg-my-gold text-white rounded"
             onClick={onClose}
           >
-            X
+            Fermer
           </button>
         </div>
 
