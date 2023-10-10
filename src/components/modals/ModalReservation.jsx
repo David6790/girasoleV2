@@ -5,6 +5,7 @@ import "react-date-picker/dist/DatePicker.css";
 import "react-calendar/dist/Calendar.css";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion"; // Assurez-vous d'ajouter cette importation si vous l'utilisez
+import MessageModal from "./MessageModal";
 
 Modal.setAppElement("#root");
 
@@ -17,6 +18,8 @@ const ModalReservation = ({ isOpen, onClose }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [time, setTime] = useState("12:00");
   const [tel, setTel] = useState("");
+  const [messageModalOpen, setMessageModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
 
   const handleTimeChange = (e) => {
     setTime(e.target.value);
@@ -34,19 +37,22 @@ const ModalReservation = ({ isOpen, onClose }) => {
     e.preventDefault();
     setIsLoading(true);
     if (time > "13:45" && time <= "19:00") {
-      alert(
+      setModalMessage(
         "Nous sommes en pause de 14h00 à 19h00. Veuillez choisir un autre créneau."
       );
-      setTime("");
+      setMessageModalOpen(true);
       setIsLoading(false);
+      setTime("");
     } else if (time > "21:45") {
-      alert("Nous ne prenons plus de réservation après 21h45");
+      setModalMessage("Nous ne prenons plus de réservation après 21h45");
+      setMessageModalOpen(true);
       setTime("");
       setIsLoading(false);
     } else if (time < "12:00") {
-      alert(
+      setModalMessage(
         "Nous ouvrons nos portes à partir de midi. Veuillez choisir un autre créneau"
       );
+      setMessageModalOpen(true);
       setTime("");
       setIsLoading(false);
     } else {
@@ -63,8 +69,10 @@ const ModalReservation = ({ isOpen, onClose }) => {
             setTime("");
             setTel("");
             setIsLoading(false);
-            alert("Demande de réservation envoyée");
-            onClose();
+            setModalMessage(
+              "Votre réservation est bien prise en compte. Nous vous confirmerons par email dans les prochaines minutes"
+            );
+            setMessageModalOpen(true);
           },
           (error) => {
             console.log(error.text);
@@ -79,10 +87,15 @@ const ModalReservation = ({ isOpen, onClose }) => {
       onRequestClose={onClose}
       contentLabel="Réservation en ligne"
       className="w-full h-full bg-myGrey rounded-2xl flex flex-col justify-around items-center "
-      overlayClassName="fixed top-0 left-0 bg-test h-full w-screen xl:px-40 lg:px-40 md:px-20 sm:px-20 px-5 xl:py-20 lg:py-40   md:py-20 sm:py-20 py-16 z-50 text-left "
+      overlayClassName="fixed top-0 left-0 bg-test h-full w-screen xl:px-40 lg:px-40 md:px-20 sm:px-20 px-5 xl:py-20 lg:py-40   md:py-20 sm:py-20 py-16 z-40 text-left "
     >
+      <MessageModal
+        isOpen={messageModalOpen}
+        message={modalMessage}
+        onClose={() => setMessageModalOpen(false)}
+      />
       <motion.div
-        className="w-full h-full bg-myGrey rounded-2xl flex flex-col justify-around items-center  "
+        className="w-full h-full bg-myGrey rounded-2xl flex flex-col justify-around "
         initial={{
           opacity: 0,
           scale: 0,
@@ -104,7 +117,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
           },
         }}
       >
-        <div className=" w-full flex flex-row justify-between xl:px-10 lg:px-10 md:px-10 sm:px-10 px-2">
+        <div className=" w-full flex flex-row justify-between xl:px-10 lg:px-10 md:px-10 sm:px-10 px-2 ">
           <h1 className=" xl:text-3xl lg:text-3xl md:text-3xl sm:text-3xl text-xl font-title-font text-my-gold ">
             Réservation en ligne
           </h1>
