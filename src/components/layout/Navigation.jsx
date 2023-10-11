@@ -60,6 +60,12 @@ const Navigation = () => {
           }}
         >
           <div className="flex flex-row justify-between items-center text-white">
+            <img
+              src="./img/logoWhite.png"
+              alt="logo resto"
+              className="h-[50px]"
+            />
+
             <button className=" text-sm" onClick={handleClick}>
               X
             </button>
