@@ -34,11 +34,11 @@ const Chef = () => {
         }}
       >
         <div className=" w-[85%] text-center">
-          <h1 className=" font-title-font xl:text-4xl lg:text-4xl md:text-4xl sm:text-4xl text-2xl italic xl:mb-5 lg:mb-5 md:mb-5 sm:mb-5 mb-2">
+          <h1 className=" font-title-font xl:text-4xl lg:text-4xl md:text-4xl sm:text-4xl text-2xl italic xl:mb-5 lg:mb-5 md:mb-5 sm:mb-5 ">
             " <span className=" text-my-gold">La cucinapiccola</span> fa la casa
             grande "
           </h1>
-          <p className="xl:text-xl lg:xl:text-xl md:xl:text-xl sm:xl:text-xl text-base italic xl:mb-10 lg:mb-10 md:mb-10 sm:mb-10 mb-5 xl:text-right lg:text-right md:text-right sm:text-right text-center xl:mr-2 lg:mr-2 md:mr-2 sm:mr-2 mr-0 ">
+          <p className="xl:text-xl lg:xl:text-xl md:xl:text-xl sm:xl:text-xl text-base italic xl:mb-10 lg:mb-10 md:mb-10 sm:mb-10 mb-2 xl:text-right lg:text-right md:text-right sm:text-right text-center xl:mr-2 lg:mr-2 md:mr-2 sm:mr-2 mr-0 ">
             Ferhat Zidoune - Chef de cuisine
           </p>
           <p className=" xl:text-base lg:text-base md:text-base sm:text-base text-xs text-center">
@@ -48,7 +48,7 @@ const Chef = () => {
             vous proposons une cuisine simple et faite avec amour.
           </p>
           <NavLink to="/menu">
-            <button className=" px-5 py-2 border-[1px] rounded-md border-black xl:text-xl lg:text-xl md:text-xl sm:text-sm text-xs  mt-8">
+            <button className=" px-5 py-2 border-[1px] rounded-md border-black xl:text-xl lg:text-xl md:text-xl sm:text-sm text-xs  mt-8 ">
               Consulter la Carte
             </button>
           </NavLink>
