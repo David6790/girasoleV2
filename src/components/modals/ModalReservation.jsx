@@ -86,7 +86,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
       isOpen={isOpen}
       onRequestClose={onClose}
       contentLabel="Réservation en ligne"
-      className="w-full h-full bg-myGrey rounded-2xl flex flex-col justify-around items-center "
+      className="w-full h-full bg-white rounded-2xl flex flex-col justify-around items-center "
       overlayClassName="fixed top-0 left-0 bg-test h-full w-screen xl:px-40 lg:px-40 md:px-20 sm:px-20 px-5 xl:py-20 lg:py-40   md:py-20 sm:py-20 py-16 z-40 text-left "
     >
       <MessageModal
@@ -95,7 +95,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
         onClose={() => setMessageModalOpen(false)}
       />
       <motion.div
-        className="w-full h-full bg-myGrey rounded-2xl flex flex-col justify-around "
+        className="w-full h-full  rounded-2xl flex flex-col justify-around "
         initial={{
           opacity: 0,
           scale: 0,

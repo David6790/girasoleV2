@@ -38,7 +38,7 @@ const MenuCat = ({ category }) => {
                   }}
                 >
                   <div className="w-full flex justify-between">
-                    <h1 className="  xl:text-lg lg:text-lg md:text-lg sm:text-lg text-sm">
+                    <h1 className="  xl:text-lg lg:text-lg md:text-lg sm:text-lg text-xs">
                       {item.name}
                     </h1>
                     <span className="flex-grow overflow-hidden relative xl:mx-6 lg:mx-6 md:mx-6 sm:mx-6 mx-2 ">
@@ -57,12 +57,12 @@ const MenuCat = ({ category }) => {
                         . . . . . . . . . . . . . . . .
                       </span>
                     </span>
-                    <h1 className=" xl:text-lg lg:text-lg md:text-lg sm:text-lg  text-sm ">
+                    <h1 className=" xl:text-lg lg:text-lg md:text-lg sm:text-lg  text-xs ">
                       {item.price}
                     </h1>
                   </div>
                   <div>
-                    <h1 className="xl:text-base lg:text-base md:text-base sm:text-base text-xs font-title-font">
+                    <h1 className="xl:text-base lg:text-base md:text-base sm:text-base text-[10px] font-title-font">
                       {item.description}
                     </h1>
                   </div>

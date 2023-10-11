@@ -56,7 +56,7 @@ const Menu = () => {
         }}
       >
         <div className="w-full  relative flex justify-between items-start  ">
-          <div className="sticky top-0 w-1/6 flex flex-col justify-start items-start p-4 h-screen xl:bg-myGrey lg:bg-myGrey md:bg-myGrey sm:bg-myGrey ">
+          <div className="sticky top-0 w-1/6 flex flex-col justify-start items-start p-4 h-screen  md: ">
             <MenuFilter
               name={"Antipasti"}
               onClick={() => handleCategoryChange("antipasti")}
@@ -99,7 +99,7 @@ const Menu = () => {
             />
           </div>
           <div className="w-full flex flex-col justify-center items-center border-2 border-black mx-[30px] my-[30px] rounded-3xl pb-10 bg-myGrey">
-            <h1 className=" text-3xl font-title-font mt-5 mb-5 text-my-gold  ">
+            <h1 className=" xl:text-3xl lg:text-3xl md:text-3xl sm:text-3xl text-xl font-title-font mt-5 mb-10 text-my-gold border-b-2 border-my-gold pb-2 px-5  ">
               {category.toUpperCase()}
             </h1>
             <MenuCat category={category} />
