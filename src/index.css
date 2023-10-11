@@ -1,30 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.75
-  ); /* fond transparent avec une légère opacité noire */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content {
-  padding: 20px; /* espace à l'intérieur du modal */
-  position: relative;
-  width: 100%; /* largeur relative à l'écran, vous pouvez ajuster selon vos besoins */
-  max-width: 90%; /* largeur maximale du modal */
-  max-height: 90%;
-  border-radius: 10px; /* coins arrondis */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* ombre légère */
-}

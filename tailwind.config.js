@@ -10,6 +10,7 @@ module.exports = {
       },
       backgroundImage: {
         "black-gradient": "linear-gradient(45deg, #000000, #282828)",
+        custom: "url('/public/img/manuBanner.jpg')",
       },
       fontFamily: {
         "main-font": "'Lato', sans-serif",
