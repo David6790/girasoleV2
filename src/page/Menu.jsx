@@ -56,7 +56,7 @@ const Menu = () => {
         }}
       >
         <div className="w-full  relative flex justify-between items-start  ">
-          <div className="sticky top-0 w-1/6 flex flex-col justify-evenly items-start p-4 h-screen ">
+          <div className="sticky top-0 w-1/6 flex flex-col justify-start items-start p-4 h-screen ">
             <MenuFilter
               name={"Antipasti"}
               onClick={() => handleCategoryChange("antipasti")}
