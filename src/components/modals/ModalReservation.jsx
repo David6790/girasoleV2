@@ -142,7 +142,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
                 type="text"
                 name="name"
                 onChange={(e) => setName(e.target.value)}
-                className="border-[1px] border-black h-[40px] mb-2 text-black"
+                className="border-[1px] border-black h-[40px] mb-2 text-black focus:outline-none"
                 required
               />
               <label>Date de la réservation</label>
@@ -150,14 +150,14 @@ const ModalReservation = ({ isOpen, onClose }) => {
                 selected={resDate}
                 value={resDate}
                 onChange={(date) => setResDate(date)}
-                className=" bg-white  border-black h-[40px]  mb-2 w-full flex flex-row text-black "
+                className=" bg-white  border-black h-[40px]  mb-2 w-full flex flex-row text-black  focus:outline-none"
                 required
               />
               <label>Heure d'arrivé</label>
               <input
                 type="time"
                 name="resTime"
-                className=" bg-white  border-black border-[1px] h-[40px]  mb-2 text-black "
+                className=" bg-white  border-black border-[1px] h-[40px]  mb-2 text-black focus:outline-none "
                 value={time}
                 onChange={handleTimeChange}
                 required
@@ -170,7 +170,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
                 type="number"
                 name="number"
                 onChange={(e) => setNumberOfGuest(e.target.value)}
-                className="border-[1px] border-black h-[40px]  mb-2 text-black "
+                className="border-[1px] border-black h-[40px]  mb-2 text-black  focus:outline-none"
                 required
               />
               <label>Email</label>
@@ -180,7 +180,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
                 type="email"
                 name="email"
                 onChange={(e) => setEmail(e.target.value)}
-                className="border-[1px] border-black h-[40px]  mb-2 text-black "
+                className="border-[1px] border-black h-[40px]  mb-2 text-black focus:outline-none "
                 required
               />
               <label>Télephone</label>
@@ -190,7 +190,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
                 type="tel"
                 name="phone"
                 onChange={(e) => setTel(e.target.value)}
-                className="border-[1px] border-black h-[40px]  mb-2 text-black"
+                className="border-[1px] border-black h-[40px]  mb-2 text-black focus:outline-none"
                 required
               />
             </div>
@@ -201,7 +201,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
                 placeholder="Une demande spéciale ? Laissez-nous un commentaire, nous ferrons au mieux pour vous satisfaire"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                className=" h-[70%] focus:outline-none  resize-none border-[1px] border-black  p-2 text-black"
+                className=" h-[70%] focus:outline-none  resize-none border-[1px] border-black  p-2 text-black "
               />
               <button
                 type="submit"
