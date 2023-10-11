@@ -4,7 +4,7 @@ import DatePicker from "react-date-picker";
 import "react-date-picker/dist/DatePicker.css";
 import "react-calendar/dist/Calendar.css";
 import emailjs from "@emailjs/browser";
-import { motion } from "framer-motion"; // Assurez-vous d'ajouter cette importation si vous l'utilisez
+import { motion } from "framer-motion";
 import MessageModal from "./MessageModal";
 
 Modal.setAppElement("#root");
@@ -86,8 +86,8 @@ const ModalReservation = ({ isOpen, onClose }) => {
       isOpen={isOpen}
       onRequestClose={onClose}
       contentLabel="Réservation en ligne"
-      className="w-full h-full bg-white rounded-2xl flex flex-col justify-around items-center "
-      overlayClassName="fixed top-0 left-0 bg-test h-full w-screen xl:px-40 lg:px-40 md:px-20 sm:px-20 px-5 xl:py-20 lg:py-40   md:py-20 sm:py-20 py-16 z-40 text-left "
+      className="w-full h-full bg-opacity-60 bg-my-gold backdrop-blur-md rounded-2xl flex flex-col justify-around items-center "
+      overlayClassName="fixed top-0 left-0  h-full w-screen xl:px-40 lg:px-40 md:px-20 sm:px-20 px-5 xl:py-20 lg:py-40   md:py-20 sm:py-20 py-16 z-40 text-left "
     >
       <MessageModal
         isOpen={messageModalOpen}
@@ -117,12 +117,12 @@ const ModalReservation = ({ isOpen, onClose }) => {
           },
         }}
       >
-        <div className=" w-full flex flex-row justify-between items-center git xl:px-10 lg:px-10 md:px-10 sm:px-10 px-2 ">
-          <h1 className=" xl:text-3xl lg:text-3xl md:text-3xl sm:text-3xl text-xl font-title-font text-my-gold font-bold ">
+        <div className=" w-full flex flex-row justify-between items-center git xl:px-10 lg:px-10 md:px-10 sm:px-10 px-2  text-white">
+          <h1 className=" xl:text-3xl lg:text-3xl md:text-3xl sm:text-3xl text-xl font-title-font text-white font-bold ">
             Réservation en ligne
           </h1>
           <button
-            className=" px-4 py-2 bg-my-gold text-white rounded"
+            className=" px-4 py-2 bg-black text-white rounded"
             onClick={onClose}
           >
             Fermer
@@ -131,7 +131,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
 
         <form
           onSubmit={sendEmail}
-          className=" flex flex-col justify-between xl:px-10 lg:px-10 md:px-10 sm:px-10 px-2 w-full h-[80%] overflow-scroll  "
+          className=" flex flex-col justify-between xl:px-10 lg:px-10 md:px-10 sm:px-10 px-2 w-full h-[80%] overflow-scroll text-white "
         >
           <div className=" flex xl:flex-row lg:flex-row md:flex-row sm:flex-row flex-col justify-between items-center h-[80%] ">
             <div className="flex  flex-col xl:w-[48%] lg:w-[48%] md:w-[48%] sm:w-[48%] w-full h-full  ">
@@ -142,7 +142,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
                 type="text"
                 name="name"
                 onChange={(e) => setName(e.target.value)}
-                className="border-[1px] border-black h-[40px] mb-2 "
+                className="border-[1px] border-black h-[40px] mb-2 text-black"
                 required
               />
               <label>Date de la réservation</label>
@@ -150,14 +150,14 @@ const ModalReservation = ({ isOpen, onClose }) => {
                 selected={resDate}
                 value={resDate}
                 onChange={(date) => setResDate(date)}
-                className=" bg-white  border-black h-[40px]  mb-2 w-full flex flex-row "
+                className=" bg-white  border-black h-[40px]  mb-2 w-full flex flex-row text-black "
                 required
               />
               <label>Heure d'arrivé</label>
               <input
                 type="time"
                 name="resTime"
-                className=" bg-white  border-black border-[1px] h-[40px]  mb-2 "
+                className=" bg-white  border-black border-[1px] h-[40px]  mb-2 text-black "
                 value={time}
                 onChange={handleTimeChange}
                 required
@@ -170,7 +170,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
                 type="number"
                 name="number"
                 onChange={(e) => setNumberOfGuest(e.target.value)}
-                className="border-[1px] border-black h-[40px]  mb-2 "
+                className="border-[1px] border-black h-[40px]  mb-2 text-black "
                 required
               />
               <label>Email</label>
@@ -180,7 +180,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
                 type="email"
                 name="email"
                 onChange={(e) => setEmail(e.target.value)}
-                className="border-[1px] border-black h-[40px]  mb-2 "
+                className="border-[1px] border-black h-[40px]  mb-2 text-black "
                 required
               />
               <label>Télephone</label>
@@ -190,7 +190,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
                 type="tel"
                 name="phone"
                 onChange={(e) => setTel(e.target.value)}
-                className="border-[1px] border-black h-[40px]  mb-2 "
+                className="border-[1px] border-black h-[40px]  mb-2 text-black"
                 required
               />
             </div>
@@ -201,11 +201,11 @@ const ModalReservation = ({ isOpen, onClose }) => {
                 placeholder="Une demande spéciale ? Laissez-nous un commentaire, nous ferrons au mieux pour vous satisfaire"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                className=" h-[70%] focus:outline-none  resize-none border-[1px] border-black  p-2"
+                className=" h-[70%] focus:outline-none  resize-none border-[1px] border-black  p-2 text-black"
               />
               <button
                 type="submit"
-                className=" border-2 border-black w-full m-auto h-[50px] bg-myGrey hover:bg-my-gold mt-5 "
+                className=" border-2 border-black w-full m-auto h-[50px] bg-black hover:bg-white text-white hover:text-black mt-5 "
               >
                 {isLoading ? "En cours..." : "Envoyer"}
               </button>
