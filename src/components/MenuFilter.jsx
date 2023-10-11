@@ -4,7 +4,7 @@ const MenuFilter = ({ name, onClick }) => {
   return (
     <>
       <button
-        className=" xl:text-xl lg:text-xl md:text-xl sm:text-xl text-xs py-[20px] text-black hover:text-my-gold  "
+        className=" xl:text-base lg:text-base md:text-base sm:text-base text-xs py-[15px] text-black hover:text-my-gold font-title-font"
         onClick={onClick}
       >
         {name.toUpperCase()}
