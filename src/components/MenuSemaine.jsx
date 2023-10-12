@@ -58,7 +58,7 @@ const MenuSemaine = () => {
             <p>Entrée/Plat/Dessert: 14€</p>
           </div>
           <button
-            className=" px-5 py-2 border-[1px] rounded-md border-black xl:text-xl lg:text-xl md:text-xl sm:text-sm text-xs"
+            className=" px-5 py-2 border-[1px] rounded-md border-black xl:text-xl lg:text-xl md:text-xl sm:text-sm text-xs transform transition-transform duration-200 hover:-translate-y-1 shadow-2xl"
             onClick={handleClick}
           >
             Voir notre menu de la semaine

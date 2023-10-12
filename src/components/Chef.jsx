@@ -48,7 +48,7 @@ const Chef = () => {
             vous proposons une cuisine simple et faite avec amour.
           </p>
           <NavLink to="/menu">
-            <button className=" px-5 py-2 border-[1px] rounded-md border-black xl:text-xl lg:text-xl md:text-xl sm:text-sm text-xs  mt-8 ">
+            <button className=" px-5 py-2 border-[1px] rounded-md border-black xl:text-xl lg:text-xl md:text-xl sm:text-sm text-xs  mt-8 transform transition-transform duration-200 hover:-translate-y-1 shadow-2xl  ">
               Consulter la Carte
             </button>
           </NavLink>
