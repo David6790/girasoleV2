@@ -1,5 +1,6 @@
 import React from "react";
 import Modal from "react-modal";
+import { motion } from "framer-motion";
 
 const ModalMenu = ({ isOpen, onClose, resaModal }) => {
   const menuGirasole = [
@@ -34,10 +35,31 @@ const ModalMenu = ({ isOpen, onClose, resaModal }) => {
     <Modal
       isOpen={isOpen}
       onRequestClose={onClose}
-      className=" p-4  shadow-lg xl:w-[60%] lg:w-[60%] md:w-[60%] sm:w-[60%] w-[80%] xl:h-[90%] lg:h-[90%]  md:h-[90%] sm:h-[90%]  h-[80%] rounded-2xl  bg-white "
+      className=" p-4  shadow-lg xl:w-[60%] lg:w-[60%] md:w-[60%] sm:w-[60%] w-[80%]   h-auto rounded-2xl  bg-white overflow-scroll "
       overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
     >
-      <div className="w-full h-full flex justify-center items-center ">
+      <motion.div
+        className="w-full h-full flex justify-center items-center "
+        initial={{
+          opacity: 0,
+        }}
+        animate={{
+          opacity: 1,
+
+          transition: {
+            ease: "easeOut",
+            duration: 0.75,
+          },
+        }}
+        exit={{
+          opacity: 0,
+
+          transition: {
+            ease: "easeIn",
+            duration: 0.75,
+          },
+        }}
+      >
         <div className="h-auto w-[100%] flex flex-col justify-center items-center bg-myGrey rounded-3xl ">
           {menuGirasole.map((menu, index) => (
             <div
@@ -64,7 +86,7 @@ const ModalMenu = ({ isOpen, onClose, resaModal }) => {
             Réserver en ligne
           </button>
         </div>
-      </div>
+      </motion.div>
     </Modal>
   );
 };
