@@ -122,7 +122,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
             Réservation en ligne
           </h1>
           <button
-            className=" px-4 py-2 bg-black text-white rounded"
+            className=" px-4 py-2 bg-transparent text-white "
             onClick={onClose}
           >
             Fermer
@@ -205,7 +205,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
               />
               <button
                 type="submit"
-                className=" border-2 border-black w-full m-auto h-[50px] bg-black hover:bg-white text-white hover:text-black mt-5 "
+                className=" border-2 border-black w-full m-auto h-[50px] bg-white hover:bg-black text-black hover:text-white mt-5 "
               >
                 {isLoading ? "En cours..." : "Envoyer"}
               </button>

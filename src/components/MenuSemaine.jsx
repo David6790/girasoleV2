@@ -1,12 +1,33 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
+import ModalMenu from "./modals/ModalMenu";
+import ModalReservation from "./modals/ModalReservation";
 
 const MenuSemaine = () => {
   const ref3 = useRef(null);
   const ref4 = useRef(null);
   const ref5 = useRef(null);
   const isInView = useInView(ref3, ref4, { once: true });
+  const [modalOpen, setModalOpen] = useState(false);
+  const [isReservationOpen, setIsReservationOpen] = useState(false);
+
+  const handleClick = () => {
+    setModalOpen(true);
+  };
+
+  const handleClose = () => {
+    setModalOpen(false);
+  };
+
+  const handleResaModal = () => {
+    setIsReservationOpen(true);
+    setModalOpen(false);
+  };
+
+  const closeResaModal = () => {
+    setIsReservationOpen(false);
+  };
 
   return (
     <>
@@ -31,7 +52,10 @@ const MenuSemaine = () => {
             de saison. Parce que la vraie cuisine italienne, c'est avant tout
             une affaire de passion et de partage.
           </p>
-          <button className=" px-5 py-2 border-[1px] rounded-md border-black xl:text-xl lg:text-xl md:text-xl sm:text-sm text-xs">
+          <button
+            className=" px-5 py-2 border-[1px] rounded-md border-black xl:text-xl lg:text-xl md:text-xl sm:text-sm text-xs"
+            onClick={handleClick}
+          >
             Voir notre menu de la semaine
           </button>
         </motion.div>
@@ -52,6 +76,13 @@ const MenuSemaine = () => {
           className="h-full object-cover "
           ref={ref5}
         />
+        <ModalMenu
+          isOpen={modalOpen}
+          message={"test"}
+          onClose={handleClose}
+          resaModal={handleResaModal}
+        />
+        <ModalReservation isOpen={isReservationOpen} onClose={closeResaModal} />
       </motion.div>
     </>
   );
