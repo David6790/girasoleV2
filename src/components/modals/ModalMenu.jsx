@@ -79,6 +79,15 @@ const ModalMenu = ({ isOpen, onClose, resaModal }) => {
               </p>
             </div>
           ))}
+          <div>
+            <p className=" text-my-gold xl:text-base lg:text-base md:text-base sm:text-sm text-xs text-center mt-2">
+              <span className=" font-bold font-title-font ">
+                Dessert de la semaine :
+              </span>
+              <br />
+              <span className="text-black">Panne Cotta aux fruits rouges</span>
+            </p>
+          </div>
           <button
             className="px-5 py-2 border-solid border-black border-2 mt-5 mb-5 xl:text-xl lg:xl:text-xl md:xl:text-xl sm:text-sm rounded-md"
             onClick={resaModal}

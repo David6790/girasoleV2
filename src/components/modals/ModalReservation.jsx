@@ -98,11 +98,10 @@ const ModalReservation = ({ isOpen, onClose }) => {
         className="w-full h-full  rounded-2xl flex flex-col justify-around "
         initial={{
           opacity: 0,
-          scale: 0,
         }}
         animate={{
           opacity: 1,
-          scale: 1,
+
           transition: {
             ease: "easeOut",
             duration: 0.75,
@@ -110,10 +109,10 @@ const ModalReservation = ({ isOpen, onClose }) => {
         }}
         exit={{
           opacity: 0,
-          scale: 0.75,
+
           transition: {
             ease: "easeIn",
-            duration: 0.55,
+            duration: 0.85,
           },
         }}
       >
