@@ -52,7 +52,7 @@ const MenuSemaine = () => {
             de saison. Parce que la vraie cuisine italienne, c'est avant tout
             une affaire de passion et de partage.
           </p>
-          <div className=" xl:text-sm lg:text-sm  md:text-xs sm:text-xs text-xs mb-2  italic">
+          <div className=" xl:text-sm lg:text-sm  md:text-xs sm:text-xs text-xs mb-2  italic ">
             <p>Plat du jour: 10€</p>
             <p>Entrée/Plat ou Plat/Dessert: 12€</p>
             <p>Entrée/Plat/Dessert: 14€</p>

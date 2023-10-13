@@ -9,11 +9,11 @@ const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
       isOpen={isOpen}
       onRequestClose={onClose}
       contentLabel="Mon Modal"
-      className=" p-4  shadow-lg w-[80%] h-[80%] rounded-2xl  bg-white overflow-scroll outline-none "
+      className=" px-4 py-0  shadow-lg w-[60%] h-[80%] rounded-2xl  bg-white overflow-scroll outline-none relative "
       overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
     >
       <motion.div
-        className="w-full h-full relative "
+        className="w-full h-full "
         initial={{
           opacity: 0,
         }}
@@ -34,8 +34,8 @@ const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
           },
         }}
       >
-        <div className="w-full flex flex-row justify-between items-center mb-5 ">
-          <img src="./img/logo.png" alt="" className="h-[50px] " />
+        <div className="w-full flex flex-row justify-between items-center mb-5 sticky top-0 bg-white ">
+          <img src="./img/logo.png" alt="logo girasole" className="h-[50px] " />
           <span className="text-xl text-my-gold font-title-font font-bold">
             Quoi de neuf au Il Girasole?
           </span>
