@@ -1,15 +1,43 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
+import ModalNouveautés from "../modals/ModalNouveautés";
+import ModalReservation from "../modals/ModalReservation";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [resaModal, setResaModal] = useState(false);
+
+  const handleClose = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleOpenNewModal = () => {
+    setIsOpen(false);
+    setIsModalOpen(true);
+  };
+
+  const handleResa = () => {
+    setResaModal(true);
+    setIsModalOpen(false);
+  };
+
+  const resaClose = () => {
+    setResaModal(false);
+  };
   return (
     <div className="w-full h-full ">
-      <ul className=" h-full flex-row justify-end  items-center xl:flex lg:flex md:flex sm:flex hidden">
+      <ModalNouveautés
+        isOpen={isModalOpen}
+        onClose={handleClose}
+        resaModal={handleResa}
+      />
+      <ModalReservation isOpen={resaModal} onClose={resaClose} />
+      <ul className=" h-full flex-row justify-end  items-center xl:flex lg:flex md:flex sm:hidden hidden">
         <NavLink
           to="/"
           className={(nav) => (nav.isActive ? " text-my-gold" : " text-black")}
@@ -22,16 +50,29 @@ const Navigation = () => {
         >
           <li className="ml-20">Notre carte</li>
         </NavLink>
+
         <NavLink
           to="/contact"
           className={(nav) => (nav.isActive ? " text-my-gold" : " text-black")}
         >
           <li className="ml-20">Contact</li>
         </NavLink>
+        <li
+          className="ml-20  relative cursor-pointer"
+          onClick={handleOpenNewModal}
+        >
+          <span className="star animate-pulse absolute top-[-10px] left-[-15px]">
+            <i className="fa-solid fa-star-of-life text-yellow-500 text-xs mr-1"></i>
+          </span>
+          Quoi de neuf ?
+        </li>
       </ul>
-      <div className="xl:hidden lg:hidden md:hidden sm:hidden flex h-full justify-end items-center px-5 ">
-        <button onClick={handleClick}>
+      <div className="xl:hidden lg:hidden md:hidden sm:flex flex h-full justify-end items-center px-5 relative  ">
+        <button onClick={handleClick} className="absolute">
           <i className="fa-solid fa-bars text-3xl "></i>
+          <span className="star animate-pulse absolute top-[-8px] left-[-10px]">
+            <i className="fa-solid fa-star-of-life text-yellow-500 text-sm mr-1"></i>
+          </span>
         </button>
       </div>
       {isOpen && (
@@ -71,9 +112,24 @@ const Navigation = () => {
           </div>
 
           <ul className="flex flex-col justify-center items-start h-full space-y-8 text-xl text-white ">
-            <NavLink to="/">Accueil</NavLink>
-            <NavLink to="/menu">La Carte</NavLink>
-            <NavLink to="/contact">Contactez-nous</NavLink>
+            <NavLink to="/">
+              <li>Accueil</li>
+            </NavLink>
+            <NavLink to="/menu">
+              <li>La Carte</li>
+            </NavLink>
+            <NavLink to="/contact">
+              <li>Contactez-nous</li>
+            </NavLink>
+            <li
+              className="  relative cursor-pointer"
+              onClick={handleOpenNewModal}
+            >
+              <span className="star animate-pulse absolute top-[-10px] left-[-15px]">
+                <i className="fa-solid fa-star-of-life text-white text-xs mr-1"></i>
+              </span>
+              Quoi de neuf ?
+            </li>
           </ul>
         </motion.div>
       )}
