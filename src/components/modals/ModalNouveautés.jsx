@@ -13,7 +13,7 @@ const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
       overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
     >
       <motion.div
-        className="w-full h-full "
+        className="w-full xl:h-full lg:h-full md:h-full sm:h-[1000px] h-[1000px] "
         initial={{
           opacity: 0,
         }}
