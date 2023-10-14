@@ -9,7 +9,7 @@ const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
       isOpen={isOpen}
       onRequestClose={onClose}
       contentLabel="Mon Modal"
-      className=" px-4 py-0  shadow-lg w-[60%] h-[80%] rounded-2xl  bg-white overflow-scroll outline-none relative "
+      className=" px-4 py-0  shadow-lg xl:w-[60%] lg:w-[60%] md:w-[80%] w-[90%] h-[80%] rounded-2xl  bg-white overflow-scroll outline-none relative "
       overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
     >
       <motion.div
@@ -34,9 +34,9 @@ const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
           },
         }}
       >
-        <div className="w-full flex flex-row justify-between items-center mb-5 sticky top-0 bg-white ">
+        <div className="w-full flex flex-row justify-between items-center mb-5 sticky top-0 bg-white z-50 ">
           <img src="./img/logo.png" alt="logo girasole" className="h-[50px] " />
-          <span className="text-xl text-my-gold font-title-font font-bold">
+          <span className="text-xl xl:block lg:block md:block sm:hidden hidden  text-my-gold font-title-font font-bold">
             Quoi de neuf au Il Girasole?
           </span>
           <button className=" text-xs" onClick={onClose}>
@@ -45,8 +45,8 @@ const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
         </div>
 
         <div className="w-full h-full ">
-          <div className="w-full flex flex-row justify-between items-center ">
-            <div className="w-1/3 ">
+          <div className="w-full flex xl:flex-row lg:flex-row md:flex-row sm:flex-col flex-col justify-between items-center ">
+            <div className="xl:w-1/3 lg:w-1/3 md:w-1/3 sm:w-2/3 w-2/3 ">
               <img
                 src="./img/kids.png"
                 alt=""
@@ -54,7 +54,7 @@ const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
               />
             </div>
 
-            <div className="w-2/3  text-justify p-10 ">
+            <div className="xl:w-2/3 lg:w-2/3 md:w-2/3 sm:w-full w-full  text-justify p-10 ">
               <p className=" text-lg mb-2">
                 Vous ne savez pas quoi faire ce week-end ? Emmenez vos bambini
                 🧒👧 en Italie 🇮🇹 le temps d’un repas ! Une cuisine fraîche 🌱,
@@ -73,8 +73,8 @@ const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
               </button>
             </div>
           </div>
-          <div className="w-full flex flex-row justify-between items-center ">
-            <div className="w-2/3  text-justify p-10 ">
+          <div className="w-full flex xl:flex-row lg:flex-row md:flex-row sm:flex-col-reverse flex-col-reverse justify-between items-center ">
+            <div className="xl:w-2/3 lg:w-2/3 md:w-2/3 sm:w-full w-full  text-justify p-10 ">
               <p className=" text-lg mb-2">
                 🎉 Nouvelle saison, nouvelle carte ! 🎉 L'Hiver arrive, et nous
                 sommes ravis de vous présenter nos nouvelles créations
@@ -94,7 +94,7 @@ const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
                 </button>
               </NavLink>
             </div>
-            <div className="w-1/3 ">
+            <div className="xl:w-1/3 lg:w-1/3 md:w-1/3 sm:w-2/3 w-2/3 ">
               <img
                 src="./img/newMenu.png"
                 alt=""
