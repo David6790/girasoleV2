@@ -2,12 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-@keyframes sparkle {
-  0%,
-  100% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
-  }
+.form-control {
+  background-color: transparent;
+  color: white;
+}
+
+.rdtPicker {
+  background-color: white !important;
+  color: black;
 }
