@@ -30,7 +30,10 @@ const Menu = () => {
           transition: "all   ease-in 0.8s ",
         }}
       >
-        <MenuBanner />
+        <MenuBanner
+          h1={'" Il gusto autentico delle stagioni italiane "'}
+          h2={" Notre Carte de saison"}
+        />
       </motion.div>
 
       <motion.div
