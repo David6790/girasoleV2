@@ -10,7 +10,7 @@ exports.handler = async (event, context) => {
 
   const msg = {
     to: email,
-    from: "ilgirasolestrasbourg67@gmail.com", // Votre email d'expéditeur
+    from: "ilgirasolestrasbourg67@gmail.com",
     templateId: "d-f6110fab2fb04b05b3924760f999ce4f",
   };
 
