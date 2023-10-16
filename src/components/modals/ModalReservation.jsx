@@ -53,7 +53,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
       : moment(dateTime);
     const data = {
       resDate: validDateTime.format("DD-MM-YY"),
-      restime: validDateTime.format("HH:mm"),
+      resTime: validDateTime.format("HH:mm"),
       name: name,
       number: numberOfGuest,
       email: email,

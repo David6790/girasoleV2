@@ -12,7 +12,7 @@ exports.handler = async (event, context) => {
     return { statusCode: 405, body: "Method Not Allowed" };
   }
 
-  const { email, phone } = event.queryStringParameters;
+  const { email, phone, name } = event.queryStringParameters;
 
   const msg = {
     to: email,
@@ -24,7 +24,9 @@ exports.handler = async (event, context) => {
     await sgMail.send(msg);
     if (phone) {
       await twilioClient.messages.create({
-        body: "Nous sommes malheureusement complet ce soir.",
+        body: `Bonjour ${name}, merci pour votre réservation mais malheureusement le restaurant est au complet ce soir.
+        Si vous le souhaitez nous pouvons vous mettre sur une liste d'attente et vous contacter dès qu'une table se libère.
+        À bientôt -IL GIRASOLE-`,
         from: "+12295979254",
         to: `+${phone}`,
       });
