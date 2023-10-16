@@ -30,7 +30,7 @@ const Chef = () => {
           transform: isInView ? "none" : "opacity:0  ",
           opacity: isInView ? 1 : 0,
 
-          transition: "all 0.4s   ease-in 0.9s ",
+          transition: "all ease-in 0.7s ",
         }}
       >
         <div className=" w-[85%] text-center">
