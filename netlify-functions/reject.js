@@ -1,12 +1,18 @@
 const sgMail = require("@sendgrid/mail");
+const twilio = require("twilio");
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+const twilioClient = twilio(
+  process.env.TWILIO_ACCOUNT_SID,
+  process.env.TWILIO_AUTH_TOKEN
+);
 
 exports.handler = async (event, context) => {
   if (event.httpMethod !== "GET") {
     return { statusCode: 405, body: "Method Not Allowed" };
   }
 
-  const { email } = event.queryStringParameters;
+  const { email, phone } = event.queryStringParameters;
 
   const msg = {
     to: email,
@@ -16,6 +22,13 @@ exports.handler = async (event, context) => {
 
   try {
     await sgMail.send(msg);
+    if (phone) {
+      await twilioClient.messages.create({
+        body: "Nous sommes malheureusement complet ce soir.",
+        from: "+12295979254",
+        to: `+${phone}`,
+      });
+    }
     return {
       statusCode: 200,
       body: "Email envoyé avec succès",
