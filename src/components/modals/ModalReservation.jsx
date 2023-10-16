@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
-import "moment/locale/fr"; // Importe le locale français
+import "moment/locale/fr";
+import { parsePhoneNumberFromString } from "libphonenumber-js";
 
 import moment from "moment";
 
@@ -35,6 +36,16 @@ const ModalReservation = ({ isOpen, onClose }) => {
       setDateTime(moment().set({ hour: 12, minute: 0 }));
     }
   };
+  const handlePhoneChange = (e) => {
+    const phoneNumber = parsePhoneNumberFromString(e.target.value, "FR"); // Ici, je spécifie 'FR' comme le pays par défaut. Vous pouvez ajuster cela en fonction de vos besoins.
+
+    if (phoneNumber && phoneNumber.isValid()) {
+      setTel(phoneNumber.formatInternational()); // formate au format international
+    } else {
+      setTel(e.target.value); // stocke la saisie de l'utilisateur si elle n'est pas encore valide
+    }
+  };
+
   const sendEmail = (e) => {
     const timeValue = dateTime.format("HH:mm");
     const validDateTime = moment.isMoment(dateTime)
@@ -196,7 +207,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
                 value={tel}
                 type="tel"
                 name="phone"
-                onChange={(e) => setTel(e.target.value)}
+                onChange={handlePhoneChange}
                 className="  h-[40px]  mb-5  focus:outline-none bg-transparent border-b-[1px] px-2"
                 required
               />

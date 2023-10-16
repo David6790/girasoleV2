@@ -26,7 +26,7 @@ exports.handler = async (event, context) => {
       await twilioClient.messages.create({
         body: "Nous sommes malheureusement complet ce soir.",
         from: "+12295979254",
-        to: `+${phone}`,
+        to: phone,
       });
     }
     return {

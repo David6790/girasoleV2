@@ -26,7 +26,7 @@ exports.handler = async (event, context) => {
       await twilioClient.messages.create({
         body: "Votre réservation a été acceptée chez Il Girasole!",
         from: "+12295979254",
-        to: `+${phone}`,
+        to: phone,
       });
     }
     return {
