@@ -38,7 +38,7 @@ const Contact = () => {
           <motion.img
             src="./img/table.jpg"
             alt="table du restaurant"
-            className="h-full rounded-3xl shadow-2xl  object-cover"
+            className="xl:h-full lg:h-full md:h-full sm:h-full w-full rounded-3xl shadow-2xl  object-cover"
             ref={ref4}
             style={{
               transform: isInView ? "none" : "opacity:0 ",
