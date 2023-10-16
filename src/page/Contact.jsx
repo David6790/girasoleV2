@@ -61,7 +61,7 @@ const Contact = () => {
           <ContactForm />
         </motion.div>
       </div>
-      <div className="w-full flex xl:flex-row lg:flex-row md:flex-row sm:flex-row flex-col justify-around items-start xl:h-screen lg:h-screen  md:h-screen  sm:h-screen h-auto bg-myGrey py-10 px-5">
+      <div className="w-full flex xl:flex-row lg:flex-row md:flex-row sm:flex-row flex-col-reverse justify-around items-start xl:h-screen lg:h-screen  md:h-screen  sm:h-screen h-auto bg-myGrey py-10 px-5">
         <motion.div
           className="xl:w-5/12 lg:w-5/12 md:w-5/12 sm:w-5/12 w-full h-full flex flex-col justify-between   "
           ref={ref2}
@@ -75,7 +75,7 @@ const Contact = () => {
           <Location />
         </motion.div>
         <div
-          className="xl:w-5/12 lg:w-5/12 md:w-5/12 sm:w-5/12 w-full h-full  flex flex-row justify-center "
+          className="xl:w-5/12 lg:w-5/12 md:w-5/12 sm:w-5/12 w-full h-full xl:mb-0 lg-mb-0 md:mb-0 sm:mb-0 mb-5 flex flex-row justify-center "
           ref={ref3}
           style={{
             transform: isInView ? "none" : "opacity:0 ",

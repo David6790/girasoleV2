@@ -4,7 +4,7 @@ import ButtonResa from "./ButtonResa";
 const Location = () => {
   return (
     <>
-      <h1 className=" xl:text-4xl lg:text-3xl md:text-xl sm:text-xl text-my-gold font-title-font mb-5 ">
+      <h1 className=" xl:text-4xl lg:text-3xl md:text-xl sm:text-xl text-xl text-my-gold font-title-font mb-5 ">
         Où nous trouver ?
       </h1>
       <p className=" xl:text-lg lg:text-base md:text-sm sm:text-xs text-justify">
