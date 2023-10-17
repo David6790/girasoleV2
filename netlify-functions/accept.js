@@ -27,14 +27,14 @@ exports.handler = async (event, context) => {
     await sgMail.send(msg);
     if (phone) {
       await twilioClient.messages.create({
-        body: `${greeting} ${name}, votre réservation au Il Girasole au nom de ${name}, le ${resDate} à ${resTime} pour ${number} personnes a bien été notée et nous vous en remercions. En cas d'empêchement, n'oubliez pas de nous appeler au plus vite, au 03 88 37 16 76 ou par sms au 06 26 19 10 28 (en indiquant votre nom).`,
+        body: `${greeting} ${name}, votre réservation au Il Girasole le ${resDate} à ${resTime} pour ${number} personnes a bien été notée et nous vous en remercions. En cas d'empêchement, n'oubliez pas de nous appeler au plus vite, au 03 88 37 16 76 ou par sms au 06 26 19 10 28 (en indiquant votre nom).`,
         from: "IlGirasole",
         to: `+${phone}`,
       });
     }
     return {
       statusCode: 200,
-      body: "Email envoyé avec succès",
+      body: "Email et SMS envoyés avec succès",
     };
   } catch (error) {
     console.error(error);
