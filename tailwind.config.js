@@ -10,9 +10,9 @@ module.exports = {
       },
       backgroundImage: {
         "black-gradient": "linear-gradient(45deg, #000000, #282828)",
-        custom: "url('/public/img/manuBanner.jpg')",
-        custom2: "url('/public/img/menuBg.jpg')",
-        custom3: "url('/public/img/contact2.jpg')",
+        custom: "url('/public/img/manuBanner.webp')",
+        custom2: "url('/public/img/menuBg.webp')",
+        custom3: "url('/public/img/contact2.webp')",
       },
       fontFamily: {
         "main-font": "'Lato', sans-serif",

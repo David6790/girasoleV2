@@ -36,7 +36,7 @@ const Contact = () => {
       <div className="w-full flex xl:flex-row lg:flex-row  md:flex-row  sm:flex-row  flex-col ">
         <div className="xl:w-1/2 lg:w-1/2 md:w-1/2 sm:w-1/2 w-full h-full p-7 ">
           <motion.img
-            src="./img/table.jpg"
+            src="./img/table.webp"
             alt="table du restaurant"
             className="xl:h-full lg:h-full md:h-full sm:h-full w-full rounded-3xl shadow-2xl  object-cover"
             ref={ref4}
@@ -85,7 +85,7 @@ const Contact = () => {
           }}
         >
           <img
-            src="./img/location.jpg"
+            src="./img/location.webp"
             alt=""
             className="h-full rounded-3xl shadow-2xl object-cover"
           />
