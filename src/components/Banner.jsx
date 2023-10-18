@@ -21,7 +21,7 @@ const Banner = () => {
         }}
       >
         <img
-          src="./img/assiette3.webp"
+          src="./img/assiette4.webp"
           alt="vongole"
           className="xl:w-full lg:w-full md:w-full sm:w-full h-full object-contain"
         />

@@ -11,7 +11,7 @@ const Chef = () => {
     <>
       <div className=" xl:w-1/2 lg:w-1/2 md:w-1/2 sm:w-1/2 w-full xl:h-full lg:h-full md:h-full sm:h-full h-1/2 flex flex-row justify-center">
         <motion.img
-          src="./img/chef.png"
+          src="./img/chef.webp"
           alt=""
           className=" h-full"
           ref={ref1}
