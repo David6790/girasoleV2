@@ -76,7 +76,7 @@ const MenuSemaine = () => {
         }}
       >
         <motion.img
-          src="./img/banner.jpg"
+          src="./img/banner.webp"
           alt=""
           className="h-full object-cover "
           ref={ref5}

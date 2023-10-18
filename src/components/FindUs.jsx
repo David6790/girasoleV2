@@ -52,7 +52,7 @@ const FindUs = () => {
         }}
       >
         <img
-          src="./img/salle1.jpg"
+          src="./img/salle1.webp"
           alt="salle du restaurant"
           className="w-full h-full object-cover  "
         />
