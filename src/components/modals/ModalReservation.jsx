@@ -3,13 +3,11 @@ import Modal from "react-modal";
 import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
 import "moment/locale/fr";
-import { parsePhoneNumberFromString } from "libphonenumber-js";
-
 import moment from "moment";
-
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import MessageModal from "./MessageModal";
+import { parsePhoneNumberFromString } from "libphonenumber-js";
 
 Modal.setAppElement("#root");
 
@@ -19,41 +17,67 @@ const ModalReservation = ({ isOpen, onClose }) => {
   const [message, setMessage] = useState("");
   const [numberOfGuest, setNumberOfGuest] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [dateTime, setDateTime] = useState(
-    moment().set({ hour: 12, minute: 0 })
-  );
-
-  moment.locale("fr");
-
+  const [dateTime, setDateTime] = useState(moment());
+  const [selectedTime, setSelectedTime] = useState("");
+  const timeSlots = [
+    "12:00",
+    "12:15",
+    "12:30",
+    "12:45",
+    "13:00",
+    "13:15",
+    "13:30",
+    "13:45",
+    "19:00",
+    "19:15",
+    "19:30",
+    "19:45",
+    "20:00",
+    "20:15",
+    "20:30",
+    "20:45",
+    "21:00",
+    "21:15",
+    "21:30",
+    "21:45",
+  ];
   const [tel, setTel] = useState("");
   const [messageModalOpen, setMessageModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
+
+  moment.locale("fr");
 
   const handleChangeDateTime = (value) => {
     if (value) {
       setDateTime(value);
     } else {
-      setDateTime(moment().set({ hour: 12, minute: 0 }));
+      setDateTime(moment());
     }
   };
+
   const handlePhoneChange = (e) => {
-    const phoneNumber = parsePhoneNumberFromString(e.target.value, "FR"); // Ici, je spécifie 'FR' comme le pays par défaut. Vous pouvez ajuster cela en fonction de vos besoins.
+    const phoneNumber = parsePhoneNumberFromString(e.target.value, "FR");
 
     if (phoneNumber && phoneNumber.isValid()) {
-      setTel(phoneNumber.formatInternational()); // formate au format international
+      setTel(phoneNumber.formatInternational());
     } else {
-      setTel(e.target.value); // stocke la saisie de l'utilisateur si elle n'est pas encore valide
+      setTel(e.target.value);
     }
   };
 
   const sendEmail = (e) => {
-    const timeValue = dateTime.format("HH:mm");
+    e.preventDefault();
+
     const validDateTime = moment.isMoment(dateTime)
       ? dateTime
       : moment(dateTime);
+    validDateTime
+      .hour(parseInt(selectedTime.split(":")[0]))
+      .minute(parseInt(selectedTime.split(":")[1]));
+
     const data = {
       resDate: validDateTime.format("DD-MM-YY"),
-      resTime: validDateTime.format("HH:mm"),
+      resTime: selectedTime,
       name: name,
       number: numberOfGuest,
       email: email,
@@ -61,51 +85,29 @@ const ModalReservation = ({ isOpen, onClose }) => {
       phone: tel,
     };
 
-    e.preventDefault();
     setIsLoading(true);
-    if (timeValue > "13:45" && timeValue <= "19:00") {
-      setModalMessage(
-        "Nous sommes en pause de 14h00 à 19h00. Veuillez choisir un autre créneau."
+    emailjs
+      .send("service_6j5qs7e", "template_clc96rm", data, "I5f0O3BoNI4d1FJPP")
+      .then(
+        (result) => {
+          console.log(result.text);
+          setEmail("");
+          setMessage("");
+          setName("");
+          setDateTime(moment());
+          setNumberOfGuest("");
+          setSelectedTime("");
+          setTel("");
+          setIsLoading(false);
+          setModalMessage(
+            "Votre réservation est bien prise en compte. Nous vous confirmerons par email ET par SMS dans les prochaines minutes"
+          );
+          setMessageModalOpen(true);
+        },
+        (error) => {
+          console.log(error.text);
+        }
       );
-      setMessageModalOpen(true);
-      setIsLoading(false);
-      setDateTime("");
-    } else if (timeValue > "21:45") {
-      setModalMessage("Nous ne prenons plus de réservation après 21h45");
-      setMessageModalOpen(true);
-      setDateTime("");
-      setIsLoading(false);
-    } else if (timeValue < "12:00") {
-      setModalMessage(
-        "Nous ouvrons nos portes à partir de midi. Veuillez choisir un autre créneau"
-      );
-      setMessageModalOpen(true);
-      setDateTime("");
-      setIsLoading(false);
-    } else {
-      emailjs
-        .send("service_6j5qs7e", "template_clc96rm", data, "I5f0O3BoNI4d1FJPP")
-        .then(
-          (result) => {
-            console.log(result.text);
-            setEmail("");
-            setMessage("");
-            setName("");
-            setDateTime("");
-            setNumberOfGuest("");
-
-            setTel("");
-            setIsLoading(false);
-            setModalMessage(
-              "Votre réservation est bien prise en compte. Nous vous confirmerons par email ET par SMS dans les prochaines minutes"
-            );
-            setMessageModalOpen(true);
-          },
-          (error) => {
-            console.log(error.text);
-          }
-        );
-    }
   };
 
   return (
@@ -114,7 +116,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
       onRequestClose={onClose}
       contentLabel="Réservation en ligne"
       className="w-full h-full bg-opacity-60 bg-my-gold backdrop-blur-md rounded-2xl flex flex-col justify-around items-center "
-      overlayClassName="fixed top-0 left-0  h-full w-screen xl:px-40 lg:px-40 md:px-20 sm:px-20 px-5 xl:py-20 lg:py-40   md:py-20 sm:py-20 py-5 z-40 text-left bg-black bg-opacity-50 "
+      overlayClassName="fixed top-0 left-0  h-full w-screen xl:px-40 lg:px-40 md:px-20 sm:px-20 px-5 xl:py-10 lg:py-10   md:py-20 sm:py-20 py-5 z-40 text-left bg-black bg-opacity-50 "
     >
       <MessageModal
         isOpen={messageModalOpen}
@@ -180,18 +182,29 @@ const ModalReservation = ({ isOpen, onClose }) => {
                 className=" h-[40px]   focus:outline-none  bg-transparent border-b-[1px] px-2 mb-5"
                 required
               />
-              <label className="text-white">Date et heure</label>
+              <label className="text-white">Date</label>
               <Datetime
                 locale="fr"
                 value={dateTime}
                 onChange={handleChangeDateTime}
                 dateFormat="YYYY-MM-DD"
-                timeFormat="HH:mm"
-                inputProps={{ placeholder: "Sélectionnez la date et l'heure" }}
-                timeConstraints={{ minutes: { step: 15 } }}
+                timeFormat={false}
+                inputProps={{ placeholder: "Sélectionnez la date" }}
                 required
                 className="  h-[40px] flex flex-row justify-start items-center bg-transparent border-b-[1px] px-2 mb-5 "
               />
+              <label className="text-white">Heure</label>
+              <select
+                value={selectedTime}
+                onChange={(e) => setSelectedTime(e.target.value)}
+                className=" h-[40px] focus:outline-none bg-transparent border-b-[1px] px-2 mb-5"
+              >
+                {timeSlots.map((slot, index) => (
+                  <option key={index} value={slot}>
+                    {slot}
+                  </option>
+                ))}
+              </select>
 
               <label className="text-white mb-1">Email</label>
               <input
