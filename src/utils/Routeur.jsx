@@ -11,13 +11,13 @@ const Routeur = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [isResaModalOpen, setIsResaModalOpen] = useState(false);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setModalOpen(true);
-    }, 3000);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setModalOpen(true);
+  //   }, 3000);
 
-    return () => clearTimeout(timer);
-  }, []);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   const handleModalClose = () => {
     setModalOpen(false);
