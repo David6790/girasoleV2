@@ -98,6 +98,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
           setNumberOfGuest("");
           setSelectedTime("");
           setTel("");
+          setSelectedTime("");
           setIsLoading(false);
           setModalMessage(
             "Votre réservation est bien prise en compte. Nous vous confirmerons par email ET par SMS dans les prochaines minutes"
@@ -197,7 +198,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
               <select
                 value={selectedTime}
                 onChange={(e) => setSelectedTime(e.target.value)}
-                className=" h-[40px] focus:outline-none bg-transparent border-b-[1px] px-2 mb-5"
+                className=" h-[40px] focus:outline-none bg-transparent border-b-[1px]  px-2 mb-5"
               >
                 {timeSlots.map((slot, index) => (
                   <option key={index} value={slot}>
