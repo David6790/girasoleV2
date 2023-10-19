@@ -43,7 +43,7 @@ const Banner = () => {
           -La trattoria revisitée-
         </h2>
         <ButtonResa />
-        <p>Ou par SMS au : 06.29.84.84.36</p>
+        <p>Ou par SMS au : 06.26.19.10.28 </p>
       </motion.div>
     </>
   );
