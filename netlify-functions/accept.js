@@ -21,6 +21,12 @@ exports.handler = async (event, context) => {
     to: email,
     from: "ilgirasolestrasbourg67@gmail.com",
     templateId: "d-f6110fab2fb04b05b3924760f999ce4f",
+    dynamic_template_data: {
+      Name: name,
+      Date: resDate,
+      Time: resTime,
+      Number: number,
+    },
   };
 
   try {
