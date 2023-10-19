@@ -97,7 +97,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
             setTel("");
             setIsLoading(false);
             setModalMessage(
-              "Votre réservation est bien prise en compte. Nous vous confirmerons par email dans les prochaines minutes"
+              "Votre réservation est bien prise en compte. Nous vous confirmerons par email ET par SMS dans les prochaines minutes"
             );
             setMessageModalOpen(true);
           },
