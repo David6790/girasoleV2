@@ -6,6 +6,7 @@ import Contact from "../page/Contact";
 import ScrollToTop from "./ScrollToTop";
 import ModalNouveautés from "../components/modals/ModalNouveautés";
 import ModalReservation from "../components/modals/ModalReservation";
+import MentionLegales from "../page/MentionLegales";
 
 const Routeur = () => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -45,6 +46,7 @@ const Routeur = () => {
         <Route path="/" element={<Home />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/legalMentions" element={<MentionLegales />} />
       </Routes>
     </BrowserRouter>
   );
