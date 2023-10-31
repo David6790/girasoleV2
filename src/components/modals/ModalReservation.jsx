@@ -87,7 +87,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
 
     setIsLoading(true);
     emailjs
-      .send("service_6j5qs7e", "template_clc96rm", data, "I5f0O3BoNI4d1FJPP")
+      .send("service_6j5qs7e", "template_clc96rm", data, "TlcoR3tgd_o9uLj7o")
       .then(
         (result) => {
           console.log(result.text);
