@@ -18,7 +18,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
   const [numberOfGuest, setNumberOfGuest] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [dateTime, setDateTime] = useState(moment());
-  const [selectedTime, setSelectedTime] = useState("");
+  const [selectedTime, setSelectedTime] = useState("12:00");
   const timeSlots = [
     "12:00",
     "12:15",
