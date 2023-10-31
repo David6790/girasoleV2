@@ -44,6 +44,7 @@ const Routeur = () => {
 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/reserver" element={<Home />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/legalMentions" element={<MentionLegales />} />
