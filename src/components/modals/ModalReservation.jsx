@@ -216,7 +216,9 @@ const ModalReservation = ({ isOpen, onClose }) => {
                 className="h-[40px]  mb-5  focus:outline-none bg-transparent border-b-[1px] px-2"
                 required
               />
-              <label className="text-white ">Télephone</label>
+              <label className="text-white ">
+                Télephone Portable *confirmation sms*
+              </label>
               <input
                 value={tel}
                 type="tel"
