@@ -51,7 +51,7 @@ exports.handler = async (event, context) => {
 
     return {
       statusCode: error.statusCode || 500,
-      body: "Erreur lors de l'envoi de l'email",
+      body: "Erreur lors de l'envoi du SMS ou de l'Email",
     };
   }
 };

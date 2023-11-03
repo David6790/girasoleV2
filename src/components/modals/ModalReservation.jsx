@@ -101,7 +101,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
           setSelectedTime("");
           setIsLoading(false);
           setModalMessage(
-            "Votre réservation est bien prise en compte. Nous vous confirmerons par email ET par SMS dans les prochaines minutes"
+            "Votre réservation est bien prise en compte. Nous vous confirmerons par email ET par SMS dans les prochaines minutes. N'hésitez pas à verifier dans vos indésirables / spams si vous ne recevez pas d'email. Ajoutez-nous en favoris pour eviter que nos confirmations atterrissent dans vos spams."
           );
           setMessageModalOpen(true);
         },
