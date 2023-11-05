@@ -6,28 +6,28 @@ const ModalMenu = ({ isOpen, onClose, resaModal }) => {
   const menuGirasole = [
     {
       day: "Lundi",
-      starter: "Carpaccio de bœuf et marinade aux champignons",
-      dish: "Cannellonis Bolognaise et salade",
+      starter: "Bruschetta Napoli",
+      dish: "Brochettes de boeuf grillées, pommes de terre et salade",
     },
     {
       day: "Mardi",
-      starter: "Soupe de légumes",
-      dish: "Faux-filet de bœuf et pasta sauce aux champignons",
+      starter: "Dome apéritif (au saumon fumé, oeuf mollet et avocat)",
+      dish: "Emincé de poulet pôelé à l'ail, citron et son risotto à la tomate et mascarpone",
     },
     {
       day: "Mercredi",
-      starter: "Salade de pâtes au pesto",
-      dish: "Escalope de poulet à la moutarde, salade et pommes de terre",
+      starter: "Salade d'automne",
+      dish: "Blanquette de veau à l'ancienne et ses tagliatelles",
     },
     {
       day: "Jeudi",
-      starter: "Bruschetta au jambon, sauce tomate et mozzarella",
-      dish: "Risotto aux chorizo et pesto rouge à la Sicilienne",
+      starter: "Planchette de charcuterie",
+      dish: "Gnocchis à la bolognaise",
     },
     {
       day: "Vendredi",
-      starter: "Quiche aux poissons sauce crevettes",
-      dish: "Linguinis aux gambas et courgette",
+      starter: "Boulettes au thon, et pommes de terre",
+      dish: "Parmentier de poisson aux épinards et légumes grillés",
     },
   ];
 
@@ -85,7 +85,10 @@ const ModalMenu = ({ isOpen, onClose, resaModal }) => {
                 Dessert de la semaine :
               </span>
               <br />
-              <span className="text-black">Mousse au chocolat</span>
+              <span className="text-black">
+                Panna cotta (au coulis de framboises, fraises, chocolat) au
+                choix
+              </span>
             </p>
           </div>
           <button
