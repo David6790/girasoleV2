@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
@@ -12,13 +12,6 @@ import { parsePhoneNumberFromString } from "libphonenumber-js";
 Modal.setAppElement("#root");
 
 const ModalReservation = ({ isOpen, onClose }) => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [numberOfGuest, setNumberOfGuest] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [dateTime, setDateTime] = useState(moment());
-  const [selectedTime, setSelectedTime] = useState("12:00");
   const timeSlots = [
     "12:00",
     "12:15",
@@ -41,11 +34,49 @@ const ModalReservation = ({ isOpen, onClose }) => {
     "21:30",
     "21:45",
   ];
+  const timeSlotsWeekend = [
+    "12:00",
+    "12:15",
+    "12:30",
+    "12:45",
+    "13:00",
+    "13:15",
+    "13:30",
+    "13:45",
+    "19:00",
+    "21:00",
+    "21:15",
+    "21:30",
+    "21:45",
+  ];
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [numberOfGuest, setNumberOfGuest] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [dateTime, setDateTime] = useState(moment());
+  const [selectedTime, setSelectedTime] = useState("12:00");
+  const [availableTimeSlots, setAvailableTimeSlots] = useState(timeSlots);
+
   const [tel, setTel] = useState("");
   const [messageModalOpen, setMessageModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
 
   moment.locale("fr");
+
+  useEffect(() => {
+    const dayOfWeek = dateTime.day();
+    const month = dateTime.month();
+    const year = dateTime.year();
+
+    const isWeekendOfDecember2023 =
+      year === 2023 && month === 11 && (dayOfWeek === 5 || dayOfWeek === 6);
+
+    setAvailableTimeSlots(
+      isWeekendOfDecember2023 ? timeSlotsWeekend : timeSlots
+    );
+    // eslint-disable-next-line
+  }, [dateTime]);
 
   const handleChangeDateTime = (value) => {
     if (value) {
@@ -200,7 +231,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
                 onChange={(e) => setSelectedTime(e.target.value)}
                 className=" h-[40px] focus:outline-none bg-transparent border-b-[1px]  px-2 mb-5"
               >
-                {timeSlots.map((slot, index) => (
+                {availableTimeSlots.map((slot, index) => (
                   <option key={index} value={slot}>
                     {slot}
                   </option>
