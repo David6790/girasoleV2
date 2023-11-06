@@ -218,6 +218,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
               <Datetime
                 locale="fr"
                 value={dateTime}
+                closeOnSelect={true}
                 onChange={handleChangeDateTime}
                 dateFormat="YYYY-MM-DD"
                 timeFormat={false}
