@@ -7,7 +7,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 // Handler de la fonction Netlify pour l'envoi d'email
 exports.handler = async (event, context) => {
   // Assurez-vous que nous utilisons la méthode POST
-  if (event.httpMethod !== "POST") {
+  if (event.httpMethod !== "GET") {
     return { statusCode: 405, body: "Method Not Allowed" };
   }
 
