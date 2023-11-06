@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import ModalNouveautés from "../modals/ModalNouveautés";
 import ModalReservation from "../modals/ModalReservation";
+import ModalMenu from "../modals/ModalMenu";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,6 +12,7 @@ const Navigation = () => {
   };
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [resaModal, setResaModal] = useState(false);
+  const [menuModal, setMenuModal] = useState(false);
 
   const handleClose = () => {
     setIsModalOpen(false);
@@ -19,6 +21,13 @@ const Navigation = () => {
   const handleOpenNewModal = () => {
     setIsOpen(false);
     setIsModalOpen(true);
+  };
+  const handleOpenMenuModal = () => {
+    setIsOpen(false);
+    setMenuModal(true);
+  };
+  const handleCloseMenuModal = () => {
+    setMenuModal(false);
   };
 
   const handleResa = () => {
@@ -37,7 +46,8 @@ const Navigation = () => {
         resaModal={handleResa}
       />
       <ModalReservation isOpen={resaModal} onClose={resaClose} />
-      <ul className=" h-full flex-row justify-end  items-center xl:flex lg:flex md:flex sm:hidden hidden">
+      <ModalMenu isOpen={menuModal} onClose={handleCloseMenuModal} />
+      <ul className=" h-full flex-row justify-end  items-center xl:flex lg:flex md:hidden sm:hidden hidden">
         <NavLink
           to="/"
           className={(nav) => (nav.isActive ? " text-my-gold" : " text-black")}
@@ -50,6 +60,9 @@ const Navigation = () => {
         >
           <li className="ml-20">Notre carte</li>
         </NavLink>
+        <li className="ml-20 cursor-pointer" onClick={handleOpenMenuModal}>
+          Menu de la semaine
+        </li>
 
         <NavLink
           to="/contact"
@@ -67,7 +80,7 @@ const Navigation = () => {
           Quoi de neuf ?
         </li>
       </ul>
-      <div className="xl:hidden lg:hidden md:hidden sm:flex flex h-full justify-end items-center px-5 relative  ">
+      <div className="xl:hidden lg:hidden md:flex sm:flex flex h-full justify-end items-center px-5 relative  ">
         <button onClick={handleClick} className="absolute">
           <i className="fa-solid fa-bars text-3xl "></i>
           <span className="star animate-pulse absolute top-[-8px] left-[-10px]">
@@ -118,6 +131,12 @@ const Navigation = () => {
             <NavLink to="/menu">
               <li>La Carte</li>
             </NavLink>
+            <li
+              className="  relative cursor-pointer"
+              onClick={handleOpenMenuModal}
+            >
+              Menu de la semaine
+            </li>
             <NavLink to="/contact">
               <li>Contactez-nous</li>
             </NavLink>
