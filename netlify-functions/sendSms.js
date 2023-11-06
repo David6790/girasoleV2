@@ -18,12 +18,6 @@ exports.handler = async (event, context) => {
   const { phone, name, resDate, resTime, number } = event.queryStringParameters;
 
   // Vérifiez que tous les paramètres nécessaires sont présents
-  if (!phone || !name || !resDate || !resTime || !number) {
-    return {
-      statusCode: 400,
-      body: "Missing parameters! Please provide phone number, name, reservation date, reservation time, and number of people.",
-    };
-  }
 
   // Déterminez le message de salutation en fonction de l'heure actuelle
   const currentHour = new Date().getHours();
