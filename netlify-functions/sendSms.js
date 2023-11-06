@@ -26,9 +26,9 @@ exports.handler = async (event, context) => {
   try {
     // Envoyez le SMS via Twilio
     await twilioClient.messages.create({
-      to: `+${phone}`, // Assurez-vous que le numéro de téléphone est au format international complet
-      from: process.env.TWILIO_PHONE_NUMBER, // Remplacez par votre numéro de téléphone Twilio
-      body: `${greeting} ${name}, votre réservation au Il Girasole le ${resDate} à ${resTime} pour ${number} personnes a bien été notée. Merci et à bientôt!`,
+      body: `${greeting} ${name}, votre réservation au Il Girasole le ${resDate} à ${resTime} pour ${number} personnes a bien été notée et nous vous en remercions. En cas d'empêchement, n'oubliez pas de nous appeler au plus vite, au 03 88 37 16 76 ou par sms au 06 26 19 10 28 (en indiquant votre nom).`,
+      from: "IlGirasole",
+      to: `+${phone}`,
     });
     return {
       statusCode: 200,
