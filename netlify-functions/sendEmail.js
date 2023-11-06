@@ -6,22 +6,33 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 // Handler de la fonction Netlify pour l'envoi d'email
 exports.handler = async (event, context) => {
-  // Assurez-vous que nous utilisons la méthode POST
+  // Assurez-vous que nous utilisons la méthode GET
   if (event.httpMethod !== "GET") {
     return { statusCode: 405, body: "Method Not Allowed" };
   }
 
-  // Parsez le corps de la requête pour obtenir les paramètres d'email
-  const data = JSON.parse(event.body);
-  const { email, name, resDate, resTime } = data;
+  // Récupérez les paramètres de la chaîne de requête
+  const { email, name, resDate, resTime, number } = event.queryStringParameters;
+
+  // Vérifiez que tous les paramètres nécessaires sont présents
+  if (!email || !name || !resDate || !resTime || !number) {
+    return {
+      statusCode: 400,
+      body: "Missing parameters! Please provide email, name, reservation date, reservation time, and number of people.",
+    };
+  }
 
   // Créez le message à envoyer
   const msg = {
     to: email,
     from: "ilgirasolestrasbourg67@gmail.com", // Remplacez par votre adresse email vérifiée
-    subject: "Confirmation de réservation",
-    text: `Bonjour ${name}, votre réservation pour le ${resDate} à ${resTime} est confirmée.`,
-    // Vous pouvez également utiliser un template HTML ici
+    templateId: "d-f6110fab2fb04b05b3924760f999ce4f",
+    dynamic_template_data: {
+      Name: name,
+      Date: resDate,
+      Time: resTime,
+      Number: number,
+    },
   };
 
   try {
@@ -34,6 +45,8 @@ exports.handler = async (event, context) => {
   } catch (error) {
     // Gestion des erreurs lors de l'envoi
     console.error(error);
+
+    // Renvoyez une réponse avec le message d'erreur
     return {
       statusCode: error.code || 500,
       body: JSON.stringify({ error: error.message }),

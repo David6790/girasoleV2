@@ -9,14 +9,21 @@ const twilioClient = twilio(
 
 // Handler de la fonction Netlify pour l'envoi de SMS
 exports.handler = async (event, context) => {
-  // Assurez-vous que nous utilisons la méthode POST
+  // Assurez-vous que nous utilisons la méthode GET
   if (event.httpMethod !== "GET") {
     return { statusCode: 405, body: "Method Not Allowed" };
   }
 
-  // Parsez le corps de la requête pour obtenir les paramètres de SMS
-  const data = JSON.parse(event.body);
-  const { phone, name, resDate, resTime, number } = data;
+  // Récupérez les paramètres de la chaîne de requête
+  const { phone, name, resDate, resTime, number } = event.queryStringParameters;
+
+  // Vérifiez que tous les paramètres nécessaires sont présents
+  if (!phone || !name || !resDate || !resTime || !number) {
+    return {
+      statusCode: 400,
+      body: "Missing parameters! Please provide phone number, name, reservation date, reservation time, and number of people.",
+    };
+  }
 
   // Déterminez le message de salutation en fonction de l'heure actuelle
   const currentHour = new Date().getHours();
@@ -25,7 +32,7 @@ exports.handler = async (event, context) => {
   try {
     // Envoyez le SMS via Twilio
     await twilioClient.messages.create({
-      to: phone,
+      to: `+${phone}`, // Assurez-vous que le numéro de téléphone est au format international complet
       from: process.env.TWILIO_PHONE_NUMBER, // Remplacez par votre numéro de téléphone Twilio
       body: `${greeting} ${name}, votre réservation au Il Girasole le ${resDate} à ${resTime} pour ${number} personnes a bien été notée. Merci et à bientôt!`,
     });
