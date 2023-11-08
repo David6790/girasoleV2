@@ -1,22 +1,34 @@
-import React from "react";
+import React, { useRef } from "react";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import MenuBanner from "../components/MenuBanner";
 import FormuleMidi from "../components/FormuleMidi";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
 
 const MenuMidi = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
   return (
     <>
       <Header />
-      <div className="w-full h-[500px] bg-custom4 bg-cover mb-10 ">
+      <motion.div
+        className="w-full h-[500px] bg-custom4 bg-cover mb-10 "
+        ref={ref}
+        style={{
+          transform: isInView ? "none" : "opacity:0  ",
+          opacity: isInView ? 1 : 0,
+          transition: "all   ease-in 0.8s ",
+        }}
+      >
         <MenuBanner
           h1={
             '" Savourez votre pause déjeuner avec nos formules rapides et gourmandes"'
           }
           h2={" Formules Express Midi"}
         />
-      </div>
-      <div className="w-full h-auto flex flex-row flex-wrap justify-center gap-10">
+      </motion.div>
+      <div className="w-full h-auto flex flex-row flex-wrap justify-center gap-10 mb-10">
         <FormuleMidi
           h1={"TAPAS MIDI "}
           h2={"Planchette de 3 différents tapas avec salade verte "}

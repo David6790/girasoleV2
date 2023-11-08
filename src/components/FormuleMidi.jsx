@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import ModalReservation from "./modals/ModalReservation";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
 
 const FormuleMidi = ({ h1, h2, p, price1, price2, price3 }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false });
   const [resaModalOpen, setResaModalopen] = useState(false);
 
   const handleOpen = () => {
@@ -13,7 +17,15 @@ const FormuleMidi = ({ h1, h2, p, price1, price2, price3 }) => {
   };
 
   return (
-    <div className="2xl:w-[30%] xl:w-[30%] lg:w-[30%] md:w-[30%] sm:w-[45%] w-[90%] py-10 2xl:px-10 xl:px-10 lg:px-10 md:px-5 px-5 bg-myGrey flex flex-col justify-between items-center text-center rounded-2xl shadow-2xl  relative group overflow-hidden hover:scale-105 transition-transform duration-300 ease-in-out">
+    <motion.div
+      className="2xl:w-[30%] xl:w-[30%] lg:w-[30%] md:w-[30%] sm:w-[45%] w-[90%] py-10 2xl:px-10 xl:px-10 lg:px-10 md:px-5 px-5 bg-myGrey flex flex-col justify-between items-center text-center rounded-2xl shadow-2xl  relative group overflow-hidden hover:scale-105 transition-transform duration-300 ease-in-out"
+      ref={ref}
+      style={{
+        transform: isInView ? "none" : "opacity:0  ",
+        opacity: isInView ? 1 : 0,
+        transition: "all   ease-in 0.8s ",
+      }}
+    >
       <h1 className="font-title-font 2xl:text-3xl xl:text-3xl lg:text-3xl md:text-xl  mb-5 text-my-gold ">
         {h1}
       </h1>
@@ -41,7 +53,7 @@ const FormuleMidi = ({ h1, h2, p, price1, price2, price3 }) => {
         </button>
       </div>
       <ModalReservation isOpen={resaModalOpen} onClose={handleClose} />
-    </div>
+    </motion.div>
   );
 };
 
