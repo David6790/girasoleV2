@@ -13,6 +13,11 @@ const Navigation = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [resaModal, setResaModal] = useState(false);
   const [menuModal, setMenuModal] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
 
   const handleClose = () => {
     setIsModalOpen(false);
@@ -63,12 +68,31 @@ const Navigation = () => {
         >
           <li className="ml-20">Accueil</li>
         </NavLink>
-        <NavLink
-          to="/menu"
-          className={(nav) => (nav.isActive ? " text-my-gold" : " text-black")}
-        >
-          <li className="ml-20">Notre carte</li>
-        </NavLink>
+        <li className="ml-20 relative">
+          <button onClick={toggleDropdown}>Nos cartes</button>
+          {isDropdownOpen && (
+            <div className="absolute top-full w-[200px] mt-1 bg-white shadow-md rounded-md">
+              <NavLink
+                to="/menu"
+                className={(nav) =>
+                  nav.isActive ? " text-my-gold" : " text-black"
+                }
+                onClick={() => setIsDropdownOpen(false)}
+              >
+                <div className="px-4 py-2 hover:bg-gray-100">La carte</div>
+              </NavLink>
+              <NavLink
+                to="/menu-midi"
+                className={(nav) =>
+                  nav.isActive ? " text-my-gold" : " text-black"
+                }
+                onClick={() => setIsDropdownOpen(false)}
+              >
+                <div className="px-4 py-2 hover:bg-gray-100">Formules midi</div>
+              </NavLink>
+            </div>
+          )}
+        </li>
         <li className="ml-20 cursor-pointer" onClick={handleOpenMenuModal}>
           Menu de la semaine
         </li>
@@ -99,7 +123,7 @@ const Navigation = () => {
       </div>
       {isOpen && (
         <motion.div
-          className="fixed top-0 right-0 h-2/3 w-2/3 rounded-tl-3xl rounded-bl-3xl shadow-md  bg-opacity-50 bg-my-gold backdrop-blur-md  border-solid border-[#444] border-[1px] z-50 p-10 group"
+          className="fixed top-0 right-0 h-auto w-2/3 rounded-tl-3xl rounded-bl-3xl shadow-md  bg-opacity-50 bg-my-gold backdrop-blur-md  border-solid border-[#444] border-[1px] z-50 p-10 group"
           initial={{
             opacity: 0,
             x: "200px",
@@ -133,12 +157,15 @@ const Navigation = () => {
             />
           </div>
 
-          <ul className="flex flex-col justify-center items-start h-full space-y-8 text-xl text-white ">
+          <ul className="flex flex-col justify-center items-start h-full space-y-8 text-base text-white ">
             <NavLink to="/">
               <li>Accueil</li>
             </NavLink>
             <NavLink to="/menu">
               <li>La Carte</li>
+            </NavLink>
+            <NavLink to="/menu-midi">
+              <li>Formules Midi</li>
             </NavLink>
             <li
               className="  relative cursor-pointer"

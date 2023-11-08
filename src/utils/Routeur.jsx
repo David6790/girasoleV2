@@ -7,6 +7,7 @@ import ScrollToTop from "./ScrollToTop";
 import ModalNouveautés from "../components/modals/ModalNouveautés";
 import ModalReservation from "../components/modals/ModalReservation";
 import MentionLegales from "../page/MentionLegales";
+import MenuMidi from "../page/MenuMidi";
 
 const Routeur = () => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -47,6 +48,7 @@ const Routeur = () => {
         <Route path="/reserver" element={<Home />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/menu-midi" element={<MenuMidi />} />
         <Route path="/legalMentions" element={<MentionLegales />} />
       </Routes>
     </BrowserRouter>

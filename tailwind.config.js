@@ -13,6 +13,7 @@ module.exports = {
         custom: "url('/public/img/manuBanner.webp')",
         custom2: "url('/public/img/menuBg.webp')",
         custom3: "url('/public/img/contact2.webp')",
+        custom4: "url('/public/img/lunch.jpg')",
       },
       fontFamily: {
         "main-font": "'Lato', sans-serif",
