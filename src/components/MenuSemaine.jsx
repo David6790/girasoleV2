@@ -23,6 +23,7 @@ const MenuSemaine = () => {
   const handleResaModal = () => {
     setIsReservationOpen(true);
     setModalOpen(false);
+    console.log("clicked");
   };
 
   const closeResaModal = () => {

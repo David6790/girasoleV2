@@ -35,6 +35,11 @@ const Navigation = () => {
     setIsModalOpen(false);
   };
 
+  const handleResa2 = () => {
+    setResaModal(true);
+    setMenuModal(false);
+  };
+
   const resaClose = () => {
     setResaModal(false);
   };
@@ -46,7 +51,11 @@ const Navigation = () => {
         resaModal={handleResa}
       />
       <ModalReservation isOpen={resaModal} onClose={resaClose} />
-      <ModalMenu isOpen={menuModal} onClose={handleCloseMenuModal} />
+      <ModalMenu
+        isOpen={menuModal}
+        onClose={handleCloseMenuModal}
+        resaModal={handleResa2}
+      />
       <ul className=" h-full flex-row justify-end  items-center xl:flex lg:flex md:hidden sm:hidden hidden">
         <NavLink
           to="/"
