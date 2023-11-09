@@ -1,0 +1,257 @@
+{
+  "Cocktails": [
+    {
+      "nom": "Amaretto Sour",
+      "catégorie": "Cocktails",
+      "ingrédients": [
+        "liqueur d’amande",
+        "pulco",
+        "sucre cassonade",
+        "jus de citron"
+      ],
+      "prix": "8.50 €",
+      "image": "./img/cocktails/amarettoSour.png"
+    },
+    {
+      "nom": "Bellini",
+      "catégorie": "Cocktails",
+      "ingrédients": ["purée de pêche", "prosecco"],
+      "prix": "7.50 €",
+      "image": "./img/cocktails/bellini.png"
+    },
+    {
+      "nom": "Bellini royal",
+      "catégorie": "Cocktails",
+      "ingrédients": ["purée de pêche", "champagne Moët & Chandon"],
+      "prix": "12.00 €",
+      "image": "./img/cocktails/belliniRoyal.png"
+    },
+    {
+      "nom": "Margarita Italiana",
+      "catégorie": "Cocktails",
+      "ingrédients": [
+        "tequila",
+        "limoncello",
+        "pulco",
+        "sucre de canne",
+        "jus de citron vert"
+      ],
+      "prix": "8.50 €",
+      "image": "./img/cocktails/margarita.png"
+    },
+    {
+      "nom": "Mojito",
+      "catégorie": "Cocktails",
+      "ingrédients": [
+        "rhum",
+        "citron vert",
+        "feuille de menthe",
+        "eau gazeuse",
+        "sirop de sucre de canne"
+      ],
+      "prix": "8.50 €",
+      "image": "./img/cocktails/mojito.png"
+    },
+    {
+      "nom": "Bramble",
+      "catégorie": "Cocktails",
+      "ingrédients": [
+        "gin",
+        "pulco",
+        "sirop de sucre de canne",
+        "crème de mûre"
+      ],
+      "prix": "8.00 €"
+    },
+    {
+      "nom": "Expresso Martini",
+      "catégorie": "Cocktails",
+      "ingrédients": ["vodka", "kahlua", "sirop de sucre de canne", "expresso"],
+      "prix": "8.50 €"
+    },
+    {
+      "nom": "Chandon Garden Spritz",
+      "catégorie": "Spritz",
+      "ingrédients": ["Maison - Moët et Chandon"],
+      "prix": "8.50 €"
+    },
+    {
+      "nom": "Aperol Spritz",
+      "catégorie": "Spritz",
+      "ingrédients": [
+        "Aperol",
+        "prosecco",
+        "eau gazeuse",
+        "glaçon",
+        "rondelle d’orange"
+      ],
+      "prix": "7.50 €"
+    },
+    {
+      "nom": "Hugo Spritz",
+      "catégorie": "Spritz",
+      "ingrédients": [
+        "prosecco",
+        "liqueur Saint Germain",
+        "sirop de fleur de sureau",
+        "feuille de menthe",
+        "citron vert"
+      ],
+      "prix": "8.50 €"
+    },
+    {
+      "nom": "Pink Lady Spritz",
+      "catégorie": "Spritz",
+      "ingrédients": [
+        "prosecco",
+        "liqueur Saint Germain",
+        "crème de framboise",
+        "sirop de framboise",
+        "feuille de menthe"
+      ],
+      "prix": "8.50 €"
+    },
+    {
+      "nom": "Campari Spritz",
+      "catégorie": "Spritz",
+      "ingrédients": [
+        "prosecco",
+        "campari",
+        "rondelle d’orange",
+        "eau gazeuse"
+      ],
+      "prix": "8.50 €"
+    },
+    {
+      "nom": "Limoncello Spritz",
+      "catégorie": "Spritz",
+      "ingrédients": [
+        "prosecco",
+        "limoncello",
+        "sirop de fleur de sureau",
+        "eau gazeuse",
+        "rondelle de citron"
+      ],
+      "prix": "8.50 €"
+    },
+    {
+      "nom": "LE CÉSAR",
+      "catégorie": "Cocktails du soir",
+      "ingrédients": ["Gin", "Purée de pêche", "triple sec"],
+      "prix": "11.00 €"
+    },
+    {
+      "nom": "TESORO APE",
+      "catégorie": "Cocktails du soir",
+      "ingrédients": [
+        "Jack Daniel’s honey",
+        "triple sec",
+        "jus de pomme",
+        "miel"
+      ],
+      "prix": "11.00 €"
+    },
+    {
+      "nom": "CYRUS",
+      "catégorie": "Cocktails du soir",
+      "ingrédients": [
+        "Whisky",
+        "Amaretto",
+        "Sirop de fraise",
+        "feuilles de Menthe"
+      ],
+      "prix": "10.00 €"
+    },
+    {
+      "nom": "AMAZONIA",
+      "catégorie": "Cocktails du soir",
+      "ingrédients": [
+        "Rhum ambré",
+        "Curaçao bleu",
+        "jus de citron vert",
+        "jus de mangue"
+      ],
+      "prix": "10.00 €"
+    },
+    {
+      "nom": "DRAGON BLEU",
+      "catégorie": "Cocktails du soir",
+      "ingrédients": [
+        "Vodka",
+        "Curaçao bleu",
+        "sirop d’orgeat",
+        "jus de pomme"
+      ],
+      "prix": "9.50 €"
+    },
+    {
+      "nom": "SORTIARIUS",
+      "catégorie": "Cocktails du soir",
+      "ingrédients": ["Gin", "Purée de framboise", "Jus de citron"],
+      "prix": "11.00 €"
+    },
+    {
+      "nom": "GODFATHER",
+      "catégorie": "Cocktails du soir",
+      "ingrédients": ["Whisky", "amaretto"],
+      "prix": "7.00 €"
+    },
+    {
+      "nom": "AMANDINA",
+      "catégorie": "Cocktails du soir",
+      "ingrédients": ["Vodka", "Amaretto", "purée de pêche", "sirop d’orgeat"],
+      "prix": "7.00 €"
+    },
+    {
+      "nom": "LA ROSA DEL BASILICO",
+      "catégorie": "Cocktails du soir",
+      "ingrédients": [
+        "Gin",
+        "purée de fraise",
+        "feuilles de basilic",
+        "jus de citron vert"
+      ],
+      "prix": "7.50 €"
+    },
+    {
+      "nom": "MARCO",
+      "catégorie": "Mocktails",
+      "ingrédients": ["Ginger ale", "jus de cranberry", "jus d’orange"],
+      "prix": "7.50 €"
+    },
+    {
+      "nom": "MOJITO SANS ALCOOL",
+      "catégorie": "Mocktails",
+      "ingrédients": [
+        "Feuilles de menthe",
+        "citron vert",
+        "cassonade",
+        "limonade",
+        "eau gazeuse"
+      ],
+      "prix": "7.50 €"
+    },
+    {
+      "nom": "DOLCEZZA EXOTICA",
+      "catégorie": "Mocktails",
+      "ingrédients": [
+        "lait de coco",
+        "jus de mangue",
+        "jus d’ananas",
+        "sirop de ﬂeur de sureau"
+      ],
+      "prix": "7.50 €"
+    },
+    {
+      "nom": "FRESH SODA",
+      "catégorie": "Mocktails",
+      "ingrédients": [
+        "Sirop de grenadine et d’orgeat",
+        "jus de citron vert",
+        "Perrier",
+        "branche de romarin"
+      ],
+      "prix": "7.50 €"
+    }
+  ]
+}

@@ -90,6 +90,15 @@ const Navigation = () => {
               >
                 <div className="px-4 py-2 hover:bg-gray-100">Formules midi</div>
               </NavLink>
+              <NavLink
+                to="/menu-cocktails"
+                className={(nav) =>
+                  nav.isActive ? " text-my-gold" : " text-black"
+                }
+                onClick={() => setIsDropdownOpen(false)}
+              >
+                <div className="px-4 py-2 hover:bg-gray-100">Les Cocktails</div>
+              </NavLink>
             </div>
           )}
         </li>
@@ -166,6 +175,9 @@ const Navigation = () => {
             </NavLink>
             <NavLink to="/menu-midi">
               <li>Formules Midi</li>
+            </NavLink>
+            <NavLink to="/menu-midi">
+              <li>Les Cocktails</li>
             </NavLink>
             <li
               className="  relative cursor-pointer"

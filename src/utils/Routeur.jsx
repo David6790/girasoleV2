@@ -8,6 +8,7 @@ import ModalNouveautés from "../components/modals/ModalNouveautés";
 import ModalReservation from "../components/modals/ModalReservation";
 import MentionLegales from "../page/MentionLegales";
 import MenuMidi from "../page/MenuMidi";
+import MenuCocktails from "../page/MenuCocktails";
 
 const Routeur = () => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -46,9 +47,11 @@ const Routeur = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/reserver" element={<Home />} />
+        <Route path="/m/" element={<Home />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/menu-midi" element={<MenuMidi />} />
+        {/* <Route path="/menu-cocktails" element={<MenuCocktails />} /> */}
         <Route path="/legalMentions" element={<MentionLegales />} />
       </Routes>
     </BrowserRouter>

@@ -6,8 +6,11 @@ const api = createApi({
     getMenus: builder.query({
       query: () => "db.json",
     }),
+    getCocktails: builder.query({
+      query: () => "cocktailMenu.json",
+    }),
   }),
 });
 
-export const { useGetMenusQuery } = api;
+export const { useGetMenusQuery, useGetCocktailsQuery } = api;
 export default api;
