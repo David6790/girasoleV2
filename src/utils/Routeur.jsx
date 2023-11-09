@@ -8,7 +8,6 @@ import ModalNouveautés from "../components/modals/ModalNouveautés";
 import ModalReservation from "../components/modals/ModalReservation";
 import MentionLegales from "../page/MentionLegales";
 import MenuMidi from "../page/MenuMidi";
-import MenuCocktails from "../page/MenuCocktails";
 
 const Routeur = () => {
   const [isModalOpen, setModalOpen] = useState(false);
