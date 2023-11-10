@@ -90,7 +90,7 @@ const Navigation = () => {
               >
                 <div className="px-4 py-2 hover:bg-gray-100">Formules midi</div>
               </NavLink>
-              {/* <NavLink
+              <NavLink
                 to="/menu-cocktails"
                 className={(nav) =>
                   nav.isActive ? " text-my-gold" : " text-black"
@@ -98,7 +98,7 @@ const Navigation = () => {
                 onClick={() => setIsDropdownOpen(false)}
               >
                 <div className="px-4 py-2 hover:bg-gray-100">Les Cocktails</div>
-              </NavLink> */}
+              </NavLink>
             </div>
           )}
         </li>
@@ -176,9 +176,9 @@ const Navigation = () => {
             <NavLink to="/menu-midi">
               <li>Formules Midi</li>
             </NavLink>
-            {/* <NavLink to="/menu-midi">
+            <NavLink to="/menu-midi">
               <li>Les Cocktails</li>
-            </NavLink> */}
+            </NavLink>
             <li
               className="  relative cursor-pointer"
               onClick={handleOpenMenuModal}

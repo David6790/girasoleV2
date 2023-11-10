@@ -2,8 +2,8 @@
   "Cocktails": [
     {
       "nom": "Amaretto Sour",
-      "catégorie": "Cocktails",
-      "ingrédients": [
+      "category": "Cocktails",
+      "recipe": [
         "liqueur d’amande",
         "pulco",
         "sucre cassonade",
@@ -14,22 +14,22 @@
     },
     {
       "nom": "Bellini",
-      "catégorie": "Cocktails",
-      "ingrédients": ["purée de pêche", "prosecco"],
+      "category": "Cocktails",
+      "recipe": ["purée de pêche", "prosecco"],
       "prix": "7.50 €",
       "image": "./img/cocktails/bellini.png"
     },
     {
       "nom": "Bellini royal",
-      "catégorie": "Cocktails",
-      "ingrédients": ["purée de pêche", "champagne Moët & Chandon"],
+      "category": "Cocktails",
+      "recipe": ["purée de pêche", "champagne Moët & Chandon"],
       "prix": "12.00 €",
       "image": "./img/cocktails/belliniRoyal.png"
     },
     {
       "nom": "Margarita Italiana",
-      "catégorie": "Cocktails",
-      "ingrédients": [
+      "category": "Cocktails",
+      "recipe": [
         "tequila",
         "limoncello",
         "pulco",
@@ -41,8 +41,8 @@
     },
     {
       "nom": "Mojito",
-      "catégorie": "Cocktails",
-      "ingrédients": [
+      "category": "Cocktails",
+      "recipe": [
         "rhum",
         "citron vert",
         "feuille de menthe",
@@ -54,204 +54,200 @@
     },
     {
       "nom": "Bramble",
-      "catégorie": "Cocktails",
-      "ingrédients": [
-        "gin",
-        "pulco",
-        "sirop de sucre de canne",
-        "crème de mûre"
-      ],
-      "prix": "8.00 €"
+      "category": "Cocktails",
+      "recipe": ["gin", "pulco", "sirop de sucre de canne", "crème de mûre"],
+      "prix": "8.00 €",
+      "image": "./img/cocktails/bramble.WEBP"
     },
     {
       "nom": "Expresso Martini",
-      "catégorie": "Cocktails",
-      "ingrédients": ["vodka", "kahlua", "sirop de sucre de canne", "expresso"],
-      "prix": "8.50 €"
+      "category": "Cocktails",
+      "recipe": ["vodka", "kahlua", "sirop de sucre de canne", "expresso"],
+      "prix": "8.50 €",
+      "image": "./img/cocktails/expressoMartini.WEBP"
     },
     {
       "nom": "Chandon Garden Spritz",
-      "catégorie": "Spritz",
-      "ingrédients": ["Maison - Moët et Chandon"],
-      "prix": "8.50 €"
+      "category": "Spritz",
+      "recipe": ["Liqueur d'écorces d'oranges - Vin mousseux argentin"],
+      "prix": "8.50 €",
+      "image": "./img/cocktails/garden.WEBP"
     },
     {
       "nom": "Aperol Spritz",
-      "catégorie": "Spritz",
-      "ingrédients": [
+      "category": "Spritz",
+      "recipe": [
         "Aperol",
         "prosecco",
         "eau gazeuse",
         "glaçon",
         "rondelle d’orange"
       ],
-      "prix": "7.50 €"
+      "prix": "7.50 €",
+      "image": "./img/cocktails/aperol.WEBP"
     },
     {
       "nom": "Hugo Spritz",
-      "catégorie": "Spritz",
-      "ingrédients": [
+      "category": "Spritz",
+      "recipe": [
         "prosecco",
         "liqueur Saint Germain",
         "sirop de fleur de sureau",
         "feuille de menthe",
         "citron vert"
       ],
-      "prix": "8.50 €"
+      "prix": "8.50 €",
+      "image": "./img/cocktails/hugo.WEBP"
     },
     {
       "nom": "Pink Lady Spritz",
-      "catégorie": "Spritz",
-      "ingrédients": [
+      "category": "Spritz",
+      "recipe": [
         "prosecco",
         "liqueur Saint Germain",
         "crème de framboise",
         "sirop de framboise",
         "feuille de menthe"
       ],
-      "prix": "8.50 €"
+      "prix": "8.50 €",
+      "image": "./img/cocktails/pink.WEBP"
     },
     {
       "nom": "Campari Spritz",
-      "catégorie": "Spritz",
-      "ingrédients": [
-        "prosecco",
-        "campari",
-        "rondelle d’orange",
-        "eau gazeuse"
-      ],
-      "prix": "8.50 €"
+      "category": "Spritz",
+      "recipe": ["prosecco", "campari", "rondelle d’orange", "eau gazeuse"],
+      "prix": "8.50 €",
+      "image": "./img/cocktails/campari.WEBP"
     },
     {
       "nom": "Limoncello Spritz",
-      "catégorie": "Spritz",
-      "ingrédients": [
+      "category": "Spritz",
+      "recipe": [
         "prosecco",
         "limoncello",
         "sirop de fleur de sureau",
         "eau gazeuse",
         "rondelle de citron"
       ],
-      "prix": "8.50 €"
+      "prix": "8.50 €",
+      "image": "./img/cocktails/limon.WEBP"
     },
     {
       "nom": "LE CÉSAR",
-      "catégorie": "Cocktails du soir",
-      "ingrédients": ["Gin", "Purée de pêche", "triple sec"],
-      "prix": "11.00 €"
+      "category": "CocktailsSoir",
+      "recipe": ["Gin", "Purée de pêche", "triple sec"],
+      "prix": "11.00 €",
+      "image": "./img/cocktails/cesar.WEBP"
     },
     {
       "nom": "TESORO APE",
-      "catégorie": "Cocktails du soir",
-      "ingrédients": [
-        "Jack Daniel’s honey",
-        "triple sec",
-        "jus de pomme",
-        "miel"
-      ],
-      "prix": "11.00 €"
+      "category": "CocktailsSoir",
+      "recipe": ["Jack Daniel’s honey", "triple sec", "jus de pomme", "miel"],
+      "prix": "11.00 €",
+      "image": "./img/cocktails/tesoro.WEBP"
     },
     {
       "nom": "CYRUS",
-      "catégorie": "Cocktails du soir",
-      "ingrédients": [
-        "Whisky",
-        "Amaretto",
-        "Sirop de fraise",
-        "feuilles de Menthe"
-      ],
-      "prix": "10.00 €"
+      "category": "CocktailsSoir",
+      "recipe": ["Whisky", "Amaretto", "Sirop de fraise", "feuilles de Menthe"],
+      "prix": "10.00 €",
+      "image": "./img/cocktails/syrus.WEBP"
     },
     {
       "nom": "AMAZONIA",
-      "catégorie": "Cocktails du soir",
-      "ingrédients": [
+      "category": "CocktailsSoir",
+      "recipe": [
         "Rhum ambré",
         "Curaçao bleu",
         "jus de citron vert",
         "jus de mangue"
       ],
-      "prix": "10.00 €"
+      "prix": "10.00 €",
+      "image": "./img/cocktails/amazonia.WEBP"
     },
     {
       "nom": "DRAGON BLEU",
-      "catégorie": "Cocktails du soir",
-      "ingrédients": [
-        "Vodka",
-        "Curaçao bleu",
-        "sirop d’orgeat",
-        "jus de pomme"
-      ],
-      "prix": "9.50 €"
+      "category": "CocktailsSoir",
+      "recipe": ["Vodka", "Curaçao bleu", "sirop d’orgeat", "jus de pomme"],
+      "prix": "9.50 €",
+      "image": "./img/cocktails/dragon.WEBP"
     },
     {
       "nom": "SORTIARIUS",
-      "catégorie": "Cocktails du soir",
-      "ingrédients": ["Gin", "Purée de framboise", "Jus de citron"],
-      "prix": "11.00 €"
+      "category": "CocktailsSoir",
+      "recipe": ["Gin", "Purée de framboise", "Jus de citron"],
+      "prix": "11.00 €",
+      "image": "./img/cocktails/soritarus.WEBP"
     },
     {
       "nom": "GODFATHER",
-      "catégorie": "Cocktails du soir",
-      "ingrédients": ["Whisky", "amaretto"],
-      "prix": "7.00 €"
+      "category": "CocktailsSoir",
+      "recipe": ["Whisky", "amaretto"],
+      "prix": "7.00 €",
+      "image": "./img/cocktails/godFather.WEBP"
     },
     {
       "nom": "AMANDINA",
-      "catégorie": "Cocktails du soir",
-      "ingrédients": ["Vodka", "Amaretto", "purée de pêche", "sirop d’orgeat"],
-      "prix": "7.00 €"
+      "category": "CocktailsSoir",
+      "recipe": ["Vodka", "Amaretto", "purée de pêche", "sirop d’orgeat"],
+      "prix": "7.00 €",
+      "image": "./img/cocktails/amandina.WEBP"
     },
     {
       "nom": "LA ROSA DEL BASILICO",
-      "catégorie": "Cocktails du soir",
-      "ingrédients": [
+      "category": "CocktailsSoir",
+      "recipe": [
         "Gin",
         "purée de fraise",
         "feuilles de basilic",
         "jus de citron vert"
       ],
-      "prix": "7.50 €"
+      "prix": "7.50 €",
+      "image": "./img/cocktails/rosa.WEBP"
     },
     {
       "nom": "MARCO",
-      "catégorie": "Mocktails",
-      "ingrédients": ["Ginger ale", "jus de cranberry", "jus d’orange"],
-      "prix": "7.50 €"
+      "category": "Mocktails",
+      "recipe": ["Ginger ale", "jus de cranberry", "jus d’orange"],
+      "prix": "7.50 €",
+      "image": "./img/cocktails/marco.WEBP"
     },
     {
       "nom": "MOJITO SANS ALCOOL",
-      "catégorie": "Mocktails",
-      "ingrédients": [
+      "category": "Mocktails",
+      "recipe": [
         "Feuilles de menthe",
         "citron vert",
         "cassonade",
         "limonade",
         "eau gazeuse"
       ],
-      "prix": "7.50 €"
+      "prix": "7.50 €",
+      "image": "./img/cocktails/virginMojito.WEBP"
     },
     {
       "nom": "DOLCEZZA EXOTICA",
-      "catégorie": "Mocktails",
-      "ingrédients": [
+      "category": "Mocktails",
+      "recipe": [
         "lait de coco",
         "jus de mangue",
         "jus d’ananas",
         "sirop de ﬂeur de sureau"
       ],
-      "prix": "7.50 €"
+      "prix": "7.50 €",
+      "image": "./img/cocktails/dolceExotica.WEBP"
     },
     {
       "nom": "FRESH SODA",
-      "catégorie": "Mocktails",
-      "ingrédients": [
+      "category": "Mocktails",
+      "recipe": [
         "Sirop de grenadine et d’orgeat",
         "jus de citron vert",
         "Perrier",
         "branche de romarin"
       ],
-      "prix": "7.50 €"
+      "prix": "7.50 €",
+      "image": "./img/cocktails/freshSoda.WEBP"
     }
   ]
 }
