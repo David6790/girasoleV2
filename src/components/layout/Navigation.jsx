@@ -176,7 +176,7 @@ const Navigation = () => {
             <NavLink to="/menu-midi">
               <li>Formules Midi</li>
             </NavLink>
-            <NavLink to="/menu-midi">
+            <NavLink to="/menu-cocktails">
               <li>Les Cocktails</li>
             </NavLink>
             <li
