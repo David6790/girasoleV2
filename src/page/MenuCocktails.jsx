@@ -68,7 +68,7 @@ const MenuCocktails = () => {
           </li>
         </ul>
       </div>
-      <div className="w-full  flex flex-row justify-evenly flex-wrap gap-5">
+      <div className="w-full  flex flex-row justify-evenly flex-wrap gap-5 mb-10">
         <CocktailList category={category} />
       </div>
       <Footer />
