@@ -6,28 +6,29 @@ const ModalMenu = ({ isOpen, onClose, resaModal }) => {
   const menuGirasole = [
     {
       day: "Lundi",
-      starter: "Bruschetta Napoli",
-      dish: "Brochettes de boeuf grillées, pommes de terre et salade",
+      starter: "Aubergine farcie à la viande et jus de tomate",
+      dish: "Pasta sauce napoli, crème truffée et champignons",
     },
     {
       day: "Mardi",
-      starter: "Dome apéritif (au saumon fumé, oeuf mollet et avocat)",
-      dish: "Emincé de poulet pôelé à l'ail, citron et son risotto à la tomate et mascarpone",
+      starter: "Polpettes di zucca",
+      dish: "Escalope de poulet gratinée et risotto, sauce crémeuse aux légumes",
     },
     {
       day: "Mercredi",
-      starter: "Salade d'automne",
-      dish: "Blanquette de veau à l'ancienne et ses tagliatelles",
+      starter: "Quiche au bœuf, tomates et poivrons",
+      dish: " Lasagne de légumes et petite salade",
     },
     {
       day: "Jeudi",
-      starter: "Planchette de charcuterie",
-      dish: "Gnocchis à la bolognaise",
+      starter:
+        "Salade fermier (Salade de pommes de terre, panchetta, oeufs et oignons)",
+      dish: "Raviolis farcis au saumon",
     },
     {
       day: "Vendredi",
-      starter: "Boulettes au thon, et pommes de terre",
-      dish: "Parmentier de poisson aux épinards et légumes grillés",
+      starter: "Bruschetta aux crevettes grillées",
+      dish: "Filet de tilapia en crôute de parmesan et linguines sauce Napoli",
     },
   ];
 
@@ -85,10 +86,7 @@ const ModalMenu = ({ isOpen, onClose, resaModal }) => {
                 Dessert de la semaine :
               </span>
               <br />
-              <span className="text-black">
-                Panna cotta (au coulis de framboises, fraises, chocolat) au
-                choix
-              </span>
+              <span className="text-black">Tarte du jour</span>
             </p>
           </div>
           <button
