@@ -95,6 +95,24 @@ const ModalReservation = ({ isOpen, onClose }) => {
       setTel(e.target.value);
     }
   };
+  const disablePastDt = (currentDate) => {
+    const today = moment().startOf("day");
+    return currentDate.isSameOrAfter(today);
+  };
+
+  // Cette fonction vérifie si l'heure sélectionnée est valide pour la date sélectionnée
+  const isTimeValidForSelectedDate = (selectedTime, selectedDate) => {
+    const now = moment();
+    if (selectedDate.isSame(now, "day")) {
+      const selectedHour = parseInt(selectedTime.split(":")[0]);
+      const selectedMinute = parseInt(selectedTime.split(":")[1]);
+      return (
+        now.hour() < selectedHour ||
+        (now.hour() === selectedHour && now.minute() <= selectedMinute)
+      );
+    }
+    return true;
+  };
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -115,6 +133,12 @@ const ModalReservation = ({ isOpen, onClose }) => {
       message: message,
       phone: tel,
     };
+    if (!isTimeValidForSelectedDate(selectedTime, dateTime)) {
+      // Gérez l'erreur si l'heure sélectionnée est dans le passé
+      setModalMessage("Veuillez choisir une heure future.");
+      setMessageModalOpen(true);
+      return;
+    }
 
     setIsLoading(true);
     emailjs
@@ -218,6 +242,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
               <Datetime
                 locale="fr"
                 value={dateTime}
+                isValidDate={disablePastDt}
                 closeOnSelect={true}
                 onChange={handleChangeDateTime}
                 dateFormat="YYYY-MM-DD"
