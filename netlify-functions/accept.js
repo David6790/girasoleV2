@@ -1,5 +1,6 @@
 const sgMail = require("@sendgrid/mail");
 const twilio = require("twilio");
+const axios = require("axios");
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const twilioClient = twilio(
@@ -14,7 +15,7 @@ exports.handler = async (event, context) => {
     return { statusCode: 405, body: "Method Not Allowed" };
   }
 
-  const { email, phone, name, number, resDate, resTime } =
+  const { email, phone, name, number, resDate, resTime, ID } =
     event.queryStringParameters;
 
   const msg = {
@@ -31,6 +32,11 @@ exports.handler = async (event, context) => {
 
   try {
     await sgMail.send(msg);
+    await axios.patch(`https://sheetdb.io/api/v1/97lppk2d46b57/ID/${ID}`, {
+      data: {
+        Status: "Confirmé",
+      },
+    });
     if (phone) {
       await twilioClient.messages.create({
         body: `${greeting} ${name}, votre réservation au Il Girasole le ${resDate} à ${resTime} pour ${number} personnes a bien été notée et nous vous en remercions. En cas d'empêchement, n'oubliez pas de nous appeler au plus vite, au 03 88 37 16 76 ou par sms au 06 26 19 10 28 (en indiquant votre nom).`,

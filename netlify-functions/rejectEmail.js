@@ -1,5 +1,5 @@
 const sgMail = require("@sendgrid/mail");
-
+const axios = require("axios");
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 exports.handler = async (event, context) => {
@@ -7,7 +7,7 @@ exports.handler = async (event, context) => {
     return { statusCode: 405, body: "Method Not Allowed" };
   }
 
-  const { email } = event.queryStringParameters;
+  const { email, ID } = event.queryStringParameters;
 
   const msg = {
     to: email,
@@ -17,6 +17,11 @@ exports.handler = async (event, context) => {
 
   try {
     await sgMail.send(msg);
+    await axios.patch(`https://sheetdb.io/api/v1/97lppk2d46b57/ID/${ID}`, {
+      data: {
+        Status: "Refusé",
+      },
+    });
 
     return {
       statusCode: 200,

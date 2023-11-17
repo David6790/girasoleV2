@@ -1,5 +1,6 @@
 // sendSms.js
 const twilio = require("twilio");
+const axios = require("axios");
 
 // Configurez votre client Twilio
 const twilioClient = twilio(
@@ -15,7 +16,8 @@ exports.handler = async (event, context) => {
   }
 
   // Récupérez les paramètres de la chaîne de requête
-  const { phone, name, resDate, resTime, number } = event.queryStringParameters;
+  const { phone, name, resDate, resTime, number, ID } =
+    event.queryStringParameters;
 
   // Vérifiez que tous les paramètres nécessaires sont présents
 
@@ -24,6 +26,11 @@ exports.handler = async (event, context) => {
   const greeting = currentHour < 18 ? "Bonjour" : "Bonsoir";
 
   try {
+    await axios.patch(`https://sheetdb.io/api/v1/97lppk2d46b57/ID/${ID}`, {
+      data: {
+        Status: "Refusé",
+      },
+    });
     // Envoyez le SMS via Twilio
     await twilioClient.messages.create({
       body: `${greeting} ${name}, votre réservation au Il Girasole le ${resDate} à ${resTime} pour ${number} personnes a bien été notée et nous vous en remercions. En cas d'empêchement, n'oubliez pas de nous appeler au plus vite, au 03 88 37 16 76 ou par sms au 06 26 19 10 28 (en indiquant votre nom).`,
