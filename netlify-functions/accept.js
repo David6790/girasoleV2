@@ -38,16 +38,16 @@ exports.handler = async (event, context) => {
         to: `+${phone}`,
       });
     }
-    const sheetDbUrl = "Uhttps://sheetdb.io/api/v1/97lppk2d46b57"; // Remplacez par votre URL SheetDB
+    const sheetDbUrl = "Uhttps://sheetdb.io/api/v1/97lppk2d46b57/id"; // Remplacez par votre URL SheetDB
     const uniqueId = ID; // Remplacez par l'identifiant unique de la réservation dans SheetDB
 
     await fetch(`${sheetDbUrl}/${uniqueId}`, {
-      method: "PUT",
+      method: "PATCH",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ Status: "Accepted" }),
+      data: JSON.stringify({ Status: "Accepted" }),
     });
     return {
       statusCode: 200,
