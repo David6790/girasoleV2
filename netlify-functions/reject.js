@@ -1,5 +1,6 @@
 const sgMail = require("@sendgrid/mail");
 const twilio = require("twilio");
+const axios = require("axios");
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const twilioClient = twilio(
@@ -13,7 +14,7 @@ exports.handler = async (event, context) => {
     return { statusCode: 405, body: "Method Not Allowed" };
   }
 
-  const { email, phone, name } = event.queryStringParameters;
+  const { email, phone, name, ID } = event.queryStringParameters;
 
   const msg = {
     to: email,
@@ -23,6 +24,11 @@ exports.handler = async (event, context) => {
 
   try {
     await sgMail.send(msg);
+    await axios.patch(`https://sheetdb.io/api/v1/97lppk2d46b57/ID/${ID}`, {
+      data: {
+        Status: "Refusé",
+      },
+    });
     if (phone) {
       await twilioClient.messages.create({
         body: `${greeting} ${name}, merci pour votre réservation mais malheureusement le restaurant est au complet ce soir. Si vous le souhaitez nous pouvons vous mettre sur une liste d'attente et vous contacter dès qu'une table se libère.
