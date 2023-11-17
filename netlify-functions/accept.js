@@ -1,5 +1,6 @@
 const sgMail = require("@sendgrid/mail");
 const twilio = require("twilio");
+const fetch = require("node-fetch");
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const twilioClient = twilio(
@@ -38,20 +39,22 @@ exports.handler = async (event, context) => {
         to: `+${phone}`,
       });
     }
-    const sheetDbUrl = "https://sheetdb.io/api/v1/97lppk2d46b57/ID"; // Remplacez par votre URL SheetDB
-    const uniqueId = ID; // Remplacez par l'identifiant unique de la réservation dans SheetDB
 
-    await fetch(`${sheetDbUrl}/${uniqueId}`, {
+    const sheetDbUrl = "https://sheetdb.io/api/v1/97lppk2d46b57/ID"; // Assurez-vous que l'URL est correcte
+    const uniqueId = event.queryStringParameters.ID; // L'identifiant unique de la réservation
+
+    const response = await fetch(`${sheetDbUrl}/${uniqueId}`, {
       method: "PATCH",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        data: { Status: "Accepted" },
-      }).then((result) => console.log(result)),
+      body: JSON.stringify({ data: { Status: "Accepted" } }),
     });
 
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
     return {
       statusCode: 200,
       body: "Email et SMS envoyés avec succès",
