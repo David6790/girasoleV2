@@ -40,7 +40,7 @@ exports.handler = async (event, context) => {
   try {
     // Envoyez l'email via SendGrid
     await sgMail.send(msg);
-    await axios.patch(`https://sheetdb.io/api/v1/97lppk2d46b57/id/${ID}`, {
+    await axios.patch(`https://sheetdb.io/api/v1/97lppk2d46b57/ID/${ID}`, {
       data: {
         Status: "Confirmé", // ou tout autre statut que vous souhaitez définir
       },
