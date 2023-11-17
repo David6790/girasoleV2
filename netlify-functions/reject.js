@@ -24,17 +24,18 @@ exports.handler = async (event, context) => {
 
   try {
     await sgMail.send(msg);
-    await axios.patch(`https://sheetdb.io/api/v1/97lppk2d46b57/ID/${ID}`, {
-      data: {
-        Status: "Refusé",
-      },
-    });
+
     if (phone) {
       await twilioClient.messages.create({
         body: `${greeting} ${name}, merci pour votre réservation mais malheureusement le restaurant est au complet ce soir. Si vous le souhaitez nous pouvons vous mettre sur une liste d'attente et vous contacter dès qu'une table se libère.
         À bientôt -IL GIRASOLE-`,
         from: "IlGirasole",
         to: `+${phone}`,
+      });
+      await axios.patch(`https://sheetdb.io/api/v1/97lppk2d46b57/ID/${ID}`, {
+        data: {
+          Status: "Refusé",
+        },
       });
     }
     return {
