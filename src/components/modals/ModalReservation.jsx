@@ -57,7 +57,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
   const [dateTime, setDateTime] = useState(moment());
   const [selectedTime, setSelectedTime] = useState("12:00");
   const [availableTimeSlots, setAvailableTimeSlots] = useState(timeSlots);
-  let id = crypto.randomUUID();
+  let ID = crypto.randomUUID();
   const [tel, setTel] = useState("");
   const [messageModalOpen, setMessageModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
@@ -132,7 +132,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
       email: email,
       message: message,
       phone: tel,
-      ID: id,
+      ID: ID,
     };
     if (!isTimeValidForSelectedDate(selectedTime, dateTime)) {
       // Gérez l'erreur si l'heure sélectionnée est dans le passé
@@ -150,7 +150,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          ID: id, // Générez ou spécifiez un identifiant si nécessaire
+          ID: ID, // Générez ou spécifiez un identifiant si nécessaire
           Name: name,
           NumberGuest: numberOfGuest,
           Date: validDateTime.format("DD-MM-YY"),
