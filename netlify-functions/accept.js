@@ -33,15 +33,6 @@ exports.handler = async (event, context) => {
   };
 
   try {
-    await sgMail.send(msg);
-    if (phone) {
-      await twilioClient.messages.create({
-        body: `${greeting} ${name}, votre réservation au Il Girasole le ${resDate} à ${resTime} pour ${number} personnes a bien été notée et nous vous en remercions. En cas d'empêchement, n'oubliez pas de nous appeler au plus vite, au 03 88 37 16 76 ou par sms au 06 26 19 10 28 (en indiquant votre nom).`,
-        from: "IlGirasole",
-        to: `+${phone}`,
-      });
-    }
-
     await fetch(`https://sheetdb.io/api/v1/97lppk2d46b57/ID/${ID}`, {
       method: "PATCH",
       headers: {
@@ -50,6 +41,14 @@ exports.handler = async (event, context) => {
       },
       body: JSON.stringify({ data: { Status: "Accepted" } }),
     });
+    await sgMail.send(msg);
+    if (phone) {
+      await twilioClient.messages.create({
+        body: `${greeting} ${name}, votre réservation au Il Girasole le ${resDate} à ${resTime} pour ${number} personnes a bien été notée et nous vous en remercions. En cas d'empêchement, n'oubliez pas de nous appeler au plus vite, au 03 88 37 16 76 ou par sms au 06 26 19 10 28 (en indiquant votre nom).`,
+        from: "IlGirasole",
+        to: `+${phone}`,
+      });
+    }
 
     return {
       statusCode: 200,
