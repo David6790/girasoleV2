@@ -1,14 +1,15 @@
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
-import MenuBanner from "../components/MenuBanner";
+
 import MenuCat from "../components/MenuCat";
 import { useRef, useState } from "react";
 import MenuFilter from "../components/MenuFilter";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
+import MenuBanner from "../components/MenuBanner";
 
 const Menu = () => {
-  const [category, setCategory] = useState("antipasti");
+  const [category, setCategory] = useState("tapas");
   const ref1 = useRef(null);
 
   const isInView = useInView(ref1, { once: true });
@@ -61,12 +62,20 @@ const Menu = () => {
         <div className="w-full  relative flex justify-between items-start  ">
           <div className="sticky top-0 w-1/6 flex flex-col justify-start items-start p-4 h-screen  md: ">
             <MenuFilter
+              name={"tapas"}
+              onClick={() => handleCategoryChange("tapas")}
+            />
+            <MenuFilter
               name={"Antipasti"}
               onClick={() => handleCategoryChange("antipasti")}
             />
             <MenuFilter
               name={"Carpaccio"}
               onClick={() => handleCategoryChange("carpaccio")}
+            />
+            <MenuFilter
+              name={"Zupa"}
+              onClick={() => handleCategoryChange("zupa")}
             />
             <MenuFilter
               name={"Insalate"}
