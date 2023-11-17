@@ -57,7 +57,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
   const [dateTime, setDateTime] = useState(moment());
   const [selectedTime, setSelectedTime] = useState("12:00");
   const [availableTimeSlots, setAvailableTimeSlots] = useState(timeSlots);
-
+  let id = crypto.randomUUID();
   const [tel, setTel] = useState("");
   const [messageModalOpen, setMessageModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
@@ -114,7 +114,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
     return true;
   };
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
 
     const validDateTime = moment.isMoment(dateTime)
@@ -132,6 +132,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
       email: email,
       message: message,
       phone: tel,
+      ID: id,
     };
     if (!isTimeValidForSelectedDate(selectedTime, dateTime)) {
       // Gérez l'erreur si l'heure sélectionnée est dans le passé
@@ -141,29 +142,52 @@ const ModalReservation = ({ isOpen, onClose }) => {
     }
 
     setIsLoading(true);
-    emailjs
-      .send("service_6j5qs7e", "template_clc96rm", data, "TlcoR3tgd_o9uLj7o")
-      .then(
-        (result) => {
-          console.log(result.text);
-          setEmail("");
-          setMessage("");
-          setName("");
-          setDateTime(moment());
-          setNumberOfGuest("");
-          setSelectedTime("");
-          setTel("");
-          setSelectedTime("");
-          setIsLoading(false);
-          setModalMessage(
-            "Votre réservation est bien prise en compte. Nous vous confirmerons par email ET par SMS dans les prochaines minutes. N'hésitez pas à verifier dans vos indésirables / spams si vous ne recevez pas d'email. Ajoutez-nous en favoris pour éviter que nos confirmations atterrissent dans vos spams."
-          );
-          setMessageModalOpen(true);
+    try {
+      await fetch("https://sheetdb.io/api/v1/97lppk2d46b57", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
-        (error) => {
-          console.log(error.text);
-        }
-      );
+        body: JSON.stringify({
+          ID: id, // Générez ou spécifiez un identifiant si nécessaire
+          Name: name,
+          NumberGuest: numberOfGuest,
+          Date: validDateTime.format("DD-MM-YY"),
+          Time: selectedTime,
+          Comment: message,
+          Email: email,
+          Phone: `n°${tel}`,
+          Status: "Pending", // ou tout autre statut initial que vous souhaitez définir
+        }),
+      });
+
+      emailjs
+        .send("service_6j5qs7e", "template_clc96rm", data, "TlcoR3tgd_o9uLj7o")
+        .then(
+          (result) => {
+            console.log(result.text);
+            setEmail("");
+            setMessage("");
+            setName("");
+            setDateTime(moment());
+            setNumberOfGuest("");
+            setSelectedTime("");
+            setTel("");
+            setSelectedTime("");
+            setIsLoading(false);
+            setModalMessage(
+              "Votre réservation est bien prise en compte. Nous vous confirmerons par email ET par SMS dans les prochaines minutes. N'hésitez pas à verifier dans vos indésirables / spams si vous ne recevez pas d'email. Ajoutez-nous en favoris pour éviter que nos confirmations atterrissent dans vos spams."
+            );
+            setMessageModalOpen(true);
+          },
+          (error) => {
+            console.log(error.text);
+          }
+        );
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

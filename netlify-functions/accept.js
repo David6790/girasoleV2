@@ -14,7 +14,7 @@ exports.handler = async (event, context) => {
     return { statusCode: 405, body: "Method Not Allowed" };
   }
 
-  const { email, phone, name, number, resDate, resTime } =
+  const { email, phone, name, number, resDate, resTime, ID } =
     event.queryStringParameters;
 
   const msg = {
@@ -38,6 +38,17 @@ exports.handler = async (event, context) => {
         to: `+${phone}`,
       });
     }
+    const sheetDbUrl = "Uhttps://sheetdb.io/api/v1/97lppk2d46b57"; // Remplacez par votre URL SheetDB
+    const uniqueId = ID; // Remplacez par l'identifiant unique de la réservation dans SheetDB
+
+    await fetch(`${sheetDbUrl}/${uniqueId}`, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ Status: "Accepted" }),
+    });
     return {
       statusCode: 200,
       body: "Email et SMS envoyés avec succès",
