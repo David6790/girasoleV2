@@ -47,7 +47,9 @@ exports.handler = async (event, context) => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      data: JSON.stringify({ Status: "Accepted" }),
+      body: JSON.stringify({
+        data: { Status: "Accepted" }, // Le champ à mettre à jour
+      }),
     });
     return {
       statusCode: 200,
