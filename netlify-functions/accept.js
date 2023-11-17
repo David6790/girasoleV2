@@ -38,7 +38,7 @@ exports.handler = async (event, context) => {
         to: `+${phone}`,
       });
     }
-    const sheetDbUrl = "Uhttps://sheetdb.io/api/v1/97lppk2d46b57/Status/"; // Remplacez par votre URL SheetDB
+    const sheetDbUrl = "https://sheetdb.io/api/v1/97lppk2d46b57/ID"; // Remplacez par votre URL SheetDB
     const uniqueId = ID; // Remplacez par l'identifiant unique de la réservation dans SheetDB
 
     await fetch(`${sheetDbUrl}/${uniqueId}`, {
@@ -49,8 +49,9 @@ exports.handler = async (event, context) => {
       },
       body: JSON.stringify({
         data: { Status: "Accepted" },
-      }),
+      }).then((result) => console.log(result)),
     });
+
     return {
       statusCode: 200,
       body: "Email et SMS envoyés avec succès",
