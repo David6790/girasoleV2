@@ -43,7 +43,7 @@ exports.handler = async (event, context) => {
     }
 
     const sheetDbUrl = "https://sheetdb.io/api/v1/97lppk2d46b57/ID"; // Assurez-vous que l'URL est correcte
-    const uniqueId = event.queryStringParameters.ID; // L'identifiant unique de la réservation
+    const uniqueId = ID; // L'identifiant unique de la réservation
 
     const response = await fetch(`${sheetDbUrl}/${uniqueId}`, {
       method: "PATCH",
