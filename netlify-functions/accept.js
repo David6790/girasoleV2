@@ -1,6 +1,5 @@
 const sgMail = require("@sendgrid/mail");
 const twilio = require("twilio");
-
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const twilioClient = twilio(
@@ -11,13 +10,11 @@ const currentHour = new Date().getHours();
 const greeting = currentHour < 18 ? "Bonjour" : "Bonsoir";
 
 exports.handler = async (event, context) => {
-  const fetch = (...args) =>
-    import("node-fetch").then(({ default: fetch }) => fetch(...args));
   if (event.httpMethod !== "GET") {
     return { statusCode: 405, body: "Method Not Allowed" };
   }
 
-  const { email, phone, name, number, resDate, resTime, ID } =
+  const { email, phone, name, number, resDate, resTime } =
     event.queryStringParameters;
 
   const msg = {
@@ -33,14 +30,6 @@ exports.handler = async (event, context) => {
   };
 
   try {
-    await fetch(`https://sheetdb.io/api/v1/97lppk2d46b57/ID/${ID}`, {
-      method: "PATCH",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ data: { Status: "Accepted" } }),
-    });
     await sgMail.send(msg);
     if (phone) {
       await twilioClient.messages.create({
@@ -49,7 +38,6 @@ exports.handler = async (event, context) => {
         to: `+${phone}`,
       });
     }
-
     return {
       statusCode: 200,
       body: "Email et SMS envoyés avec succès",
