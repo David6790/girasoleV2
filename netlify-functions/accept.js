@@ -42,10 +42,7 @@ exports.handler = async (event, context) => {
       });
     }
 
-    const sheetDbUrl = "https://sheetdb.io/api/v1/97lppk2d46b57/ID"; // Assurez-vous que l'URL est correcte
-    const uniqueId = ID; // L'identifiant unique de la réservation
-
-    const response = await fetch(`${sheetDbUrl}/${uniqueId}`, {
+    await fetch(`https://sheetdb.io/api/v1/97lppk2d46b57/ID/${ID}`, {
       method: "PATCH",
       headers: {
         Accept: "application/json",
@@ -54,9 +51,6 @@ exports.handler = async (event, context) => {
       body: JSON.stringify({ data: { Status: "Accepted" } }),
     });
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
     return {
       statusCode: 200,
       body: "Email et SMS envoyés avec succès",
