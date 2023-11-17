@@ -1,6 +1,6 @@
 const sgMail = require("@sendgrid/mail");
 const twilio = require("twilio");
-const fetch = require("node-fetch");
+
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const twilioClient = twilio(
@@ -11,6 +11,8 @@ const currentHour = new Date().getHours();
 const greeting = currentHour < 18 ? "Bonjour" : "Bonsoir";
 
 exports.handler = async (event, context) => {
+  const fetch = (...args) =>
+    import("node-fetch").then(({ default: fetch }) => fetch(...args));
   if (event.httpMethod !== "GET") {
     return { statusCode: 405, body: "Method Not Allowed" };
   }
