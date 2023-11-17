@@ -1,5 +1,6 @@
 // sendEmail.js
 const sgMail = require("@sendgrid/mail");
+const axios = require("axios");
 
 // Configurez votre clé API SendGrid
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
@@ -12,7 +13,8 @@ exports.handler = async (event, context) => {
   }
 
   // Récupérez les paramètres de la chaîne de requête
-  const { email, name, resDate, resTime, number } = event.queryStringParameters;
+  const { email, name, resDate, resTime, number, ID } =
+    event.queryStringParameters;
 
   // Vérifiez que tous les paramètres nécessaires sont présents
   if (!email || !name || !resDate || !resTime || !number) {
@@ -38,6 +40,11 @@ exports.handler = async (event, context) => {
   try {
     // Envoyez l'email via SendGrid
     await sgMail.send(msg);
+    await axios.patch(`https://sheetdb.io/api/v1/97lppk2d46b57/id/${ID}`, {
+      data: {
+        Status: "Confirmé", // ou tout autre statut que vous souhaitez définir
+      },
+    });
     return {
       statusCode: 200,
       body: "Email envoyé avec succès",

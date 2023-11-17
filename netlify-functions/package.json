@@ -12,6 +12,7 @@
   "dependencies": {
     "@emailjs/nodejs": "^2.2.0",
     "@sendgrid/mail": "^7.7.0",
+    "axios": "^1.6.2",
     "emailjs-com": "^3.2.0",
     "node-fetch": "^3.3.2",
     "react-time-picker": "^6.5.1",
