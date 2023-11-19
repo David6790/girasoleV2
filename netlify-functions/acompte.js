@@ -26,9 +26,9 @@ exports.handler = async (event, context) => {
             product_data: {
               name: "Acompte de réservation",
             },
-            unit_amount: 1000, // 10€ par personne
+            unit_amount: 1000 * numberGuests, // 10€ par personne
           },
-          quantity: numberGuests,
+          quantity: 1, // Quantité fixée à 1 car le montant total est calculé avec numberGuests
         },
       ],
       metadata: { reservationId: ID },
