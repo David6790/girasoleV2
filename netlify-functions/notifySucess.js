@@ -47,10 +47,10 @@ exports.handler = async (lambdaEvent, context) => {
 
       // Envoyer un email de notification interne
       const internalEmailMessage = {
-        to: "david.lb90@gmail.com",
+        to: "stephstrass@gmail.com",
         from: "ilgirasolestrasbourg67@gmail.com",
         subject: "Nouveau paiement d'acompte réussi",
-        text: `Un paiement pour la réservation ${reservationId} a été reçu. Veuillez vérifier le système de réservation pour plus de détails.`,
+        text: `Hello steph, Un paiement pour la réservation ${reservationId} au nom de ${metadata.customerName} a été reçu. Veuillez vérifier le système de réservation pour plus de détails.`,
       };
 
       await sgMail.send(internalEmailMessage);
