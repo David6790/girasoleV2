@@ -1,5 +1,5 @@
 const sgMail = require("@sendgrid/mail");
-// const axios = require("axios");
+const axios = require("axios");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
@@ -26,14 +26,14 @@ exports.handler = async (lambdaEvent, context) => {
       const reservationId = metadata.reservationId;
 
       // Mise à jour de SheetDB
-      // await axios.patch(
-      //   `https://sheetdb.io/api/v1/97lppk2d46b57/ID/${reservationId}`,
-      //   {
-      //     data: {
-      //       Acompte: "Acompte payé",
-      //     },
-      //   }
-      // );
+      await axios.patch(
+        `https://sheetdb.io/api/v1/97lppk2d46b57/ID/${reservationId}`,
+        {
+          data: {
+            Acompte: "Acompte payé",
+          },
+        }
+      );
 
       // Envoyer un email de confirmation au client
       // const emailMessage = {
