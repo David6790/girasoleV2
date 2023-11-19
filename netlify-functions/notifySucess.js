@@ -1,5 +1,5 @@
 const sgMail = require("@sendgrid/mail");
-const axios = require("axios");
+// const axios = require("axios");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
@@ -24,14 +24,14 @@ exports.handler = async (lambdaEvent, context) => {
       const paymentIntent = stripeEvent.data.object;
       const reservationId = paymentIntent.metadata.reservationId;
       // Mise à jour de SheetDB
-      await axios.patch(
-        `https://sheetdb.io/api/v1/97lppk2d46b57/ID/${reservationId}`,
-        {
-          data: {
-            Acompte: "Acompte payé",
-          },
-        }
-      );
+      // await axios.patch(
+      //   `https://sheetdb.io/api/v1/97lppk2d46b57/ID/${reservationId}`,
+      //   {
+      //     data: {
+      //       Acompte: "Acompte payé",
+      //     },
+      //   }
+      // );
 
       // Envoyer un email de confirmation au client
       const emailMessage = {
@@ -45,7 +45,7 @@ exports.handler = async (lambdaEvent, context) => {
 
       // Envoyer un email de notification interne
       const internalEmailMessage = {
-        to: "stephstrass@gmail.com",
+        to: "david.lb90@gmail.com",
         from: "ilgirasolestrasbourg67@gmail.com",
         subject: "Nouveau paiement d'acompte réussi",
         text: `Un paiement pour la réservation ${reservationId} a été reçu. Veuillez vérifier le système de réservation pour plus de détails.`,
