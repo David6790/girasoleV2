@@ -26,6 +26,9 @@ exports.handler = async (event, context) => {
           quantity: numberOfGuest,
         },
       ],
+      metadata: {
+        reservationId: ID, // Ajoutez l'ID de réservation en tant que métadonnée
+      },
       // Vous pouvez ajouter d'autres paramètres ici si nécessaire
     });
 
