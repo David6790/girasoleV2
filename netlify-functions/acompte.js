@@ -3,6 +3,7 @@ const twilio = require("twilio");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
 const twilioClient = twilio(
   process.env.TWILIO_ACCOUNT_SID,
   process.env.TWILIO_AUTH_TOKEN
@@ -13,59 +14,59 @@ exports.handler = async (event, context) => {
     return { statusCode: 405, body: "Method Not Allowed" };
   }
 
-  const params = event.queryStringParameters;
-  const { email, phone, name, number, ID } = params;
-
   try {
+    const { email, phone, name, number, ID } = event.queryStringParameters;
+
     // Créer un lien de paiement Stripe
     const paymentLink = await stripe.paymentLinks.create({
       line_items: [
         {
-          price_data: {
-            currency: "eur",
-            product_data: {
-              name: "Acompte de réservation",
-            },
-            unit_amount: 1000 * number, // 10€ par personne
-          },
-          quantity: 1, // Quantité fixée à 1 car le montant total est calculé avec numberGuests
+          price: "price_1OE5jsJFBYsGU4SskPEdiaO1", // Remplacez par l'ID du tarif
+          quantity: number,
         },
       ],
-      metadata: { reservationId: ID },
+      // Vous pouvez ajouter d'autres paramètres ici si nécessaire
     });
 
-    // Préparer le message d'email
+    // Construire le message email
     const emailMessage = {
       to: email,
       from: "ilgirasolestrasbourg67@gmail.com",
-      subject: "Confirmation de réservation - Il Girasole",
-      text: `Bonjour ${name}, veuillez procéder au paiement de l'acompte pour votre réservation via le lien suivant : ${paymentLink.url}`,
+      subject: "Lien de paiement pour votre réservation",
+      text: `Bonjour ${name}, veuillez utiliser ce lien pour payer votre acompte de ${
+        number * 10
+      }€ : ${paymentLink.url}`,
     };
 
     // Envoyer l'email
     await sgMail.send(emailMessage);
 
+    // Construire le message SMS
+    const smsMessage = {
+      body: `Bonjour ${name}, veuillez utiliser ce lien pour payer votre acompte de ${
+        number * 10
+      }€ : ${paymentLink.url}`,
+      from: "IlGirasole",
+      to: `+${phone}`,
+    };
+
     // Envoyer le SMS
-    if (phone) {
-      await twilioClient.messages.create({
-        body: `Bonjour ${name}, veuillez procéder au paiement de l'acompte pour votre réservation via le lien suivant : ${paymentLink.url}`,
-        from: "IlGirasole",
-        to: `+${phone}`,
-      });
-    }
+    await twilioClient.messages.create(smsMessage);
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: "Lien de paiement envoyé avec succès" }),
+      body: "Lien de paiement envoyé avec succès",
     };
   } catch (error) {
     console.error(error);
 
+    if (error.response) {
+      console.error(error.response.body);
+    }
+
     return {
       statusCode: error.statusCode || 500,
-      body: JSON.stringify({
-        error: "Erreur lors de l'envoi du lien de paiement",
-      }),
+      body: "Erreur lors de l'envoi du lien de paiement",
     };
   }
 };
