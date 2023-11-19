@@ -1,6 +1,7 @@
 const sgMail = require("@sendgrid/mail");
 const twilio = require("twilio");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const axios = require("axios");
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
@@ -17,6 +18,12 @@ exports.handler = async (event, context) => {
   try {
     const { email, phone, name, number, ID } = event.queryStringParameters;
     const numberOfGuest = parseInt(event.queryStringParameters.number, 10);
+
+    await axios.patch(`https://sheetdb.io/api/v1/97lppk2d46b57/ID/${ID}`, {
+      data: {
+        Acompte: "En attente de paiement",
+      },
+    });
 
     // Créer un lien de paiement Stripe
     const paymentLink = await stripe.paymentLinks.create({

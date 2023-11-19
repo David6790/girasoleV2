@@ -150,7 +150,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          ID: ID, // Générez ou spécifiez un identifiant si nécessaire
+          ID: ID,
           Name: name,
           NumberGuest: numberOfGuest,
           Date: validDateTime.format("DD-MM-YY"),
@@ -158,7 +158,8 @@ const ModalReservation = ({ isOpen, onClose }) => {
           Comment: message,
           Email: email,
           Phone: `n°${tel}`,
-          Status: "Pending", // ou tout autre statut initial que vous souhaitez définir
+          Status: "Pending",
+          Acompte: "Pas Demandé",
         }),
       });
 
