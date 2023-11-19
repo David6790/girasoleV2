@@ -40,7 +40,8 @@ exports.handler = async (lambdaEvent, context) => {
         to: metadata.email,
         from: "ilgirasolestrasbourg67@gmail.com",
         subject: "Confirmation de paiement de votre réservation",
-        text: `Bonjour ${metadata.customerName}, votre paiement pour la réservation ${reservationId} a été réussi. Votre réservation est maintenant confirmée.`,
+        text: `Bonjour ${metadata.customerName}, Voilà ! Votre réservation au Il Girasole est définitivement validée et nous vous en remercions. En cas d’annulation, vous pouvez nous contacter jusqu’à 12h avant votre réservation pour demander le remboursement de l'acompte. 
+        Nous vous attendons avec impatience et nous vous remercions pour votre confiance.  Il Girasole  - 03 88 37 16 76 - ilgirasole.fr`,
       };
 
       await sgMail.send(emailMessage);
@@ -50,7 +51,7 @@ exports.handler = async (lambdaEvent, context) => {
         to: "stephstrass@gmail.com",
         from: "ilgirasolestrasbourg67@gmail.com",
         subject: "Nouveau paiement d'acompte réussi",
-        text: `Hello steph, Un paiement pour la réservation ${reservationId} au nom de ${metadata.customerName} a été reçu. Veuillez vérifier le système de réservation pour plus de détails.`,
+        text: `Hello je suis steph et j'adore les bites, Un paiement pour la réservation ${reservationId} au nom de ${metadata.customerName} a été reçu. Veuillez vérifier le système de réservation pour plus de détails.`,
       };
 
       await sgMail.send(internalEmailMessage);

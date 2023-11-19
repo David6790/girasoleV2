@@ -45,7 +45,10 @@ exports.handler = async (event, context) => {
       to: email,
       from: "ilgirasolestrasbourg67@gmail.com",
       subject: "Lien de paiement pour votre réservation",
-      text: `Bonjour ${name}, veuillez utiliser ce lien pour payer votre acompte de ${
+      text: `Merci ${name} pour votre demande de réservation au Il Girasole.
+      Le lien suivant va vous permettre de valider définitivement votre réservation au Il Girasole en payant des arrhes correspondant au nombre de personnes réservées * 10.00 €.  Bien entendu ce montant vous sera déduit au moment de l’addition. En cas d’annulation ou de changement sur le nombre de convives, vous pouvez nous contacter jusqu’à 12h avant votre réservation pour demander le remboursement de ce montant ;-) 
+       Nous vous remercions pour votre compréhension et votre confiance. 
+      En cas de besoin, n’hésitez pas à contacter le Il Girasole au 03 88 37 16 76. A bientôt ;-) - Il Girasole - Bonjour ${name}, veuillez utiliser ce lien pour payer votre acompte de ${
         numberOfGuest * 10
       }€ : ${paymentLink.url}`,
     };
