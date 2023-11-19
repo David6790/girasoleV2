@@ -25,11 +25,10 @@ exports.handler = async (event, context) => {
       },
     });
 
-    // Créer un lien de paiement Stripe
     const paymentLink = await stripe.paymentLinks.create({
       line_items: [
         {
-          price: "price_1OE7tqJFBYsGU4SsPyvWPGR8", // Remplacez par l'ID du tarif
+          price: "price_1OE7gLJFBYsGU4Ss3u8fm3s0",
           quantity: numberOfGuest,
         },
       ],
@@ -37,9 +36,8 @@ exports.handler = async (event, context) => {
         reservationId: ID,
         customerName: name,
         phone: phone,
-        email: email, // Ajoutez l'ID de réservation en tant que métadonnée
+        email: email,
       },
-      // Vous pouvez ajouter d'autres paramètres ici si nécessaire
     });
 
     // Construire le message email

@@ -4,27 +4,25 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-exports.handler = async (event, context) => {
-  if (event.httpMethod !== "POST") {
+exports.handler = async (lambdaEvent, context) => {
+  if (lambdaEvent.httpMethod !== "POST") {
     return { statusCode: 405, body: "Method Not Allowed" };
   }
 
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
-  const sig = event.headers["stripe-signature"];
-
-  let data;
-  let eventType;
+  const sig = lambdaEvent.headers["stripe-signature"];
+  let stripeEvent;
 
   try {
-    let event = stripe.webhooks.constructEvent(event.body, sig, webhookSecret);
+    stripeEvent = stripe.webhooks.constructEvent(
+      lambdaEvent.body,
+      sig,
+      webhookSecret
+    );
 
-    data = event.data;
-    eventType = event.type;
-
-    if (eventType === "payment_intent.succeeded") {
-      const paymentIntent = data.object;
+    if (stripeEvent.type === "payment_intent.succeeded") {
+      const paymentIntent = stripeEvent.data.object;
       const reservationId = paymentIntent.metadata.reservationId;
-
       // Mise à jour de SheetDB
       await axios.patch(
         `https://sheetdb.io/api/v1/97lppk2d46b57/ID/${reservationId}`,
