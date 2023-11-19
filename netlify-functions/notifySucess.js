@@ -34,14 +34,14 @@ exports.handler = async (lambdaEvent, context) => {
       // );
 
       // Envoyer un email de confirmation au client
-      const emailMessage = {
-        to: paymentIntent.metadata.email,
-        from: "ilgirasolestrasbourg67@gmail.com",
-        subject: "Confirmation de paiement de votre réservation",
-        text: `Bonjour ${paymentIntent.metadata.customerName}, votre paiement pour la réservation ${reservationId} a été réussi. Votre réservation est maintenant confirmée.`,
-      };
+      // const emailMessage = {
+      //   to: paymentIntent.metadata.email,
+      //   from: "ilgirasolestrasbourg67@gmail.com",
+      //   subject: "Confirmation de paiement de votre réservation",
+      //   text: `Bonjour ${paymentIntent.metadata.customerName}, votre paiement pour la réservation ${reservationId} a été réussi. Votre réservation est maintenant confirmée.`,
+      // };
 
-      await sgMail.send(emailMessage);
+      // await sgMail.send(emailMessage);
 
       // Envoyer un email de notification interne
       const internalEmailMessage = {
