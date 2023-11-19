@@ -14,7 +14,7 @@ exports.handler = async (event, context) => {
   }
 
   const params = event.queryStringParameters;
-  const { email, phone, name, numberGuests, ID } = params;
+  const { email, phone, name, number, ID } = params;
 
   try {
     // Créer un lien de paiement Stripe
@@ -26,7 +26,7 @@ exports.handler = async (event, context) => {
             product_data: {
               name: "Acompte de réservation",
             },
-            unit_amount: 1000 * numberGuests, // 10€ par personne
+            unit_amount: 1000 * number, // 10€ par personne
           },
           quantity: 1, // Quantité fixée à 1 car le montant total est calculé avec numberGuests
         },
