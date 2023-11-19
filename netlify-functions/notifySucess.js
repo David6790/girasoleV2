@@ -20,11 +20,11 @@ exports.handler = async (lambdaEvent, context) => {
       webhookSecret
     );
 
-    if (stripeEvent.type === "payment_intent.succeeded") {
-      const paymentIntent = stripeEvent.data.object;
-      const reservationId = paymentIntent.metadata.reservationId;
-      console.log("Payment Intent:", paymentIntent);
-      console.log("Metadata:", paymentIntent.metadata);
+    if (stripeEvent.type === "checkout.session.completed") {
+      const checkoutSession = stripeEvent.data.object;
+      const metadata = checkoutSession.metadata;
+      const reservationId = metadata.reservationId;
+
       // Mise à jour de SheetDB
       // await axios.patch(
       //   `https://sheetdb.io/api/v1/97lppk2d46b57/ID/${reservationId}`,
