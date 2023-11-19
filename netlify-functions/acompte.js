@@ -16,13 +16,14 @@ exports.handler = async (event, context) => {
 
   try {
     const { email, phone, name, number, ID } = event.queryStringParameters;
+    const numberOfGuest = parseInt(event.queryStringParameters.number, 10);
 
     // Créer un lien de paiement Stripe
     const paymentLink = await stripe.paymentLinks.create({
       line_items: [
         {
           price: "price_1OE5jsJFBYsGU4SskPEdiaO1", // Remplacez par l'ID du tarif
-          quantity: number,
+          quantity: numberOfGuest,
         },
       ],
       // Vous pouvez ajouter d'autres paramètres ici si nécessaire
@@ -34,7 +35,7 @@ exports.handler = async (event, context) => {
       from: "ilgirasolestrasbourg67@gmail.com",
       subject: "Lien de paiement pour votre réservation",
       text: `Bonjour ${name}, veuillez utiliser ce lien pour payer votre acompte de ${
-        number * 10
+        numberOfGuest * 10
       }€ : ${paymentLink.url}`,
     };
 
@@ -44,7 +45,7 @@ exports.handler = async (event, context) => {
     // Construire le message SMS
     const smsMessage = {
       body: `Bonjour ${name}, veuillez utiliser ce lien pour payer votre acompte de ${
-        number * 10
+        numberOfGuest * 10
       }€ : ${paymentLink.url}`,
       from: "IlGirasole",
       to: `+${phone}`,
