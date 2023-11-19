@@ -27,7 +27,10 @@ exports.handler = async (event, context) => {
         },
       ],
       metadata: {
-        reservationId: ID, // Ajoutez l'ID de réservation en tant que métadonnée
+        reservationId: ID,
+        customerName: name,
+        phone: phone,
+        email: email, // Ajoutez l'ID de réservation en tant que métadonnée
       },
       // Vous pouvez ajouter d'autres paramètres ici si nécessaire
     });
