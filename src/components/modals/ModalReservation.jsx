@@ -141,6 +141,15 @@ const ModalReservation = ({ isOpen, onClose }) => {
     }
 
     setIsLoading(true);
+    const now = new Date();
+    const timestamp = `${now.getDate().toString().padStart(2, "0")}/${(
+      now.getMonth() + 1
+    )
+      .toString()
+      .padStart(2, "0")}/${now.getFullYear()} ${now
+      .getHours()
+      .toString()
+      .padStart(2, "0")}:${now.getMinutes().toString().padStart(2, "0")}`;
     try {
       await fetch("https://sheetdb.io/api/v1/97lppk2d46b57", {
         method: "POST",
@@ -159,6 +168,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
           Phone: `n°${tel}`,
           Status: "Pending",
           Acompte: "Pas Demandé",
+          timeStamp: timestamp,
         }),
       });
 
