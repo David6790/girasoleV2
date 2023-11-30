@@ -130,7 +130,6 @@ const ModalReservation = ({ isOpen, onClose }) => {
     return currentDate.isSameOrAfter(today);
   };
 
-  // Cette fonction vérifie si l'heure sélectionnée est valide pour la date sélectionnée
   const isTimeValidForSelectedDate = (selectedTime, selectedDate) => {
     const now = moment();
     if (selectedDate.isSame(now, "day")) {
@@ -171,7 +170,6 @@ const ModalReservation = ({ isOpen, onClose }) => {
       ID: ID,
     };
     if (!isTimeValidForSelectedDate(selectedTime, dateTime)) {
-      // Gérez l'erreur si l'heure sélectionnée est dans le passé
       setModalMessage("Veuillez choisir une heure future.");
       setMessageModalOpen(true);
       return;
@@ -213,6 +211,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
       Status: "Pending",
       Acompte: "PAS DEMANDÉ",
       timestamp: timestamp,
+      typeEvent: "Nouvel-an",
     };
 
     const regularData = {

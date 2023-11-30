@@ -16,7 +16,8 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    const { email, phone, name, number, ID } = event.queryStringParameters;
+    const { email, phone, name, number, ID, eventType } =
+      event.queryStringParameters;
     const numberOfGuest = parseInt(event.queryStringParameters.number, 10);
 
     await axios.patch(
@@ -40,6 +41,7 @@ exports.handler = async (event, context) => {
         customerName: name,
         phone: phone,
         email: email,
+        eventType: eventType,
       },
     });
 

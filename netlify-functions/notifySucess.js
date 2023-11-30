@@ -24,9 +24,10 @@ exports.handler = async (lambdaEvent, context) => {
       const checkoutSession = stripeEvent.data.object;
       const metadata = checkoutSession.metadata;
       const reservationId = metadata.reservationId;
+      const eventType = metadata.eventType;
 
       let sheetDBUrl;
-      if (reservationId.startsWith("NY2023")) {
+      if (eventType === "Nouvel-an") {
         sheetDBUrl = `https://sheetdb.io/api/v1/97lppk2d46b57?/ID/${reservationId}sheet=newYear`;
       } else {
         sheetDBUrl = `https://sheetdb.io/api/v1/97lppk2d46b57/ID/${reservationId}`;
