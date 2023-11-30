@@ -52,7 +52,7 @@ exports.handler = async (lambdaEvent, context) => {
           typeEvent ? "pour le menu Nouvel an" : ""
         } est définitivement validée et nous vous en remercions. En cas d’annulation, vous pouvez nous contacter jusqu’à ${
           typeEvent ? "48h" : ""
-        } avant votre réservation pour demander le remboursement de l'acompte. 
+        } avant votre réservation pour demander le remboursement des l'arrhes. 
         Nous vous attendons avec impatience et nous vous remercions pour votre confiance.  Il Girasole  - 03 88 37 16 76 - ilgirasole.fr`,
       };
 
