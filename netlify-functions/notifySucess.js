@@ -28,7 +28,7 @@ exports.handler = async (lambdaEvent, context) => {
 
       let sheetDBUrl;
       if (typeEvent === "Nouvel-an") {
-        sheetDBUrl = `https://sheetdb.io/api/v1/97lppk2d46b57?/ID/${reservationId}?sheet=newYear`;
+        sheetDBUrl = `https://sheetdb.io/api/v1/97lppk2d46b57/ID/${reservationId}?sheet=newYear`;
       } else {
         sheetDBUrl = `https://sheetdb.io/api/v1/97lppk2d46b57/ID/${reservationId}`;
       }
