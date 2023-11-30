@@ -25,15 +25,19 @@ exports.handler = async (lambdaEvent, context) => {
       const metadata = checkoutSession.metadata;
       const reservationId = metadata.reservationId;
 
+      let sheetDBUrl;
+      if (reservationId.startsWith("NY2023")) {
+        sheetDBUrl = `https://sheetdb.io/api/v1/97lppk2d46b57?/ID/${reservationId}sheet=newYear`;
+      } else {
+        sheetDBUrl = `https://sheetdb.io/api/v1/97lppk2d46b57/ID/${reservationId}`;
+      }
+
       // Mise à jour de SheetDB
-      await axios.patch(
-        `https://sheetdb.io/api/v1/97lppk2d46b57/ID/${reservationId}`,
-        {
-          data: {
-            Acompte: "Acompte payé",
-          },
-        }
-      );
+      await axios.patch(sheetDBUrl, {
+        data: {
+          Acompte: "Acompte payé",
+        },
+      });
 
       // Envoyer un email de confirmation au client
       const emailMessage = {

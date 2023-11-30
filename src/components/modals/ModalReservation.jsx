@@ -203,7 +203,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
     const promo25 = timestamp2.isBefore(cutoffDate) ? "YES" : "NO";
 
     const newYearData = {
-      ID: ID,
+      ID: `NY2023+${ID}`,
       promo25: promo25,
       Name: name,
       NumberGuest: numberOfGuest,

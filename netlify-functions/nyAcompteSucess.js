@@ -36,7 +36,6 @@ exports.handler = async (lambdaEvent, context) => {
         }
       );
 
-      // Envoyer un email de confirmation au client
       const emailMessage = {
         to: metadata.email,
         from: "ilgirasolestrasbourg67@gmail.com",
@@ -47,7 +46,6 @@ exports.handler = async (lambdaEvent, context) => {
 
       await sgMail.send(emailMessage);
 
-      // Envoyer un email de notification interne
       const internalEmailMessage = {
         to: "stephstrass@gmail.com",
         from: "ilgirasolestrasbourg67@gmail.com",
