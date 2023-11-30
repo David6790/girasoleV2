@@ -31,7 +31,6 @@ exports.handler = async (lambdaEvent, context) => {
         {
           data: {
             Acompte: "Acompte payé",
-            Status: "Validé",
           },
         }
       );

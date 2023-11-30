@@ -19,14 +19,14 @@ exports.handler = async (event, context) => {
     const { email, phone, name, number, ID } = event.queryStringParameters;
     const numberOfGuest = parseInt(event.queryStringParameters.number, 10);
 
-    await axios.patch(
-      `https://sheetdb.io/api/v1/97lppk2d46b57?sheet=newYear/ID/${ID}`,
-      {
-        data: {
-          Acompte: "En attente de paiement",
-        },
-      }
-    );
+    // await axios.patch(
+    //   `https://sheetdb.io/api/v1/97lppk2d46b57?sheet=newYear/ID/${ID}`,
+    //   {
+    //     data: {
+    //       Acompte: "En attente de paiement",
+    //     },
+    //   }
+    // );
 
     const paymentLink = await stripe.paymentLinks.create({
       line_items: [
