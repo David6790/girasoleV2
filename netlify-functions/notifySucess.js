@@ -49,7 +49,7 @@ exports.handler = async (lambdaEvent, context) => {
         text: `Bonjour ${
           metadata.customerName
         }, Voilà ! Votre réservation au Il Girasole ${
-          typeEvent ? "pour le soir le menu Nouvel an" : ""
+          typeEvent ? "pour le menu Nouvel an" : ""
         } est définitivement validée et nous vous en remercions. En cas d’annulation, vous pouvez nous contacter jusqu’à ${
           typeEvent ? "48h" : ""
         } avant votre réservation pour demander le remboursement de l'acompte. 
