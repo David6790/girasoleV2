@@ -37,6 +37,7 @@ exports.handler = async (lambdaEvent, context) => {
       await axios.patch(sheetDBUrl, {
         data: {
           Acompte: "Acompte payé",
+          Status: "Validé",
         },
       });
 
@@ -45,7 +46,13 @@ exports.handler = async (lambdaEvent, context) => {
         to: metadata.email,
         from: "ilgirasolestrasbourg67@gmail.com",
         subject: "Confirmation de paiement de votre réservation",
-        text: `Bonjour ${metadata.customerName}, Voilà ! Votre réservation au Il Girasole est définitivement validée et nous vous en remercions. En cas d’annulation, vous pouvez nous contacter jusqu’à 12h avant votre réservation pour demander le remboursement de l'acompte. 
+        text: `Bonjour ${
+          metadata.customerName
+        }, Voilà ! Votre réservation au Il Girasole ${
+          typeEvent ? "pour le soir le menu Nouvel an" : ""
+        } est définitivement validée et nous vous en remercions. En cas d’annulation, vous pouvez nous contacter jusqu’à ${
+          typeEvent ? "48h" : ""
+        } avant votre réservation pour demander le remboursement de l'acompte. 
         Nous vous attendons avec impatience et nous vous remercions pour votre confiance.  Il Girasole  - 03 88 37 16 76 - ilgirasole.fr`,
       };
 
@@ -56,7 +63,11 @@ exports.handler = async (lambdaEvent, context) => {
         to: "stephstrass@gmail.com",
         from: "ilgirasolestrasbourg67@gmail.com",
         subject: "Nouveau paiement d'acompte réussi",
-        text: `Hello je suis steph et j'adore les bites, Un paiement pour la réservation ${reservationId} au nom de ${metadata.customerName} a été reçu. Veuillez vérifier le système de réservation pour plus de détails.`,
+        text: `Hello je suis steph et j'adore les bites, Un paiement d'acompte pour la réservation ${reservationId} pour ${
+          typeEvent ? "Nouvel an" : ""
+        } au nom de ${
+          metadata.customerName
+        } a été reçu. Bouge ton cul et vas vérifier le système de réservation sur sheet pour plus de détails.`,
       };
 
       await sgMail.send(internalEmailMessage);
