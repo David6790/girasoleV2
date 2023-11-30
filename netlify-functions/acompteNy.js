@@ -16,7 +16,7 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    const { email, phone, name, number, ID, eventType } =
+    const { email, phone, name, number, ID, typeEvent } =
       event.queryStringParameters;
     const numberOfGuest = parseInt(event.queryStringParameters.number, 10);
 
@@ -41,7 +41,7 @@ exports.handler = async (event, context) => {
         customerName: name,
         phone: phone,
         email: email,
-        eventType: eventType,
+        typeEvent: typeEvent,
       },
     });
 
