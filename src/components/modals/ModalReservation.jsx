@@ -168,6 +168,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
       message: message,
       phone: tel,
       ID: ID,
+      typeEvent: "Nouvel-an",
     };
     if (!isTimeValidForSelectedDate(selectedTime, dateTime)) {
       setModalMessage("Veuillez choisir une heure future.");
