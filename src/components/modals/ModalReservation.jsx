@@ -210,7 +210,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
       Email: email,
       Phone: `n°${tel}`,
       Status: "Pending",
-      Acompte: "PAS DEMANDÉ",
+      Acompte: "PAS ENCORE DEMANDÉ",
       timestamp: timestamp,
       typeEvent: "Nouvel-an",
     };
