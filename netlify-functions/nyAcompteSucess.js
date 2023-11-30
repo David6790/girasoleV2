@@ -27,7 +27,7 @@ exports.handler = async (lambdaEvent, context) => {
 
       // Mise à jour de SheetDB
       await axios.patch(
-        `https://sheetdb.io/api/v1/97lppk2d46b57?sheet=newYear/ID/${reservationId}`,
+        `https://sheetdb.io/api/v1/97lppk2d46b57/ID/${reservationId}?sheet=newYear`,
         {
           data: {
             Acompte: "Acompte payé",
