@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Modal from "react-modal";
 import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
@@ -12,42 +12,50 @@ import { parsePhoneNumberFromString } from "libphonenumber-js";
 Modal.setAppElement("#root");
 
 const ModalReservation = ({ isOpen, onClose }) => {
-  const timeSlots = [
-    "12:00",
-    "12:15",
-    "12:30",
-    "12:45",
-    "13:00",
-    "13:15",
-    "13:30",
-    "13:45",
-    "19:00",
-    "19:15",
-    "19:30",
-    "19:45",
-    "20:00",
-    "20:15",
-    "20:30",
-    "20:45",
-    "21:00",
-    "21:15",
-    "21:30",
-    "21:45",
-  ];
-  const timeSlotsWeekend = [
-    "11:45",
-    "12:00",
-    "13:30",
-    "13:45",
-    "18:15",
-    "18:30",
-    "18:45",
-    "19:00",
-    "21:00",
-    "21:15",
-    "21:30",
-    "21:45",
-  ];
+  const timeSlots = useMemo(
+    () => [
+      "12:00",
+      "12:15",
+      "12:30",
+      "12:45",
+      "13:00",
+      "13:15",
+      "13:30",
+      "13:45",
+      "19:00",
+      "19:15",
+      "19:30",
+      "19:45",
+      "20:00",
+      "20:15",
+      "20:30",
+      "20:45",
+      "21:00",
+      "21:15",
+      "21:30",
+      "21:45",
+    ],
+    []
+  );
+
+  const timeSlotsWeekend = useMemo(
+    () => [
+      "11:45",
+      "12:00",
+      "13:30",
+      "13:45",
+      "18:15",
+      "18:30",
+      "18:45",
+      "19:00",
+      "21:00",
+      "21:15",
+      "21:30",
+      "21:45",
+    ],
+    []
+  );
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -67,15 +75,38 @@ const ModalReservation = ({ isOpen, onClose }) => {
     const dayOfWeek = dateTime.day();
     const month = dateTime.month();
     const year = dateTime.year();
+    const day = dateTime.date();
 
     const isWeekendOfDecember2023 =
       year === 2023 && month === 11 && (dayOfWeek === 5 || dayOfWeek === 6);
 
-    setAvailableTimeSlots(
-      isWeekendOfDecember2023 ? timeSlotsWeekend : timeSlots
-    );
-    // eslint-disable-next-line
-  }, [dateTime]);
+    const is31December = day === 31 && month === 11 && year === 2023;
+
+    if (is31December) {
+      setAvailableTimeSlots([
+        "12:00",
+        "12:15",
+        "12:30",
+        "12:45",
+        "13:00",
+        "13:15",
+        "13:30",
+        "20:00",
+      ]);
+    } else {
+      setAvailableTimeSlots(
+        isWeekendOfDecember2023 ? timeSlotsWeekend : timeSlots
+      );
+    }
+    if (
+      is31December &&
+      (selectedTime === "20:00" || selectedTime === "20:30")
+    ) {
+      alert(
+        "Nous vous remercions de choisir Il Girasole pour votre soirée du réveillon. \nLe 31 décembre, nous proposons exclusivement notre menu spécial nouvel an à 95€ par personne. \nPour confirmer votre réservation, un acompte de 30€ par personne est requis. \nUn lien de paiement vous sera envoyé après la réception de votre réservation.\nL'Équipe du Il Girasole "
+      );
+    }
+  }, [dateTime, timeSlots, timeSlotsWeekend, selectedTime]);
 
   const handleChangeDateTime = (value) => {
     if (value) {
@@ -123,6 +154,12 @@ const ModalReservation = ({ isOpen, onClose }) => {
       .hour(parseInt(selectedTime.split(":")[0]))
       .minute(parseInt(selectedTime.split(":")[1]));
 
+    const is31December = validDateTime.isSame(
+      moment("31-12-2023", "DD-MM-YYYY"),
+      "day"
+    );
+    const isTime20or2030 = selectedTime === "20:00" || selectedTime === "20:30";
+
     const data = {
       resDate: validDateTime.format("DD-MM-YY"),
       resTime: selectedTime,
@@ -150,26 +187,63 @@ const ModalReservation = ({ isOpen, onClose }) => {
       .getHours()
       .toString()
       .padStart(2, "0")}:${now.getMinutes().toString().padStart(2, "0")}`;
+
+    const timestamp2 = moment(
+      `${now.getDate().toString().padStart(2, "0")}/${(now.getMonth() + 1)
+        .toString()
+        .padStart(2, "0")}/${now.getFullYear()} ${now
+        .getHours()
+        .toString()
+        .padStart(2, "0")}:${now.getMinutes().toString().padStart(2, "0")}`,
+      "DD/MM/YYYY HH:mm"
+    );
+
+    const cutoffDate = moment("25-12-2023", "DD-MM-YYYY");
+
+    const promo25 = timestamp2.isBefore(cutoffDate) ? "YES" : "NO";
+
+    const newYearData = {
+      ID: ID,
+      promo25: promo25,
+      Name: name,
+      NumberGuest: numberOfGuest,
+      Comment: message,
+      Email: email,
+      Phone: `n°${tel}`,
+      Status: "Pending",
+      Acompte: "PAS DEMANDÉ",
+      timestamp: timestamp,
+    };
+
+    const regularData = {
+      ID: ID,
+      Name: name,
+      NumberGuest: numberOfGuest,
+      Date: validDateTime.format("DD-MM-YY"),
+      Time: selectedTime,
+      Comment: message,
+      Email: email,
+      Phone: `n°${tel}`,
+      Status: "Pending",
+      Acompte: "Pas Demandé",
+      timeStamp: timestamp,
+    };
+
+    const isNewYearReservation = is31December && isTime20or2030;
+    const sheetURL = isNewYearReservation
+      ? "https://sheetdb.io/api/v1/97lppk2d46b57?sheet=newYear"
+      : "https://sheetdb.io/api/v1/97lppk2d46b57";
+
+    const dataToSend = isNewYearReservation ? newYearData : regularData;
+
     try {
-      await fetch("https://sheetdb.io/api/v1/97lppk2d46b57", {
+      await fetch(sheetURL, {
         method: "POST",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          ID: ID,
-          Name: name,
-          NumberGuest: numberOfGuest,
-          Date: validDateTime.format("DD-MM-YY"),
-          Time: selectedTime,
-          Comment: message,
-          Email: email,
-          Phone: `n°${tel}`,
-          Status: "Pending",
-          Acompte: "Pas Demandé",
-          timeStamp: timestamp,
-        }),
+        body: JSON.stringify(dataToSend),
       });
 
       emailjs
@@ -213,6 +287,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
         message={modalMessage}
         onClose={() => setMessageModalOpen(false)}
       />
+
       <motion.div
         className="w-full h-full  rounded-2xl flex flex-col justify-around px-5   "
         initial={{

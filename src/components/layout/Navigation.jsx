@@ -119,7 +119,7 @@ const Navigation = () => {
           <span className="star animate-pulse absolute top-[-10px] left-[-15px]">
             <i className="fa-solid fa-star-of-life text-yellow-500 text-xs mr-1"></i>
           </span>
-          Quoi de neuf ?
+          <span className=" font-bold">Menu Nouvel An 🍾</span>
         </li>
       </ul>
       <div className="xl:hidden lg:hidden md:flex sm:flex flex h-full justify-end items-center px-5 relative  ">
@@ -170,6 +170,15 @@ const Navigation = () => {
             <NavLink to="/">
               <li>Accueil</li>
             </NavLink>
+            <li
+              className="  relative cursor-pointer"
+              onClick={handleOpenNewModal}
+            >
+              <span className="star animate-pulse absolute top-[-10px] left-[-15px]">
+                <i className="fa-solid fa-star-of-life text-white text-xs mr-1"></i>
+              </span>
+              <span className=" font-bold">Menu Nouvel An 🍾</span>
+            </li>
             <NavLink to="/menu">
               <li>La Carte</li>
             </NavLink>
@@ -188,15 +197,6 @@ const Navigation = () => {
             <NavLink to="/contact">
               <li>Contactez-nous</li>
             </NavLink>
-            <li
-              className="  relative cursor-pointer"
-              onClick={handleOpenNewModal}
-            >
-              <span className="star animate-pulse absolute top-[-10px] left-[-15px]">
-                <i className="fa-solid fa-star-of-life text-white text-xs mr-1"></i>
-              </span>
-              Quoi de neuf ?
-            </li>
           </ul>
         </motion.div>
       )}
