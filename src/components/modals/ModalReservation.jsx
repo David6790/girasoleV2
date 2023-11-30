@@ -92,6 +92,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
         "13:15",
         "13:30",
         "20:00",
+        "20:30",
       ]);
     } else {
       setAvailableTimeSlots(
