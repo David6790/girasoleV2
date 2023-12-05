@@ -6,28 +6,29 @@ const ModalMenu = ({ isOpen, onClose, resaModal }) => {
   const menuGirasole = [
     {
       day: "Lundi",
-      starter: "Salade de burrata et tomates séchées",
-      dish: "Penné al forno (sauce tomate, bolognaise, jambon, crème, et petit pois gratiné au four)",
+      starter: "Carpaccio de boeuf",
+      dish: "Risotto poire et gorgonzola",
     },
     {
       day: "Mardi",
-      starter: "Beigné de choux-fleurs et brocolis",
-      dish: "Cuisses de poulet au four et pommes de terre",
+      starter: "Soupe de légumes",
+      dish: "Roulade de veau aux champignons, épinards et pasta",
     },
     {
       day: "Mercredi",
-      starter: "Soupe à l'oignon",
-      dish: "Ossu-bucco à la Milanaise et risotto",
+      starter: "Brushetta Napoli",
+      dish: "Poivrons farcis au riz et à la viande",
     },
     {
       day: "Jeudi",
-      starter: "Tartelette caprèse",
-      dish: "Lasagne d'aubergine gratinée",
+      starter:
+        "Salade d'automne (avocat, concombre, endive et tomates cerises)",
+      dish: "Penné au poulet à la Sorrentine",
     },
     {
       day: "Vendredi",
-      starter: "Crostinis al tonno et salmone fumé",
-      dish: "Calamars à la livornaise et tagliatelles",
+      starter: "Vettelo tonnato",
+      dish: "Linguines au chorizo et crevettess",
     },
   ];
 
@@ -85,7 +86,7 @@ const ModalMenu = ({ isOpen, onClose, resaModal }) => {
                 Dessert de la semaine :
               </span>
               <br />
-              <span className="text-black">Cannolis à la Sicilienne</span>
+              <span className="text-black">Tarte du jour</span>
             </p>
           </div>
           <button
