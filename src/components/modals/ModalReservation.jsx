@@ -78,7 +78,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
     const day = dateTime.date();
 
     const isWeekendOfDecember2023 =
-      year === 2023 && month === 11 && dayOfWeek === 6;
+      year === 2023 && month === 11 && (dayOfWeek === 5 || dayOfWeek === 6);
 
     const is31December = day === 31 && month === 11 && year === 2023;
 
