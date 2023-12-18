@@ -6,29 +6,30 @@ const ModalMenu = ({ isOpen, onClose, resaModal }) => {
   const menuGirasole = [
     {
       day: "Lundi",
-      starter: "Carpaccio de boeuf",
-      dish: "Risotto poire et gorgonzola",
+      starter:
+        "Salade sicilienne (fenouille, orange, radis, oignons et grenade)",
+      dish: "Escalope de poulet,sauce tomate, et mozzarella gratiné au four",
     },
     {
       day: "Mardi",
-      starter: "Soupe de légumes",
-      dish: "Roulade de veau aux champignons, épinards et pasta",
+      starter:
+        "Salade composée (salade, endive, tomate, carotte, et billes de mozzarella)",
+      dish: "Ragoût de bœuf, carottes et pommes de terre",
     },
     {
       day: "Mercredi",
-      starter: "Brushetta Napoli",
-      dish: "Poivrons farcis au riz et à la viande",
+      starter: "Mille feuille d'aubergine à l'Italienne ",
+      dish: "Polpettes Napolitaine et penné",
     },
     {
       day: "Jeudi",
-      starter:
-        "Salade d'automne (avocat, concombre, endive et tomates cerises)",
-      dish: "Penné au poulet à la Sorrentine",
+      starter: "Toasts caprèse",
+      dish: "Risotto aux chorizo et poireaux",
     },
     {
       day: "Vendredi",
-      starter: "Vettelo tonnato",
-      dish: "Linguines au chorizo et crevettess",
+      starter: "Soupe de moules et crevettes",
+      dish: "Filet de sole et linguines sauce crème et épinards",
     },
   ];
 
@@ -86,7 +87,7 @@ const ModalMenu = ({ isOpen, onClose, resaModal }) => {
                 Dessert de la semaine :
               </span>
               <br />
-              <span className="text-black">Tarte du jour</span>
+              <span className="text-black">Panna cotta aux fruits rouge </span>
             </p>
           </div>
           <button
