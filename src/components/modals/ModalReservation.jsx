@@ -213,6 +213,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
       Status: "Pending",
       Acompte: "PAS ENCORE DEMANDÉ",
       timestamp: timestamp,
+      Date: validDateTime.format("DD-MM-YY"),
       typeEvent: "Nouvel-an",
     };
 
