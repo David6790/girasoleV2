@@ -23,7 +23,7 @@ exports.handler = async (event, context) => {
       `https://sheetdb.io/api/v1/97lppk2d46b57/ID/${ID}?sheet=newYear`,
       {
         data: {
-          Acompte: "En attente de paiement",
+          Status: "En attente de paiement",
         },
       }
     );
