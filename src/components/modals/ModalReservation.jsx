@@ -91,6 +91,9 @@ const ModalReservation = ({ isOpen, onClose }) => {
         "13:00",
         "13:15",
         "13:30",
+        "19:00",
+        "19:15",
+        "19:30",
         "20:00",
         "20:30",
       ]);
@@ -101,7 +104,11 @@ const ModalReservation = ({ isOpen, onClose }) => {
     }
     if (
       is31December &&
-      (selectedTime === "20:00" || selectedTime === "20:30")
+      (selectedTime === "20:00" ||
+        selectedTime === "20:30" ||
+        selectedTime === "19:30" ||
+        selectedTime === "19:15" ||
+        selectedTime === "19:00")
     ) {
       alert(
         "Nous vous remercions de choisir Il Girasole pour votre soirée du réveillon. \nLe 31 décembre, nous proposons exclusivement notre menu spécial nouvel an à 95€ par personne. \nPour confirmer votre réservation, un acompte de 30€ par personne est requis. \nUn lien de paiement vous sera envoyé après la réception de votre réservation.\nL'Équipe du Il Girasole "
@@ -158,7 +165,12 @@ const ModalReservation = ({ isOpen, onClose }) => {
       moment("31-12-2023", "DD-MM-YYYY"),
       "day"
     );
-    const isTime20or2030 = selectedTime === "20:00" || selectedTime === "20:30";
+    const isTime20or2030 =
+      selectedTime === "20:00" ||
+      selectedTime === "20:30" ||
+      selectedTime === "19:30" ||
+      selectedTime === "19:15" ||
+      selectedTime === "19:00";
 
     const data = {
       resDate: validDateTime.format("DD-MM-YY"),
@@ -214,6 +226,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
       Acompte: "PAS ENCORE DEMANDÉ",
       timestamp: timestamp,
       typeEvent: "Nouvel-an",
+      Time: selectedTime,
     };
 
     const regularData = {
