@@ -32,7 +32,7 @@ exports.handler = async (event, context) => {
     const paymentLink = await stripe.paymentLinks.create({
       line_items: [
         {
-          price: "price_1OE7gLJFBYsGU4Ss3u8fm3s0",
+          price: "price_1OI7HNJFBYsGU4SsoDQ8YgkH",
           quantity: numberOfGuest,
         },
       ],
