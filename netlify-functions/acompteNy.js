@@ -24,6 +24,7 @@ exports.handler = async (event, context) => {
       {
         data: {
           Status: "En attente de paiement",
+          Acompte: "En attente de paiement",
         },
       }
     );
