@@ -21,7 +21,7 @@ exports.handler = async (event, context) => {
     const numberOfGuest = parseInt(event.queryStringParameters.number, 10);
 
     await axios.patch(
-      `https://sheetdb.io/api/v1/97lppk2d46b57/ID/${ID}?sheet=newYear`,
+      `https://sheetdb.io/api/v1/97lppk2d46b57/id/${ID}?sheet=newYear`,
       {
         data: {
           Acompte: "En attente de paiement",
