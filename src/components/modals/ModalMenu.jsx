@@ -63,7 +63,7 @@ const ModalMenu = ({ isOpen, onClose, resaModal }) => {
         }}
       >
         <div className="h-auto w-[100%] flex flex-col justify-center items-center bg-myGrey rounded-3xl ">
-          {menuGirasole.map((menu, index) => (
+          {/* {menuGirasole.map((menu, index) => (
             <div
               key={index}
               className="w-full flex flex-col justify-center items-center xl:mb-5 lg:mb-2  text-center mb-2 "
@@ -80,8 +80,12 @@ const ModalMenu = ({ isOpen, onClose, resaModal }) => {
                 <span>{menu.dish}</span>
               </p>
             </div>
-          ))}
+          ))} */}
           <div>
+            Entre Noêl et Nouvel-an, nous vous proposons uniquement la Carte et
+            nos formules midis.{" "}
+          </div>
+          {/* <div>
             <p className=" text-my-gold xl:text-base lg:text-base md:text-base sm:text-sm text-xs text-center mt-2">
               <span className=" font-bold font-title-font ">
                 Dessert de la semaine :
@@ -89,7 +93,7 @@ const ModalMenu = ({ isOpen, onClose, resaModal }) => {
               <br />
               <span className="text-black">Panna cotta aux fruits rouge </span>
             </p>
-          </div>
+          </div> */}
           <button
             className="px-5 py-2 border-solid border-black border-2 mt-5 mb-5 xl:text-xl lg:xl:text-xl md:xl:text-xl sm:text-sm rounded-md"
             onClick={resaModal}
