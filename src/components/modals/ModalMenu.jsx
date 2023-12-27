@@ -3,35 +3,35 @@ import Modal from "react-modal";
 import { motion } from "framer-motion";
 
 const ModalMenu = ({ isOpen, onClose, resaModal }) => {
-  const menuGirasole = [
-    {
-      day: "Lundi",
-      starter:
-        "Salade sicilienne (fenouille, orange, radis, oignons et grenade)",
-      dish: "Escalope de poulet,sauce tomate, et mozzarella gratiné au four",
-    },
-    {
-      day: "Mardi",
-      starter:
-        "Salade composée (salade, endive, tomate, carotte, et billes de mozzarella)",
-      dish: "Ragoût de bœuf, carottes et pommes de terre",
-    },
-    {
-      day: "Mercredi",
-      starter: "Mille feuille d'aubergine à l'Italienne ",
-      dish: "Polpettes Napolitaine et penné",
-    },
-    {
-      day: "Jeudi",
-      starter: "Toasts caprèse",
-      dish: "Risotto aux chorizo et poireaux",
-    },
-    {
-      day: "Vendredi",
-      starter: "Soupe de moules et crevettes",
-      dish: "Filet de sole et linguines sauce crème et épinards",
-    },
-  ];
+  // const menuGirasole = [
+  //   {
+  //     day: "Lundi",
+  //     starter:
+  //       "Salade sicilienne (fenouille, orange, radis, oignons et grenade)",
+  //     dish: "Escalope de poulet,sauce tomate, et mozzarella gratiné au four",
+  //   },
+  //   {
+  //     day: "Mardi",
+  //     starter:
+  //       "Salade composée (salade, endive, tomate, carotte, et billes de mozzarella)",
+  //     dish: "Ragoût de bœuf, carottes et pommes de terre",
+  //   },
+  //   {
+  //     day: "Mercredi",
+  //     starter: "Mille feuille d'aubergine à l'Italienne ",
+  //     dish: "Polpettes Napolitaine et penné",
+  //   },
+  //   {
+  //     day: "Jeudi",
+  //     starter: "Toasts caprèse",
+  //     dish: "Risotto aux chorizo et poireaux",
+  //   },
+  //   {
+  //     day: "Vendredi",
+  //     starter: "Soupe de moules et crevettes",
+  //     dish: "Filet de sole et linguines sauce crème et épinards",
+  //   },
+  // ];
 
   return (
     <Modal
