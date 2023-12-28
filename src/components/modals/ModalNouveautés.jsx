@@ -58,15 +58,8 @@ const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
                 occasion festive. 🍽️ <br />
                 <br />
                 <span className=" font-semibold text-my-gold">
-                  Réservez avant le 25/12 pour bénéficier d'un tarif
-                  préférentiel de 85€ TTC !
+                  85€ TTC par personne.
                 </span>
-                <br />
-                <br />
-                💰 Après cette date, le menu sera à 95€ TTC. <br />
-                Profitez également d'un apéritif offert pour bien commencer la
-                soirée. 🥂 Nous vous attendons pour un début de soirée entre
-                19h30 et 20h00.
                 <br />
                 <br />
                 <span className=" italic">
@@ -88,7 +81,7 @@ const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
           </div>
           <div className="w-full flex flex-col items-center">
             <img
-              src="./img/nyMenu.png"
+              src="./img/ny.jpg"
               alt="new year girasole menu"
               className=" w-[80%] rounded-2xl"
             />
