@@ -1,59 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "../page/Home";
-import Menu from "../page/Menu";
-import Contact from "../page/Contact";
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+
 import ScrollToTop from "./ScrollToTop";
-import ModalNouveautés from "../components/modals/ModalNouveautés";
-import ModalReservation from "../components/modals/ModalReservation";
-import MentionLegales from "../page/MentionLegales";
-import MenuMidi from "../page/MenuMidi";
-import MenuCocktails from "../page/MenuCocktails";
+
+import RouteurContent from "./RouteurContent";
 
 const Routeur = () => {
-  const [isModalOpen, setModalOpen] = useState(false);
-  const [isResaModalOpen, setIsResaModalOpen] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setModalOpen(true);
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  const handleModalClose = () => {
-    setModalOpen(false);
-  };
-
-  const handleResaModal = () => {
-    setModalOpen(false);
-    setIsResaModalOpen(true);
-  };
-
-  const closeResaModal = () => {
-    setIsResaModalOpen(false);
-  };
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <ModalNouveautés
-        isOpen={isModalOpen}
-        onClose={handleModalClose}
-        resaModal={handleResaModal}
-      />
-      <ModalReservation isOpen={isResaModalOpen} onClose={closeResaModal} />
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/reserver" element={<Home />} />
-
-        <Route path="/menu" element={<Menu />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/menu-midi" element={<MenuMidi />} />
-        <Route path="/menu-cocktails" element={<MenuCocktails />} />
-        <Route path="/legalMentions" element={<MentionLegales />} />
-      </Routes>
+      <RouteurContent />
     </BrowserRouter>
   );
 };
