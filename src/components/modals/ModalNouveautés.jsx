@@ -62,10 +62,6 @@ const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
                 </span>
                 <br />
                 <br />
-                <span className=" italic">
-                  Veuillez noter que les boissons ne sont pas incluses et qu'une
-                  arrhes de 30€ est requis pour confirmer votre réservation. 💳
-                </span>
               </p>
               {/* <p className=" text-lg font-title-font text-my-gold">
                 Samedi et Dimanche midi, -50% pour les enfants.
@@ -81,7 +77,7 @@ const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
           </div>
           <div className="w-full flex flex-col items-center">
             <img
-              src="./img/ny.jpg"
+              src="./img/ny2.jpg"
               alt="new year girasole menu"
               className=" w-[80%] rounded-2xl"
             />
