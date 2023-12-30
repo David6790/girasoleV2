@@ -9,6 +9,7 @@ import MenuMidi from "../page/MenuMidi";
 import MenuCocktails from "../page/MenuCocktails";
 import MentionLegales from "../page/MentionLegales";
 import PrivateBookingDashboard from "../page/PrivateBookingDashboard";
+import PrivateNewYearDashboard from "../page/PrivateNewYearDashboard";
 
 const RouteurContent = () => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -17,7 +18,11 @@ const RouteurContent = () => {
   const location = useLocation();
 
   useEffect(() => {
-    if (!modalDejaAffiche && location.pathname !== "/davlebg") {
+    if (
+      !modalDejaAffiche &&
+      location.pathname !== "/davlebg" &&
+      location.pathname !== "/nyg"
+    ) {
       const timer = setTimeout(() => {
         setModalOpen(true);
         setModalDejaAffiche(true);
@@ -57,6 +62,7 @@ const RouteurContent = () => {
         <Route path="/menu-cocktails" element={<MenuCocktails />} />
         <Route path="/legalMentions" element={<MentionLegales />} />
         <Route path="/davlebg" element={<PrivateBookingDashboard />} />
+        <Route path="/nyg" element={<PrivateNewYearDashboard />} />
       </Routes>
     </>
   );
