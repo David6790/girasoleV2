@@ -87,7 +87,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
         selectedTime === "19:00")
     ) {
       alert(
-        "Nous vous remercions de choisir Il Girasole pour votre soirée du réveillon. \nLe 31 décembre, nous proposons exclusivement notre menu spécial nouvel an à 95€ par personne. \nPour confirmer votre réservation, un acompte de 30€ par personne est requis. \nUn lien de paiement vous sera envoyé après la réception de votre réservation.\nL'Équipe du Il Girasole "
+        "Nous vous remercions de choisir Il Girasole pour votre soirée du réveillon. \nLe 31 décembre, nous proposons exclusivement notre menu spécial nouvel an à 85€ par personne. \nL'Équipe du Il Girasole "
       );
     }
   }, [dateTime, timeSlots, selectedTime]);
