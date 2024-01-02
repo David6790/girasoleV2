@@ -1,31 +1,36 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Modal from "react-modal";
 import { motion } from "framer-motion";
-import axios from "axios";
 
 const ModalMenu = ({ isOpen, onClose, resaModal }) => {
-  const [menus, setMenus] = useState([]);
-
-  const recupererMenu = () => {
-    axios
-      .get("https://sheetdb.io/api/v1/03vxoo7tdhofu")
-      .then((response) => {
-        setMenus(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  useEffect(() => {
-    recupererMenu();
-  }, []);
-
-  console.log(
-    menus.filter(
-      (item) => item.type !== "Semaine du:" && item.type !== "Dessert: "
-    )
-  );
+  const menuGirasole = [
+    {
+      day: "Lundi",
+      starter: "Aubergine farcie à la viande et jus de tomate",
+      dish: "Pasta sauce napoli, crème truffée et champignons",
+    },
+    {
+      day: "Mardi",
+      starter: "Polpettes di zucca",
+      dish: "Escalope de poulet gratinée et risotto, sauce crémeuse aux légumes",
+    },
+    {
+      day: "Mercredi",
+      starter: "Quiche au bœuf, tomates et poivrons",
+      dish: " Lasagne de légumes et petite salade",
+    },
+    {
+      day: "Jeudi",
+      starter:
+        "Salade fermier (Salade de pommes de terre, panchetta, oeufs et oignons)",
+      dish: "Raviolis farcis au saumon",
+    },
+    {
+      day: "Vendredi",
+      starter: "Bruschetta aux crevettes grillées",
+      dish: "Filet de tilapia en crôute de parmesan et linguines sauce Napoli",
+    },
+  ];
 
   return (
     <Modal
@@ -57,41 +62,31 @@ const ModalMenu = ({ isOpen, onClose, resaModal }) => {
         }}
       >
         <div className="h-auto w-[100%] flex flex-col justify-center items-center bg-myGrey rounded-3xl ">
-          <div className=" font-bold mb-5">
-            Semaine du {menus[0].info1} au {menus[0].info2}{" "}
-          </div>
-          {menus
-            .filter(
-              (item) => item.type !== "Semaine du:" && item.type !== "Dessert: "
-            )
-            .map((menu, index) => (
-              <div
-                key={index}
-                className="w-full flex flex-col justify-center items-center xl:mb-5 lg:mb-2  text-center mb-2 "
-              >
-                <h1 className=" xl:text-2xl lg:text-2xl md:text-xl sm:text-lg text-base font-title-font text-my-gold mb-2">
-                  {menu.type}
-                </h1>
-                <p className="xl:text-base lg:text-base md:text-base sm:text-sm text-xs">
-                  <span className=" font-bold">Entrée: </span>
-                  <span>{menu.info1}</span>
-                </p>
-                <p className="xl:text-base lg:text-base md:text-base sm:text-sm text-xs">
-                  <span className=" font-bold">Plat: </span>
-                  <span>{menu.info2}</span>
-                </p>
-              </div>
-            ))}
-
+          {menuGirasole.map((menu, index) => (
+            <div
+              key={index}
+              className="w-full flex flex-col justify-center items-center xl:mb-5 lg:mb-2  text-center mb-2 "
+            >
+              <h1 className=" xl:text-2xl lg:text-2xl md:text-xl sm:text-lg text-base font-title-font text-my-gold mb-2">
+                {menu.day}
+              </h1>
+              <p className="xl:text-base lg:text-base md:text-base sm:text-sm text-xs">
+                <span className=" font-bold">Entrée: </span>
+                <span>{menu.starter}</span>
+              </p>
+              <p className="xl:text-base lg:text-base md:text-base sm:text-sm text-xs">
+                <span className=" font-bold">Plat: </span>
+                <span>{menu.dish}</span>
+              </p>
+            </div>
+          ))}
           <div>
             <p className=" text-my-gold xl:text-base lg:text-base md:text-base sm:text-sm text-xs text-center mt-2">
               <span className=" font-bold font-title-font ">
                 Dessert de la semaine :
               </span>
               <br />
-              <span className="text-black">
-                {menus[menus.length - 1].info1}
-              </span>
+              <span className="text-black">Tarte du jour</span>
             </p>
           </div>
           <button
