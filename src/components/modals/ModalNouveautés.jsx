@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from "react-modal";
 import { motion } from "framer-motion";
-// import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
   return (
@@ -36,8 +36,8 @@ const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
       >
         <div className="w-full flex flex-row justify-between items-center mb-5 sticky top-0 bg-white z-50 ">
           <img src="./img/logo.png" alt="logo girasole" className="h-[50px] " />
-          <span className="text-2xl xl:block lg:block md:block sm:hidden hidden  font-title-font font-bold">
-            🎉 Célébrez le Nouvel An chez Il Girasole ! 🍾
+          <span className="text-xl xl:block lg:block md:block sm:hidden hidden  text-my-gold font-title-font font-bold">
+            Quoi de neuf au Il Girasole?
           </span>
           <button className=" text-xs" onClick={onClose}>
             fermer
@@ -47,25 +47,23 @@ const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
         <div className="w-full h-full ">
           <div className="w-full flex xl:flex-row lg:flex-row md:flex-row sm:flex-col flex-col justify-between items-center ">
             <div className="xl:w-1/3 lg:w-1/3 md:w-1/3 sm:w-2/3 w-2/3 ">
-              <img src="./img/ny.png" alt="" className="w-full object-cover" />
+              <img
+                src="./img/kids.png"
+                alt=""
+                className="w-full object-cover"
+              />
             </div>
 
             <div className="xl:w-2/3 lg:w-2/3 md:w-2/3 sm:w-full w-full  text-justify p-10 ">
               <p className=" text-lg mb-2">
-                Venez vivre une soirée magique pour accueillir 2024 avec notre
-                menu exclusif du nouvel an. 🌟 <br />
-                Savourez des plats exquis préparés spécialement pour cette
-                occasion festive. 🍽️ <br />
-                <br />
-                <span className=" font-semibold text-my-gold">
-                  85€ TTC par personne.
-                </span>
-                <br />
-                <br />
+                Vous ne savez pas quoi faire ce week-end ? Emmenez vos bambini
+                🧒👧 en Italie 🇮🇹 le temps d’un repas ! Une cuisine fraîche 🌱,
+                avec des produits équilibrés ⚖️ et goûteux, quoi de mieux pour
+                passer un bon moment 🍽️ en faisant son boulot de parent?
               </p>
-              {/* <p className=" text-lg font-title-font text-my-gold">
+              <p className=" text-lg font-title-font text-my-gold">
                 Samedi et Dimanche midi, -50% pour les enfants.
-              </p> */}
+              </p>
 
               <button
                 className="px-5 py-2 border-solid border-black border-[1px] mt-5 mb-5 xl:text-xl lg:text-xl md:text-xl sm:text-lg text-base rounded-md shadow-2xl transform transition-transform duration-200 hover:-translate-y-1"
@@ -75,21 +73,7 @@ const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
               </button>
             </div>
           </div>
-          <div className="w-full flex flex-col items-center">
-            <img
-              src="./img/ny2.jpg"
-              alt="new year girasole menu"
-              className=" w-[80%] rounded-2xl"
-            />
-            <button
-              className="px-5 py-2 border-solid border-black border-[1px] mt-5 mb-5 xl:text-xl lg:text-xl md:text-xl sm:text-lg text-base rounded-md shadow-2xl transform transition-transform duration-200 hover:-translate-y-1"
-              onClick={resaModal}
-            >
-              Réserver en ligne
-            </button>
-          </div>
-
-          {/* <div className="w-full flex xl:flex-row lg:flex-row md:flex-row sm:flex-col-reverse flex-col-reverse justify-between items-center ">
+          <div className="w-full flex xl:flex-row lg:flex-row md:flex-row sm:flex-col-reverse flex-col-reverse justify-between items-center ">
             <div className="xl:w-2/3 lg:w-2/3 md:w-2/3 sm:w-full w-full  text-justify p-10 ">
               <p className=" text-lg mb-2">
                 🎉 Nouvelle saison, nouvelle carte ! 🎉 L'Hiver arrive, et nous
@@ -117,7 +101,7 @@ const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
                 className="w-full object-cover"
               />
             </div>
-          </div> */}
+          </div>
         </div>
       </motion.div>
     </Modal>

@@ -1,37 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import { motion } from "framer-motion";
+import axios from "axios";
 
 const ModalMenu = ({ isOpen, onClose, resaModal }) => {
-  // const menuGirasole = [
-  //   {
-  //     day: "Lundi",
-  //     starter:
-  //       "Salade sicilienne (fenouille, orange, radis, oignons et grenade)",
-  //     dish: "Escalope de poulet,sauce tomate, et mozzarella gratiné au four",
-  //   },
-  //   {
-  //     day: "Mardi",
-  //     starter:
-  //       "Salade composée (salade, endive, tomate, carotte, et billes de mozzarella)",
-  //     dish: "Ragoût de bœuf, carottes et pommes de terre",
-  //   },
-  //   {
-  //     day: "Mercredi",
-  //     starter: "Mille feuille d'aubergine à l'Italienne ",
-  //     dish: "Polpettes Napolitaine et penné",
-  //   },
-  //   {
-  //     day: "Jeudi",
-  //     starter: "Toasts caprèse",
-  //     dish: "Risotto aux chorizo et poireaux",
-  //   },
-  //   {
-  //     day: "Vendredi",
-  //     starter: "Soupe de moules et crevettes",
-  //     dish: "Filet de sole et linguines sauce crème et épinards",
-  //   },
-  // ];
+  const [menus, setMenus] = useState([]);
+
+  const recupererMenu = () => {
+    axios
+      .get("https://sheetdb.io/api/v1/03vxoo7tdhofu")
+      .then((response) => {
+        setMenus(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    recupererMenu();
+  }, []);
+
+  console.log(
+    menus.filter(
+      (item) => item.type !== "Semaine du:" && item.type !== "Dessert: "
+    )
+  );
 
   return (
     <Modal
@@ -63,37 +57,43 @@ const ModalMenu = ({ isOpen, onClose, resaModal }) => {
         }}
       >
         <div className="h-auto w-[100%] flex flex-col justify-center items-center bg-myGrey rounded-3xl ">
-          {/* {menuGirasole.map((menu, index) => (
-            <div
-              key={index}
-              className="w-full flex flex-col justify-center items-center xl:mb-5 lg:mb-2  text-center mb-2 "
-            >
-              <h1 className=" xl:text-2xl lg:text-2xl md:text-xl sm:text-lg text-base font-title-font text-my-gold mb-2">
-                {menu.day}
-              </h1>
-              <p className="xl:text-base lg:text-base md:text-base sm:text-sm text-xs">
-                <span className=" font-bold">Entrée: </span>
-                <span>{menu.starter}</span>
-              </p>
-              <p className="xl:text-base lg:text-base md:text-base sm:text-sm text-xs">
-                <span className=" font-bold">Plat: </span>
-                <span>{menu.dish}</span>
-              </p>
-            </div>
-          ))} */}
-          <div>
-            Entre Noêl et Nouvel-an, nous vous proposons uniquement la Carte et
-            nos formules midis.{" "}
+          <div className=" font-bold mb-5">
+            Semaine du {menus[0].info1} au {menus[0].info2}{" "}
           </div>
-          {/* <div>
+          {menus
+            .filter(
+              (item) => item.type !== "Semaine du:" && item.type !== "Dessert: "
+            )
+            .map((menu, index) => (
+              <div
+                key={index}
+                className="w-full flex flex-col justify-center items-center xl:mb-5 lg:mb-2  text-center mb-2 "
+              >
+                <h1 className=" xl:text-2xl lg:text-2xl md:text-xl sm:text-lg text-base font-title-font text-my-gold mb-2">
+                  {menu.type}
+                </h1>
+                <p className="xl:text-base lg:text-base md:text-base sm:text-sm text-xs">
+                  <span className=" font-bold">Entrée: </span>
+                  <span>{menu.info1}</span>
+                </p>
+                <p className="xl:text-base lg:text-base md:text-base sm:text-sm text-xs">
+                  <span className=" font-bold">Plat: </span>
+                  <span>{menu.info2}</span>
+                </p>
+              </div>
+            ))}
+
+          <div>
             <p className=" text-my-gold xl:text-base lg:text-base md:text-base sm:text-sm text-xs text-center mt-2">
               <span className=" font-bold font-title-font ">
                 Dessert de la semaine :
               </span>
               <br />
-              <span className="text-black">Panna cotta aux fruits rouge </span>
+              <span className="text-black">
+                {menus[menus.length - 1].info1}
+              </span>
             </p>
-          </div> */}
+          </div>
           <button
             className="px-5 py-2 border-solid border-black border-2 mt-5 mb-5 xl:text-xl lg:xl:text-xl md:xl:text-xl sm:text-sm rounded-md"
             onClick={resaModal}

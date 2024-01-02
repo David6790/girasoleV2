@@ -4,8 +4,8 @@ import axios from "axios";
 const afficherDateAujourdhui = () => {
   const dateAujourdhui = new Date();
   const jour = dateAujourdhui.getDate().toString().padStart(2, "0");
-  const mois = (dateAujourdhui.getMonth() + 1).toString().padStart(2, "0"); // +1 car les mois sont indexés à partir de 0
-  const annee = dateAujourdhui.getFullYear().toString().substr(-2); // Prendre les deux derniers chiffres de l'année
+  const mois = (dateAujourdhui.getMonth() + 1).toString().padStart(2, "0"); 
+  const annee = dateAujourdhui.getFullYear().toString().substr(-2); 
 
   return `${jour}-${mois}-${annee}`;
 };
