@@ -45,14 +45,16 @@ const ModalMenu = ({ isOpen, onClose, resaModal }) => {
             ? menuSemaine
                 .filter(
                   (item) =>
-                    item.type !== "Semaine du:" && item.type !== "Dessert: "
+                    item.type !== "Semaine du:" &&
+                    item.type !== "Dessert: " &&
+                    item.type !== "CheeseCake"
                 )
                 .map((menu, index) => (
                   <div
                     key={index}
-                    className="w-full flex flex-col justify-center items-center xl:mb-5 lg:mb-2  text-center mb-2 "
+                    className="w-full flex flex-col justify-center items-center xl:mb-2 lg:mb-2  text-center mb-2 "
                   >
-                    <h1 className=" xl:text-2xl lg:text-2xl md:text-xl sm:text-lg text-base font-title-font text-my-gold mb-2">
+                    <h1 className=" xl:text-2xl lg:text-2xl md:text-xl sm:text-lg text-base font-title-font text-my-gold mb-1">
                       {menu.type}
                     </h1>
                     <p className="xl:text-base lg:text-base md:text-base sm:text-sm text-xs">
@@ -71,12 +73,21 @@ const ModalMenu = ({ isOpen, onClose, resaModal }) => {
               <span className=" font-bold font-title-font ">
                 Dessert de la semaine :
               </span>
-              <br />
+              <span className="text-black">
+                {menuSemaine ? menuSemaine[menuSemaine.length - 2].info1 : ""}
+              </span>
+              <br></br>
+              <span>CheeseCake de la semaine : </span>
               <span className="text-black">
                 {menuSemaine ? menuSemaine[menuSemaine.length - 1].info1 : ""}
               </span>
+              <br />
             </p>
           </div>
+          <span className="mt-5 text-my-gold text-center text-xs">
+            ENTREE-PLAT-DESSERT : 15.00 € || ENTREE-PLAT (ou PLAT-DESSERT) :
+            13.00 € || PLAT SEUL : 11.00 €{" "}
+          </span>
           <button
             className="px-5 py-2 border-solid border-black border-2 mt-5 mb-5 xl:text-xl lg:xl:text-xl md:xl:text-xl sm:text-sm rounded-md"
             onClick={resaModal}
