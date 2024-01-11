@@ -43,7 +43,38 @@ const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
             fermer
           </button>
         </div>
+        <div className="w-full flex xl:flex-row lg:flex-row md:flex-row sm:flex-col-reverse flex-col-reverse justify-between items-center ">
+          <div className="xl:w-2/3 lg:w-2/3 md:w-2/3 sm:w-full w-full  text-justify p-10 ">
+            <p className=" text-lg mb-2">
+              Parmi les bonnes résolutions de l’année 2024, il y a chez nous la
+              volonté de proposer des alternatives à la consommation de viande
+              🍽️ On vous propose donc la pizza Regina et les carbonara avec ce
+              délicieux jambon végétal 🍕🍝 Pour cela, on travaille avec la
+              marque La Vie qui mérite de notre part une vraie mise en lumière
+              💫 Une liste d’ingrédients courtes, pas d’agent de texture, pas de
+              nitrites (certo !), pas d’OGM, concocté en France. Bref, tout pour
+              plaire à nos amis végétariens mais qui sait, même certains
+              carnivores invétérés en quête d’une consommation plus raisonnable
+              ? A dopo amici ♥️
+            </p>
 
+            <NavLink to="/menu">
+              <button
+                className=" px-5 py-2 border-[1px] rounded-md border-black xl:text-xl lg:text-xl md:text-xl sm:text-sm text-xs  mt-8 transform transition-transform duration-200 hover:-translate-y-1 shadow-2xl  "
+                onClick={onClose}
+              >
+                Consulter la Carte
+              </button>
+            </NavLink>
+          </div>
+          <div className="xl:w-1/3 lg:w-1/3 md:w-1/3 sm:w-2/3 w-2/3 ">
+            <img
+              src="./img/lavie.webp"
+              alt=""
+              className="w-full object-cover"
+            />
+          </div>
+        </div>
         <div className="w-full h-full ">
           <div className="w-full flex xl:flex-row lg:flex-row md:flex-row sm:flex-col flex-col justify-between items-center ">
             <div className="xl:w-1/3 lg:w-1/3 md:w-1/3 sm:w-2/3 w-2/3 ">
@@ -71,35 +102,6 @@ const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
               >
                 Réserver en ligne
               </button>
-            </div>
-          </div>
-          <div className="w-full flex xl:flex-row lg:flex-row md:flex-row sm:flex-col-reverse flex-col-reverse justify-between items-center ">
-            <div className="xl:w-2/3 lg:w-2/3 md:w-2/3 sm:w-full w-full  text-justify p-10 ">
-              <p className=" text-lg mb-2">
-                🎉 Nouvelle saison, nouvelle carte ! 🎉 L'Hiver arrive, et nous
-                sommes ravis de vous présenter nos nouvelles créations
-                culinaires. Des saveurs inédites pour égayer vos papilles.
-                Curieux ? Venez découvrir ce que nous avons concocté pour vous.
-                À très vite chez Il Girasole ! 🍽️🌞
-              </p>
-              <p className=" text-lg font-title-font text-my-gold">
-                Produits frais et de saison !
-              </p>
-              <NavLink to="/menu">
-                <button
-                  className=" px-5 py-2 border-[1px] rounded-md border-black xl:text-xl lg:text-xl md:text-xl sm:text-sm text-xs  mt-8 transform transition-transform duration-200 hover:-translate-y-1 shadow-2xl  "
-                  onClick={onClose}
-                >
-                  Consulter la Carte
-                </button>
-              </NavLink>
-            </div>
-            <div className="xl:w-1/3 lg:w-1/3 md:w-1/3 sm:w-2/3 w-2/3 ">
-              <img
-                src="./img/newMenu.png"
-                alt=""
-                className="w-full object-cover"
-              />
             </div>
           </div>
         </div>
