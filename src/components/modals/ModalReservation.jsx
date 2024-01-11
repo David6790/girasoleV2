@@ -354,7 +354,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
               <select
                 value={selectedTime}
                 onChange={(e) => setSelectedTime(e.target.value)}
-                className=" h-[40px] focus:outline-none bg-transparent border-b-[1px]  px-2 mb-5"
+                className=" h-[40px] focus:outline-none bg-transparent text-black border-b-[1px]  px-2 mb-5"
               >
                 {availableTimeSlots.map((slot, index) => (
                   <option key={index} value={slot}>
