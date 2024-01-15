@@ -54,9 +54,9 @@ const MenuSemaine = () => {
             une affaire de passion et de partage.
           </p>
           <div className=" xl:text-sm lg:text-sm  md:text-xs sm:text-xs text-xs mb-2  italic ">
-            <p>Plat du jour: 10€</p>
-            <p>Entrée/Plat ou Plat/Dessert: 12€</p>
-            <p>Entrée/Plat/Dessert: 14€</p>
+            <p>Plat du jour: 11€</p>
+            <p>Entrée/Plat ou Plat/Dessert: 13€</p>
+            <p>Entrée/Plat/Dessert: 15€</p>
           </div>
           <button
             className=" px-5 py-2 border-[1px] rounded-md border-black xl:text-xl lg:text-xl md:text-xl sm:text-sm text-xs transform transition-transform duration-200 hover:-translate-y-1 shadow-2xl"
