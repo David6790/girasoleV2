@@ -8,6 +8,8 @@ import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import MessageModal from "./MessageModal";
 import { parsePhoneNumberFromString } from "libphonenumber-js";
+import { useSelector } from "react-redux";
+import { occupationStatus } from "../../features/occupationSlice";
 
 Modal.setAppElement("#root");
 
@@ -50,47 +52,61 @@ const ModalReservation = ({ isOpen, onClose }) => {
   const [tel, setTel] = useState("");
   const [messageModalOpen, setMessageModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
+  const [hasModalBeenShown, setHasModalBeenShown] = useState(false);
 
+  const occStatus = useSelector(occupationStatus);
   moment.locale("fr");
 
+  const handleMessageModalClose = () => {
+    setMessageModalOpen(false);
+    setHasModalBeenShown(true); // Mettre à jour hasModalBeenShown ici
+  };
+
+  const handleModalClose = () => {
+    onClose(); // Appelle la fonction onClose passée en prop au composant
+    setHasModalBeenShown(false); // Réinitialise hasModalBeenShown
+  };
+
   useEffect(() => {
-    const month = dateTime.month();
-    const year = dateTime.year();
-    const day = dateTime.date();
+    let newTimeSlots = [...timeSlots];
 
-    const is31December = day === 31 && month === 11 && year === 2023;
+    const isCurrentDay = dateTime.isSame(moment(), "day");
 
-    if (is31December) {
-      setAvailableTimeSlots([
-        "12:00",
-        "12:15",
-        "12:30",
-        "12:45",
-        "13:00",
-        "13:15",
-        "13:30",
-        "19:00",
-        "19:15",
-        "19:30",
-        "20:00",
-        "20:30",
-      ]);
-    } else {
-      setAvailableTimeSlots(timeSlots);
+    // Gestion des créneaux horaires en fonction de occupationStatus
+    if (occStatus != null) {
+      if (occStatus[0].occupationStatus === "service1Complet" && isCurrentDay) {
+        newTimeSlots = newTimeSlots.filter((slot) => slot >= "21:15");
+      } else if (
+        occStatus[0].occupationStatus === "fullComplet" &&
+        isCurrentDay
+      ) {
+        newTimeSlots = [];
+      }
     }
-    if (
-      is31December &&
-      (selectedTime === "20:00" ||
-        selectedTime === "20:30" ||
-        selectedTime === "19:30" ||
-        selectedTime === "19:15" ||
-        selectedTime === "19:00")
-    ) {
-      alert(
-        "Nous vous remercions de choisir Il Girasole pour votre soirée du réveillon. \nLe 31 décembre, nous proposons exclusivement notre menu spécial nouvel an à 85€ par personne. \nL'Équipe du Il Girasole "
-      );
+
+    setAvailableTimeSlots(newTimeSlots);
+
+    // Gestion des messages en fonction de occupationStatus
+    if (!hasModalBeenShown) {
+      if (
+        occStatus != null &&
+        occStatus[0].occupationStatus === "service1Complet"
+      ) {
+        setModalMessage(
+          "Le premier service du restaurant est complet pour ce soir. Nous ne pouvons prendre des réservations qu'à partir de 21h15. Pour un autre jour, tous les créneaux restent disponibles."
+        );
+        setMessageModalOpen(true);
+      } else if (
+        occStatus != null &&
+        occStatus[0].occupationStatus === "fullComplet"
+      ) {
+        setModalMessage(
+          "Le restaurant est complet pour ce soir. Pour une autre date, vous pouvez réserver sans problème."
+        );
+        setMessageModalOpen(true);
+      }
     }
-  }, [dateTime, timeSlots, selectedTime]);
+  }, [dateTime, timeSlots, occStatus, hasModalBeenShown]);
 
   const handleChangeDateTime = (value) => {
     if (value) {
@@ -225,49 +241,64 @@ const ModalReservation = ({ isOpen, onClose }) => {
       : "https://sheetdb.io/api/v1/97lppk2d46b57";
 
     const dataToSend = isNewYearReservation ? newYearData : regularData;
-
-    try {
-      await fetch(sheetURL, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(dataToSend),
-      });
-
-      emailjs
-        .send("service_6j5qs7e", "template_clc96rm", data, "TlcoR3tgd_o9uLj7o")
-        .then(
-          (result) => {
-            console.log(result.text);
-            setEmail("");
-            setMessage("");
-            setName("");
-            setDateTime(moment());
-            setNumberOfGuest("");
-            setSelectedTime("");
-            setTel("");
-            setSelectedTime("");
-            setIsLoading(false);
-            setModalMessage(
-              "Votre réservation est bien prise en compte. Nous vous confirmerons par email ET par SMS dans les prochaines minutes. N'hésitez pas à verifier dans vos indésirables / spams si vous ne recevez pas d'email. Ajoutez-nous en favoris pour éviter que nos confirmations atterrissent dans vos spams."
-            );
-            setMessageModalOpen(true);
+    const isCurrentDay = dateTime.isSame(moment(), "day");
+    if (
+      occStatus != null &&
+      occStatus[0].occupationStatus === "fullComplet" &&
+      isCurrentDay
+    ) {
+      alert(
+        "Le restaurant est complet pour ce soir. Nous nous excusons pour le désagrément."
+      );
+    } else {
+      try {
+        await fetch(sheetURL, {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
           },
-          (error) => {
-            console.log(error.text);
-          }
-        );
-    } catch (error) {
-      console.log(error);
+          body: JSON.stringify(dataToSend),
+        });
+
+        emailjs
+          .send(
+            "service_6j5qs7e",
+            "template_clc96rm",
+            data,
+            "TlcoR3tgd_o9uLj7o"
+          )
+          .then(
+            (result) => {
+              console.log(result.text);
+              setEmail("");
+              setMessage("");
+              setName("");
+              setDateTime(moment());
+              setNumberOfGuest("");
+              setSelectedTime("");
+              setTel("");
+              setSelectedTime("");
+              setIsLoading(false);
+              setModalMessage(
+                "Votre réservation est bien prise en compte. Nous vous confirmerons par email ET par SMS dans les prochaines minutes. N'hésitez pas à verifier dans vos indésirables / spams si vous ne recevez pas d'email. Ajoutez-nous en favoris pour éviter que nos confirmations atterrissent dans vos spams."
+              );
+              setMessageModalOpen(true);
+            },
+            (error) => {
+              console.log(error.text);
+            }
+          );
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
   return (
     <Modal
       isOpen={isOpen}
-      onRequestClose={onClose}
+      onRequestClose={handleModalClose}
       contentLabel="Réservation en ligne"
       className="w-full h-full bg-opacity-60 bg-my-gold backdrop-blur-md rounded-2xl flex flex-col justify-around items-center "
       overlayClassName="fixed top-0 left-0  h-full w-screen xl:px-40 lg:px-40 md:px-20 sm:px-20 px-5 xl:py-10 lg:py-10   md:py-20 sm:py-20 py-5 z-40 text-left bg-black bg-opacity-50 "
@@ -275,7 +306,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
       <MessageModal
         isOpen={messageModalOpen}
         message={modalMessage}
-        onClose={() => setMessageModalOpen(false)}
+        onClose={handleMessageModalClose}
       />
 
       <motion.div
@@ -307,7 +338,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
           </h1>
           <button
             className=" px-4 py-2 bg-transparent text-white  "
-            onClick={onClose}
+            onClick={handleModalClose}
           >
             Fermer
           </button>
@@ -392,6 +423,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
                 onChange={(e) => setMessage(e.target.value)}
                 className=" h-[70%] focus:outline-none  resize-none   p-2  mb-5 bg-transparent border-b-[1px] px-2 "
               />
+
               <button
                 type="submit"
                 className="  w-full m-auto h-[40px]   mt-3 text-white text-xl font-title-font border-[1px] mb-10 "

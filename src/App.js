@@ -5,8 +5,10 @@ import { setCocktails, setMenus, setWeeklyMenus } from "./features/menuSlice";
 import {
   useGetCocktailsQuery,
   useGetMenusQuery,
+  useGetOccupationStatusQuery,
   useGetWeeklyMenusQuery,
 } from "./API/api";
+import { setOccupationStatus } from "./features/occupationSlice";
 
 function App() {
   const dispatch = useDispatch();
@@ -14,6 +16,7 @@ function App() {
   const { data: menus } = useGetMenusQuery();
   const { data: cocktails } = useGetCocktailsQuery();
   const { data: weeklyMenus } = useGetWeeklyMenusQuery();
+  const { data: occupationStatus } = useGetOccupationStatusQuery();
 
   useEffect(() => {
     if (menus) {
@@ -25,7 +28,10 @@ function App() {
     if (weeklyMenus) {
       dispatch(setWeeklyMenus(weeklyMenus));
     }
-  }, [dispatch, menus, cocktails, weeklyMenus]);
+    if (occupationStatus) {
+      dispatch(setOccupationStatus(occupationStatus));
+    }
+  }, [dispatch, menus, cocktails, weeklyMenus, occupationStatus]);
 
   return (
     <main className=" max-w-[1440px]  m-auto bg-[#FAFAF8] py-2 font-main-font  overflow-hidden ">

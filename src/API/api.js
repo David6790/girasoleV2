@@ -24,6 +24,9 @@ const api = createApi({
     getWeeklyMenus: builder.query({
       query: () => "https://sheetdb.io/api/v1/03vxoo7tdhofu", // URL complète
     }),
+    getOccupationStatus: builder.query({
+      query: () => "	https://sheetdb.io/api/v1/wplwbkmf4c9kk", // URL complète
+    }),
   }),
 });
 
@@ -31,5 +34,6 @@ export const {
   useGetMenusQuery,
   useGetCocktailsQuery,
   useGetWeeklyMenusQuery,
+  useGetOccupationStatusQuery,
 } = api;
 export default api;
