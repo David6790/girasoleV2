@@ -69,7 +69,7 @@ const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
           </div>
           <div className="xl:w-1/3 lg:w-1/3 md:w-1/3 sm:w-2/3 w-2/3 ">
             <img
-              src="./img/lavie.webp"
+              src="./img/REGINA2.jpeg"
               alt=""
               className="w-full object-cover"
             />

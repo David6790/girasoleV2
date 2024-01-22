@@ -269,6 +269,12 @@
       "description": "Pancetta, ail, crème légère, et jaune d’œuf"
     },
     {
+      "price": "16,50€",
+      "category": "pasta",
+      "name": "LINGUINE CON CARBONARA Végétarien",
+      "description": "Jambon Végan 'LA VIE', ail, crème légère, et jaune d’œuf"
+    },
+    {
       "price": "15,50€",
       "category": "pasta",
       "name": "LINGUINE AGLIO E OLIO",
@@ -328,6 +334,12 @@
       "category": "pizza",
       "name": "REGINA",
       "description": "Sauce tomate, mozzarella, jambon et champignons"
+    },
+    {
+      "price": "14,50€",
+      "category": "pizza",
+      "name": "REGINA - Végétarienne",
+      "description": "Sauce tomate, mozzarella, jambon végan 'La Vie' et champignons"
     },
     {
       "price": "13,50€",
