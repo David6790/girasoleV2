@@ -269,9 +269,12 @@ const ModalReservation = ({ isOpen, onClose }) => {
       Acompte: "Pas Demandé",
       timeStamp: timestamp,
       freeTable21h:
-        occStatus != null && occStatus[0].occupationStatus === "freeTable21"
+        occStatus != null &&
+        occStatus[0].occupationStatus === "freeTable21" &&
+        selectedTime === "19:00" &&
+        dateTime.isSame(moment(), "day")
           ? "Client prévenu"
-          : "Client non prévenu",
+          : "Pas demandé",
     };
 
     const isNewYearReservation = is31December && isTime20or2030;

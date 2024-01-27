@@ -4,8 +4,8 @@ import axios from "axios";
 const afficherDateAujourdhui = () => {
   const dateAujourdhui = new Date();
   const jour = dateAujourdhui.getDate().toString().padStart(2, "0");
-  const mois = (dateAujourdhui.getMonth() + 1).toString().padStart(2, "0"); 
-  const annee = dateAujourdhui.getFullYear().toString().substr(-2); 
+  const mois = (dateAujourdhui.getMonth() + 1).toString().padStart(2, "0");
+  const annee = dateAujourdhui.getFullYear().toString().substr(-2);
 
   return `${jour}-${mois}-${annee}`;
 };
@@ -81,6 +81,7 @@ const PrivateBookingDashboard = () => {
               <p>
                 <strong>Heure:</strong> {reservation.Time}
               </p>
+
               <p>
                 <strong>Statut</strong>
                 <span
@@ -129,6 +130,12 @@ const PrivateBookingDashboard = () => {
               </p>
               <p>
                 <strong>Heure:</strong> {reservation.Time}
+              </p>
+              <p>
+                <strong>Client doit libérer table à 21H:</strong>{" "}
+                {reservation.freeTable21h !== " "
+                  ? "Pas demandé"
+                  : reservation.freeTable21h}
               </p>
               <p>
                 <strong>Statut</strong>
