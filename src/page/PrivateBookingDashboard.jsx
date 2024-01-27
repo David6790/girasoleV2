@@ -133,7 +133,13 @@ const PrivateBookingDashboard = () => {
               </p>
               <p>
                 <strong>Client doit libérer table à 21H:</strong>
-                {reservation.freeTable21h}
+                <span
+                  style={{
+                    backgroundColor: "#90EE90",
+                  }}
+                >
+                  {reservation.freeTable21h}
+                </span>
               </p>
               <p>
                 <strong>Statut</strong>
