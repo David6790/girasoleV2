@@ -34,7 +34,7 @@ exports.handler = async (event, context) => {
       Date: resDate,
       Time: resTime,
       Number: number,
-      msgClient: msgClient,
+      MsgClient: msgClient,
     },
   };
 
