@@ -88,7 +88,10 @@ const ModalReservation = ({ isOpen, onClose }) => {
     if (occStatus != null) {
       if (occStatus[0].occupationStatus === "service1Complet" && isCurrentDay) {
         newTimeSlots = newTimeSlots.filter((slot) => slot >= "21:15");
-      } else if (occStatus[0].occupationStatus === "freeTable21") {
+      } else if (
+        occStatus[0].occupationStatus === "freeTable21" &&
+        isCurrentDay
+      ) {
         newTimeSlots = newTimeSlots.filter(
           (slot) =>
             ![
