@@ -203,7 +203,10 @@ const ModalReservation = ({ isOpen, onClose }) => {
       ID: ID,
       typeEvent: "Nouvel-an",
       msgClient:
-        occStatus != null && occStatus[0].occupationStatus === "freeTable21"
+        occStatus != null &&
+        occStatus[0].occupationStatus === "freeTable21" &&
+        selectedTime === "19:00" &&
+        dateTime.isSame(moment(), "day")
           ? "Le restaurant est très réservé ce soir. Veuillez noter que la table doit être libérée pour 21h00."
           : "",
     };
