@@ -132,10 +132,8 @@ const PrivateBookingDashboard = () => {
                 <strong>Heure:</strong> {reservation.Time}
               </p>
               <p>
-                <strong>Client doit libérer table à 21H:</strong>{" "}
-                {reservation.freeTable21h !== " "
-                  ? "Pas demandé"
-                  : reservation.freeTable21h}
+                <strong>Client doit libérer table à 21H:</strong>
+                {reservation.freeTable21h}
               </p>
               <p>
                 <strong>Statut</strong>
