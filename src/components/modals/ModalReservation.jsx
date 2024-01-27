@@ -58,19 +58,18 @@ const ModalReservation = ({ isOpen, onClose }) => {
   moment.locale("fr");
 
   const isDateMatchingEffectDate = (selectedDate, effectDate) => {
-    // Parsez effectDate au format "DD-MM-YY"
     const parsedEffectDate = moment(effectDate, "DD-MM-YY");
     return selectedDate.isSame(parsedEffectDate, "day");
   };
 
   const handleMessageModalClose = () => {
     setMessageModalOpen(false);
-    setHasModalBeenShown(true); // Mettre à jour hasModalBeenShown ici
+    setHasModalBeenShown(true);
   };
 
   const handleModalClose = () => {
-    onClose(); // Appelle la fonction onClose passée en prop au composant
-    setHasModalBeenShown(false); // Réinitialise hasModalBeenShown
+    onClose();
+    setHasModalBeenShown(false);
   };
 
   const handleTimeSelection = (e) => {
@@ -102,7 +101,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
     ) {
       if (["19:00"].includes(e.target.value)) {
         setModalMessage(
-          "Le restaurant est très réservé ce soir. Veuillez noter que la table doit être libérée pour 21h00."
+          "Nous avons énormément de demandes pour ce soir. Afin de satisfaire un maximum de clients, veuillez noter que la table doit être libérée pour 21h00."
         );
         setMessageModalOpen(true);
       }
@@ -135,7 +134,19 @@ const ModalReservation = ({ isOpen, onClose }) => {
         (occStatus[2].occupationStatus === "service1Complet" &&
           effectDateMatches3)
       ) {
-        newTimeSlots = newTimeSlots.filter((slot) => slot >= "21:15");
+        newTimeSlots = newTimeSlots.filter(
+          (slot) =>
+            ![
+              "19:00",
+              "19:15",
+              "19:30",
+              "19:45",
+              "20:00",
+              "20:15",
+              "20:30",
+              "20:45",
+            ].includes(slot)
+        );
       } else if (
         (occStatus[0].occupationStatus === "freeTable21" &&
           effectDateMatches) ||
@@ -295,7 +306,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
           occStatus[2].occupationStatus === "freeTable21" &&
           selectedTime === "19:00" &&
           effectDateMatches3)
-          ? "Le restaurant est très réservé ce soir. Veuillez noter que la table doit être libérée pour 21h00."
+          ? "Nous avons énormément de demandes pour ce soir. Afin de satisfaire un maximum de clients, veuillez noter que la table doit être libérée pour 21h00."
           : "",
     };
     if (!isTimeValidForSelectedDate(selectedTime, dateTime)) {
