@@ -42,6 +42,9 @@ const PrivateBookingDashboard = () => {
         return "yellow";
       case "Refusé":
         return "red";
+      case "Client prévenu":
+        return "#90EE90";
+
       default:
         return "gray";
     }
@@ -135,10 +138,14 @@ const PrivateBookingDashboard = () => {
                 <strong>Client doit libérer table à 21H:</strong>
                 <span
                   style={{
-                    backgroundColor: "#90EE90",
+                    backgroundColor: getColorForStatus(
+                      reservation.freeTable21h
+                    ),
                   }}
                 >
-                  {reservation.freeTable21h}
+                  {reservation.freeTable21h === "Client prévenu"
+                    ? "Client prévenu"
+                    : "Pas demandé"}
                 </span>
               </p>
               <p>
