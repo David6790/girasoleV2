@@ -66,6 +66,19 @@ const ModalReservation = ({ isOpen, onClose }) => {
     setHasModalBeenShown(false); // Réinitialise hasModalBeenShown
   };
 
+  const handleTimeSelection = (e) => {
+    setSelectedTime(e.target.value);
+
+    if (occStatus != null && occStatus[0].occupationStatus === "freeTable21") {
+      if (["19:00"].includes(e.target.value)) {
+        setModalMessage(
+          "Le restaurant est très réservé ce soir. Veuillez noter que la table doit être libérée pour 21h00."
+        );
+        setMessageModalOpen(true);
+      }
+    }
+  };
+
   useEffect(() => {
     let newTimeSlots = [...timeSlots];
 
@@ -75,6 +88,19 @@ const ModalReservation = ({ isOpen, onClose }) => {
     if (occStatus != null) {
       if (occStatus[0].occupationStatus === "service1Complet" && isCurrentDay) {
         newTimeSlots = newTimeSlots.filter((slot) => slot >= "21:15");
+      } else if (occStatus[0].occupationStatus === "freeTable21") {
+        newTimeSlots = newTimeSlots.filter(
+          (slot) =>
+            ![
+              "19:15",
+              "19:30",
+              "19:45",
+              "20:00",
+              "20:15",
+              "20:30",
+              "20:45",
+            ].includes(slot)
+        );
       } else if (
         occStatus[0].occupationStatus === "fullComplet" &&
         isCurrentDay
@@ -173,6 +199,10 @@ const ModalReservation = ({ isOpen, onClose }) => {
       phone: tel,
       ID: ID,
       typeEvent: "Nouvel-an",
+      msgClient:
+        occStatus != null && occStatus[0].occupationStatus === "freeTable21"
+          ? "Le restaurant est très réservé ce soir. Veuillez noter que la table doit être libérée pour 21h00."
+          : "",
     };
     if (!isTimeValidForSelectedDate(selectedTime, dateTime)) {
       setModalMessage("Veuillez choisir une heure future.");
@@ -232,6 +262,10 @@ const ModalReservation = ({ isOpen, onClose }) => {
       Status: "Pending",
       Acompte: "Pas Demandé",
       timeStamp: timestamp,
+      freeTable21h:
+        occStatus != null && occStatus[0].occupationStatus === "freeTable21"
+          ? "Client prévenu"
+          : "Client non prévenu",
     };
 
     const isNewYearReservation = is31December && isTime20or2030;
@@ -383,7 +417,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
               <label className="text-white">Heure</label>
               <select
                 value={selectedTime}
-                onChange={(e) => setSelectedTime(e.target.value)}
+                onChange={handleTimeSelection}
                 className=" h-[40px] focus:outline-none bg-transparent text-black border-b-[1px]  px-2 mb-5"
               >
                 {availableTimeSlots.map((slot, index) => (

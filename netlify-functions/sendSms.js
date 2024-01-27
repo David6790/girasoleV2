@@ -16,7 +16,7 @@ exports.handler = async (event, context) => {
   }
 
   // Récupérez les paramètres de la chaîne de requête
-  const { phone, name, resDate, resTime, number, ID } =
+  const { phone, name, resDate, resTime, number, ID, msgClient } =
     event.queryStringParameters;
 
   // Vérifiez que tous les paramètres nécessaires sont présents
@@ -33,7 +33,8 @@ exports.handler = async (event, context) => {
     });
     // Envoyez le SMS via Twilio
     await twilioClient.messages.create({
-      body: `${greeting} ${name}, votre réservation au Il Girasole le ${resDate} à ${resTime} pour ${number} personnes a bien été notée et nous vous en remercions. En cas d'empêchement, n'oubliez pas de nous appeler au plus vite, au 03 88 37 16 76 ou par sms au 06 26 19 10 28 (en indiquant votre nom).`,
+      body: `${greeting} ${name}, votre réservation au Il Girasole le ${resDate} à ${resTime} pour ${number} personnes a bien été notée et nous vous en remercions. En cas d'empêchement, n'oubliez pas de nous appeler au plus vite, au 03 88 37 16 76 ou par sms au 06 26 19 10 28 (en indiquant votre nom).
+      ${msgClient}`,
       from: "IlGirasole",
       to: `+${phone}`,
     });
