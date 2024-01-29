@@ -304,8 +304,10 @@ const ModalReservation = ({ isOpen, onClose }) => {
       "day"
     );
     const isTime20or2030 =
-      selectedTime === "20:00" ||
       selectedTime === "20:30" ||
+      selectedTime === "20:15" ||
+      selectedTime === "20:00" ||
+      selectedTime === "19:45" ||
       selectedTime === "19:30" ||
       selectedTime === "19:15" ||
       selectedTime === "19:00";
