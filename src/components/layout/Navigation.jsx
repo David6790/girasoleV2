@@ -119,7 +119,7 @@ const Navigation = () => {
           <span className="star animate-pulse absolute top-[-10px] left-[-15px]">
             <i className="fa-solid fa-star-of-life text-yellow-500 text-xs mr-1"></i>
           </span>
-          <span className=" font-bold">Actualités</span>
+          <span className=" font-bold">Saint-Valentin🥰🥰</span>
         </li>
       </ul>
       <div className="xl:hidden lg:hidden md:flex sm:flex flex h-full justify-end items-center px-5 relative  ">

@@ -13,7 +13,7 @@ exports.handler = async (event, context) => {
   }
 
   // Récupérez les paramètres de la chaîne de requête
-  const { email, name, resDate, resTime, number, ID, msgClient } =
+  const { email, name, resDate, resTime, number, ID, msgClient, msgClient2 } =
     event.queryStringParameters;
 
   // Vérifiez que tous les paramètres nécessaires sont présents
@@ -35,6 +35,7 @@ exports.handler = async (event, context) => {
       Time: resTime,
       Number: number,
       MsgClient: msgClient,
+      MsgClient2: msgClient2,
     },
   };
 

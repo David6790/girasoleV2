@@ -74,6 +74,26 @@ const ModalReservation = ({ isOpen, onClose }) => {
 
   const handleTimeSelection = (e) => {
     setSelectedTime(e.target.value);
+    const isValentinesDay = dateTime.isSame(
+      moment("2024-02-14", "YYYY-MM-DD"),
+      "day"
+    );
+    const valentinesDayTimeSlots = [
+      "19:00",
+      "19:15",
+      "19:30",
+      "19:45",
+      "20:00",
+      "20:15",
+      "20:30",
+    ];
+
+    if (isValentinesDay && valentinesDayTimeSlots.includes(e.target.value)) {
+      setModalMessage(
+        "Pour une soirée de Saint-Valentin inoubliable, notre restaurant se transforme en un havre de romance. Ce soir-là, nous laissons de côté notre carte habituelle pour vous offrir une expérience culinaire exclusive : notre Menu Saint-Valentin, spécialement conçu pour l'occasion, au tarif de 59€ TTC par personne. Découvrez les délices que nous avons soigneusement préparés en visitant notre section Saint-Valentin sur la page d'accueil. Nous vous promettons une expérience gastronomique qui ravira vos sens et rendra votre soirée mémorable."
+      );
+      setMessageModalOpen(true);
+    }
     const dateOfEffect = occStatus != null ? occStatus[0].dateOfEffect : "";
     const dateOfEffect2 = occStatus != null ? occStatus[1].dateOfEffect : "";
     const dateOfEffect3 = occStatus != null ? occStatus[2].dateOfEffect : "";
@@ -122,6 +142,11 @@ const ModalReservation = ({ isOpen, onClose }) => {
     const effectDateMatches3 = dateOfEffect
       ? isDateMatchingEffectDate(dateTime, dateOfEffect2)
       : "";
+
+    const isValentinesDay = dateTime.isSame(
+      moment("2024-02-14", "YYYY-MM-DD"),
+      "day"
+    );
     let newTimeSlots = [...timeSlots];
 
     // Gestion des créneaux horaires en fonction de occupationStatus
@@ -174,6 +199,8 @@ const ModalReservation = ({ isOpen, onClose }) => {
         (occStatus[2].occupationStatus === "fullComplet" && effectDateMatches3)
       ) {
         newTimeSlots = newTimeSlots.filter((slot) => slot < "19:00");
+      } else if (isValentinesDay) {
+        newTimeSlots = newTimeSlots.filter((slot) => slot <= "20:30");
       }
     }
 
@@ -272,8 +299,8 @@ const ModalReservation = ({ isOpen, onClose }) => {
       .hour(parseInt(selectedTime.split(":")[0]))
       .minute(parseInt(selectedTime.split(":")[1]));
 
-    const is31December = validDateTime.isSame(
-      moment("31-12-2023", "DD-MM-YYYY"),
+    const isValentinDay = validDateTime.isSame(
+      moment("14-02-2024", "DD-MM-YYYY"),
       "day"
     );
     const isTime20or2030 =
@@ -308,6 +335,10 @@ const ModalReservation = ({ isOpen, onClose }) => {
           effectDateMatches3)
           ? "Nous avons énormément de demandes pour ce soir. Afin de satisfaire un maximum de clients, veuillez noter que la table doit être libérée pour 21h00."
           : "",
+      msgClient2:
+        isValentinDay && selectedTime >= "19:00"
+          ? "Pour une soirée de Saint-Valentin inoubliable, notre restaurant se transforme en un havre de romance. Ce soir-là, nous laissons de côté notre carte habituelle pour vous offrir une expérience culinaire exclusive : notre Menu Saint-Valentin, spécialement conçu pour l'occasion, au tarif de 59€ TTC par personne. Découvrez les délices que nous avons soigneusement préparés en visitant notre section Saint-Valentin sur notre site Internet : https://il-girasole-strasbourg.com/ . Nous vous promettons une expérience gastronomique qui ravira vos sens et rendra votre soirée mémorable."
+          : "",
     };
     if (!isTimeValidForSelectedDate(selectedTime, dateTime)) {
       setModalMessage("Veuillez choisir une heure future.");
@@ -325,35 +356,6 @@ const ModalReservation = ({ isOpen, onClose }) => {
       .getHours()
       .toString()
       .padStart(2, "0")}:${now.getMinutes().toString().padStart(2, "0")}`;
-
-    const timestamp2 = moment(
-      `${now.getDate().toString().padStart(2, "0")}/${(now.getMonth() + 1)
-        .toString()
-        .padStart(2, "0")}/${now.getFullYear()} ${now
-        .getHours()
-        .toString()
-        .padStart(2, "0")}:${now.getMinutes().toString().padStart(2, "0")}`,
-      "DD/MM/YYYY HH:mm"
-    );
-
-    const cutoffDate = moment("25-12-2023", "DD-MM-YYYY");
-
-    const promo25 = timestamp2.isBefore(cutoffDate) ? "YES" : "NO";
-
-    const newYearData = {
-      ID: ID,
-      promo25: promo25,
-      Name: name,
-      NumberGuest: numberOfGuest,
-      Comment: message,
-      Email: email,
-      Phone: `n°${tel}`,
-      Status: "Pending",
-      Acompte: "PAS ENCORE DEMANDÉ",
-      timestamp: timestamp,
-      typeEvent: "Nouvel-an",
-      Time: selectedTime,
-    };
 
     const regularData = {
       ID: ID,
@@ -384,12 +386,12 @@ const ModalReservation = ({ isOpen, onClose }) => {
           : "Pas demandé",
     };
 
-    const isNewYearReservation = is31December && isTime20or2030;
-    const sheetURL = isNewYearReservation
-      ? "https://sheetdb.io/api/v1/97lppk2d46b57?sheet=newYear"
+    const isValentinReservation = isValentinDay && isTime20or2030;
+    const sheetURL = isValentinReservation
+      ? "https://sheetdb.io/api/v1/97lppk2d46b57?sheet=valentin"
       : "https://sheetdb.io/api/v1/97lppk2d46b57";
 
-    const dataToSend = isNewYearReservation ? newYearData : regularData;
+    const dataToSend = regularData;
 
     if (
       (occStatus != null &&

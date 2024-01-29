@@ -15,8 +15,17 @@ exports.handler = async (event, context) => {
     return { statusCode: 405, body: "Method Not Allowed" };
   }
 
-  const { email, phone, name, number, resDate, resTime, ID, msgClient } =
-    event.queryStringParameters;
+  const {
+    email,
+    phone,
+    name,
+    number,
+    resDate,
+    resTime,
+    ID,
+    msgClient,
+    msgClient2,
+  } = event.queryStringParameters;
 
   const msg = {
     to: email,
@@ -28,6 +37,7 @@ exports.handler = async (event, context) => {
       Time: resTime,
       Number: number,
       MsgClient: msgClient,
+      MsgClient2: msgClient2,
     },
   };
 
@@ -40,7 +50,7 @@ exports.handler = async (event, context) => {
     });
     if (phone) {
       await twilioClient.messages.create({
-        body: `${greeting} ${name}, votre réservation au Il Girasole le ${resDate} à ${resTime} pour ${number} personnes a bien été notée et nous vous en remercions. En cas d'empêchement, n'oubliez pas de nous appeler au plus vite, au 03 88 37 16 76 ou par sms au 06 26 19 10 28 (en indiquant votre nom). \n ${msgClient}`,
+        body: `${greeting} ${name}, votre réservation au Il Girasole le ${resDate} à ${resTime} pour ${number} personnes a bien été notée et nous vous en remercions. En cas d'empêchement, n'oubliez pas de nous appeler au plus vite, au 03 88 37 16 76 ou par sms au 06 26 19 10 28 (en indiquant votre nom). \n ${msgClient} \n ${msgClient2}`,
         from: "IlGirasole",
         to: `+${phone}`,
       });

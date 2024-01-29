@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from "react-modal";
 import { motion } from "framer-motion";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 
 const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
   return (
@@ -34,7 +34,48 @@ const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
           },
         }}
       >
-        <div className="w-full flex flex-row justify-between items-center mb-5 sticky top-0 bg-white z-50 ">
+        <div className="w-full mb-10 ">
+          <div className="w-full flex xl:flex-row lg:flex-row md:flex-row sm:flex-col flex-col justify-between items-center ">
+            <div className="xl:w-1/3 lg:w-1/3 md:w-1/3 sm:w-2/3 w-2/3 ">
+              <img
+                src="./img/love.png"
+                alt=""
+                className="w-full object-cover"
+              />
+            </div>
+
+            <div className="xl:w-2/3 lg:w-2/3 md:w-2/3 sm:w-full w-full  text-justify p-10 ">
+              <p className=" text-lg mb-2">
+                💓 Bientôt le grand retour de Cupidon, le harcèlement
+                commercial, sa horde d’amoureux, les roses à gogo, la galère de
+                savoir quoi offrir … 😜 Alors si vous voulez passer un bon
+                moment avec votre moitié, on a prévu un menu des plus
+                romantiques (Rome antique si j’ose dire ? Ok je sors …) 59€ /
+                personne avec un Cocktails Signature offert 😀
+              </p>
+              <p className=" text-lg font-title-font text-my-gold">
+                Réservation entre 19h et 20H30. Le soir du 14/02, nous proposons
+                uniquement le menu St.Velentin. Réservation uniquement EN LIGNE.
+                A bientôt 🥰🥰
+              </p>
+
+              <button
+                className="px-5 py-2 border-solid border-black border-[1px] mt-5 mb-5 xl:text-xl lg:text-xl md:text-xl sm:text-lg text-base rounded-md shadow-2xl transform transition-transform duration-200 hover:-translate-y-1"
+                onClick={resaModal}
+              >
+                Réserver en ligne
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className="w-full flex flex-row justify-center h-full mb-10">
+          <img
+            src="./img/valentin.jpg"
+            alt="menu valentin"
+            className="w-[80%]"
+          />
+        </div>
+        {/* <div className="w-full flex flex-row justify-between items-center mb-5 sticky top-0 bg-white z-50 ">
           <img src="./img/logo.png" alt="logo girasole" className="h-[50px] " />
           <span className="text-xl xl:block lg:block md:block sm:hidden hidden  text-my-gold font-title-font font-bold">
             Quoi de neuf au Il Girasole?
@@ -74,8 +115,8 @@ const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
               className="w-full object-cover"
             />
           </div>
-        </div>
-        <div className="w-full h-full ">
+        </div> */}
+        {/* <div className="w-full h-full ">
           <div className="w-full flex xl:flex-row lg:flex-row md:flex-row sm:flex-col flex-col justify-between items-center ">
             <div className="xl:w-1/3 lg:w-1/3 md:w-1/3 sm:w-2/3 w-2/3 ">
               <img
@@ -104,7 +145,7 @@ const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
       </motion.div>
     </Modal>
   );
