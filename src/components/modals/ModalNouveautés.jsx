@@ -60,7 +60,7 @@ const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
               </p>
 
               <button
-                className="px-5 py-2 border-solid border-black border-[1px] mt-5 mb-5 xl:text-xl lg:text-xl md:text-xl sm:text-lg text-base rounded-md shadow-2xl transform transition-transform duration-200 hover:-translate-y-1"
+                className="px-5 py-2 border-solid border-black border-[1px] mt-5 xl:text-xl lg:text-xl md:text-xl sm:text-lg text-base rounded-md shadow-2xl transform transition-transform duration-200 hover:-translate-y-1"
                 onClick={resaModal}
               >
                 Réserver en ligne
@@ -68,11 +68,11 @@ const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
             </div>
           </div>
         </div>
-        <div className="w-full flex flex-row justify-center h-full mb-10">
+        <div className="w-full flex flex-row justify-center items-start mb-10">
           <img
             src="./img/valentin.jpg"
             alt="menu valentin"
-            className="w-[80%]"
+            className="w-full object-contain"
           />
         </div>
         {/* <div className="w-full flex flex-row justify-between items-center mb-5 sticky top-0 bg-white z-50 ">
