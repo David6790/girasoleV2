@@ -39,12 +39,19 @@ exports.handler = async (event, context) => {
     },
   };
 
+  const urlTopatch = () => {
+    if (msgClient2 !== "") {
+      return `https://sheetdb.io/api/v1/97lppk2d46b57/ID/${ID}?sheet=valentin`;
+    } else {
+      return `https://sheetdb.io/api/v1/97lppk2d46b57/ID/${ID}`;
+    }
+  };
+
   try {
-    // Envoyez l'email via SendGrid
     await sgMail.send(msg);
-    await axios.patch(`https://sheetdb.io/api/v1/97lppk2d46b57/ID/${ID}`, {
+    await axios.patch(urlTopatch(), {
       data: {
-        Status: "Confirmé", // ou tout autre statut que vous souhaitez définir
+        Status: "Confirmé",
       },
     });
     return {
