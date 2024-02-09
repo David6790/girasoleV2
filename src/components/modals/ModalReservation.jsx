@@ -121,7 +121,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
     ) {
       if (["19:00"].includes(e.target.value)) {
         setModalMessage(
-          "Nous avons énormément de demandes pour ce soir. Afin de satisfaire un maximum de clients, veuillez noter que la table doit être libérée pour 21h00."
+          "Nous avons beaucoup de demandes pour ce soir. Afin de satisfaire un maximum de clients, veuillez noter que la table doit être libérée pour 21h00."
         );
         setMessageModalOpen(true);
       }
@@ -243,8 +243,8 @@ const ModalReservation = ({ isOpen, onClose }) => {
   }, [dateTime, timeSlots, occStatus, hasModalBeenShown]);
 
   const dateOfEffect = occStatus != null ? occStatus[0].dateOfEffect : "";
-  const dateOfEffect2 = occStatus != null ? occStatus[0].dateOfEffect : "";
-  const dateOfEffect3 = occStatus != null ? occStatus[0].dateOfEffect : "";
+  const dateOfEffect2 = occStatus != null ? occStatus[1].dateOfEffect : "";
+  const dateOfEffect3 = occStatus != null ? occStatus[2].dateOfEffect : "";
   const effectDateMatches = dateOfEffect
     ? isDateMatchingEffectDate(dateTime, dateOfEffect)
     : "";
@@ -335,13 +335,14 @@ const ModalReservation = ({ isOpen, onClose }) => {
           occStatus[2].occupationStatus === "freeTable21" &&
           selectedTime === "19:00" &&
           effectDateMatches3)
-          ? "Nous avons énormément de demandes pour ce soir. Afin de satisfaire un maximum de clients, veuillez noter que la table doit être libérée pour 21h00."
-          : "",
+          ? "Nous avons beaucoup de demandes pour ce soir. Afin de satisfaire un maximum de clients, veuillez noter que la table doit être libérée pour 21h00."
+          : "erreur de transmission logique",
       msgClient2:
         isValentinDay && selectedTime >= "19:00"
           ? "Pour une soirée de Saint-Valentin inoubliable, notre restaurant se transforme en un havre de romance. Ce soir-là, nous laissons de côté notre carte habituelle pour vous offrir une expérience culinaire exclusive : notre Menu Saint-Valentin, spécialement conçu pour l'occasion, au tarif de 59€ TTC par personne. Découvrez les délices que nous avons soigneusement préparés en visitant notre section Saint-Valentin sur notre site Internet : https://il-girasole-strasbourg.com/ . Nous vous promettons une expérience gastronomique qui ravira vos sens et rendra votre soirée mémorable."
           : "",
     };
+
     if (!isTimeValidForSelectedDate(selectedTime, dateTime)) {
       setModalMessage("Veuillez choisir une heure future.");
       setMessageModalOpen(true);
