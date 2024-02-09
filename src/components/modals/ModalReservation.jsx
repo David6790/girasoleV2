@@ -336,7 +336,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
           selectedTime === "19:00" &&
           effectDateMatches3)
           ? "Nous avons beaucoup de demandes pour ce soir. Afin de satisfaire un maximum de clients, veuillez noter que la table doit être libérée pour 21h00."
-          : "erreur de transmission logique",
+          : "",
       msgClient2:
         isValentinDay && selectedTime >= "19:00"
           ? "Pour une soirée de Saint-Valentin inoubliable, notre restaurant se transforme en un havre de romance. Ce soir-là, nous laissons de côté notre carte habituelle pour vous offrir une expérience culinaire exclusive : notre Menu Saint-Valentin, spécialement conçu pour l'occasion, au tarif de 59€ TTC par personne. Découvrez les délices que nous avons soigneusement préparés en visitant notre section Saint-Valentin sur notre site Internet : https://il-girasole-strasbourg.com/ . Nous vous promettons une expérience gastronomique qui ravira vos sens et rendra votre soirée mémorable."
