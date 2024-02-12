@@ -201,6 +201,28 @@ const ModalReservation = ({ isOpen, onClose }) => {
         newTimeSlots = newTimeSlots.filter((slot) => slot < "19:00");
       } else if (isValentinesDay) {
         newTimeSlots = newTimeSlots.filter((slot) => slot <= "20:30");
+      } else if (
+        (occStatus[0].occupationStatus === "service2Complet" &&
+          effectDateMatches) ||
+        (occStatus[1].occupationStatus === "service2Complet" &&
+          effectDateMatches2) ||
+        (occStatus[2].occupationStatus === "service2Complet" &&
+          effectDateMatches3)
+      ) {
+        newTimeSlots = newTimeSlots.filter(
+          (slot) =>
+            ![
+              "19:45",
+              "20:00",
+              "20:15",
+              "20:30",
+              "20:45",
+              "21:00",
+              "21:15",
+              "21:30",
+              "21:45",
+            ].includes(slot)
+        );
       }
     }
 
@@ -236,6 +258,21 @@ const ModalReservation = ({ isOpen, onClose }) => {
       ) {
         setModalMessage(
           "Le restaurant est complet pour ce soir. Pour le midi ou pour une autre date, vous pouvez réserver sans problème."
+        );
+        setMessageModalOpen(true);
+      } else if (
+        (occStatus != null &&
+          occStatus[0].occupationStatus === "service2Complet" &&
+          effectDateMatches) ||
+        (occStatus != null &&
+          occStatus[1].occupationStatus === "service2Complet" &&
+          effectDateMatches2) ||
+        (occStatus != null &&
+          occStatus[2].occupationStatus === "service2Complet" &&
+          effectDateMatches3)
+      ) {
+        setModalMessage(
+          "Le 2e service du restaurant est complet pour ce soir. Nous ne pouvons prendre des réservations qu'a 19h ou 19h30. Notez que la table doit etre libérée pour 21h. Pour un autre jour, tous les créneaux restent disponibles."
         );
         setMessageModalOpen(true);
       }
@@ -340,6 +377,21 @@ const ModalReservation = ({ isOpen, onClose }) => {
       msgClient2:
         isValentinDay && selectedTime >= "19:00"
           ? "Pour une soirée de Saint-Valentin inoubliable, notre restaurant se transforme en un havre de romance. Ce soir-là, nous laissons de côté notre carte habituelle pour vous offrir une expérience culinaire exclusive : notre Menu Saint-Valentin, spécialement conçu pour l'occasion, au tarif de 59€ TTC par personne. Découvrez les délices que nous avons soigneusement préparés en visitant notre section Saint-Valentin sur notre site Internet : https://il-girasole-strasbourg.com/ . Nous vous promettons une expérience gastronomique qui ravira vos sens et rendra votre soirée mémorable."
+          : "",
+      msgClient3:
+        (occStatus != null &&
+          occStatus[0].occupationStatus === "service2Complet" &&
+          selectedTime === ("19:00" || "19:30" || "19:15") &&
+          effectDateMatches) ||
+        (occStatus != null &&
+          occStatus[1].occupationStatus === "service2Complet" &&
+          selectedTime === ("19:00" || "19:30" || "19:15") &&
+          effectDateMatches2) ||
+        (occStatus != null &&
+          occStatus[2].occupationStatus === "service2Complet" &&
+          selectedTime === ("19:00" || "19:30" || "19:15") &&
+          effectDateMatches3)
+          ? "Le 2e service du restaurant est complet ce soir. Afin de satisfaire un maximum de clients, veuillez noter que la table doit être libérée pour 21h00."
           : "",
     };
 
