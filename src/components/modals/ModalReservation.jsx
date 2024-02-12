@@ -272,7 +272,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
           effectDateMatches3)
       ) {
         setModalMessage(
-          "Le 2e service du restaurant est complet pour ce soir. Nous ne pouvons prendre des réservations qu'a 19h ou 19h30. Notez que la table doit etre libérée pour 21h. Pour un autre jour, tous les créneaux restent disponibles."
+          "Le 2e service du restaurant est complet pour ce soir. Nous ne pouvons prendre des réservations qu'à 19h, 19h15 ou 19h30. Notez que la table doit être libérée pour 21h. \nPour un autre jour, tous les créneaux restent disponibles."
         );
         setMessageModalOpen(true);
       }
@@ -381,18 +381,24 @@ const ModalReservation = ({ isOpen, onClose }) => {
       msgClient3:
         (occStatus != null &&
           occStatus[0].occupationStatus === "service2Complet" &&
-          selectedTime === ("19:00" || "19:30" || "19:15") &&
+          (selectedTime === "19:00" ||
+            selectedTime === "19:15" ||
+            selectedTime === "19:30") &&
           effectDateMatches) ||
         (occStatus != null &&
           occStatus[1].occupationStatus === "service2Complet" &&
-          selectedTime === ("19:00" || "19:30" || "19:15") &&
+          (selectedTime === "19:00" ||
+            selectedTime === "19:15" ||
+            selectedTime === "19:30") &&
           effectDateMatches2) ||
         (occStatus != null &&
           occStatus[2].occupationStatus === "service2Complet" &&
-          selectedTime === ("19:00" || "19:30" || "19:15") &&
+          (selectedTime === "19:00" ||
+            selectedTime === "19:15" ||
+            selectedTime === "19:30") &&
           effectDateMatches3)
           ? "Le 2e service du restaurant est complet ce soir. Afin de satisfaire un maximum de clients, veuillez noter que la table doit être libérée pour 21h00."
-          : "",
+          : "test test",
     };
 
     if (!isTimeValidForSelectedDate(selectedTime, dateTime)) {
