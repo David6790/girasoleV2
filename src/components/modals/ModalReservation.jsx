@@ -90,7 +90,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
 
     if (isValentinesDay && valentinesDayTimeSlots.includes(e.target.value)) {
       setModalMessage(
-        "Chers clients,\nNous tenons à vous informer qu'à l'occasion de la soirée de la Saint-Valentin, toutes nos tables pour deux sont désormais réservées. Il nous reste uniquement des grandes tables rondes, conçues pour accueillir plusieurs convives. Si vous souhaitez procéder à une réservation, veuillez noter que vous pourriez partager votre table avec d'autres couples. Nous vous remercions de votre compréhension et nous réjouissons de vous offrir une soirée mémorable."
+        "Chers clients,\nNous tenons à vous informer qu'à l'occasion de la soirée de la Saint-Valentin, toutes nos tables pour deux sont désormais réservées. Il nous reste uniquement des grandes tables rondes, conçues pour accueillir plusieurs convives. Si vous souhaitez procéder à une réservation, veuillez noter que vous pourriez partager votre table avec d'autres personnes. Nous vous remercions de votre compréhension et nous nous réjouissons de vous offrir une soirée mémorable."
       );
       setMessageModalOpen(true);
     }
@@ -376,7 +376,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
           : "",
       msgClient2:
         isValentinDay && selectedTime >= "19:00"
-          ? "Nous tenons à vous informer qu'à l'occasion de la soirée de la Saint-Valentin, toutes nos tables pour deux sont désormais réservées. Il nous reste uniquement des grandes tables rondes, conçues pour accueillir plusieurs convives. Si vous souhaitez procéder à une réservation, veuillez noter que vous pourriez partager votre table avec d'autres couples. Nous vous remercions de votre compréhension et nous réjouissons de vous offrir une soirée mémorable.\n Notez également que le soir de la Saint Valentin, nous ne proposons que le menu saint valentin."
+          ? "Nous tenons à vous informer qu'à l'occasion de la soirée de la Saint-Valentin, toutes nos tables pour deux sont désormais réservées. Il nous reste uniquement des grandes tables rondes, conçues pour accueillir plusieurs convives. Si vous souhaitez procéder à une réservation, veuillez noter que vous pourriez partager votre table avec d'autres personnes. Nous vous remercions de votre compréhension et nous nous réjouissons de vous offrir une soirée mémorable.\n Notez également que le soir de la Saint Valentin, nous ne proposons que le menu saint valentin."
           : "",
       msgClient3:
         (occStatus != null &&
@@ -398,7 +398,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
             selectedTime === "19:30") &&
           effectDateMatches3)
           ? "Le 2e service du restaurant est complet ce soir. Afin de satisfaire un maximum de clients, veuillez noter que la table doit être libérée pour 21h00."
-          : "test test",
+          : "",
     };
 
     if (!isTimeValidForSelectedDate(selectedTime, dateTime)) {
