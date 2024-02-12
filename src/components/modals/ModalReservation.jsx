@@ -90,7 +90,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
 
     if (isValentinesDay && valentinesDayTimeSlots.includes(e.target.value)) {
       setModalMessage(
-        "Pour une soirée de Saint-Valentin inoubliable, notre restaurant se transforme en un havre de romance. Ce soir-là, nous laissons de côté notre carte habituelle pour vous offrir une expérience culinaire exclusive : notre Menu Saint-Valentin, spécialement conçu pour l'occasion, au tarif de 59€ TTC par personne. Découvrez les délices que nous avons soigneusement préparés en visitant notre section Saint-Valentin sur la page d'accueil. Nous vous promettons une expérience gastronomique qui ravira vos sens et rendra votre soirée mémorable."
+        "Chers clients,\nNous tenons à vous informer qu'à l'occasion de la soirée de la Saint-Valentin, toutes nos tables pour deux sont désormais réservées. Il nous reste uniquement des grandes tables rondes, conçues pour accueillir plusieurs convives. Si vous souhaitez procéder à une réservation, veuillez noter que vous pourriez partager votre table avec d'autres couples. Nous vous remercions de votre compréhension et nous réjouissons de vous offrir une soirée mémorable."
       );
       setMessageModalOpen(true);
     }
@@ -376,7 +376,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
           : "",
       msgClient2:
         isValentinDay && selectedTime >= "19:00"
-          ? "Pour une soirée de Saint-Valentin inoubliable, notre restaurant se transforme en un havre de romance. Ce soir-là, nous laissons de côté notre carte habituelle pour vous offrir une expérience culinaire exclusive : notre Menu Saint-Valentin, spécialement conçu pour l'occasion, au tarif de 59€ TTC par personne. Découvrez les délices que nous avons soigneusement préparés en visitant notre section Saint-Valentin sur notre site Internet : https://il-girasole-strasbourg.com/ . Nous vous promettons une expérience gastronomique qui ravira vos sens et rendra votre soirée mémorable."
+          ? "Nous tenons à vous informer qu'à l'occasion de la soirée de la Saint-Valentin, toutes nos tables pour deux sont désormais réservées. Il nous reste uniquement des grandes tables rondes, conçues pour accueillir plusieurs convives. Si vous souhaitez procéder à une réservation, veuillez noter que vous pourriez partager votre table avec d'autres couples. Nous vous remercions de votre compréhension et nous réjouissons de vous offrir une soirée mémorable.\n Notez également que le soir de la Saint Valentin, nous ne proposons que le menu saint valentin."
           : "",
       msgClient3:
         (occStatus != null &&
