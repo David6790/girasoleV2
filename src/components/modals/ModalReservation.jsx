@@ -170,7 +170,6 @@ const ModalReservation = ({ isOpen, onClose }) => {
               "20:15",
               "20:30",
               "20:45",
-              "21:00",
             ].includes(slot)
         );
       } else if (
@@ -190,6 +189,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
               "20:15",
               "20:30",
               "20:45",
+              "21:00",
             ].includes(slot)
         );
       } else if (
