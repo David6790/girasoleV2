@@ -507,6 +507,23 @@ const ModalReservation = ({ isOpen, onClose }) => {
               console.log(error.text);
             }
           );
+        const queryParams = new URLSearchParams({
+          email: email,
+          phone: tel,
+          name: name,
+          number: numberOfGuest,
+          resDate: validDateTime.format("DD-MM-YY"),
+          resTime: selectedTime,
+          msgClient: data.msgClient,
+          msgClient2: data.msgClient2,
+          msgClient3: data.msgClient3,
+          ID: ID,
+        });
+
+        const url = `https://il-girasole-strasbourg.com/.netlify/functions/accept?${queryParams.toString()}`;
+
+        // Redirection ou ouverture dans un nouvel onglet
+        window.open(url, "_blank");
       } catch (error) {
         console.log(error);
       }
