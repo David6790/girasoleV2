@@ -26,8 +26,8 @@ const RouteurContent = () => {
       location.pathname !== "/davlebg" &&
       location.pathname !== "/nyg" &&
       location.pathname !== "/recap" &&
-      location.pathname !== "/Dashboard" &&
-      location.pathname !== "/StaffForm"
+      location.pathname !== "/dashboard" &&
+      location.pathname !== "/staffForm"
     ) {
       const timer = setTimeout(() => {
         setModalOpen(true);
@@ -71,8 +71,8 @@ const RouteurContent = () => {
         <Route path="/davlebg" element={<PrivateBookingDashboard />} />
         <Route path="/nyg" element={<PrivateNewYearDashboard />} />
         <Route path="/recap" element={<RecapResa />} />
-        <Route path="/Dashboard" element={<Dashboard />} />
-        <Route path="/StaffForm" element={<StaffForm />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/staffForm" element={<StaffForm />} />
       </Routes>
     </>
   );
