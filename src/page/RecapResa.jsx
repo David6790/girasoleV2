@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
 
-const afficherDateAujourdhui = () => {
-  const dateAujourdhui = new Date();
-  const jour = dateAujourdhui.getDate().toString().padStart(2, "0");
-  const mois = (dateAujourdhui.getMonth() + 1).toString().padStart(2, "0");
-  const annee = dateAujourdhui.getFullYear().toString().substr(-2);
+const RecapResa = () => {
+  const formatDateInitial = () => {
+    const date = new Date(); // Crée une nouvelle instance de Date pour aujourd'hui
+    const jour = date.getDate().toString().padStart(2, "0"); // Ajoute un zéro devant si nécessaire
+    const mois = (date.getMonth() + 1).toString().padStart(2, "0"); // Les mois commencent à 0
+    const annee = date.getFullYear().toString().substr(-2); // Prend les deux derniers chiffres de l'année
+    return `${jour}-${mois}-${annee}`;
+  };
 
-  return `${jour}-${mois}-${annee}`;
-};
-
-const PrivateBookingDashboard = () => {
+  console.log(formatDateInitial());
   const [reservations, setReservations] = useState([]);
+  const [selectedDate, setSelectedDate] = useState(formatDateInitial());
 
   const recupererReservations = () => {
     axios
@@ -28,12 +29,12 @@ const PrivateBookingDashboard = () => {
     recupererReservations();
   }, []);
 
-  const dateFormatee = afficherDateAujourdhui();
-
-  const reservationsDuJour = reservations.filter((reservation) => {
-    return reservation.Date === dateFormatee;
-  });
-
+  const handleChange = (e) => {
+    const value = e.target.value;
+    const [year, month, day] = value.split("-");
+    const formattedDate = `${day}-${month}-${year.substr(-2)}`;
+    setSelectedDate(formattedDate);
+  };
   const getColorForStatus = (status) => {
     switch (status) {
       case "Confirmé":
@@ -50,18 +51,26 @@ const PrivateBookingDashboard = () => {
     }
   };
 
+  const resaJour = reservations
+    ? reservations.filter(
+        (resa) => resa.Date === selectedDate && resa.Status === "Confirmé"
+      )
+    : "notYet";
+
   return (
     <div className="mx-5">
-      <h1 className=" text-center text-3xl font-bold ">
-        Récap réservation du {dateFormatee}
+      <h1 className="text-center text-3xl font-bold">
+        Récap réservation du {selectedDate}
       </h1>
-      <p className=" text-center mb-10">
+      <p className="text-center mb-10">
         (Pensez à rafraîchir la page avant chaque consultation)
       </p>
 
-      <h2 className=" text-center text-3xl mb-5">Réservations du midi</h2>
-      {reservationsDuJour.length > 0 ? (
-        reservationsDuJour
+      <div className="text-center mb-5">
+        <input type="date" value={selectedDate} onChange={handleChange} />
+      </div>
+      {resaJour.length > 0 ? (
+        resaJour
           .filter((res) => res.Time <= "14:00")
           .map((reservation, index) => (
             <div
@@ -109,10 +118,9 @@ const PrivateBookingDashboard = () => {
       ) : (
         <p>Aucune réservation pour ce midi.</p>
       )}
-
       <h2 className="text-center text-3xl mb-5">Réservations du soir</h2>
-      {reservationsDuJour.length > 0 ? (
-        reservationsDuJour
+      {resaJour.length > 0 ? (
+        resaJour
           .filter((res) => res.Time >= "18:00")
           .map((reservation, index) => (
             <div
@@ -177,4 +185,4 @@ const PrivateBookingDashboard = () => {
   );
 };
 
-export default PrivateBookingDashboard;
+export default RecapResa;

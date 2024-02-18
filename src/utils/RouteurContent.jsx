@@ -10,6 +10,9 @@ import MenuCocktails from "../page/MenuCocktails";
 import MentionLegales from "../page/MentionLegales";
 import PrivateBookingDashboard from "../page/PrivateBookingDashboard";
 import PrivateNewYearDashboard from "../page/PrivateNewYearDashboard";
+import RecapResa from "../page/RecapResa";
+import Dashboard from "../page/Dashboard";
+import StaffForm from "../page/StaffForm";
 
 const RouteurContent = () => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -21,7 +24,10 @@ const RouteurContent = () => {
     if (
       !modalDejaAffiche &&
       location.pathname !== "/davlebg" &&
-      location.pathname !== "/nyg"
+      location.pathname !== "/nyg" &&
+      location.pathname !== "/recap" &&
+      location.pathname !== "/Dashboard" &&
+      location.pathname !== "/StaffForm"
     ) {
       const timer = setTimeout(() => {
         setModalOpen(true);
@@ -62,7 +68,11 @@ const RouteurContent = () => {
         <Route path="/menu-cocktails" element={<MenuCocktails />} />
         <Route path="/legalMentions" element={<MentionLegales />} />
         <Route path="/davlebg" element={<PrivateBookingDashboard />} />
+        <Route path="/davlebg" element={<PrivateBookingDashboard />} />
         <Route path="/nyg" element={<PrivateNewYearDashboard />} />
+        <Route path="/recap" element={<RecapResa />} />
+        <Route path="/Dashboard" element={<Dashboard />} />
+        <Route path="/StaffForm" element={<StaffForm />} />
       </Routes>
     </>
   );

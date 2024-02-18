@@ -22,10 +22,10 @@ const api = createApi({
       query: () => "cocktailMenu.json",
     }),
     getWeeklyMenus: builder.query({
-      query: () => "https://sheetdb.io/api/v1/03vxoo7tdhofu", // URL complète
+      query: () => "https://sheetdb.io/api/v1/03vxoo7tdhofu",
     }),
     getOccupationStatus: builder.query({
-      query: () => "	https://sheetdb.io/api/v1/wplwbkmf4c9kk", // URL complète
+      query: () => "	https://sheetdb.io/api/v1/wplwbkmf4c9kk",
     }),
   }),
 });

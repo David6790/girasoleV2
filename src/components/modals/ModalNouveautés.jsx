@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from "react-modal";
 import { motion } from "framer-motion";
-// import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
   return (
@@ -34,7 +34,7 @@ const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
           },
         }}
       >
-        <div className="w-full mb-10 ">
+        {/* <div className="w-full mb-10 ">
           <div className="w-full flex xl:flex-row lg:flex-row md:flex-row sm:flex-col flex-col justify-between items-center ">
             <div className="xl:w-1/3 lg:w-1/3 md:w-1/3 sm:w-2/3 w-2/3 ">
               <img
@@ -67,15 +67,15 @@ const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
               </button>
             </div>
           </div>
-        </div>
-        <div className="w-full flex flex-row justify-center items-start mb-10">
+        </div> */}
+        {/* <div className="w-full flex flex-row justify-center items-start mb-10">
           <img
             src="./img/valentin.jpg"
             alt="menu valentin"
             className="w-full object-contain"
           />
-        </div>
-        {/* <div className="w-full flex flex-row justify-between items-center mb-5 sticky top-0 bg-white z-50 ">
+        </div> */}
+        <div className="w-full flex flex-row justify-between items-center mb-5 sticky top-0 bg-white z-50 ">
           <img src="./img/logo.png" alt="logo girasole" className="h-[50px] " />
           <span className="text-xl xl:block lg:block md:block sm:hidden hidden  text-my-gold font-title-font font-bold">
             Quoi de neuf au Il Girasole?
@@ -115,8 +115,8 @@ const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
               className="w-full object-cover"
             />
           </div>
-        </div> */}
-        {/* <div className="w-full h-full ">
+        </div>
+        <div className="w-full h-full ">
           <div className="w-full flex xl:flex-row lg:flex-row md:flex-row sm:flex-col flex-col justify-between items-center ">
             <div className="xl:w-1/3 lg:w-1/3 md:w-1/3 sm:w-2/3 w-2/3 ">
               <img
@@ -145,7 +145,7 @@ const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
               </button>
             </div>
           </div>
-        </div> */}
+        </div>
       </motion.div>
     </Modal>
   );
