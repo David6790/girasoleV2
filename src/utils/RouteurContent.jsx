@@ -9,10 +9,9 @@ import MenuMidi from "../page/MenuMidi";
 import MenuCocktails from "../page/MenuCocktails";
 import MentionLegales from "../page/MentionLegales";
 import PrivateBookingDashboard from "../page/PrivateBookingDashboard";
-import PrivateNewYearDashboard from "../page/PrivateNewYearDashboard";
+
 import RecapResa from "../page/RecapResa";
 import Dashboard from "../page/Dashboard";
-import StaffForm from "../page/StaffForm";
 
 const RouteurContent = () => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -69,10 +68,9 @@ const RouteurContent = () => {
         <Route path="/legalMentions" element={<MentionLegales />} />
         <Route path="/davlebg" element={<PrivateBookingDashboard />} />
         <Route path="/davlebg" element={<PrivateBookingDashboard />} />
-        <Route path="/nyg" element={<PrivateNewYearDashboard />} />
+
         <Route path="/recap" element={<RecapResa />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/staffForm" element={<StaffForm />} />
       </Routes>
     </>
   );
