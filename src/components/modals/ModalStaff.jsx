@@ -6,7 +6,7 @@ import "moment/locale/fr";
 import moment from "moment";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
-import MessageModal from "./MessageModal";
+
 import { parsePhoneNumberFromString } from "libphonenumber-js";
 import { useSelector } from "react-redux";
 import { occupationStatus } from "../../features/occupationSlice";
@@ -49,8 +49,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
   const [availableTimeSlots, setAvailableTimeSlots] = useState(timeSlots);
   let ID = crypto.randomUUID();
   const [tel, setTel] = useState("");
-  const [messageModalOpen, setMessageModalOpen] = useState(false);
-  const [modalMessage, setModalMessage] = useState("");
+
   const [hasModalBeenShown, setHasModalBeenShown] = useState(false);
   const [selectedServer, setSelectedServer] = useState("");
 
@@ -63,11 +62,6 @@ const ModalReservation = ({ isOpen, onClose }) => {
     return selectedDate.isSame(parsedEffectDate, "day");
   };
 
-  const handleMessageModalClose = () => {
-    setMessageModalOpen(false);
-    setHasModalBeenShown(true);
-  };
-
   const handleModalClose = () => {
     onClose();
     setHasModalBeenShown(false);
@@ -75,26 +69,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
 
   const handleTimeSelection = (e) => {
     setSelectedTime(e.target.value);
-    const isValentinesDay = dateTime.isSame(
-      moment("2024-02-14", "YYYY-MM-DD"),
-      "day"
-    );
-    const valentinesDayTimeSlots = [
-      "19:00",
-      "19:15",
-      "19:30",
-      "19:45",
-      "20:00",
-      "20:15",
-      "20:30",
-    ];
 
-    if (isValentinesDay && valentinesDayTimeSlots.includes(e.target.value)) {
-      setModalMessage(
-        "Chers clients,\nNous tenons à vous informer qu'à l'occasion de la soirée de la Saint-Valentin, toutes nos tables pour deux sont désormais réservées. Il nous reste uniquement des grandes tables rondes, conçues pour accueillir plusieurs convives. Si vous souhaitez procéder à une réservation, veuillez noter que vous pourriez partager votre table avec d'autres personnes. Nous vous remercions de votre compréhension et nous nous réjouissons de vous offrir une soirée mémorable."
-      );
-      setMessageModalOpen(true);
-    }
     const dateOfEffect = occStatus != null ? occStatus[0].dateOfEffect : "";
     const dateOfEffect2 = occStatus != null ? occStatus[1].dateOfEffect : "";
     const dateOfEffect3 = occStatus != null ? occStatus[2].dateOfEffect : "";
@@ -120,12 +95,6 @@ const ModalReservation = ({ isOpen, onClose }) => {
         occStatus[2].occupationStatus === "freeTable21" &&
         effectDateMatches3)
     ) {
-      if (["19:00"].includes(e.target.value)) {
-        setModalMessage(
-          "Nous avons beaucoup de demandes pour ce soir. Afin de satisfaire un maximum de clients, veuillez noter que la table doit être libérée pour 21h00."
-        );
-        setMessageModalOpen(true);
-      }
     }
   };
 
@@ -230,54 +199,6 @@ const ModalReservation = ({ isOpen, onClose }) => {
     setAvailableTimeSlots(newTimeSlots);
 
     // Gestion des messages en fonction de occupationStatus
-    if (!hasModalBeenShown) {
-      if (
-        (occStatus != null &&
-          occStatus[0].occupationStatus === "service1Complet" &&
-          effectDateMatches) ||
-        (occStatus != null &&
-          occStatus[1].occupationStatus === "service1Complet" &&
-          effectDateMatches2) ||
-        (occStatus != null &&
-          occStatus[2].occupationStatus === "service1Complet" &&
-          effectDateMatches3)
-      ) {
-        setModalMessage(
-          "Le premier service du restaurant est complet pour ce soir. Nous ne pouvons prendre des réservations qu'à partir de 21h15. Pour un autre jour, tous les créneaux restent disponibles."
-        );
-        setMessageModalOpen(true);
-      } else if (
-        (occStatus != null &&
-          occStatus[0].occupationStatus === "fullComplet" &&
-          effectDateMatches) ||
-        (occStatus != null &&
-          occStatus[1].occupationStatus === "fullComplet" &&
-          effectDateMatches2) ||
-        (occStatus != null &&
-          occStatus[2].occupationStatus === "fullComplet" &&
-          effectDateMatches3)
-      ) {
-        setModalMessage(
-          "Le restaurant est complet pour ce soir. Pour le midi ou pour une autre date, vous pouvez réserver sans problème."
-        );
-        setMessageModalOpen(true);
-      } else if (
-        (occStatus != null &&
-          occStatus[0].occupationStatus === "service2Complet" &&
-          effectDateMatches) ||
-        (occStatus != null &&
-          occStatus[1].occupationStatus === "service2Complet" &&
-          effectDateMatches2) ||
-        (occStatus != null &&
-          occStatus[2].occupationStatus === "service2Complet" &&
-          effectDateMatches3)
-      ) {
-        setModalMessage(
-          "Le 2e service du restaurant est complet pour ce soir. Nous ne pouvons prendre des réservations qu'à 19h, 19h15 ou 19h30. Notez que la table doit être libérée pour 21h. \nPour un autre jour, tous les créneaux restent disponibles."
-        );
-        setMessageModalOpen(true);
-      }
-    }
   }, [dateTime, timeSlots, occStatus, hasModalBeenShown]);
 
   const dateOfEffect = occStatus != null ? occStatus[0].dateOfEffect : "";
@@ -312,19 +233,6 @@ const ModalReservation = ({ isOpen, onClose }) => {
   const disablePastDt = (currentDate) => {
     const today = moment().startOf("day");
     return currentDate.isSameOrAfter(today);
-  };
-
-  const isTimeValidForSelectedDate = (selectedTime, selectedDate) => {
-    const now = moment();
-    if (selectedDate.isSame(now, "day")) {
-      const selectedHour = parseInt(selectedTime.split(":")[0]);
-      const selectedMinute = parseInt(selectedTime.split(":")[1]);
-      return (
-        now.hour() < selectedHour ||
-        (now.hour() === selectedHour && now.minute() <= selectedMinute)
-      );
-    }
-    return true;
   };
 
   const sendEmail = async (e) => {
@@ -403,12 +311,6 @@ const ModalReservation = ({ isOpen, onClose }) => {
           : "",
     };
 
-    if (!isTimeValidForSelectedDate(selectedTime, dateTime)) {
-      setModalMessage("Veuillez choisir une heure future.");
-      setMessageModalOpen(true);
-      return;
-    }
-
     setIsLoading(true);
     const now = new Date();
     const timestamp = `${now.getDate().toString().padStart(2, "0")}/${(
@@ -485,7 +387,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
         emailjs
           .send(
             "service_6j5qs7e",
-            "template_clc96rm",
+            "template_2m99rpn",
             data,
             "TlcoR3tgd_o9uLj7o"
           )
@@ -501,10 +403,6 @@ const ModalReservation = ({ isOpen, onClose }) => {
               setTel("");
               setSelectedTime("");
               setIsLoading(false);
-              setModalMessage(
-                "Votre réservation est bien prise en compte. Nous vous confirmerons par email ET par SMS dans les prochaines minutes. N'hésitez pas à verifier dans vos indésirables / spams si vous ne recevez pas d'email. Ajoutez-nous en favoris pour éviter que nos confirmations atterrissent dans vos spams."
-              );
-              setMessageModalOpen(true);
             },
             (error) => {
               console.log(error.text);
@@ -542,12 +440,6 @@ const ModalReservation = ({ isOpen, onClose }) => {
       className="w-full h-full bg-opacity-60 bg-my-gold backdrop-blur-md rounded-2xl flex flex-col justify-around items-center "
       overlayClassName="fixed top-0 left-0  h-full w-screen xl:px-40 lg:px-40 md:px-20 sm:px-20 px-5 xl:py-10 lg:py-10   md:py-20 sm:py-20 py-5 z-40 text-left bg-black bg-opacity-50 "
     >
-      <MessageModal
-        isOpen={messageModalOpen}
-        message={modalMessage}
-        onClose={handleMessageModalClose}
-      />
-
       <motion.div
         className="w-full h-full  rounded-2xl flex flex-col justify-around px-5   "
         initial={{
