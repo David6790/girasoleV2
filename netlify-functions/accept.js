@@ -61,7 +61,7 @@ exports.handler = async (event, context) => {
 
     if (phone) {
       await twilioClient.messages.create({
-        body: `${greeting} ${name}, votre réservation au Il Girasole le ${resDate} à ${resTime} pour ${number} personnes a bien été notée et nous vous en remercions. En cas d'empêchement, n'oubliez pas de nous appeler au plus vite, au 03 88 37 16 76 ou par sms au 06 26 19 10 28 (en indiquant votre nom). \n ${msgClient}${msgClient3} \n ${msgClient2}`,
+        body: `${greeting} ${name}, votre réservation au Il Girasole le ${resDate} à ${resTime} pour ${number} personnes a bien été notée et nous vous en remercions. En cas d'empêchement, n'oubliez pas de nous appeler au plus vite, au 03 88 37 16 76 ou par sms au 06 26 19 10 28 (en indiquant votre nom). \n ${msgClient}${msgClient3} \n ${msgClient2}\n Votre réservation a été prise en charge par ${Source}.`,
         from: "IlGirasole",
         to: `+${phone}`,
       });
