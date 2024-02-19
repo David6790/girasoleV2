@@ -19,7 +19,7 @@ const RecapResa = () => {
   const [editingReservation, setEditingReservation] = useState(null);
   const [newNumberOfGuests, setNewNumberOfGuests] = useState("");
   const [newTime, setNewTime] = useState("");
-  const [serverName, setServerName] = useState("");
+  const [serverName, setServerName] = useState(null);
 
   const [newStatus, setNewStatus] = useState("");
   const [dateTime, setDateTime] = useState(moment());
@@ -341,7 +341,9 @@ const RecapResa = () => {
                         onChange={(e) => setServerName(e.target.value)}
                         className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       >
-                        <option value="">Sélectionnez le serveur</option>
+                        <option value="" disabled selected>
+                          Sélectionnez le serveur
+                        </option>
                         <option value="Jess">Jess</option>
                         <option value="Dylan">Dylan</option>
                         <option value="Tiffanie">Tiffanie</option>
@@ -351,7 +353,7 @@ const RecapResa = () => {
                       </select>
                     </div>
                     <button
-                      onClick={handleEditSubmit}
+                      type="submit"
                       className="mt-4 px-4 py-2 bg-green-400 text-white rounded mr-5"
                     >
                       Valider
@@ -504,7 +506,9 @@ const RecapResa = () => {
                         onChange={(e) => setServerName(e.target.value)}
                         className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       >
-                        <option value="">Sélectionnez le serveur</option>
+                        <option value="" disabled selected>
+                          Sélectionnez le serveur
+                        </option>
                         <option value="Jess">Jess</option>
                         <option value="Dylan">Dylan</option>
                         <option value="Tiffanie">Tiffanie</option>
@@ -514,7 +518,7 @@ const RecapResa = () => {
                       </select>
                     </div>
                     <button
-                      onClick={handleEditSubmit}
+                      type="submit"
                       className="mt-4 px-4 py-2 bg-green-400 text-white rounded mr-5"
                     >
                       Valider
