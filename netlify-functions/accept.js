@@ -24,6 +24,7 @@ exports.handler = async (event, context) => {
     resDate,
     resTime,
     ID,
+    Source,
     msgClient,
     msgClient2,
     msgClient3,
@@ -41,6 +42,7 @@ exports.handler = async (event, context) => {
       MsgClient: msgClient,
       MsgClient2: msgClient2,
       MsgClient3: msgClient3,
+      Source: Source,
     },
   };
 

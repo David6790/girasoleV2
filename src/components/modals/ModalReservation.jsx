@@ -431,6 +431,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
       Status: "Pending",
       Acompte: "Pas Demandé",
       timeStamp: timestamp,
+      Source: "INTERNET",
       freeTable21h:
         (occStatus != null &&
           occStatus[0].occupationStatus === "freeTable21" &&

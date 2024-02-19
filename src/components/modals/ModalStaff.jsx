@@ -52,6 +52,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
   const [messageModalOpen, setMessageModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
   const [hasModalBeenShown, setHasModalBeenShown] = useState(false);
+  const [selectedServer, setSelectedServer] = useState("");
 
   const occStatus = useSelector(occupationStatus);
 
@@ -358,6 +359,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
       message: message,
       phone: tel,
       ID: ID,
+      Source: selectedServer,
       typeEvent: "Nouvel-an",
       msgClient:
         (occStatus != null &&
@@ -429,6 +431,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
       Phone: `n°${tel}`,
       Status: "Pending",
       Acompte: "Pas Demandé",
+      Source: selectedServer,
       timeStamp: timestamp,
       freeTable21h:
         (occStatus != null &&
@@ -514,6 +517,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
           number: numberOfGuest,
           resDate: validDateTime.format("DD-MM-YY"),
           resTime: selectedTime,
+          Source: selectedServer,
           msgClient: data.msgClient,
           msgClient2: data.msgClient2,
           msgClient3: data.msgClient3,
@@ -657,6 +661,23 @@ const ModalReservation = ({ isOpen, onClose }) => {
                 onChange={(e) => setMessage(e.target.value)}
                 className=" h-[70%] focus:outline-none  resize-none   p-2  mb-5 bg-transparent border-b-[1px] px-2 "
               />
+              <div className="mb-5">
+                <label className="text-white">Résa prise par:</label>
+                <select
+                  value={selectedServer}
+                  onChange={(e) => setSelectedServer(e.target.value)}
+                  className="w-full h-[40px] bg-transparent text-black px-2 mb-5 border-b-[1px]"
+                  required
+                >
+                  <option value="">Sélectionnez un collaborateur:</option>
+                  <option value="Jess">Jess</option>
+                  <option value="Dylan">Dylan</option>
+                  <option value="Tiffanie">Tiffanie</option>
+                  <option value="Aurora">Aurora</option>
+                  <option value="Christian">Christian</option>
+                  <option value="David">David</option>
+                </select>
+              </div>
 
               <button
                 type="submit"
