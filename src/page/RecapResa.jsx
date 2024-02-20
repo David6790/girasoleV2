@@ -3,6 +3,9 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import { occupationStatus } from "../features/occupationSlice";
 import moment from "moment";
+import "moment/locale/fr";
+import Datetime from "react-datetime";
+import "react-datetime/css/react-datetime.css";
 
 const RecapResa = () => {
   const formatDateInitial = () => {
@@ -177,12 +180,14 @@ const RecapResa = () => {
     recupererReservations();
   }, []);
 
-  const handleChange = (e) => {
-    const value = e.target.value;
-    const [year, month, day] = value.split("-");
-    const formattedDate = `${day}-${month}-${year.substr(-2)}`;
-    setSelectedDate(formattedDate);
+  const handleChange = (selectedMoment) => {
+    if (selectedMoment) {
+      // Formatez la date sélectionnée en string au format attendu (DD-MM-YY ici)
+      const formattedDate = selectedMoment.format("DD-MM-YY");
+      setSelectedDate(formattedDate);
+    }
   };
+
   const getColorForStatus = (status) => {
     switch (status) {
       case "Confirmé":
@@ -254,8 +259,21 @@ const RecapResa = () => {
         (Pensez à rafraîchir la page avant chaque consultation)
       </p>
 
-      <div className="text-center mb-5">
-        <input type="date" value={selectedDate} onChange={handleChange} />
+      <div className=" flex justify-center items-center mb-10 ">
+        <div className="mr-5">Selectionnez une date:</div>
+        <Datetime
+          locale="fr"
+          value={moment(selectedDate, "DD-MM-YY")}
+          onChange={handleChange}
+          dateFormat="DD-MM-YY"
+          timeFormat={false}
+          inputProps={{
+            placeholder: "Sélectionnez la date",
+            className:
+              "border border-solid border-gray-300 text-black text-center rounded-2xl",
+          }}
+          className=" h-10 flex flex-row justify-center items-center "
+        />
       </div>
 
       <h2 className="text-center text-3xl mb-5">Réservations du midi</h2>
