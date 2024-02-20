@@ -22,7 +22,7 @@ const RecapResa = () => {
   const [editingReservation, setEditingReservation] = useState(null);
   const [newNumberOfGuests, setNewNumberOfGuests] = useState("");
   const [newTime, setNewTime] = useState("");
-  const [serverName, setServerName] = useState(null);
+  const [serverName, setServerName] = useState("");
 
   const [newStatus, setNewStatus] = useState("");
   const [dateTime, setDateTime] = useState(moment());
@@ -252,10 +252,10 @@ const RecapResa = () => {
 
   return (
     <div className="mx-5">
-      <h1 className="text-center text-3xl font-bold">
+      <h1 className="text-center 2xl:text-3xl xl:text-3xl lg:text-3xl md:text-2xl sm:text-xl  font-bold mb-5">
         Récap réservation du {selectedDate}
       </h1>
-      <p className="text-center mb-10">
+      <p className="text-center mb-10 2xl:text-base xl:text-base lg:text-base md:text-base sm:text-xs ">
         (Pensez à rafraîchir la page avant chaque consultation)
       </p>
 
@@ -360,7 +360,7 @@ const RecapResa = () => {
                         onChange={(e) => setServerName(e.target.value)}
                         className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       >
-                        <option value="" disabled selected>
+                        <option value="" disabled>
                           Sélectionnez le serveur
                         </option>
                         <option value="Jess">Jess</option>
@@ -411,6 +411,9 @@ const RecapResa = () => {
                   <p>
                     <strong>Heure:</strong> {reservation.Time}
                   </p>
+                  <p>
+                    <strong>Numéro de teléphone:</strong> {reservation.Phone}
+                  </p>
 
                   <p>
                     <strong>Statut</strong>
@@ -419,7 +422,6 @@ const RecapResa = () => {
                         backgroundColor: getColorForStatus(reservation.Status),
                       }}
                     >
-                      {" "}
                       {reservation.Status}
                     </span>
                   </p>
@@ -430,6 +432,27 @@ const RecapResa = () => {
                   <p>
                     <strong>Commentaire:</strong>{" "}
                     {reservation.Comment || "Aucun commentaire"}
+                  </p>
+                  <p>
+                    <strong>Réservation Prise par:</strong> {reservation.Source}
+                  </p>
+                  <p>
+                    <strong>Client doit libérer table à 21H:</strong>
+                    <span
+                      style={{
+                        backgroundColor: getColorForStatus(
+                          reservation.freeTable21h
+                        ),
+                      }}
+                    >
+                      {reservation.freeTable21h === "Client prévenu"
+                        ? "Client prévenu"
+                        : "Pas demandé"}
+                    </span>
+                  </p>
+                  <p>
+                    <strong>Réservation Modifiée par:</strong>{" "}
+                    {reservation.Updated || "Aucune Modification"}
                   </p>
                   <button
                     onClick={() => handleEditClick(reservation)}
@@ -527,7 +550,7 @@ const RecapResa = () => {
                         onChange={(e) => setServerName(e.target.value)}
                         className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       >
-                        <option value="" disabled selected>
+                        <option value="" disabled>
                           Sélectionnez le serveur
                         </option>
                         <option value="Jess">Jess</option>
@@ -578,6 +601,9 @@ const RecapResa = () => {
                   <p>
                     <strong>Heure:</strong> {reservation.Time}
                   </p>
+                  <p>
+                    <strong>Numéro de teléphone:</strong> {reservation.Phone}
+                  </p>
 
                   <p>
                     <strong>Statut</strong>
@@ -586,7 +612,6 @@ const RecapResa = () => {
                         backgroundColor: getColorForStatus(reservation.Status),
                       }}
                     >
-                      {" "}
                       {reservation.Status}
                     </span>
                   </p>
@@ -597,6 +622,27 @@ const RecapResa = () => {
                   <p>
                     <strong>Commentaire:</strong>{" "}
                     {reservation.Comment || "Aucun commentaire"}
+                  </p>
+                  <p>
+                    <strong>Réservation Prise par:</strong> {reservation.Source}
+                  </p>
+                  <p>
+                    <strong>Client doit libérer table à 21H:</strong>
+                    <span
+                      style={{
+                        backgroundColor: getColorForStatus(
+                          reservation.freeTable21h
+                        ),
+                      }}
+                    >
+                      {reservation.freeTable21h === "Client prévenu"
+                        ? "Client prévenu"
+                        : "Pas demandé"}
+                    </span>
+                  </p>
+                  <p>
+                    <strong>Réservation Modifiée par:</strong>{" "}
+                    {reservation.Updated || "Aucune Modification"}
                   </p>
                   <button
                     onClick={() => handleEditClick(reservation)}
