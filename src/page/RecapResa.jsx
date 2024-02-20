@@ -267,6 +267,7 @@ const RecapResa = () => {
           onChange={handleChange}
           dateFormat="DD-MM-YY"
           timeFormat={false}
+          closeOnSelect={true}
           inputProps={{
             placeholder: "Sélectionnez la date",
             className:
