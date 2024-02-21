@@ -66,9 +66,6 @@ const RouteurContent = () => {
         <Route path="/menu-midi" element={<MenuMidi />} />
         <Route path="/menu-cocktails" element={<MenuCocktails />} />
         <Route path="/legalMentions" element={<MentionLegales />} />
-        <Route path="/davlebg" element={<PrivateBookingDashboard />} />
-        <Route path="/davlebg" element={<PrivateBookingDashboard />} />
-
         <Route path="/recap" element={<RecapResa />} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
