@@ -431,7 +431,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
       Comment: message,
       Email: email,
       Phone: `n°${tel}`,
-      Status: "Pending",
+      Status: "Confirmé",
       Acompte: "Pas Demandé",
       Source: selectedServer,
       timeStamp: timestamp,
@@ -523,10 +523,11 @@ const ModalReservation = ({ isOpen, onClose }) => {
           ID: ID,
         });
 
-        const url = `https://il-girasole-strasbourg.com/.netlify/functions/accept?${queryParams.toString()}`;
+        const url = `https://il-girasole-strasbourg.com/.netlify/functions/acceptStaff?${queryParams.toString()}`;
 
         // Redirection ou ouverture dans un nouvel onglet
         window.open(url, "_blank");
+        alert("réservation enregistrée avec succès");
       } catch (error) {
         console.log(error);
       }
