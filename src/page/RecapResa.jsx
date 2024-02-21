@@ -313,7 +313,7 @@ const RecapResa = () => {
 
       <h2 className="text-center text-3xl">Réservations du midi</h2>
       <h2 className="text-center text-xl mb-5">
-        {numberCouvert(resaMidi)} couverts de réservé ce midi
+        {numberCouvert(resaMidi)} couverts ce midi
       </h2>
 
       {resaJour.length > 0 ? (
@@ -507,7 +507,7 @@ const RecapResa = () => {
 
       <h2 className="text-center text-3xl mb-5">Réservations du soir</h2>
       <h2 className="text-center text-xl mb-5">
-        {numberCouvert(resaSoir)} couverts de réservé ce soir
+        {numberCouvert(resaSoir)} couverts ce soir
       </h2>
       {resaJour.length > 0 ? (
         resaJour
