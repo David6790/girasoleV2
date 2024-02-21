@@ -615,7 +615,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
                 isValidDate={disablePastDt}
                 closeOnSelect={true}
                 onChange={handleChangeDateTime}
-                dateFormat="YYYY-MM-DD"
+                dateFormat="DD-MM-YYYY"
                 timeFormat={false}
                 inputProps={{ placeholder: "Sélectionnez la date" }}
                 required
