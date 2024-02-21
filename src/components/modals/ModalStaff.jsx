@@ -509,6 +509,11 @@ const ModalReservation = ({ isOpen, onClose }) => {
             (error) => {
               console.log(error.text);
             }
+          )
+          .then(
+            alert(
+              "Réservation bien envoyé vers base de donnée. Merci de valider pour faire partir le sms"
+            )
           );
         const queryParams = new URLSearchParams({
           email: email,
