@@ -528,9 +528,9 @@ const ModalReservation = ({ isOpen, onClose }) => {
 
         // Redirection ou ouverture dans un nouvel onglet
         window.open(url, "_blank");
-        alert("réservation enregistrée avec succès");
       } catch (error) {
         console.log(error);
+        alert("réservation non enregistrée contactez David");
       }
     }
   };
