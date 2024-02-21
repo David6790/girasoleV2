@@ -8,7 +8,6 @@ import Contact from "../page/Contact";
 import MenuMidi from "../page/MenuMidi";
 import MenuCocktails from "../page/MenuCocktails";
 import MentionLegales from "../page/MentionLegales";
-import PrivateBookingDashboard from "../page/PrivateBookingDashboard";
 
 import RecapResa from "../page/RecapResa";
 import Dashboard from "../page/Dashboard";
