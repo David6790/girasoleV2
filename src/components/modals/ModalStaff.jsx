@@ -504,6 +504,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
               setSelectedTime("");
               setSelectedServer("");
               setIsLoading(false);
+              onClose();
             },
             (error) => {
               console.log(error.text);

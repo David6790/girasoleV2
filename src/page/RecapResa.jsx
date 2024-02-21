@@ -259,6 +259,22 @@ const RecapResa = () => {
       )
     : "notYet";
 
+  const resaMidi = resaJour
+    ? resaJour.filter((res) => res.Time <= "14:00")
+    : "";
+
+  const numberCouvert = (service) => {
+    let result = 0;
+    for (let i = 0; i < service.length; i++) {
+      result += parseInt(service[i].NumberGuest);
+    }
+    return result;
+  };
+
+  const resaSoir = resaJour
+    ? resaJour.filter((res) => res.Time >= "18:00")
+    : "";
+
   return (
     <div className="mx-5">
       <ModalStaff isOpen={isModalOpen} onClose={closeModale} />
@@ -295,7 +311,10 @@ const RecapResa = () => {
         />
       </div>
 
-      <h2 className="text-center text-3xl mb-5">Réservations du midi</h2>
+      <h2 className="text-center text-3xl">Réservations du midi</h2>
+      <h2 className="text-center text-xl mb-5">
+        {numberCouvert(resaMidi)} couverts de réservé ce midi
+      </h2>
 
       {resaJour.length > 0 ? (
         resaJour
@@ -487,6 +506,9 @@ const RecapResa = () => {
       )}
 
       <h2 className="text-center text-3xl mb-5">Réservations du soir</h2>
+      <h2 className="text-center text-xl mb-5">
+        {numberCouvert(resaSoir)} couverts de réservé ce soir
+      </h2>
       {resaJour.length > 0 ? (
         resaJour
           .filter((res) => res.Time >= "18:00")
