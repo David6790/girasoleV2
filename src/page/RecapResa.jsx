@@ -35,6 +35,7 @@ const RecapResa = () => {
 
   const timeSlots = useMemo(
     () => [
+      newTime,
       "12:00",
       "12:15",
       "12:30",
@@ -55,7 +56,7 @@ const RecapResa = () => {
       "21:30",
       "21:45",
     ],
-    []
+    [newTime]
   );
   const [availableTimeSlots, setAvailableTimeSlots] = useState(timeSlots);
 
