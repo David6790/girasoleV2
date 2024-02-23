@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Modal from "react-modal";
 import { motion } from "framer-motion";
-import { useSelector } from "react-redux";
-import { selectWeeklyMenus } from "../../features/menuSlice";
+import { useDispatch } from "react-redux";
+import { useGetWeeklyMenusQuery } from "../../API/api"; // Assurez-vous que le chemin d'import est correct
+import { setWeeklyMenus } from "../../features/menuSlice"; // Importez l'action Redux si vous souhaitez toujours mettre à jour le store
 
 const ModalMenu = ({ isOpen, onClose, resaModal }) => {
-  const menuSemaine = useSelector(selectWeeklyMenus);
+  const dispatch = useDispatch();
+  const { data: menuSemaine, isSuccess } = useGetWeeklyMenusQuery(undefined, {
+    skip: !isOpen,
+  });
+
+  useEffect(() => {
+    // Si vous souhaitez toujours mettre à jour le store Redux avec les dernières données
+    if (isOpen && isSuccess && menuSemaine) {
+      dispatch(setWeeklyMenus(menuSemaine));
+    }
+  }, [isOpen, menuSemaine, isSuccess, dispatch]);
 
   return (
     <Modal

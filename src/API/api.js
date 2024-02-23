@@ -27,6 +27,10 @@ const api = createApi({
     getOccupationStatus: builder.query({
       query: () => "	https://sheetdb.io/api/v1/wplwbkmf4c9kk",
     }),
+    getAllReservations: builder.query({
+      query: () => "https://sheetdb.io/api/v1/97lppk2d46b57",
+      providesTags: ["Reservations"],
+    }),
   }),
 });
 
@@ -35,5 +39,6 @@ export const {
   useGetCocktailsQuery,
   useGetWeeklyMenusQuery,
   useGetOccupationStatusQuery,
+  useGetAllReservationsQuery,
 } = api;
 export default api;

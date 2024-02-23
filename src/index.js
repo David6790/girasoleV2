@@ -9,9 +9,7 @@ import Modal from "react-modal";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 Modal.setAppElement("#root");
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <App />
+  </Provider>
 );

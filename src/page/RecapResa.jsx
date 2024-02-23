@@ -1,14 +1,31 @@
 import axios from "axios";
 import React, { useEffect, useMemo, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { occupationStatus } from "../features/occupationSlice";
+import { useGetAllReservationsQuery } from "../API/api";
+import api from "../API/api";
 import moment from "moment";
 import "moment/locale/fr";
 import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
 import ModalStaff from "../components/modals/ModalStaff";
+import { setReservations } from "../features/reservationSlice";
+import { useLocation } from "react-router-dom";
 
 const RecapResa = () => {
+  const dispatch = useDispatch();
+
+  const occStatus = useSelector(occupationStatus);
+
+  const location = useLocation();
+
+  const isOnRecapResaPage = location.pathname === "/recap";
+
+  const { data: reservations, isSuccess } = useGetAllReservationsQuery(
+    undefined,
+    { skip: !isOnRecapResaPage }
+  );
+
   const formatDateInitial = () => {
     const date = new Date(); // Crée une nouvelle instance de Date pour aujourd'hui
     const jour = date.getDate().toString().padStart(2, "0"); // Ajoute un zéro devant si nécessaire
@@ -17,7 +34,6 @@ const RecapResa = () => {
     return `${jour}-${mois}-${annee}`;
   };
 
-  const [reservations, setReservations] = useState([]);
   const [selectedDate, setSelectedDate] = useState(formatDateInitial());
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -29,9 +45,16 @@ const RecapResa = () => {
   const [newStatus, setNewStatus] = useState("");
   const [dateTime, setDateTime] = useState(moment());
   const [isEditing, setIsEditing] = useState(false);
-  const [newComment, SetNewComment] = useState("");
+  const [newComment, setNewComment] = useState("");
+  const [searchText, setSearchText] = useState("");
 
-  const occStatus = useSelector(occupationStatus);
+  useEffect(() => {
+    if (isSuccess && Array.isArray(reservations)) {
+      // Si vous voulez stocker les réservations dans le Redux store
+      dispatch(setReservations(reservations));
+      console.log("Réservations bien recupéré");
+    }
+  }, [reservations, isSuccess, dispatch]);
 
   const timeSlots = useMemo(
     () => [
@@ -175,21 +198,6 @@ const RecapResa = () => {
     // Gestion des messages en fonction de occupationStatus
   }, [dateTime, timeSlots, occStatus]);
 
-  const recupererReservations = () => {
-    axios
-      .get("https://sheetdb.io/api/v1/97lppk2d46b57")
-      .then((response) => {
-        setReservations(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  useEffect(() => {
-    recupererReservations();
-  }, []);
-
   const handleChange = (selectedMoment) => {
     if (selectedMoment) {
       // Formatez la date sélectionnée en string au format attendu (DD-MM-YY ici)
@@ -242,23 +250,75 @@ const RecapResa = () => {
         `https://sheetdb.io/api/v1/97lppk2d46b57/ID/${editingReservation.ID}`,
         { data: updateData }
       );
-      setIsEditing(false);
-      setEditingReservation(null);
-      recupererReservations(); // Rafraîchir les réservations
       if (response.status === 200) {
         alert("Réservation mise à jour avec succès");
-        // Mettre à jour l'affichage des réservations ici
+
+        // Invalider les tags pour forcer un rechargement des données de réservation
+        dispatch(api.util.invalidateTags(["Reservations"]));
+      }
+    } catch (error) {
+      console.error("Erreur lors de la mise à jour de la réservation", error);
+    } finally {
+      // Réinitialiser l'état local du formulaire
+      setIsEditing(false);
+      setEditingReservation(null);
+      setNewNumberOfGuests("");
+      setNewTime("");
+      setServerName("");
+      setNewStatus("");
+      setNewComment("");
+    }
+  };
+
+  const handlePlaceReservation = async (reservationId) => {
+    const updateData = {
+      data: { placed: "OUI" }, // Assurez-vous que le nom de champ correspond à celui dans votre base de données SheetDB
+    };
+
+    try {
+      const response = await axios.patch(
+        `https://sheetdb.io/api/v1/97lppk2d46b57/ID/${reservationId}`,
+        updateData
+      );
+      if (response.status === 200) {
+        // Invalider les tags pour forcer un rechargement des données de réservation
+        dispatch(api.util.invalidateTags(["Reservations"]));
+        // Optionnel : Rafraîchir les données localement si nécessaire
       }
     } catch (error) {
       console.error("Erreur lors de la mise à jour de la réservation", error);
     }
   };
 
-  const resaJour = reservations
-    ? reservations.filter(
-        (resa) => resa.Date === selectedDate && resa.Status === "Confirmé"
-      )
-    : "notYet";
+  const handleRemovePlaceReservation = async (reservationId) => {
+    const updateData = {
+      data: { placed: "NON" }, // Assurez-vous que le nom de champ correspond à celui dans votre base de données SheetDB
+    };
+
+    try {
+      const response = await axios.patch(
+        `https://sheetdb.io/api/v1/97lppk2d46b57/ID/${reservationId}`,
+        updateData
+      );
+      if (response.status === 200) {
+        // Invalider les tags pour forcer un rechargement des données de réservation
+        dispatch(api.util.invalidateTags(["Reservations"]));
+        // Optionnel : Rafraîchir les données localement si nécessaire
+      }
+    } catch (error) {
+      console.error("Erreur lors de la mise à jour de la réservation", error);
+    }
+  };
+
+  let resaJour = [];
+  if (Array.isArray(reservations)) {
+    resaJour = reservations.filter(
+      (resa) =>
+        resa.Date === selectedDate &&
+        resa.Status === "Confirmé" &&
+        resa.Name.toLowerCase().startsWith(searchText.toLowerCase())
+    );
+  }
 
   const resaMidi = resaJour
     ? resaJour.filter((res) => res.Time <= "14:00")
@@ -292,6 +352,18 @@ const RecapResa = () => {
         >
           Prendre une réservation
         </button>
+        <div className=" mt-5 mb-5">
+          <label className="mt-5 mr-5 mb-5 font-bold">
+            Rechercher une réservation
+          </label>
+          <input
+            type="text"
+            placeholder="Rechercher par nom..."
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+            className=" border-solid border-black"
+          />
+        </div>
       </div>
 
       <div className=" flex justify-center items-center mb-10 ">
@@ -321,6 +393,10 @@ const RecapResa = () => {
         resaJour
           .filter((res) => res.Time <= "14:00")
           .map((reservation, index) => {
+            const cardStyle =
+              reservation.placed === "OUI"
+                ? { backgroundColor: "#96be25" }
+                : {};
             if (
               isEditing &&
               editingReservation &&
@@ -369,7 +445,7 @@ const RecapResa = () => {
                       <textarea
                         name="message"
                         value={newComment}
-                        onChange={(e) => SetNewComment(e.target.value)}
+                        onChange={(e) => setNewComment(e.target.value)}
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       />
                     </div>
@@ -429,12 +505,9 @@ const RecapResa = () => {
             } else {
               return (
                 <div
+                  className="mb-[10px] p-[10px] border-[1px] border-solid border-gray-400 rounded-xl"
                   key={index}
-                  style={{
-                    marginBottom: "10px",
-                    padding: "10px",
-                    border: "1px solid #ccc",
-                  }}
+                  style={cardStyle}
                 >
                   <p>
                     <strong>Nom:</strong> {reservation.Name}
@@ -492,12 +565,30 @@ const RecapResa = () => {
                     <strong>Réservation Modifiée par:</strong>{" "}
                     {reservation.Updated || "Aucune Modification"}
                   </p>
-                  <button
-                    onClick={() => handleEditClick(reservation)}
-                    className="mt-4 px-4 py-2 bg-yellow-400 text-white rounded"
-                  >
-                    Modifier
-                  </button>
+                  <div className=" w-full flex flex-row justify-between">
+                    <button
+                      onClick={() => handleEditClick(reservation)}
+                      className="mt-4 px-4 py-2 bg-yellow-400 text-white rounded"
+                    >
+                      Modifier
+                    </button>
+                    <div>
+                      <button
+                        onClick={() => handlePlaceReservation(reservation.ID)}
+                        className="mt-4 px-2 py-1 bg-blue-500 text-white rounded text-xs"
+                      >
+                        Placé sur plan
+                      </button>
+                      <button
+                        onClick={() =>
+                          handleRemovePlaceReservation(reservation.ID)
+                        }
+                        className="mt-4 px-2 py-1 bg-blue-500 text-white rounded text-xs ml-5"
+                      >
+                        Retirer du plan
+                      </button>
+                    </div>
+                  </div>
                 </div>
               );
             }
@@ -508,7 +599,7 @@ const RecapResa = () => {
 
       <h2 className="text-center text-3xl mb-5">Réservations du soir</h2>
       <h2 className="text-center text-xl mb-5">
-        {numberCouvert(resaSoir)} couverts ce soir
+        {numberCouvert(resaSoir)} couverts ce soir.
       </h2>
       {resaJour.length > 0 ? (
         resaJour
@@ -562,7 +653,7 @@ const RecapResa = () => {
                       <textarea
                         name="message"
                         value={newComment}
-                        onChange={(e) => SetNewComment(e.target.value)}
+                        onChange={(e) => setNewComment(e.target.value)}
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       />
                     </div>
@@ -685,12 +776,30 @@ const RecapResa = () => {
                     <strong>Réservation Modifiée par:</strong>{" "}
                     {reservation.Updated || "Aucune Modification"}
                   </p>
-                  <button
-                    onClick={() => handleEditClick(reservation)}
-                    className="mt-4 px-4 py-2 bg-yellow-400 text-white rounded"
-                  >
-                    Modifier
-                  </button>
+                  <div className=" w-full flex flex-row justify-between">
+                    <button
+                      onClick={() => handleEditClick(reservation)}
+                      className="mt-4 px-4 py-2 bg-yellow-400 text-white rounded"
+                    >
+                      Modifier
+                    </button>
+                    <div>
+                      <button
+                        onClick={() => handlePlaceReservation(reservation.ID)}
+                        className="mt-4 px-2 py-1 bg-blue-500 text-white rounded text-xs"
+                      >
+                        Placé sur plan
+                      </button>
+                      <button
+                        onClick={() =>
+                          handleRemovePlaceReservation(reservation.ID)
+                        }
+                        className="mt-4 px-2 py-1 bg-blue-500 text-white rounded text-xs ml-5"
+                      >
+                        Retirer du plan
+                      </button>
+                    </div>
+                  </div>
                 </div>
               );
             }
