@@ -605,6 +605,10 @@ const RecapResa = () => {
         resaJour
           .filter((res) => res.Time >= "18:00")
           .map((reservation, index) => {
+            const cardStyle =
+              reservation.placed === "OUI"
+                ? { backgroundColor: "#96be25" }
+                : {};
             if (
               isEditing &&
               editingReservation &&
@@ -713,12 +717,9 @@ const RecapResa = () => {
             } else {
               return (
                 <div
+                  className="mb-[10px] p-[10px] border-[1px] border-solid border-gray-400 rounded-xl"
                   key={index}
-                  style={{
-                    marginBottom: "10px",
-                    padding: "10px",
-                    border: "1px solid #ccc",
-                  }}
+                  style={cardStyle}
                 >
                   <p>
                     <strong>Nom:</strong> {reservation.Name}
