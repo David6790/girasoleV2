@@ -47,6 +47,8 @@ const RecapResa = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [newComment, setNewComment] = useState("");
   const [searchText, setSearchText] = useState("");
+  const [showMiddayReservations, setShowMiddayReservations] = useState(true);
+  const [showEveningReservations, setShowEveningReservations] = useState(true);
 
   useEffect(() => {
     if (isSuccess && Array.isArray(reservations)) {
@@ -311,13 +313,20 @@ const RecapResa = () => {
   };
 
   let resaJour = [];
+
   if (Array.isArray(reservations)) {
-    resaJour = reservations.filter(
-      (resa) =>
-        resa.Date === selectedDate &&
-        resa.Status === "Confirmé" &&
-        resa.Name.toLowerCase().startsWith(searchText.toLowerCase())
-    );
+    resaJour = reservations
+      .filter(
+        (resa) =>
+          resa.Date === selectedDate &&
+          resa.Status === "Confirmé" &&
+          resa.Name.toLowerCase().startsWith(searchText.toLowerCase())
+      )
+      .sort(
+        (a, b) =>
+          moment(b.timeStamp, "DD/MM/YYYY HH:mm:ss") -
+          moment(a.timeStamp, "DD/MM/YYYY HH:mm:ss")
+      );
   }
 
   const resaMidi = resaJour
@@ -384,429 +393,470 @@ const RecapResa = () => {
         />
       </div>
 
-      <h2 className="text-center text-3xl">Réservations du midi</h2>
-      <h2 className="text-center text-xl mb-5">
-        {numberCouvert(resaMidi)} couverts ce midi
-      </h2>
+      <div className="flex justify-center items-center">
+        <h2 className="text-center text-3xl mr-5">Réservations du midi</h2>
+        <button
+          onClick={() => setShowMiddayReservations(!showMiddayReservations)}
+          className="px-3 py-1 underline text-black rounded hover:bg-gray-400"
+        >
+          {showMiddayReservations ? "Réduire" : "Afficher"}
+        </button>
+      </div>
+      {showMiddayReservations && (
+        <div>
+          <h2 className="text-center text-xl mb-5">
+            {numberCouvert(resaMidi)} couverts ce midi
+          </h2>
 
-      {resaJour.length > 0 ? (
-        resaJour
-          .filter((res) => res.Time <= "14:00")
-          .map((reservation, index) => {
-            const cardStyle =
-              reservation.placed === "OUI"
-                ? { backgroundColor: "#96be25" }
-                : {};
-            if (
-              isEditing &&
-              editingReservation &&
-              editingReservation.ID === reservation.ID
-            ) {
-              return (
-                <div
-                  key={reservation.ID}
-                  className="my-4 p-4 border border-gray-200 rounded"
-                >
-                  <form
-                    onSubmit={handleEditSubmit}
-                    className="space-y-4 bg-white p-4 rounded-lg shadow"
-                  >
-                    <div className="mb-4">
-                      <label className="block text-gray-700 text-sm font-bold mb-2">
-                        Nombre de convives:
-                      </label>
-                      <input
-                        type="number"
-                        value={newNumberOfGuests}
-                        onChange={(e) => setNewNumberOfGuests(e.target.value)}
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      />
-                    </div>
-                    <div className="mb-4">
-                      <label className="block text-gray-700 text-sm font-bold mb-2">
-                        Heure:
-                      </label>
-                      <select
-                        value={newTime}
-                        onChange={(e) => setNewTime(e.target.value)}
-                        className="shadow border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                      >
-                        {availableTimeSlots.map((slot, index) => (
-                          <option key={index} value={slot}>
-                            {slot}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                    <div className="mb-4">
-                      <label className="block text-gray-700 text-sm font-bold mb-2">
-                        Commentaires:
-                      </label>
-                      <textarea
-                        name="message"
-                        value={newComment}
-                        onChange={(e) => setNewComment(e.target.value)}
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      />
-                    </div>
-                    <div className="mb-4">
-                      <label className="block text-gray-700 text-sm font-bold mb-2">
-                        Statut de la réservation:
-                      </label>
-                      <select
-                        value={newStatus}
-                        onChange={(e) => setNewStatus(e.target.value)}
-                        className="shadow border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                      >
-                        <option value="Confirmé">Confirmé</option>
-                        <option value="Refusé">
-                          Refusé (Demande du client)
-                        </option>
-                      </select>
-                    </div>
-                    <div className="mb-4">
-                      <label className="block text-gray-700 text-sm font-bold mb-2">
-                        Serveur:
-                      </label>
-                      <select
-                        value={serverName}
-                        required
-                        onChange={(e) => setServerName(e.target.value)}
-                        className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      >
-                        <option value="" disabled>
-                          Sélectionnez le serveur
-                        </option>
-                        <option value="Jess">Jess</option>
-                        <option value="Dylan">Dylan</option>
-                        <option value="Tiffanie">Tiffanie</option>
-                        <option value="Aurora">Aurora</option>
-                        <option value="Christian">Christian</option>
-                        <option value="Stephane">Stephane</option>
-                        <option value="David">David</option>
-                        <option value="Fanny">Fanny</option>
-                      </select>
-                    </div>
-                    <button
-                      type="submit"
-                      className="mt-4 px-4 py-2 bg-green-400 text-white rounded mr-5"
+          {resaJour.length > 0 ? (
+            resaJour
+              .filter((res) => res.Time <= "14:00")
+              .map((reservation, index) => {
+                const cardStyle =
+                  reservation.placed === "OUI"
+                    ? { backgroundColor: "#96be25" }
+                    : {};
+                if (
+                  isEditing &&
+                  editingReservation &&
+                  editingReservation.ID === reservation.ID
+                ) {
+                  return (
+                    <div
+                      key={reservation.ID}
+                      className="my-4 p-4 border border-gray-200 rounded"
                     >
-                      Valider
-                    </button>
-                    <button
-                      onClick={handleCancelEdit}
-                      className="mt-4 px-4 py-2 bg-red-500 text-white rounded"
+                      <form
+                        onSubmit={handleEditSubmit}
+                        className="space-y-4 bg-white p-4 rounded-lg shadow"
+                      >
+                        <div className="mb-4">
+                          <label className="block text-gray-700 text-sm font-bold mb-2">
+                            Nombre de convives:
+                          </label>
+                          <input
+                            type="number"
+                            value={newNumberOfGuests}
+                            onChange={(e) =>
+                              setNewNumberOfGuests(e.target.value)
+                            }
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                          />
+                        </div>
+                        <div className="mb-4">
+                          <label className="block text-gray-700 text-sm font-bold mb-2">
+                            Heure:
+                          </label>
+                          <select
+                            value={newTime}
+                            onChange={(e) => setNewTime(e.target.value)}
+                            className="shadow border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                          >
+                            {availableTimeSlots.map((slot, index) => (
+                              <option key={index} value={slot}>
+                                {slot}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                        <div className="mb-4">
+                          <label className="block text-gray-700 text-sm font-bold mb-2">
+                            Commentaires:
+                          </label>
+                          <textarea
+                            name="message"
+                            value={newComment}
+                            onChange={(e) => setNewComment(e.target.value)}
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                          />
+                        </div>
+                        <div className="mb-4">
+                          <label className="block text-gray-700 text-sm font-bold mb-2">
+                            Statut de la réservation:
+                          </label>
+                          <select
+                            value={newStatus}
+                            onChange={(e) => setNewStatus(e.target.value)}
+                            className="shadow border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                          >
+                            <option value="Confirmé">Confirmé</option>
+                            <option value="Refusé">
+                              Refusé (Demande du client)
+                            </option>
+                          </select>
+                        </div>
+                        <div className="mb-4">
+                          <label className="block text-gray-700 text-sm font-bold mb-2">
+                            Serveur:
+                          </label>
+                          <select
+                            value={serverName}
+                            required
+                            onChange={(e) => setServerName(e.target.value)}
+                            className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                          >
+                            <option value="" disabled>
+                              Sélectionnez le serveur
+                            </option>
+                            <option value="Jess">Jess</option>
+                            <option value="Dylan">Dylan</option>
+                            <option value="Tiffanie">Tiffanie</option>
+                            <option value="Aurora">Aurora</option>
+                            <option value="Christian">Christian</option>
+                            <option value="Stephane">Stephane</option>
+                            <option value="David">David</option>
+                            <option value="Fanny">Fanny</option>
+                          </select>
+                        </div>
+                        <button
+                          type="submit"
+                          className="mt-4 px-4 py-2 bg-green-400 text-white rounded mr-5"
+                        >
+                          Valider
+                        </button>
+                        <button
+                          onClick={handleCancelEdit}
+                          className="mt-4 px-4 py-2 bg-red-500 text-white rounded"
+                        >
+                          Cancel
+                        </button>
+                      </form>
+                    </div>
+                  );
+                } else {
+                  return (
+                    <div
+                      className="mb-[10px] p-[10px] border-[1px] border-solid border-gray-400 rounded-xl"
+                      key={index}
+                      style={cardStyle}
                     >
-                      Cancel
-                    </button>
-                  </form>
-                </div>
-              );
-            } else {
-              return (
-                <div
-                  className="mb-[10px] p-[10px] border-[1px] border-solid border-gray-400 rounded-xl"
-                  key={index}
-                  style={cardStyle}
-                >
-                  <p>
-                    <strong>Nom:</strong> {reservation.Name}
-                  </p>
-                  <p>
-                    <strong>Nombre de convives:</strong>{" "}
-                    {reservation.NumberGuest}
-                  </p>
-                  <p>
-                    <strong>Date:</strong> {reservation.Date}
-                  </p>
-                  <p>
-                    <strong>Heure:</strong> {reservation.Time}
-                  </p>
-                  <p>
-                    <strong>Numéro de teléphone:</strong> {reservation.Phone}
-                  </p>
+                      <p>
+                        <strong>Nom:</strong> {reservation.Name}
+                      </p>
+                      <p>
+                        <strong>Nombre de convives:</strong>{" "}
+                        {reservation.NumberGuest}
+                      </p>
+                      <p>
+                        <strong>Date:</strong> {reservation.Date}
+                      </p>
+                      <p>
+                        <strong>Heure:</strong> {reservation.Time}
+                      </p>
+                      <p>
+                        <strong>Numéro de teléphone:</strong>{" "}
+                        {reservation.Phone}
+                      </p>
 
-                  <p>
-                    <strong>Statut</strong>
-                    <span
-                      style={{
-                        backgroundColor: getColorForStatus(reservation.Status),
-                      }}
-                    >
-                      {reservation.Status}
-                    </span>
-                  </p>
-                  <p>
-                    <strong>Réservation effectué le :</strong>{" "}
-                    {reservation.timeStamp}
-                  </p>
-                  <p>
-                    <strong>Commentaire:</strong>{" "}
-                    {reservation.Comment || "Aucun commentaire"}
-                  </p>
-                  <p>
-                    <strong>Réservation Prise par:</strong> {reservation.Source}
-                  </p>
-                  <p>
-                    <strong>Client doit libérer table à 21H:</strong>
-                    <span
-                      style={{
-                        backgroundColor: getColorForStatus(
-                          reservation.freeTable21h
-                        ),
-                      }}
-                    >
-                      {reservation.freeTable21h === "Client prévenu"
-                        ? "Client prévenu"
-                        : "Pas demandé"}
-                    </span>
-                  </p>
-                  <p>
-                    <strong>Réservation Modifiée par:</strong>{" "}
-                    {reservation.Updated || "Aucune Modification"}
-                  </p>
-                  <div className=" w-full flex flex-row justify-between">
-                    <button
-                      onClick={() => handleEditClick(reservation)}
-                      className="mt-4 px-4 py-2 bg-yellow-400 text-white rounded"
-                    >
-                      Modifier
-                    </button>
-                    <div>
-                      <button
-                        onClick={() => handlePlaceReservation(reservation.ID)}
-                        className="mt-4 px-2 py-1 bg-blue-500 text-white rounded text-xs"
-                      >
-                        Placé sur plan
-                      </button>
-                      <button
-                        onClick={() =>
-                          handleRemovePlaceReservation(reservation.ID)
-                        }
-                        className="mt-4 px-2 py-1 bg-blue-500 text-white rounded text-xs ml-5"
-                      >
-                        Retirer du plan
-                      </button>
+                      <p>
+                        <strong>Statut</strong>
+                        <span
+                          style={{
+                            backgroundColor: getColorForStatus(
+                              reservation.Status
+                            ),
+                          }}
+                        >
+                          {reservation.Status}
+                        </span>
+                      </p>
+                      <p>
+                        <strong>Réservation effectué le :</strong>{" "}
+                        {reservation.timeStamp}
+                      </p>
+                      <p>
+                        <strong>Commentaire:</strong>{" "}
+                        {reservation.Comment || "Aucun commentaire"}
+                      </p>
+                      <p>
+                        <strong>Réservation Prise par:</strong>{" "}
+                        {reservation.Source}
+                      </p>
+                      <p>
+                        <strong>Client doit libérer table à 21H:</strong>
+                        <span
+                          style={{
+                            backgroundColor: getColorForStatus(
+                              reservation.freeTable21h
+                            ),
+                          }}
+                        >
+                          {reservation.freeTable21h === "Client prévenu"
+                            ? "Client prévenu"
+                            : "Pas demandé"}
+                        </span>
+                      </p>
+                      <p>
+                        <strong>Réservation Modifiée par:</strong>{" "}
+                        {reservation.Updated || "Aucune Modification"}
+                      </p>
+                      <div className=" w-full flex flex-row justify-between">
+                        <button
+                          onClick={() => handleEditClick(reservation)}
+                          className="mt-4 px-4 py-2 bg-yellow-400 text-white rounded"
+                        >
+                          Modifier
+                        </button>
+                        <div>
+                          <button
+                            onClick={() =>
+                              handlePlaceReservation(reservation.ID)
+                            }
+                            className="mt-4 px-2 py-1 bg-blue-500 text-white rounded text-xs"
+                          >
+                            Placé sur plan
+                          </button>
+                          <button
+                            onClick={() =>
+                              handleRemovePlaceReservation(reservation.ID)
+                            }
+                            className="mt-4 px-2 py-1 bg-blue-500 text-white rounded text-xs ml-5"
+                          >
+                            Retirer du plan
+                          </button>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              );
-            }
-          })
-      ) : (
-        <p>Aucune réservation pour ce midi.</p>
+                  );
+                }
+              })
+          ) : (
+            <p>Aucune réservation pour ce midi.</p>
+          )}
+        </div>
       )}
 
-      <h2 className="text-center text-3xl mb-5">Réservations du soir</h2>
-      <h2 className="text-center text-xl mb-5">
-        {numberCouvert(resaSoir)} couverts ce soir.
-      </h2>
-      {resaJour.length > 0 ? (
-        resaJour
-          .filter((res) => res.Time >= "18:00")
-          .map((reservation, index) => {
-            const cardStyle =
-              reservation.placed === "OUI"
-                ? { backgroundColor: "#96be25" }
-                : {};
-            if (
-              isEditing &&
-              editingReservation &&
-              editingReservation.ID === reservation.ID
-            ) {
-              return (
-                <div
-                  key={reservation.ID}
-                  className="my-4 p-4 border border-gray-200 rounded"
-                >
-                  <form
-                    onSubmit={handleEditSubmit}
-                    className="space-y-4 bg-white p-4 rounded-lg shadow"
-                  >
-                    <div className="mb-4">
-                      <label className="block text-gray-700 text-sm font-bold mb-2">
-                        Nombre de convives:
-                      </label>
-                      <input
-                        type="number"
-                        value={newNumberOfGuests}
-                        onChange={(e) => setNewNumberOfGuests(e.target.value)}
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      />
-                    </div>
-                    <div className="mb-4">
-                      <label className="block text-gray-700 text-sm font-bold mb-2">
-                        Heure:
-                      </label>
-                      <select
-                        value={newTime}
-                        onChange={(e) => setNewTime(e.target.value)}
-                        className="shadow border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                      >
-                        {availableTimeSlots.map((slot, index) => (
-                          <option key={index} value={slot}>
-                            {slot}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                    <div className="mb-4">
-                      <label className="block text-gray-700 text-sm font-bold mb-2">
-                        Commentaires:
-                      </label>
-                      <textarea
-                        name="message"
-                        value={newComment}
-                        onChange={(e) => setNewComment(e.target.value)}
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      />
-                    </div>
-                    <div className="mb-4">
-                      <label className="block text-gray-700 text-sm font-bold mb-2">
-                        Statut de la réservation:
-                      </label>
-                      <select
-                        value={newStatus}
-                        onChange={(e) => setNewStatus(e.target.value)}
-                        className="shadow border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                      >
-                        <option value="Confirmé">Confirmé</option>
-                        <option value="Refusé">
-                          Refusé (Demande du client)
-                        </option>
-                      </select>
-                    </div>
-                    <div className="mb-4">
-                      <label className="block text-gray-700 text-sm font-bold mb-2">
-                        Serveur:
-                      </label>
-                      <select
-                        value={serverName}
-                        required
-                        onChange={(e) => setServerName(e.target.value)}
-                        className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      >
-                        <option value="" disabled>
-                          Sélectionnez le serveur
-                        </option>
-                        <option value="Jess">Jess</option>
-                        <option value="Dylan">Dylan</option>
-                        <option value="Tiffanie">Tiffanie</option>
-                        <option value="Aurora">Aurora</option>
-                        <option value="Christian">Christian</option>
-                        <option value="Stephane">Stephane</option>
-                        <option value="David">David</option>
-                        <option value="Fanny">Fanny</option>
-                      </select>
-                    </div>
-                    <button
-                      type="submit"
-                      className="mt-4 px-4 py-2 bg-green-400 text-white rounded mr-5"
+      <div className="flex justify-center items-center mt-5">
+        <h2 className="text-center text-3xl mr-5">Réservations du soir</h2>
+        <button
+          onClick={() => setShowEveningReservations(!showEveningReservations)}
+          className="px-3 py-1 underline text-black rounded hover:bg-gray-400"
+        >
+          {showEveningReservations ? "Réduire" : "Afficher"}
+        </button>
+      </div>
+      {showEveningReservations && (
+        <div>
+          <h2 className="text-center text-xl mb-5">
+            {numberCouvert(resaSoir)} couverts ce soir.
+          </h2>
+          {resaJour.length > 0 ? (
+            resaJour
+              .filter((res) => res.Time >= "18:00")
+              .map((reservation, index) => {
+                const cardStyle =
+                  reservation.placed === "OUI"
+                    ? { backgroundColor: "#96be25" }
+                    : {};
+                if (
+                  isEditing &&
+                  editingReservation &&
+                  editingReservation.ID === reservation.ID
+                ) {
+                  return (
+                    <div
+                      key={reservation.ID}
+                      className="my-4 p-4 border border-gray-200 rounded"
                     >
-                      Valider
-                    </button>
-                    <button
-                      onClick={handleCancelEdit}
-                      className="mt-4 px-4 py-2 bg-red-500 text-white rounded"
+                      <form
+                        onSubmit={handleEditSubmit}
+                        className="space-y-4 bg-white p-4 rounded-lg shadow"
+                      >
+                        <div className="mb-4">
+                          <label className="block text-gray-700 text-sm font-bold mb-2">
+                            Nombre de convives:
+                          </label>
+                          <input
+                            type="number"
+                            value={newNumberOfGuests}
+                            onChange={(e) =>
+                              setNewNumberOfGuests(e.target.value)
+                            }
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                          />
+                        </div>
+                        <div className="mb-4">
+                          <label className="block text-gray-700 text-sm font-bold mb-2">
+                            Heure:
+                          </label>
+                          <select
+                            value={newTime}
+                            onChange={(e) => setNewTime(e.target.value)}
+                            className="shadow border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                          >
+                            {availableTimeSlots.map((slot, index) => (
+                              <option key={index} value={slot}>
+                                {slot}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                        <div className="mb-4">
+                          <label className="block text-gray-700 text-sm font-bold mb-2">
+                            Commentaires:
+                          </label>
+                          <textarea
+                            name="message"
+                            value={newComment}
+                            onChange={(e) => setNewComment(e.target.value)}
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                          />
+                        </div>
+                        <div className="mb-4">
+                          <label className="block text-gray-700 text-sm font-bold mb-2">
+                            Statut de la réservation:
+                          </label>
+                          <select
+                            value={newStatus}
+                            onChange={(e) => setNewStatus(e.target.value)}
+                            className="shadow border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                          >
+                            <option value="Confirmé">Confirmé</option>
+                            <option value="Refusé">
+                              Refusé (Demande du client)
+                            </option>
+                          </select>
+                        </div>
+                        <div className="mb-4">
+                          <label className="block text-gray-700 text-sm font-bold mb-2">
+                            Serveur:
+                          </label>
+                          <select
+                            value={serverName}
+                            required
+                            onChange={(e) => setServerName(e.target.value)}
+                            className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                          >
+                            <option value="" disabled>
+                              Sélectionnez le serveur
+                            </option>
+                            <option value="Jess">Jess</option>
+                            <option value="Dylan">Dylan</option>
+                            <option value="Tiffanie">Tiffanie</option>
+                            <option value="Aurora">Aurora</option>
+                            <option value="Christian">Christian</option>
+                            <option value="Stephane">Stephane</option>
+                            <option value="David">David</option>
+                            <option value="Fanny">Fanny</option>
+                          </select>
+                        </div>
+                        <button
+                          type="submit"
+                          className="mt-4 px-4 py-2 bg-green-400 text-white rounded mr-5"
+                        >
+                          Valider
+                        </button>
+                        <button
+                          onClick={handleCancelEdit}
+                          className="mt-4 px-4 py-2 bg-red-500 text-white rounded"
+                        >
+                          Cancel
+                        </button>
+                      </form>
+                    </div>
+                  );
+                } else {
+                  return (
+                    <div
+                      className="mb-[10px] p-[10px] border-[1px] border-solid border-gray-400 rounded-xl"
+                      key={index}
+                      style={cardStyle}
                     >
-                      Cancel
-                    </button>
-                  </form>
-                </div>
-              );
-            } else {
-              return (
-                <div
-                  className="mb-[10px] p-[10px] border-[1px] border-solid border-gray-400 rounded-xl"
-                  key={index}
-                  style={cardStyle}
-                >
-                  <p>
-                    <strong>Nom:</strong> {reservation.Name}
-                  </p>
-                  <p>
-                    <strong>Nombre de convives:</strong>{" "}
-                    {reservation.NumberGuest}
-                  </p>
-                  <p>
-                    <strong>Date:</strong> {reservation.Date}
-                  </p>
-                  <p>
-                    <strong>Heure:</strong> {reservation.Time}
-                  </p>
-                  <p>
-                    <strong>Numéro de teléphone:</strong> {reservation.Phone}
-                  </p>
+                      <p>
+                        <strong>Nom:</strong> {reservation.Name}
+                      </p>
+                      <p>
+                        <strong>Nombre de convives:</strong>{" "}
+                        {reservation.NumberGuest}
+                      </p>
+                      <p>
+                        <strong>Date:</strong> {reservation.Date}
+                      </p>
+                      <p>
+                        <strong>Heure:</strong> {reservation.Time}
+                      </p>
+                      <p>
+                        <strong>Numéro de teléphone:</strong>{" "}
+                        {reservation.Phone}
+                      </p>
 
-                  <p>
-                    <strong>Statut</strong>
-                    <span
-                      style={{
-                        backgroundColor: getColorForStatus(reservation.Status),
-                      }}
-                    >
-                      {reservation.Status}
-                    </span>
-                  </p>
-                  <p>
-                    <strong>Réservation effectué le :</strong>{" "}
-                    {reservation.timeStamp}
-                  </p>
-                  <p>
-                    <strong>Commentaire:</strong>{" "}
-                    {reservation.Comment || "Aucun commentaire"}
-                  </p>
-                  <p>
-                    <strong>Réservation Prise par:</strong> {reservation.Source}
-                  </p>
-                  <p>
-                    <strong>Client doit libérer table à 21H:</strong>
-                    <span
-                      style={{
-                        backgroundColor: getColorForStatus(
-                          reservation.freeTable21h
-                        ),
-                      }}
-                    >
-                      {reservation.freeTable21h === "Client prévenu"
-                        ? "Client prévenu"
-                        : "Pas demandé"}
-                    </span>
-                  </p>
-                  <p>
-                    <strong>Réservation Modifiée par:</strong>{" "}
-                    {reservation.Updated || "Aucune Modification"}
-                  </p>
-                  <div className=" w-full flex flex-row justify-between">
-                    <button
-                      onClick={() => handleEditClick(reservation)}
-                      className="mt-4 px-4 py-2 bg-yellow-400 text-white rounded"
-                    >
-                      Modifier
-                    </button>
-                    <div>
-                      <button
-                        onClick={() => handlePlaceReservation(reservation.ID)}
-                        className="mt-4 px-2 py-1 bg-blue-500 text-white rounded text-xs"
-                      >
-                        Placé sur plan
-                      </button>
-                      <button
-                        onClick={() =>
-                          handleRemovePlaceReservation(reservation.ID)
-                        }
-                        className="mt-4 px-2 py-1 bg-blue-500 text-white rounded text-xs ml-5"
-                      >
-                        Retirer du plan
-                      </button>
+                      <p>
+                        <strong>Statut</strong>
+                        <span
+                          style={{
+                            backgroundColor: getColorForStatus(
+                              reservation.Status
+                            ),
+                          }}
+                        >
+                          {reservation.Status}
+                        </span>
+                      </p>
+                      <p>
+                        <strong>Réservation effectué le :</strong>{" "}
+                        {reservation.timeStamp}
+                      </p>
+                      <p>
+                        <strong>Commentaire:</strong>{" "}
+                        {reservation.Comment || "Aucun commentaire"}
+                      </p>
+                      <p>
+                        <strong>Réservation Prise par:</strong>{" "}
+                        {reservation.Source}
+                      </p>
+                      <p>
+                        <strong>Client doit libérer table à 21H:</strong>
+                        <span
+                          style={{
+                            backgroundColor: getColorForStatus(
+                              reservation.freeTable21h
+                            ),
+                          }}
+                        >
+                          {reservation.freeTable21h === "Client prévenu"
+                            ? "Client prévenu"
+                            : "Pas demandé"}
+                        </span>
+                      </p>
+                      <p>
+                        <strong>Réservation Modifiée par:</strong>{" "}
+                        {reservation.Updated || "Aucune Modification"}
+                      </p>
+                      <div className=" w-full flex flex-row justify-between">
+                        <button
+                          onClick={() => handleEditClick(reservation)}
+                          className="mt-4 px-4 py-2 bg-yellow-400 text-white rounded"
+                        >
+                          Modifier
+                        </button>
+                        <div>
+                          <button
+                            onClick={() =>
+                              handlePlaceReservation(reservation.ID)
+                            }
+                            className="mt-4 px-2 py-1 bg-blue-500 text-white rounded text-xs"
+                          >
+                            Placé sur plan
+                          </button>
+                          <button
+                            onClick={() =>
+                              handleRemovePlaceReservation(reservation.ID)
+                            }
+                            className="mt-4 px-2 py-1 bg-blue-500 text-white rounded text-xs ml-5"
+                          >
+                            Retirer du plan
+                          </button>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              );
-            }
-          })
-      ) : (
-        <p>Aucune réservation pour ce midi.</p>
+                  );
+                }
+              })
+          ) : (
+            <p>Aucune réservation pour ce midi.</p>
+          )}
+        </div>
+        // Rendu des cartes de réservation du soir en utilisant `sortedReservations`
       )}
     </div>
   );
