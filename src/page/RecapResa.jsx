@@ -49,6 +49,8 @@ const RecapResa = () => {
   const [searchText, setSearchText] = useState("");
   const [showMiddayReservations, setShowMiddayReservations] = useState(true);
   const [showEveningReservations, setShowEveningReservations] = useState(true);
+  const [showUnplacedReservations, setShowUnplacedReservations] =
+    useState(false);
 
   useEffect(() => {
     if (isSuccess && Array.isArray(reservations)) {
@@ -407,9 +409,24 @@ const RecapResa = () => {
           <h2 className="text-center text-xl mb-5">
             {numberCouvert(resaMidi)} couverts ce midi
           </h2>
+          <div className=" w-full flex flex-row justify-center">
+            <button
+              onClick={() =>
+                setShowUnplacedReservations(!showUnplacedReservations)
+              }
+              className="mt-2 mb-5 px-2 py-1 bg-yellow-500 text-xs m-auto text-white rounded"
+            >
+              {showUnplacedReservations
+                ? "Afficher toutes les réservations"
+                : "Afficher uniquement les réservations non placées"}
+            </button>
+          </div>
 
           {resaJour.length > 0 ? (
             resaJour
+              .filter((res) => {
+                return showUnplacedReservations ? res.placed !== "OUI" : true;
+              })
               .filter((res) => res.Time <= "14:00")
               .map((reservation, index) => {
                 const cardStyle =
@@ -640,8 +657,23 @@ const RecapResa = () => {
           <h2 className="text-center text-xl mb-5">
             {numberCouvert(resaSoir)} couverts ce soir.
           </h2>
+          <div className=" w-full flex flex-row justify-center">
+            <button
+              onClick={() =>
+                setShowUnplacedReservations(!showUnplacedReservations)
+              }
+              className="mt-2 mb-5 px-2 py-1 bg-yellow-500 text-xs m-auto text-white rounded"
+            >
+              {showUnplacedReservations
+                ? "Afficher toutes les réservations"
+                : "Afficher uniquement les réservations non placées"}
+            </button>
+          </div>
           {resaJour.length > 0 ? (
             resaJour
+              .filter((res) => {
+                return showUnplacedReservations ? res.placed !== "OUI" : true;
+              })
               .filter((res) => res.Time >= "18:00")
               .map((reservation, index) => {
                 const cardStyle =
