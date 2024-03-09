@@ -655,6 +655,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
           msgClient2: data.msgClient2,
           msgClient3: data.msgClient3,
           ID: ID,
+          formatData: formattedResDate2,
         });
 
         const url = `https://il-girasole-strasbourg.com/.netlify/functions/acceptStaff?${queryParams.toString()}`;
