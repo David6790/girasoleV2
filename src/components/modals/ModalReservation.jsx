@@ -446,48 +446,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
       selectedTime === "19:15" ||
       selectedTime === "19:00";
 
-    function formatDateToFullString(dateString) {
-      const months = [
-        "janvier",
-        "février",
-        "mars",
-        "avril",
-        "mai",
-        "juin",
-        "juillet",
-        "août",
-        "septembre",
-        "octobre",
-        "novembre",
-        "décembre",
-      ];
-      const days = [
-        "dimanche",
-        "lundi",
-        "mardi",
-        "mercredi",
-        "jeudi",
-        "vendredi",
-        "samedi",
-      ];
-
-      // Extraire les éléments de la date
-      const [day, month, year] = dateString
-        .split("/")
-        .map((num) => parseInt(num, 10));
-
-      // Créer un objet Date (Notez que le mois est 0-indexé en JavaScript)
-      const date = new Date(year + 2000, month - 1, day);
-
-      // Formater la date
-      const formattedDate = `${days[date.getDay()]} ${date.getDate()} ${
-        months[date.getMonth()]
-      } ${date.getFullYear()}`;
-
-      return formattedDate;
-    }
-
-    const formattedResDate = formatDateToFullString(selectedTime);
+    const formattedResDate2 = moment(dateTime).format("dddd DD MMMM YYYY");
 
     const data = {
       resDate: validDateTime.format("DD-MM-YY"),
@@ -500,7 +459,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
       ID: ID,
       Source: "Stéphane",
       typeEvent: "Nouvel-an",
-      formatData: formattedResDate,
+      formatData: formattedResDate2,
       msgClient:
         (occStatus != null &&
           occStatus[0].occupationStatus === "freeTable21" &&

@@ -23,6 +23,7 @@ exports.handler = async (event, context) => {
     msgClient,
     msgClient2,
     msgClient3,
+    formatData,
   } = event.queryStringParameters;
 
   // Vérifiez que tous les paramètres nécessaires sont présents
@@ -33,49 +34,6 @@ exports.handler = async (event, context) => {
     };
   }
 
-  function formatDateToFullString(dateString) {
-    const months = [
-      "janvier",
-      "février",
-      "mars",
-      "avril",
-      "mai",
-      "juin",
-      "juillet",
-      "août",
-      "septembre",
-      "octobre",
-      "novembre",
-      "décembre",
-    ];
-    const days = [
-      "dimanche",
-      "lundi",
-      "mardi",
-      "mercredi",
-      "jeudi",
-      "vendredi",
-      "samedi",
-    ];
-
-    // Extraire les éléments de la date
-    const [day, month, year] = dateString
-      .split("/")
-      .map((num) => parseInt(num, 10));
-
-    // Créer un objet Date (Notez que le mois est 0-indexé en JavaScript)
-    const date = new Date(year + 2000, month - 1, day);
-
-    // Formater la date
-    const formattedDate = `${days[date.getDay()]} ${date.getDate()} ${
-      months[date.getMonth()]
-    } ${date.getFullYear()}`;
-
-    return formattedDate;
-  }
-
-  const formattedResDate = formatDateToFullString(resDate);
-
   // Créez le message à envoyer
   const msg = {
     to: email,
@@ -83,7 +41,7 @@ exports.handler = async (event, context) => {
     templateId: "d-f6110fab2fb04b05b3924760f999ce4f",
     dynamic_template_data: {
       Name: name,
-      Date: formattedResDate,
+      Date: formatData,
       Time: resTime,
       Number: number,
       MsgClient: msgClient,
