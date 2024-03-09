@@ -247,6 +247,7 @@ const RecapResa = () => {
       Updated: `Modifié par ${serverName}`,
       Status: newStatus === "" ? "Confirmé" : newStatus,
       Comment: newComment,
+      placed: "NON",
     };
 
     try {
