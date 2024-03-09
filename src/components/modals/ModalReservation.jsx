@@ -97,6 +97,9 @@ const ModalReservation = ({ isOpen, onClose }) => {
     const dateOfEffect = occStatus != null ? occStatus[0].dateOfEffect : "";
     const dateOfEffect2 = occStatus != null ? occStatus[1].dateOfEffect : "";
     const dateOfEffect3 = occStatus != null ? occStatus[2].dateOfEffect : "";
+    const dateOfEffect4 = occStatus != null ? occStatus[3].dateOfEffect : "";
+    const dateOfEffect5 = occStatus != null ? occStatus[4].dateOfEffect : "";
+    const dateOfEffect6 = occStatus != null ? occStatus[5].dateOfEffect : "";
     const effectDateMatches = dateOfEffect
       ? isDateMatchingEffectDate(dateTime, dateOfEffect)
       : "";
@@ -106,6 +109,15 @@ const ModalReservation = ({ isOpen, onClose }) => {
 
     const effectDateMatches3 = dateOfEffect
       ? isDateMatchingEffectDate(dateTime, dateOfEffect3)
+      : "";
+    const effectDateMatches4 = dateOfEffect
+      ? isDateMatchingEffectDate(dateTime, dateOfEffect4)
+      : "";
+    const effectDateMatches5 = dateOfEffect
+      ? isDateMatchingEffectDate(dateTime, dateOfEffect5)
+      : "";
+    const effectDateMatches6 = dateOfEffect
+      ? isDateMatchingEffectDate(dateTime, dateOfEffect6)
       : "";
 
     if (
@@ -117,7 +129,16 @@ const ModalReservation = ({ isOpen, onClose }) => {
         effectDateMatches2) ||
       (occStatus != null &&
         occStatus[2].occupationStatus === "freeTable21" &&
-        effectDateMatches3)
+        effectDateMatches3) ||
+      (occStatus != null &&
+        occStatus[3].occupationStatus === "freeTable21" &&
+        effectDateMatches4) ||
+      (occStatus != null &&
+        occStatus[4].occupationStatus === "freeTable21" &&
+        effectDateMatches5) ||
+      (occStatus != null &&
+        occStatus[5].occupationStatus === "freeTable21" &&
+        effectDateMatches6)
     ) {
       if (["19:00"].includes(e.target.value)) {
         setModalMessage(
@@ -132,6 +153,9 @@ const ModalReservation = ({ isOpen, onClose }) => {
     const dateOfEffect = occStatus != null ? occStatus[0].dateOfEffect : "";
     const dateOfEffect1 = occStatus != null ? occStatus[1].dateOfEffect : "";
     const dateOfEffect2 = occStatus != null ? occStatus[2].dateOfEffect : "";
+    const dateOfEffect3 = occStatus != null ? occStatus[3].dateOfEffect : "";
+    const dateOfEffect4 = occStatus != null ? occStatus[4].dateOfEffect : "";
+    const dateOfEffect5 = occStatus != null ? occStatus[5].dateOfEffect : "";
     const effectDateMatches = dateOfEffect
       ? isDateMatchingEffectDate(dateTime, dateOfEffect)
       : "";
@@ -141,6 +165,15 @@ const ModalReservation = ({ isOpen, onClose }) => {
 
     const effectDateMatches3 = dateOfEffect
       ? isDateMatchingEffectDate(dateTime, dateOfEffect2)
+      : "";
+    const effectDateMatches4 = dateOfEffect
+      ? isDateMatchingEffectDate(dateTime, dateOfEffect3)
+      : "";
+    const effectDateMatches5 = dateOfEffect
+      ? isDateMatchingEffectDate(dateTime, dateOfEffect4)
+      : "";
+    const effectDateMatches6 = dateOfEffect
+      ? isDateMatchingEffectDate(dateTime, dateOfEffect5)
       : "";
 
     const isValentinesDay = dateTime.isSame(
@@ -157,7 +190,13 @@ const ModalReservation = ({ isOpen, onClose }) => {
         (occStatus[1].occupationStatus === "service1Complet" &&
           effectDateMatches2) ||
         (occStatus[2].occupationStatus === "service1Complet" &&
-          effectDateMatches3)
+          effectDateMatches3) ||
+        (occStatus[3].occupationStatus === "service1Complet" &&
+          effectDateMatches4) ||
+        (occStatus[4].occupationStatus === "service1Complet" &&
+          effectDateMatches5) ||
+        (occStatus[5].occupationStatus === "service1Complet" &&
+          effectDateMatches6)
       ) {
         newTimeSlots = newTimeSlots.filter(
           (slot) =>
@@ -177,7 +216,13 @@ const ModalReservation = ({ isOpen, onClose }) => {
           effectDateMatches) ||
         (occStatus[1].occupationStatus === "freeTable21" &&
           effectDateMatches2) ||
-        (occStatus[2].occupationStatus === "freeTable21" && effectDateMatches3)
+        (occStatus[2].occupationStatus === "freeTable21" &&
+          effectDateMatches3) ||
+        (occStatus[3].occupationStatus === "freeTable21" &&
+          effectDateMatches4) ||
+        (occStatus[4].occupationStatus === "freeTable21" &&
+          effectDateMatches5) ||
+        (occStatus[5].occupationStatus === "freeTable21" && effectDateMatches6)
       ) {
         newTimeSlots = newTimeSlots.filter(
           (slot) =>
@@ -197,7 +242,13 @@ const ModalReservation = ({ isOpen, onClose }) => {
           effectDateMatches) ||
         (occStatus[1].occupationStatus === "fullComplet" &&
           effectDateMatches2) ||
-        (occStatus[2].occupationStatus === "fullComplet" && effectDateMatches3)
+        (occStatus[2].occupationStatus === "fullComplet" &&
+          effectDateMatches3) ||
+        (occStatus[3].occupationStatus === "fullComplet" &&
+          effectDateMatches4) ||
+        (occStatus[4].occupationStatus === "fullComplet" &&
+          effectDateMatches5) ||
+        (occStatus[5].occupationStatus === "fullComplet" && effectDateMatches6)
       ) {
         newTimeSlots = newTimeSlots.filter((slot) => slot < "19:00");
       } else if (isValentinesDay) {
@@ -208,7 +259,13 @@ const ModalReservation = ({ isOpen, onClose }) => {
         (occStatus[1].occupationStatus === "service2Complet" &&
           effectDateMatches2) ||
         (occStatus[2].occupationStatus === "service2Complet" &&
-          effectDateMatches3)
+          effectDateMatches3) ||
+        (occStatus[3].occupationStatus === "service2Complet" &&
+          effectDateMatches4) ||
+        (occStatus[4].occupationStatus === "service2Complet" &&
+          effectDateMatches5) ||
+        (occStatus[5].occupationStatus === "service2Complet" &&
+          effectDateMatches6)
       ) {
         newTimeSlots = newTimeSlots.filter(
           (slot) =>
@@ -240,7 +297,16 @@ const ModalReservation = ({ isOpen, onClose }) => {
           effectDateMatches2) ||
         (occStatus != null &&
           occStatus[2].occupationStatus === "service1Complet" &&
-          effectDateMatches3)
+          effectDateMatches3) ||
+        (occStatus != null &&
+          occStatus[3].occupationStatus === "service1Complet" &&
+          effectDateMatches4) ||
+        (occStatus != null &&
+          occStatus[4].occupationStatus === "service1Complet" &&
+          effectDateMatches5) ||
+        (occStatus != null &&
+          occStatus[5].occupationStatus === "service1Complet" &&
+          effectDateMatches6)
       ) {
         setModalMessage(
           "Le premier service du restaurant est complet pour ce soir. Nous ne pouvons prendre des réservations qu'à partir de 21h15. Pour un autre jour, tous les créneaux restent disponibles."
@@ -255,7 +321,16 @@ const ModalReservation = ({ isOpen, onClose }) => {
           effectDateMatches2) ||
         (occStatus != null &&
           occStatus[2].occupationStatus === "fullComplet" &&
-          effectDateMatches3)
+          effectDateMatches3) ||
+        (occStatus != null &&
+          occStatus[3].occupationStatus === "fullComplet" &&
+          effectDateMatches4) ||
+        (occStatus != null &&
+          occStatus[4].occupationStatus === "fullComplet" &&
+          effectDateMatches5) ||
+        (occStatus != null &&
+          occStatus[5].occupationStatus === "fullComplet" &&
+          effectDateMatches6)
       ) {
         setModalMessage(
           "Le restaurant est complet pour ce soir. Pour le midi ou pour une autre date, vous pouvez réserver sans problème."
@@ -270,7 +345,16 @@ const ModalReservation = ({ isOpen, onClose }) => {
           effectDateMatches2) ||
         (occStatus != null &&
           occStatus[2].occupationStatus === "service2Complet" &&
-          effectDateMatches3)
+          effectDateMatches3) ||
+        (occStatus != null &&
+          occStatus[3].occupationStatus === "service2Complet" &&
+          effectDateMatches4) ||
+        (occStatus != null &&
+          occStatus[4].occupationStatus === "service2Complet" &&
+          effectDateMatches5) ||
+        (occStatus != null &&
+          occStatus[5].occupationStatus === "service2Complet" &&
+          effectDateMatches6)
       ) {
         setModalMessage(
           "Le 2e service du restaurant est complet pour ce soir. Nous ne pouvons prendre des réservations qu'à 19h, 19h15 ou 19h30. Notez que la table doit être libérée pour 21h. \nPour un autre jour, tous les créneaux restent disponibles."
@@ -283,6 +367,9 @@ const ModalReservation = ({ isOpen, onClose }) => {
   const dateOfEffect = occStatus != null ? occStatus[0].dateOfEffect : "";
   const dateOfEffect2 = occStatus != null ? occStatus[1].dateOfEffect : "";
   const dateOfEffect3 = occStatus != null ? occStatus[2].dateOfEffect : "";
+  const dateOfEffect4 = occStatus != null ? occStatus[3].dateOfEffect : "";
+  const dateOfEffect5 = occStatus != null ? occStatus[4].dateOfEffect : "";
+  const dateOfEffect6 = occStatus != null ? occStatus[5].dateOfEffect : "";
   const effectDateMatches = dateOfEffect
     ? isDateMatchingEffectDate(dateTime, dateOfEffect)
     : "";
@@ -291,6 +378,15 @@ const ModalReservation = ({ isOpen, onClose }) => {
     : "";
   const effectDateMatches3 = dateOfEffect
     ? isDateMatchingEffectDate(dateTime, dateOfEffect3)
+    : "";
+  const effectDateMatches4 = dateOfEffect
+    ? isDateMatchingEffectDate(dateTime, dateOfEffect4)
+    : "";
+  const effectDateMatches5 = dateOfEffect
+    ? isDateMatchingEffectDate(dateTime, dateOfEffect5)
+    : "";
+  const effectDateMatches6 = dateOfEffect
+    ? isDateMatchingEffectDate(dateTime, dateOfEffect6)
     : "";
   const handleChangeDateTime = (value) => {
     if (value) {
@@ -350,6 +446,49 @@ const ModalReservation = ({ isOpen, onClose }) => {
       selectedTime === "19:15" ||
       selectedTime === "19:00";
 
+    function formatDateToFullString(dateString) {
+      const months = [
+        "janvier",
+        "février",
+        "mars",
+        "avril",
+        "mai",
+        "juin",
+        "juillet",
+        "août",
+        "septembre",
+        "octobre",
+        "novembre",
+        "décembre",
+      ];
+      const days = [
+        "dimanche",
+        "lundi",
+        "mardi",
+        "mercredi",
+        "jeudi",
+        "vendredi",
+        "samedi",
+      ];
+
+      // Extraire les éléments de la date
+      const [day, month, year] = dateString
+        .split("/")
+        .map((num) => parseInt(num, 10));
+
+      // Créer un objet Date (Notez que le mois est 0-indexé en JavaScript)
+      const date = new Date(year + 2000, month - 1, day);
+
+      // Formater la date
+      const formattedDate = `${days[date.getDay()]} ${date.getDate()} ${
+        months[date.getMonth()]
+      } ${date.getFullYear()}`;
+
+      return formattedDate;
+    }
+
+    const formattedResDate = formatDateToFullString(selectedTime);
+
     const data = {
       resDate: validDateTime.format("DD-MM-YY"),
       resTime: selectedTime,
@@ -361,6 +500,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
       ID: ID,
       Source: "Stéphane",
       typeEvent: "Nouvel-an",
+      formatData: formattedResDate,
       msgClient:
         (occStatus != null &&
           occStatus[0].occupationStatus === "freeTable21" &&
@@ -373,7 +513,19 @@ const ModalReservation = ({ isOpen, onClose }) => {
         (occStatus != null &&
           occStatus[2].occupationStatus === "freeTable21" &&
           selectedTime === "19:00" &&
-          effectDateMatches3)
+          effectDateMatches3) ||
+        (occStatus != null &&
+          occStatus[3].occupationStatus === "freeTable21" &&
+          selectedTime === "19:00" &&
+          effectDateMatches4) ||
+        (occStatus != null &&
+          occStatus[4].occupationStatus === "freeTable21" &&
+          selectedTime === "19:00" &&
+          effectDateMatches5) ||
+        (occStatus != null &&
+          occStatus[5].occupationStatus === "freeTable21" &&
+          selectedTime === "19:00" &&
+          effectDateMatches6)
           ? "Nous avons beaucoup de demandes pour ce soir. Afin de satisfaire un maximum de clients, veuillez noter que la table doit être libérée pour 21h00."
           : "",
       msgClient2:
@@ -398,7 +550,25 @@ const ModalReservation = ({ isOpen, onClose }) => {
           (selectedTime === "19:00" ||
             selectedTime === "19:15" ||
             selectedTime === "19:30") &&
-          effectDateMatches3)
+          effectDateMatches3) ||
+        (occStatus != null &&
+          occStatus[3].occupationStatus === "service2Complet" &&
+          (selectedTime === "19:00" ||
+            selectedTime === "19:15" ||
+            selectedTime === "19:30") &&
+          effectDateMatches4) ||
+        (occStatus != null &&
+          occStatus[4].occupationStatus === "service2Complet" &&
+          (selectedTime === "19:00" ||
+            selectedTime === "19:15" ||
+            selectedTime === "19:30") &&
+          effectDateMatches5) ||
+        (occStatus != null &&
+          occStatus[5].occupationStatus === "service2Complet" &&
+          (selectedTime === "19:00" ||
+            selectedTime === "19:15" ||
+            selectedTime === "19:30") &&
+          effectDateMatches6)
           ? "Le 2e service du restaurant est complet ce soir. Afin de satisfaire un maximum de clients, veuillez noter que la table doit être libérée pour 21h00."
           : "",
     };
@@ -445,7 +615,19 @@ const ModalReservation = ({ isOpen, onClose }) => {
         (occStatus != null &&
           occStatus[2].occupationStatus === "freeTable21" &&
           selectedTime === "19:00" &&
-          effectDateMatches3)
+          effectDateMatches3) ||
+        (occStatus != null &&
+          occStatus[3].occupationStatus === "freeTable21" &&
+          selectedTime === "19:00" &&
+          effectDateMatches4) ||
+        (occStatus != null &&
+          occStatus[4].occupationStatus === "freeTable21" &&
+          selectedTime === "19:00" &&
+          effectDateMatches5) ||
+        (occStatus != null &&
+          occStatus[5].occupationStatus === "freeTable21" &&
+          selectedTime === "19:00" &&
+          effectDateMatches6)
           ? "Client prévenu"
           : "Pas demandé",
     };
@@ -466,7 +648,16 @@ const ModalReservation = ({ isOpen, onClose }) => {
         effectDateMatches2) ||
       (occStatus != null &&
         occStatus[2].occupationStatus === "fullComplet" &&
-        effectDateMatches3)
+        effectDateMatches3) ||
+      (occStatus != null &&
+        occStatus[3].occupationStatus === "fullComplet" &&
+        effectDateMatches4) ||
+      (occStatus != null &&
+        occStatus[4].occupationStatus === "fullComplet" &&
+        effectDateMatches5) ||
+      (occStatus != null &&
+        occStatus[5].occupationStatus === "fullComplet" &&
+        effectDateMatches6)
     ) {
       alert(
         "Le restaurant est complet pour ce soir. Nous nous excusons pour le désagrément."

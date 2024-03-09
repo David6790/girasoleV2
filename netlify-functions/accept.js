@@ -30,13 +30,56 @@ exports.handler = async (event, context) => {
     msgClient3,
   } = event.queryStringParameters;
 
+  function formatDateToFullString(dateString) {
+    const months = [
+      "janvier",
+      "février",
+      "mars",
+      "avril",
+      "mai",
+      "juin",
+      "juillet",
+      "août",
+      "septembre",
+      "octobre",
+      "novembre",
+      "décembre",
+    ];
+    const days = [
+      "dimanche",
+      "lundi",
+      "mardi",
+      "mercredi",
+      "jeudi",
+      "vendredi",
+      "samedi",
+    ];
+
+    // Extraire les éléments de la date
+    const [day, month, year] = dateString
+      .split("/")
+      .map((num) => parseInt(num, 10));
+
+    // Créer un objet Date (Notez que le mois est 0-indexé en JavaScript)
+    const date = new Date(year + 2000, month - 1, day);
+
+    // Formater la date
+    const formattedDate = `${days[date.getDay()]} ${date.getDate()} ${
+      months[date.getMonth()]
+    } ${date.getFullYear()}`;
+
+    return formattedDate;
+  }
+
+  const formattedResDate = formatDateToFullString(resDate);
+
   const msg = {
     to: email,
     from: "ilgirasolestrasbourg67@gmail.com",
     templateId: "d-f6110fab2fb04b05b3924760f999ce4f",
     dynamic_template_data: {
       Name: name,
-      Date: resDate,
+      Date: formattedResDate,
       Time: resTime,
       Number: number,
       MsgClient: msgClient,
@@ -61,7 +104,7 @@ exports.handler = async (event, context) => {
 
     if (phone) {
       await twilioClient.messages.create({
-        body: `${greeting} ${name}, votre réservation au Il Girasole le ${resDate} à ${resTime} pour ${number} personnes a bien été notée et nous vous en remercions. En cas d'empêchement, n'oubliez pas de nous appeler au plus vite, au 03 88 37 16 76 ou par sms au 06 26 19 10 28 (en indiquant votre nom). \n ${msgClient}${msgClient3} \n ${msgClient2}\n Votre réservation a été prise en charge par ${Source}.`,
+        body: `${greeting} ${name}, votre réservation au Il Girasole le ${formattedResDate} à ${resTime} pour ${number} personnes a bien été notée et nous vous en remercions. En cas d'empêchement, n'oubliez pas de nous appeler au plus vite, au 03 88 37 16 76 ou par sms au 06 26 19 10 28 (en indiquant votre nom). \n ${msgClient}${msgClient3} \n ${msgClient2}\n Votre réservation a été prise en charge par ${Source}.`,
         from: "IlGirasole",
         to: `+${phone}`,
       });
