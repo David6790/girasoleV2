@@ -528,7 +528,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
             selectedTime === "19:15" ||
             selectedTime === "19:30") &&
           effectDateMatches6)
-          ? "Le 2e service du restaurant est complet ce soir. Afin de satisfaire un maximum de clients, veuillez noter que la table doit être libérée pour 21h00."
+          ? "Pour une bonne origanisation ce soir là, veuillez noter que la table doit être libérée pour 21h00."
           : "",
     };
 
