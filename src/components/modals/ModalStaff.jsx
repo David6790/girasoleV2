@@ -565,33 +565,33 @@ const ModalReservation = ({ isOpen, onClose }) => {
       timeStamp: timestamp,
       freeTable21h:
         (occStatus != null &&
-          occStatus[0].occupationStatus ===
-            ("freeTable21" || "service2Complet") &&
+          (occStatus[0].occupationStatus === "freeTable21" ||
+            occStatus[0].occupationStatus === "service2Complet") &&
           selectedTime === "19:00" &&
           effectDateMatches) ||
         (occStatus != null &&
-          occStatus[1].occupationStatus ===
-            ("freeTable21" || "service2Complet") &&
+          (occStatus[1].occupationStatus === "freeTable21" ||
+            occStatus[1].occupationStatus === "service2Complet") &&
           selectedTime === "19:00" &&
           effectDateMatches2) ||
         (occStatus != null &&
-          occStatus[2].occupationStatus ===
-            ("freeTable21" || "service2Complet") &&
+          (occStatus[2].occupationStatus === "freeTable21" ||
+            occStatus[2].occupationStatus === "service2Complet") &&
           selectedTime === "19:00" &&
           effectDateMatches3) ||
         (occStatus != null &&
-          occStatus[3].occupationStatus ===
-            ("freeTable21" || "service2Complet") &&
+          (occStatus[3].occupationStatus === "freeTable21" ||
+            occStatus[3].occupationStatus === "service2Complet") &&
           selectedTime === "19:00" &&
           effectDateMatches4) ||
         (occStatus != null &&
-          occStatus[4].occupationStatus ===
-            ("freeTable21" || "service2Complet") &&
+          (occStatus[4].occupationStatus === "freeTable21" ||
+            occStatus[4].occupationStatus === "service2Complet") &&
           selectedTime === "19:00" &&
           effectDateMatches5) ||
         (occStatus != null &&
-          occStatus[5].occupationStatus ===
-            ("freeTable21" || "service2Complet") &&
+          (occStatus[5].occupationStatus === "freeTable21" ||
+            occStatus[5].occupationStatus === "service2Complet") &&
           selectedTime === "19:00" &&
           effectDateMatches6)
           ? "Client prévenu"
