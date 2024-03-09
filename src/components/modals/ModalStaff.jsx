@@ -614,7 +614,16 @@ const ModalReservation = ({ isOpen, onClose }) => {
         effectDateMatches2) ||
       (occStatus != null &&
         occStatus[2].occupationStatus === "fullComplet" &&
-        effectDateMatches3)
+        effectDateMatches3) ||
+      (occStatus != null &&
+        occStatus[3].occupationStatus === "fullComplet" &&
+        effectDateMatches4) ||
+      (occStatus != null &&
+        occStatus[4].occupationStatus === "fullComplet" &&
+        effectDateMatches5) ||
+      (occStatus != null &&
+        occStatus[5].occupationStatus === "fullComplet" &&
+        effectDateMatches6)
     ) {
       alert(
         "Le restaurant est complet pour ce soir. Nous nous excusons pour le désagrément."
