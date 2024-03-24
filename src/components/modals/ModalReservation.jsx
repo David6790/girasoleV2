@@ -270,6 +270,8 @@ const ModalReservation = ({ isOpen, onClose }) => {
         newTimeSlots = newTimeSlots.filter(
           (slot) =>
             ![
+              "19:15",
+              "19:30",
               "19:45",
               "20:00",
               "20:15",
@@ -423,6 +425,26 @@ const ModalReservation = ({ isOpen, onClose }) => {
     return true;
   };
 
+  const findOccupationStatusForSelectedDate = (selectedDate, occStatus) => {
+    // Formater la date sélectionnée pour correspondre au format utilisé dans occStatus
+    const formattedSelectedDate = selectedDate.format("DD-MM-YY");
+    console.log(formattedSelectedDate);
+    // Trouver le statut dans occStatus qui correspond à la date sélectionnée
+    const status = occStatus
+      ? occStatus.find(
+          (status) => status.dateOfEffect === formattedSelectedDate
+        )
+      : "RAS";
+    // Retourner le statut d'occupation si trouvé, sinon "Not Available"
+    console.log(status);
+    return status ? status.occupationStatus : "RAS";
+  };
+
+  const occupationStatusForSelectedDate = findOccupationStatusForSelectedDate(
+    dateTime,
+    occStatus
+  );
+
   const sendEmail = async (e) => {
     e.preventDefault();
 
@@ -485,7 +507,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
           occStatus[5].occupationStatus === "freeTable21" &&
           selectedTime === "19:00" &&
           effectDateMatches6)
-          ? "Nous avons beaucoup de demandes pour ce soir. Afin de satisfaire un maximum de clients, veuillez noter que la table doit être libérée pour 21h00."
+          ? "Pour une bonne organisation ce soir là, veuillez noter que la table doit être libérée pour 21h00."
           : "",
       msgClient2:
         isValentinDay && selectedTime >= "19:00"
@@ -528,7 +550,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
             selectedTime === "19:15" ||
             selectedTime === "19:30") &&
           effectDateMatches6)
-          ? "Pour une bonne origanisation ce soir là, veuillez noter que la table doit être libérée pour 21h00."
+          ? "Pour une bonne organisation ce soir là, veuillez noter que la table doit être libérée pour 21h00."
           : "",
     };
 
@@ -562,6 +584,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
       Acompte: "Pas Demandé",
       timeStamp: timestamp,
       Source: "INTERNET",
+      OccupationStatus: occupationStatusForSelectedDate,
       freeTable21h:
         (occStatus != null &&
           (occStatus[0].occupationStatus === "freeTable21" ||

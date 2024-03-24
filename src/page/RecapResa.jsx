@@ -56,6 +56,7 @@ const RecapResa = () => {
     if (isSuccess && Array.isArray(reservations)) {
       // Si vous voulez stocker les réservations dans le Redux store
       dispatch(setReservations(reservations));
+      console.log(reservations);
       console.log("Réservations bien recupéré");
     }
   }, [reservations, isSuccess, dispatch]);
@@ -216,7 +217,7 @@ const RecapResa = () => {
         return "#90EE90";
       case "Pending":
         return "yellow";
-      case "Refusé":
+      case "Annulé":
         return "red";
       case "Client prévenu":
         return "#90EE90";
@@ -225,6 +226,21 @@ const RecapResa = () => {
         return "gray";
     }
   };
+
+  function determineCardStyle(reservation) {
+    if (reservation.Status === "Confirmé") {
+      if (reservation.placed === "OUI") {
+        return { backgroundColor: "#96be25" }; // Vert pour les confirmés et placés
+      } else {
+        return { backgroundColor: "#ffffff" }; // Blanc par défaut pour les confirmés mais non placés
+      }
+    } else if (reservation.Status === "Annulé") {
+      return { backgroundColor: "red" }; // Rouge pour les placés et annulés
+    } else {
+      return { backgroundColor: "#ffffff" }; // Blanc par défaut pour les autres cas
+    }
+  }
+
   const handleEditClick = (reservation) => {
     setIsEditing(true);
     setEditingReservation(reservation);
@@ -322,7 +338,7 @@ const RecapResa = () => {
       .filter(
         (resa) =>
           resa.Date === selectedDate &&
-          resa.Status === "Confirmé" &&
+          (resa.Status === "Confirmé" || resa.Status === "Annulé") &&
           resa.Name.toLowerCase().startsWith(searchText.toLowerCase())
       )
       .sort(
@@ -430,10 +446,7 @@ const RecapResa = () => {
               })
               .filter((res) => res.Time <= "14:00")
               .map((reservation, index) => {
-                const cardStyle =
-                  reservation.placed === "OUI"
-                    ? { backgroundColor: "#96be25" }
-                    : {};
+                const cardStyle = determineCardStyle(reservation);
                 if (
                   isEditing &&
                   editingReservation &&
@@ -498,8 +511,8 @@ const RecapResa = () => {
                             className="shadow border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                           >
                             <option value="Confirmé">Confirmé</option>
-                            <option value="Refusé">
-                              Refusé (Demande du client)
+                            <option value="Annulé">
+                              Annulé (Demande du client)
                             </option>
                           </select>
                         </div>
@@ -602,6 +615,20 @@ const RecapResa = () => {
                           {reservation.freeTable21h === "Client prévenu"
                             ? "Client prévenu"
                             : "Pas demandé"}
+                        </span>
+                      </p>
+                      <p>
+                        <strong>
+                          Occ-Statut au moment de la prise de réservation:
+                        </strong>
+                        <span
+                          style={{
+                            backgroundColor: getColorForStatus(
+                              reservation.freeTable21h
+                            ),
+                          }}
+                        >
+                          {reservation.OccupationStatus}
                         </span>
                       </p>
                       <p>
@@ -677,10 +704,7 @@ const RecapResa = () => {
               })
               .filter((res) => res.Time >= "18:00")
               .map((reservation, index) => {
-                const cardStyle =
-                  reservation.placed === "OUI"
-                    ? { backgroundColor: "#96be25" }
-                    : {};
+                const cardStyle = determineCardStyle(reservation);
                 if (
                   isEditing &&
                   editingReservation &&
@@ -745,8 +769,8 @@ const RecapResa = () => {
                             className="shadow border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                           >
                             <option value="Confirmé">Confirmé</option>
-                            <option value="Refusé">
-                              Refusé (Demande du client)
+                            <option value="Annulé">
+                              Annulé (Demande du client)
                             </option>
                           </select>
                         </div>
@@ -849,6 +873,20 @@ const RecapResa = () => {
                           {reservation.freeTable21h === "Client prévenu"
                             ? "Client prévenu"
                             : "Pas demandé"}
+                        </span>
+                      </p>
+                      <p>
+                        <strong>
+                          Occ-Statut au moment de la prise de réservation:
+                        </strong>
+                        <span
+                          style={{
+                            backgroundColor: getColorForStatus(
+                              reservation.freeTable21h
+                            ),
+                          }}
+                        >
+                          {reservation.OccupationStatus}
                         </span>
                       </p>
                       <p>
