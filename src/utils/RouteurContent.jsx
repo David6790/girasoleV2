@@ -11,6 +11,7 @@ import MentionLegales from "../page/MentionLegales";
 
 import RecapResa from "../page/RecapResa";
 import Dashboard from "../page/Dashboard";
+import RecapCuisine from "../page/RecapCuisine";
 
 const RouteurContent = () => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -25,7 +26,8 @@ const RouteurContent = () => {
       location.pathname !== "/nyg" &&
       location.pathname !== "/recap" &&
       location.pathname !== "/dashboard" &&
-      location.pathname !== "/staffForm"
+      location.pathname !== "/staffForm" &&
+      location.pathname !== "/kitchen-2"
     ) {
       const timer = setTimeout(() => {
         setModalOpen(true);
@@ -66,6 +68,7 @@ const RouteurContent = () => {
         <Route path="/menu-cocktails" element={<MenuCocktails />} />
         <Route path="/legalMentions" element={<MentionLegales />} />
         <Route path="/recap" element={<RecapResa />} />
+        <Route path="/kitchen-2" element={<RecapCuisine />} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </>
