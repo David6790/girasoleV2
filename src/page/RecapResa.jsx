@@ -333,6 +333,19 @@ const RecapResa = () => {
 
   let resaJour = [];
 
+  const sortByStatusAndTimestamp = (a, b) => {
+    if (a.Status === "Annulé" && b.Status !== "Annulé") {
+      return -1; // Place les réservations annulées en premier
+    } else if (a.Status !== "Annulé" && b.Status === "Annulé") {
+      return 1; // Garde les réservations non-annulées après les annulées
+    } else {
+      // Si les deux réservations ont le même statut, trier par timestamp
+      return moment(b.timeStamp, "DD/MM/YYYY HH:mm:ss").diff(
+        moment(a.timeStamp, "DD/MM/YYYY HH:mm:ss")
+      );
+    }
+  };
+
   if (Array.isArray(reservations)) {
     resaJour = reservations
       .filter(
@@ -441,6 +454,7 @@ const RecapResa = () => {
 
           {resaJour.length > 0 ? (
             resaJour
+              .sort(sortByStatusAndTimestamp)
               .filter((res) => {
                 return showUnplacedReservations ? res.placed !== "OUI" : true;
               })
@@ -699,6 +713,7 @@ const RecapResa = () => {
           </div>
           {resaJour.length > 0 ? (
             resaJour
+              .sort(sortByStatusAndTimestamp)
               .filter((res) => {
                 return showUnplacedReservations ? res.placed !== "OUI" : true;
               })
@@ -795,6 +810,7 @@ const RecapResa = () => {
                             <option value="Stephane">Stephane</option>
                             <option value="David">David</option>
                             <option value="Fanny">Fanny</option>
+                            <option value="Bleona">Fanny</option>
                           </select>
                         </div>
                         <button
