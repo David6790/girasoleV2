@@ -551,6 +551,7 @@ const RecapResa = () => {
                             <option value="Stephane">Stephane</option>
                             <option value="David">David</option>
                             <option value="Fanny">Fanny</option>
+                            <option value="Bleona">Bleona</option>
                           </select>
                         </div>
                         <button
@@ -810,7 +811,7 @@ const RecapResa = () => {
                             <option value="Stephane">Stephane</option>
                             <option value="David">David</option>
                             <option value="Fanny">Fanny</option>
-                            <option value="Bleona">Fanny</option>
+                            <option value="Bleona">Bleona</option>
                           </select>
                         </div>
                         <button

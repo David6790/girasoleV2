@@ -838,9 +838,9 @@ const ModalReservation = ({ isOpen, onClose }) => {
                   <option value="Aurora">Aurora</option>
                   <option value="Christian">Christian</option>
                   <option value="David">David</option>
-                  <option value="Bleona">David</option>
-                  <option value="Fanny">David</option>
-                  <option value="Stephane">David</option>
+                  <option value="Bleona">Bleona</option>
+                  <option value="Fanny">Fanny</option>
+                  <option value="Stephane">Stephane</option>
                 </select>
               </div>
 
