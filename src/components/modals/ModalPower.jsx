@@ -13,7 +13,7 @@ import { occupationStatus } from "../../features/occupationSlice";
 
 Modal.setAppElement("#root");
 
-const ModalReservation = ({ isOpen, onClose }) => {
+const ModalPower = ({ isOpen, onClose }) => {
   const timeSlots = useMemo(
     () => [
       "12:00",
@@ -46,7 +46,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [dateTime, setDateTime] = useState(moment());
   const [selectedTime, setSelectedTime] = useState("12:00");
-  const [availableTimeSlots, setAvailableTimeSlots] = useState(timeSlots);
+
   let ID = crypto.randomUUID();
   const [tel, setTel] = useState("");
   const [messageModalOpen, setMessageModalOpen] = useState(false);
@@ -71,83 +71,6 @@ const ModalReservation = ({ isOpen, onClose }) => {
   const handleModalClose = () => {
     onClose();
     setHasModalBeenShown(false);
-  };
-
-  const handleTimeSelection = (e) => {
-    setSelectedTime(e.target.value);
-    const isValentinesDay = dateTime.isSame(
-      moment("2024-02-14", "YYYY-MM-DD"),
-      "day"
-    );
-    const valentinesDayTimeSlots = [
-      "19:00",
-      "19:15",
-      "19:30",
-      "19:45",
-      "20:00",
-      "20:15",
-      "20:30",
-    ];
-
-    if (isValentinesDay && valentinesDayTimeSlots.includes(e.target.value)) {
-      setModalMessage(
-        "Chers clients,\nNous tenons à vous informer qu'à l'occasion de la soirée de la Saint-Valentin, toutes nos tables pour deux sont désormais réservées. Il nous reste uniquement des grandes tables rondes, conçues pour accueillir plusieurs convives. Si vous souhaitez procéder à une réservation, veuillez noter que vous pourriez partager votre table avec d'autres personnes. Nous vous remercions de votre compréhension et nous nous réjouissons de vous offrir une soirée mémorable."
-      );
-      setMessageModalOpen(true);
-    }
-    const dateOfEffect = occStatus != null ? occStatus[0].dateOfEffect : "";
-    const dateOfEffect2 = occStatus != null ? occStatus[1].dateOfEffect : "";
-    const dateOfEffect3 = occStatus != null ? occStatus[2].dateOfEffect : "";
-    const dateOfEffect4 = occStatus != null ? occStatus[3].dateOfEffect : "";
-    const dateOfEffect5 = occStatus != null ? occStatus[4].dateOfEffect : "";
-    const dateOfEffect6 = occStatus != null ? occStatus[5].dateOfEffect : "";
-    const effectDateMatches = dateOfEffect
-      ? isDateMatchingEffectDate(dateTime, dateOfEffect)
-      : "";
-    const effectDateMatches2 = dateOfEffect
-      ? isDateMatchingEffectDate(dateTime, dateOfEffect2)
-      : "";
-
-    const effectDateMatches3 = dateOfEffect
-      ? isDateMatchingEffectDate(dateTime, dateOfEffect3)
-      : "";
-    const effectDateMatches4 = dateOfEffect
-      ? isDateMatchingEffectDate(dateTime, dateOfEffect4)
-      : "";
-    const effectDateMatches5 = dateOfEffect
-      ? isDateMatchingEffectDate(dateTime, dateOfEffect5)
-      : "";
-    const effectDateMatches6 = dateOfEffect
-      ? isDateMatchingEffectDate(dateTime, dateOfEffect6)
-      : "";
-
-    if (
-      (occStatus != null &&
-        occStatus[0].occupationStatus === "freeTable21" &&
-        effectDateMatches) ||
-      (occStatus != null &&
-        occStatus[1].occupationStatus === "freeTable21" &&
-        effectDateMatches2) ||
-      (occStatus != null &&
-        occStatus[2].occupationStatus === "freeTable21" &&
-        effectDateMatches3) ||
-      (occStatus != null &&
-        occStatus[3].occupationStatus === "freeTable21" &&
-        effectDateMatches4) ||
-      (occStatus != null &&
-        occStatus[4].occupationStatus === "freeTable21" &&
-        effectDateMatches5) ||
-      (occStatus != null &&
-        occStatus[5].occupationStatus === "freeTable21" &&
-        effectDateMatches6)
-    ) {
-      if (["19:00"].includes(e.target.value)) {
-        setModalMessage(
-          "Nous avons beaucoup de demandes pour ce soir. Pensez Absolument à prevenir le client que la table doit être libérée pour 21h00."
-        );
-        setMessageModalOpen(true);
-      }
-    }
   };
 
   useEffect(() => {
@@ -177,119 +100,33 @@ const ModalReservation = ({ isOpen, onClose }) => {
       ? isDateMatchingEffectDate(dateTime, dateOfEffect5)
       : "";
 
-    const isValentinesDay = dateTime.isSame(
-      moment("2024-02-14", "YYYY-MM-DD"),
-      "day"
-    );
-    let newTimeSlots = [...timeSlots];
-
-    // Gestion des créneaux horaires en fonction de occupationStatus
-    if (occStatus != null) {
-      if (
-        (occStatus[0].occupationStatus === "service1Complet" &&
-          effectDateMatches) ||
-        (occStatus[1].occupationStatus === "service1Complet" &&
-          effectDateMatches2) ||
-        (occStatus[2].occupationStatus === "service1Complet" &&
-          effectDateMatches3) ||
-        (occStatus[3].occupationStatus === "service1Complet" &&
-          effectDateMatches4) ||
-        (occStatus[4].occupationStatus === "service1Complet" &&
-          effectDateMatches5) ||
-        (occStatus[5].occupationStatus === "service1Complet" &&
-          effectDateMatches6)
-      ) {
-        newTimeSlots = newTimeSlots.filter(
-          (slot) =>
-            ![
-              "19:00",
-              "19:15",
-              "19:30",
-              "19:45",
-              "20:00",
-              "20:15",
-              "20:30",
-              "20:45",
-            ].includes(slot)
-        );
-      } else if (
-        (occStatus[0].occupationStatus === "freeTable21" &&
-          effectDateMatches) ||
-        (occStatus[1].occupationStatus === "freeTable21" &&
-          effectDateMatches2) ||
-        (occStatus[2].occupationStatus === "freeTable21" &&
-          effectDateMatches3) ||
-        (occStatus[3].occupationStatus === "freeTable21" &&
-          effectDateMatches4) ||
-        (occStatus[4].occupationStatus === "freeTable21" &&
-          effectDateMatches5) ||
-        (occStatus[5].occupationStatus === "freeTable21" && effectDateMatches6)
-      ) {
-        newTimeSlots = newTimeSlots.filter(
-          (slot) =>
-            ![
-              "19:15",
-              "19:30",
-              "19:45",
-              "20:00",
-              "20:15",
-              "20:30",
-              "20:45",
-            ].includes(slot)
-        );
-      } else if (
-        (occStatus[0].occupationStatus === "fullComplet" &&
-          effectDateMatches) ||
-        (occStatus[1].occupationStatus === "fullComplet" &&
-          effectDateMatches2) ||
-        (occStatus[2].occupationStatus === "fullComplet" &&
-          effectDateMatches3) ||
-        (occStatus[3].occupationStatus === "fullComplet" &&
-          effectDateMatches4) ||
-        (occStatus[4].occupationStatus === "fullComplet" &&
-          effectDateMatches5) ||
-        (occStatus[5].occupationStatus === "fullComplet" && effectDateMatches6)
-      ) {
-        newTimeSlots = newTimeSlots.filter((slot) => slot < "19:00");
-      } else if (isValentinesDay) {
-        newTimeSlots = newTimeSlots.filter((slot) => slot <= "20:30");
-      } else if (
-        (occStatus[0].occupationStatus === "service2Complet" &&
-          effectDateMatches) ||
-        (occStatus[1].occupationStatus === "service2Complet" &&
-          effectDateMatches2) ||
-        (occStatus[2].occupationStatus === "service2Complet" &&
-          effectDateMatches3) ||
-        (occStatus[3].occupationStatus === "service2Complet" &&
-          effectDateMatches4) ||
-        (occStatus[4].occupationStatus === "service2Complet" &&
-          effectDateMatches5) ||
-        (occStatus[5].occupationStatus === "service2Complet" &&
-          effectDateMatches6)
-      ) {
-        newTimeSlots = newTimeSlots.filter(
-          (slot) =>
-            ![
-              "19:15",
-              "19:30",
-              "19:45",
-              "20:00",
-              "20:15",
-              "20:30",
-              "20:45",
-              "21:00",
-              "21:15",
-              "21:30",
-              "21:45",
-            ].includes(slot)
-        );
-      }
-    }
-
-    setAvailableTimeSlots(newTimeSlots);
-
     // Gestion des messages en fonction de occupationStatus
     if (!hasModalBeenShown) {
+      if (
+        (occStatus != null &&
+          occStatus[0].occupationStatus === "freeTable21" &&
+          effectDateMatches) ||
+        (occStatus != null &&
+          occStatus[1].occupationStatus === "freeTable21" &&
+          effectDateMatches2) ||
+        (occStatus != null &&
+          occStatus[2].occupationStatus === "freeTable21" &&
+          effectDateMatches3) ||
+        (occStatus != null &&
+          occStatus[3].occupationStatus === "freeTable21" &&
+          effectDateMatches4) ||
+        (occStatus != null &&
+          occStatus[4].occupationStatus === "freeTable21" &&
+          effectDateMatches5) ||
+        (occStatus != null &&
+          occStatus[5].occupationStatus === "freeTable21" &&
+          effectDateMatches6)
+      ) {
+        setModalMessage(
+          "Attention, le statut du restaurant est paramétré sur LIBERER TABLE À 21H. Sur de vouloir continuer ? \n."
+        );
+        setMessageModalOpen(true);
+      }
       if (
         (occStatus != null &&
           occStatus[0].occupationStatus === "service1Complet" &&
@@ -311,7 +148,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
           effectDateMatches6)
       ) {
         setModalMessage(
-          "Le premier service du restaurant est complet pour ce soir. Prendre des réservations qu'à partir de 21h15. "
+          "Attention, le statut du restaurant est paramétré sur SERVICE 1 COMPLET. Sûr de vouloir continuer ? "
         );
         setMessageModalOpen(true);
       } else if (
@@ -335,7 +172,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
           effectDateMatches6)
       ) {
         setModalMessage(
-          "Le restaurant est complet pour ce soir. Ne plus prendre de résa"
+          "Le restaurant est complet pour ce soir. Sûr de vouloir continuer ? "
         );
         setMessageModalOpen(true);
       } else if (
@@ -359,7 +196,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
           effectDateMatches6)
       ) {
         setModalMessage(
-          "Le 2e service du restaurant est complet pour ce soir. Prendre des réservations qu'à 19h. Notez que la table doit être libérée pour 21h. \n."
+          "Attention, le statut du restaurant est paramétré sur SERVICE 2 COMPLET. Sur de vouloir continuer ? \n."
         );
         setMessageModalOpen(true);
       }
@@ -398,25 +235,6 @@ const ModalReservation = ({ isOpen, onClose }) => {
     }
   };
 
-  const findOccupationStatusForSelectedDate = (selectedDate, occStatus) => {
-    // Formater la date sélectionnée pour correspondre au format utilisé dans occStatus
-    const formattedSelectedDate = selectedDate.format("DD-MM-YY");
-    console.log(formattedSelectedDate);
-    // Trouver le statut dans occStatus qui correspond à la date sélectionnée
-    const status = occStatus
-      ? occStatus.find(
-          (status) => status.dateOfEffect === formattedSelectedDate
-        )
-      : "RAS";
-    // Retourner le statut d'occupation si trouvé, sinon "Not Available"
-    console.log(status);
-    return status ? status.occupationStatus : "RAS";
-  };
-
-  const occupationStatusForSelectedDate = findOccupationStatusForSelectedDate(
-    dateTime,
-    occStatus
-  );
   const handlePhoneChange = (e) => {
     const phoneNumber = parsePhoneNumberFromString(e.target.value, "FR");
 
@@ -443,6 +261,25 @@ const ModalReservation = ({ isOpen, onClose }) => {
     }
     return true;
   };
+  const findOccupationStatusForSelectedDate = (selectedDate, occStatus) => {
+    // Formater la date sélectionnée pour correspondre au format utilisé dans occStatus
+    const formattedSelectedDate = selectedDate.format("DD-MM-YY");
+    console.log(formattedSelectedDate);
+    // Trouver le statut dans occStatus qui correspond à la date sélectionnée
+    const status = occStatus
+      ? occStatus.find(
+          (status) => status.dateOfEffect === formattedSelectedDate
+        )
+      : "RAS";
+    // Retourner le statut d'occupation si trouvé, sinon "Not Available"
+    console.log(status);
+    return status ? status.occupationStatus : "RAS";
+  };
+
+  const occupationStatusForSelectedDate = findOccupationStatusForSelectedDate(
+    dateTime,
+    occStatus
+  );
 
   const sendEmail = async (e) => {
     e.preventDefault();
@@ -505,12 +342,9 @@ const ModalReservation = ({ isOpen, onClose }) => {
           occStatus[5].occupationStatus === "freeTable21" &&
           selectedTime === "19:00" &&
           effectDateMatches6)
-          ? "Nous avons beaucoup de demandes pour ce soir. Afin de satisfaire un maximum de clients, veuillez noter que la table doit être libérée pour 21h00."
+          ? ""
           : "",
-      msgClient2:
-        isValentinDay && selectedTime >= "19:00"
-          ? "Nous tenons à vous informer qu'à l'occasion de la soirée de la Saint-Valentin, toutes nos tables pour deux sont désormais réservées. Il nous reste uniquement des grandes tables rondes, conçues pour accueillir plusieurs convives. Si vous souhaitez procéder à une réservation, veuillez noter que vous pourriez partager votre table avec d'autres personnes. Nous vous remercions de votre compréhension et nous nous réjouissons de vous offrir une soirée mémorable.\n Notez également que le soir de la Saint Valentin, nous ne proposons que le menu saint valentin."
-          : "",
+      msgClient2: isValentinDay && selectedTime >= "19:00" ? "" : "",
       msgClient3:
         (occStatus != null &&
           occStatus[0].occupationStatus === "service2Complet" &&
@@ -548,7 +382,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
             selectedTime === "19:15" ||
             selectedTime === "19:30") &&
           effectDateMatches6)
-          ? "Le 2e service du restaurant est complet ce soir. Afin de satisfaire un maximum de clients, veuillez noter que la table doit être libérée pour 21h00."
+          ? ""
           : "",
     };
 
@@ -583,6 +417,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
       Source: selectedServer,
       timeStamp: timestamp,
       OccupationStatus: occupationStatusForSelectedDate,
+      isPowerUser: "OUI",
       freeTable21h:
         (occStatus != null &&
           (occStatus[0].occupationStatus === "freeTable21" ||
@@ -614,8 +449,8 @@ const ModalReservation = ({ isOpen, onClose }) => {
             occStatus[5].occupationStatus === "service2Complet") &&
           selectedTime === "19:00" &&
           effectDateMatches6)
-          ? "Client prévenu"
-          : "Pas demandé",
+          ? "POWER USER"
+          : "POWER USER",
     };
 
     const isValentinReservation = isValentinDay && isTime20or2030;
@@ -755,7 +590,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
         <div className=" w-full flex flex-row justify-between items-center git xl:px-10 lg:px-10 md:px-10 sm:px-5 px-2  text-black h-[70px] mb-10  ">
           <img src="./img/logoWhite.png" alt="" className=" h-full" />
           <h1 className=" xl:text-3xl lg:text-3xl md:text-2xl  xl:block lg:block md:block sm:hidden hidden  font-title-font  font-bold text-white ">
-            Réservation en ligne
+            Résa Manuel : Power-USER
           </h1>
           <button
             className=" px-4 py-2 bg-transparent text-white  "
@@ -805,10 +640,10 @@ const ModalReservation = ({ isOpen, onClose }) => {
               <label className="text-white">Heure</label>
               <select
                 value={selectedTime}
-                onChange={handleTimeSelection}
+                onChange={(e) => setSelectedTime(e.target.value)}
                 className=" h-[40px] focus:outline-none bg-transparent text-black border-b-[1px]  px-2 mb-5"
               >
-                {availableTimeSlots.map((slot, index) => (
+                {timeSlots.map((slot, index) => (
                   <option key={index} value={slot}>
                     {slot}
                   </option>
@@ -852,13 +687,8 @@ const ModalReservation = ({ isOpen, onClose }) => {
                   required
                 >
                   <option value="">Sélectionnez un collaborateur:</option>
-                  <option value="Jess">Jess</option>
-                  <option value="Dylan">Dylan</option>
-                  <option value="Tiffanie">Tiffanie</option>
-                  <option value="Aurora">Aurora</option>
                   <option value="Christian">Christian</option>
                   <option value="David">David</option>
-                  <option value="Bleona">Bleona</option>
                   <option value="Fanny">Fanny</option>
                   <option value="Stephane">Stephane</option>
                 </select>
@@ -878,4 +708,4 @@ const ModalReservation = ({ isOpen, onClose }) => {
   );
 };
 
-export default ModalReservation;
+export default ModalPower;

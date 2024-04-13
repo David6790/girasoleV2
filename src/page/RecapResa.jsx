@@ -11,6 +11,7 @@ import "react-datetime/css/react-datetime.css";
 import ModalStaff from "../components/modals/ModalStaff";
 import { setReservations } from "../features/reservationSlice";
 import { useLocation } from "react-router-dom";
+import ModalPower from "../components/modals/ModalPower";
 
 const RecapResa = () => {
   const dispatch = useDispatch();
@@ -36,6 +37,7 @@ const RecapResa = () => {
 
   const [selectedDate, setSelectedDate] = useState(formatDateInitial());
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpenPower, setIsModalOpenPower] = useState(false);
 
   const [editingReservation, setEditingReservation] = useState(null);
   const [newNumberOfGuests, setNewNumberOfGuests] = useState("");
@@ -51,6 +53,9 @@ const RecapResa = () => {
   const [showEveningReservations, setShowEveningReservations] = useState(true);
   const [showUnplacedReservations, setShowUnplacedReservations] =
     useState(false);
+
+  //const [isPowerUser, setIsPowerUser] = false;
+  const [password, setPassword] = useState("");
 
   useEffect(() => {
     if (isSuccess && Array.isArray(reservations)) {
@@ -96,8 +101,18 @@ const RecapResa = () => {
   const handleClick = () => {
     setIsModalOpen(!isModalOpen);
   };
+  const handlePowerUser = () => {
+    if (password !== "stephzob") {
+      alert("erreur de mot de passe");
+    } else {
+      setIsModalOpenPower(true);
+    }
+  };
   const closeModale = () => {
     setIsModalOpen(false);
+  };
+  const closeModalePower = () => {
+    setIsModalOpenPower(false);
   };
   useEffect(() => {
     const dateOfEffect = occStatus != null ? occStatus[0].dateOfEffect : "";
@@ -380,6 +395,7 @@ const RecapResa = () => {
   return (
     <div className="mx-5">
       <ModalStaff isOpen={isModalOpen} onClose={closeModale} />
+      <ModalPower isOpen={isModalOpenPower} onClose={closeModalePower} />
       <div className=" flex flex-col justify-center items-center">
         <h1 className="text-center 2xl:text-3xl xl:text-3xl lg:text-3xl md:text-2xl sm:text-xl  font-bold mb-5">
           Récap réservation du {selectedDate}
@@ -393,6 +409,20 @@ const RecapResa = () => {
         >
           Prendre une réservation
         </button>
+
+        <button
+          className="px-2 py-2 border-solid border-black border-[1px] mt-5 2xl:text-xl xl:text-xl lg:text-xl md:text-xl sm:text-lg text-base rounded-md shadow-2xl transform transition-transform duration-200 hover:-translate-y-1 bg-green-500"
+          onClick={handlePowerUser}
+        >
+          Power User
+        </button>
+        <label>Mot de passe Power User</label>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="border border-black"
+        ></input>
         <div className=" mt-5 mb-5">
           <label className="mt-5 mr-5 mb-5 font-bold">
             Rechercher une réservation
@@ -876,7 +906,10 @@ const RecapResa = () => {
                       </p>
                       <p>
                         <strong>Réservation Prise par:</strong>{" "}
-                        {reservation.Source}
+                        {reservation.isPowerUser === "OUI"
+                          ? "Réservation manuelle POWER-USER:" +
+                            reservation.Source
+                          : reservation.Source}
                       </p>
                       <p>
                         <strong>Client doit libérer table à 21H:</strong>
