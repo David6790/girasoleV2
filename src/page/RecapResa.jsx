@@ -257,7 +257,7 @@ const RecapResa = () => {
           backgroundColor: reservation.placed === "OUI" ? "#96be25" : "#ffffff",
         }; // Vert pour confirmés et placés, blanc sinon
       case "Pending":
-        return { backgroundColor: "#ffff99" }; // Jaune pour les réservations en attente
+        return { backgroundColor: "yellow" }; // Jaune pour les réservations en attente
       case "Annulé":
         return { backgroundColor: "red" }; // Rouge pour les annulés
       default:
@@ -977,48 +977,40 @@ const RecapResa = () => {
                         <strong>Réservation Modifiée par:</strong>{" "}
                         {reservation.Updated || "Aucune Modification"}
                       </p>
-                      <div className=" w-full flex flex-row justify-between">
+                      <div className="w-full flex flex-row justify-between">
                         <button
                           onClick={() => handleEditClick(reservation)}
                           className="mt-4 px-4 py-2 bg-yellow-400 text-white rounded"
                         >
                           Modifier
                         </button>
-                        <div className="w-full flex flex-row justify-between">
+                        <div>
                           <button
-                            onClick={() => handleEditClick(reservation)}
-                            className="mt-4 px-4 py-2 bg-yellow-400 text-white rounded"
+                            onClick={() =>
+                              handlePlaceReservation(reservation.ID)
+                            }
+                            className={`mt-4 px-2 py-1 bg-blue-500 text-white rounded text-xs ${
+                              reservation.Status === "Pending"
+                                ? "opacity-50 cursor-not-allowed"
+                                : ""
+                            }`}
+                            disabled={reservation.Status === "Pending"} // Désactiver le bouton si le statut est Pending
                           >
-                            Modifier
+                            Placé sur plan
                           </button>
-                          <div>
-                            <button
-                              onClick={() =>
-                                handlePlaceReservation(reservation.ID)
-                              }
-                              className={`mt-4 px-2 py-1 bg-blue-500 text-white rounded text-xs ${
-                                reservation.Status === "Pending"
-                                  ? "opacity-50 cursor-not-allowed"
-                                  : ""
-                              }`}
-                              disabled={reservation.Status === "Pending"} // Désactiver le bouton si le statut est Pending
-                            >
-                              Placé sur plan
-                            </button>
-                            <button
-                              onClick={() =>
-                                handleRemovePlaceReservation(reservation.ID)
-                              }
-                              className={`mt-4 px-2 py-1 bg-blue-500 text-white rounded text-xs ml-5 ${
-                                reservation.Status === "Pending"
-                                  ? "opacity-50 cursor-not-allowed"
-                                  : ""
-                              }`}
-                              disabled={reservation.Status === "Pending"} // Désactiver le bouton si le statut est Pending
-                            >
-                              Retirer du plan
-                            </button>
-                          </div>
+                          <button
+                            onClick={() =>
+                              handleRemovePlaceReservation(reservation.ID)
+                            }
+                            className={`mt-4 px-2 py-1 bg-blue-500 text-white rounded text-xs ml-5 ${
+                              reservation.Status === "Pending"
+                                ? "opacity-50 cursor-not-allowed"
+                                : ""
+                            }`}
+                            disabled={reservation.Status === "Pending"} // Désactiver le bouton si le statut est Pending
+                          >
+                            Retirer du plan
+                          </button>
                         </div>
                       </div>
                     </div>
