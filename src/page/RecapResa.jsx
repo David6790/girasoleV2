@@ -12,6 +12,7 @@ import ModalStaff from "../components/modals/ModalStaff";
 import { setReservations } from "../features/reservationSlice";
 import { useLocation } from "react-router-dom";
 import ModalPower from "../components/modals/ModalPower";
+import VueDetailleResa from "../components/modals/VueDetailleResa";
 
 const RecapResa = () => {
   const dispatch = useDispatch();
@@ -38,6 +39,7 @@ const RecapResa = () => {
   const [selectedDate, setSelectedDate] = useState(formatDateInitial());
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpenPower, setIsModalOpenPower] = useState(false);
+  const [isModalVueDetailOpen, setIsModalVueDetailOpen] = useState(false);
 
   const [editingReservation, setEditingReservation] = useState(null);
   const [newNumberOfGuests, setNewNumberOfGuests] = useState("");
@@ -61,8 +63,6 @@ const RecapResa = () => {
     if (isSuccess && Array.isArray(reservations)) {
       // Si vous voulez stocker les réservations dans le Redux store
       dispatch(setReservations(reservations));
-      console.log(reservations);
-      console.log("Réservations bien recupéré");
     }
   }, [reservations, isSuccess, dispatch]);
 
@@ -101,6 +101,10 @@ const RecapResa = () => {
   const handleClick = () => {
     setIsModalOpen(!isModalOpen);
   };
+
+  const handleClickVueDetail = () => {
+    setIsModalVueDetailOpen(!isModalVueDetailOpen);
+  };
   const handlePowerUser = () => {
     if (password !== "stephzob") {
       alert("erreur de mot de passe");
@@ -110,6 +114,10 @@ const RecapResa = () => {
   };
   const closeModale = () => {
     setIsModalOpen(false);
+  };
+
+  const closeModaleDetail = () => {
+    setIsModalVueDetailOpen(false);
   };
   const closeModalePower = () => {
     setIsModalOpenPower(false);
@@ -392,10 +400,17 @@ const RecapResa = () => {
     ? resaJour.filter((res) => res.Time >= "18:00")
     : "";
 
+  console.log("resa du soir:" + resaSoir ? resaSoir : "");
+
   return (
     <div className="mx-5">
       <ModalStaff isOpen={isModalOpen} onClose={closeModale} />
       <ModalPower isOpen={isModalOpenPower} onClose={closeModalePower} />
+      <VueDetailleResa
+        isOpen={isModalVueDetailOpen}
+        onClose={closeModaleDetail}
+        reservations={resaSoir}
+      />
       <div className=" flex flex-col justify-center items-center">
         <h1 className="text-center 2xl:text-3xl xl:text-3xl lg:text-3xl md:text-2xl sm:text-xl  font-bold mb-5">
           Récap réservation du {selectedDate}
@@ -723,6 +738,12 @@ const RecapResa = () => {
           className="px-3 py-1 underline text-black rounded hover:bg-gray-400"
         >
           {showEveningReservations ? "Réduire" : "Afficher"}
+        </button>
+        <button
+          className="px-2 py-2 border-solid border-black border-[1px] mt-5 mb-5 2xl:text-xl xl:text-xl lg:text-xl md:text-xl sm:text-lg text-base rounded-md shadow-2xl transform transition-transform duration-200 hover:-translate-y-1 bg-green-500"
+          onClick={handleClickVueDetail}
+        >
+          vue detail
         </button>
       </div>
       {showEveningReservations && (
