@@ -8,7 +8,6 @@ const VueDetailleResa = ({ isOpen, onClose, reservations }) => {
   const [detailedReservations, setDetailedReservations] = useState({});
   const [renouvelables21h, setRenouvelables21h] = useState({});
   const [arrivees21h, setArrivees21h] = useState({});
-  const [couvertsDisponibles21h, setCouvertsDisponibles21h] = useState(0);
 
   const handleModalClose = () => {
     onClose();
@@ -21,12 +20,10 @@ const VueDetailleResa = ({ isOpen, onClose, reservations }) => {
       reservations.length > 0
     ) {
       const allDetails = processAllReservations(reservations);
-      const { renouvelables, arrivees, couvertsDisponibles } =
-        process21hReservations(reservations);
+      const { renouvelables, arrivees } = process21hReservations(reservations);
       setDetailedReservations(allDetails);
       setRenouvelables21h(renouvelables);
       setArrivees21h(arrivees);
-      setCouvertsDisponibles21h(couvertsDisponibles);
     }
   }, [reservations]);
 
