@@ -251,16 +251,17 @@ const RecapResa = () => {
   };
 
   function determineCardStyle(reservation) {
-    if (reservation.Status === "Confirmé") {
-      if (reservation.placed === "OUI") {
-        return { backgroundColor: "#96be25" }; // Vert pour les confirmés et placés
-      } else {
-        return { backgroundColor: "#ffffff" }; // Blanc par défaut pour les confirmés mais non placés
-      }
-    } else if (reservation.Status === "Annulé") {
-      return { backgroundColor: "red" }; // Rouge pour les placés et annulés
-    } else {
-      return { backgroundColor: "#ffffff" }; // Blanc par défaut pour les autres cas
+    switch (reservation.Status) {
+      case "Confirmé":
+        return {
+          backgroundColor: reservation.placed === "OUI" ? "#96be25" : "#ffffff",
+        }; // Vert pour confirmés et placés, blanc sinon
+      case "Pending":
+        return { backgroundColor: "#ffff99" }; // Jaune pour les réservations en attente
+      case "Annulé":
+        return { backgroundColor: "red" }; // Rouge pour les annulés
+      default:
+        return { backgroundColor: "#ffffff" }; // Blanc par défaut
     }
   }
 
@@ -374,7 +375,9 @@ const RecapResa = () => {
       .filter(
         (resa) =>
           resa.Date === selectedDate &&
-          (resa.Status === "Confirmé" || resa.Status === "Annulé") &&
+          (resa.Status === "Confirmé" ||
+            resa.Status === "Annulé" ||
+            resa.Status === "Pending") &&
           resa.Name.toLowerCase().startsWith(searchText.toLowerCase())
       )
       .sort(
@@ -695,7 +698,7 @@ const RecapResa = () => {
                         <strong>Réservation Modifiée par:</strong>{" "}
                         {reservation.Updated || "Aucune Modification"}
                       </p>
-                      <div className=" w-full flex flex-row justify-between">
+                      <div className="w-full flex flex-row justify-between">
                         <button
                           onClick={() => handleEditClick(reservation)}
                           className="mt-4 px-4 py-2 bg-yellow-400 text-white rounded"
@@ -707,7 +710,12 @@ const RecapResa = () => {
                             onClick={() =>
                               handlePlaceReservation(reservation.ID)
                             }
-                            className="mt-4 px-2 py-1 bg-blue-500 text-white rounded text-xs"
+                            className={`mt-4 px-2 py-1 bg-blue-500 text-white rounded text-xs ${
+                              reservation.Status === "Pending"
+                                ? "opacity-50 cursor-not-allowed"
+                                : ""
+                            }`}
+                            disabled={reservation.Status === "Pending"} // Désactiver le bouton si le statut est Pending
                           >
                             Placé sur plan
                           </button>
@@ -715,7 +723,12 @@ const RecapResa = () => {
                             onClick={() =>
                               handleRemovePlaceReservation(reservation.ID)
                             }
-                            className="mt-4 px-2 py-1 bg-blue-500 text-white rounded text-xs ml-5"
+                            className={`mt-4 px-2 py-1 bg-blue-500 text-white rounded text-xs ml-5 ${
+                              reservation.Status === "Pending"
+                                ? "opacity-50 cursor-not-allowed"
+                                : ""
+                            }`}
+                            disabled={reservation.Status === "Pending"} // Désactiver le bouton si le statut est Pending
                           >
                             Retirer du plan
                           </button>
@@ -971,23 +984,41 @@ const RecapResa = () => {
                         >
                           Modifier
                         </button>
-                        <div>
+                        <div className="w-full flex flex-row justify-between">
                           <button
-                            onClick={() =>
-                              handlePlaceReservation(reservation.ID)
-                            }
-                            className="mt-4 px-2 py-1 bg-blue-500 text-white rounded text-xs"
+                            onClick={() => handleEditClick(reservation)}
+                            className="mt-4 px-4 py-2 bg-yellow-400 text-white rounded"
                           >
-                            Placé sur plan
+                            Modifier
                           </button>
-                          <button
-                            onClick={() =>
-                              handleRemovePlaceReservation(reservation.ID)
-                            }
-                            className="mt-4 px-2 py-1 bg-blue-500 text-white rounded text-xs ml-5"
-                          >
-                            Retirer du plan
-                          </button>
+                          <div>
+                            <button
+                              onClick={() =>
+                                handlePlaceReservation(reservation.ID)
+                              }
+                              className={`mt-4 px-2 py-1 bg-blue-500 text-white rounded text-xs ${
+                                reservation.Status === "Pending"
+                                  ? "opacity-50 cursor-not-allowed"
+                                  : ""
+                              }`}
+                              disabled={reservation.Status === "Pending"} // Désactiver le bouton si le statut est Pending
+                            >
+                              Placé sur plan
+                            </button>
+                            <button
+                              onClick={() =>
+                                handleRemovePlaceReservation(reservation.ID)
+                              }
+                              className={`mt-4 px-2 py-1 bg-blue-500 text-white rounded text-xs ml-5 ${
+                                reservation.Status === "Pending"
+                                  ? "opacity-50 cursor-not-allowed"
+                                  : ""
+                              }`}
+                              disabled={reservation.Status === "Pending"} // Désactiver le bouton si le statut est Pending
+                            >
+                              Retirer du plan
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>

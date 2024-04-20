@@ -184,14 +184,6 @@ const VueDetailleResa = ({ isOpen, onClose, reservations }) => {
                 </div>
               </div>
             ))}
-
-          <h3 className="text-lg font-semibold mt-5 m-auto w-full text-center">
-            Nombre de couverts NON RENOUVELÉS (disponible) à 21h:{" "}
-            <span className=" font-bold text-2xl ">
-              {couvertsDisponibles21h}{" "}
-            </span>{" "}
-            couverts.
-          </h3>
         </div>
       </Modal>
     </div>
