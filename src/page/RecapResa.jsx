@@ -740,10 +740,10 @@ const RecapResa = () => {
           {showEveningReservations ? "Réduire" : "Afficher"}
         </button>
         <button
-          className="px-2 py-2 border-solid border-black border-[1px] mt-5 mb-5 2xl:text-xl xl:text-xl lg:text-xl md:text-xl sm:text-lg text-base rounded-md shadow-2xl transform transition-transform duration-200 hover:-translate-y-1 bg-green-500"
+          className="px-2 py-2 border-solid border-black border-[1px] mt-5 mb-5 2xl:text-xl xl:text-xl lg:text-xl md:text-xl sm:text-lg text-base rounded-md shadow-2xl transform transition-transform duration-200 hover:-translate-y-1 bg-orange-500"
           onClick={handleClickVueDetail}
         >
-          vue detail
+          Analyse detaillée
         </button>
       </div>
       {showEveningReservations && (
