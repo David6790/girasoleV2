@@ -257,7 +257,7 @@ const RecapResa = () => {
           backgroundColor: reservation.placed === "OUI" ? "#96be25" : "#ffffff",
         }; // Vert pour confirmés et placés, blanc sinon
       case "Pending":
-        return { backgroundColor: "yellow" }; // Jaune pour les réservations en attente
+        return { backgroundColor: "#ffff99" }; // Jaune pour les réservations en attente
       case "Annulé":
         return { backgroundColor: "red" }; // Rouge pour les annulés
       default:
