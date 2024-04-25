@@ -28,9 +28,7 @@ const Location = () => {
         <h3>
           <span className="font-bold">Tel</span> : 03.88.37.16.76
         </h3>
-        <h3>
-          <span className="font-bold">Email</span> : reservation@ilgirasole.fr
-        </h3>
+
         <h3 className=" xl:text-lg lg:text-base md:text-sm font-bold ">
           Horraires:
         </h3>
