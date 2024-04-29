@@ -411,7 +411,7 @@ const ModalPower = ({ isOpen, onClose }) => {
       Time: selectedTime,
       Comment: message,
       Email: email,
-      Phone: `reservation manuelle - voir avec responsable`,
+      Phone: `n°${tel}`,
       Status: "Confirmé",
       Acompte: "Pas Demandé",
       Source: selectedServer,
