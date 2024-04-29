@@ -48,7 +48,7 @@ const ModalPower = ({ isOpen, onClose }) => {
   const [selectedTime, setSelectedTime] = useState("12:00");
 
   let ID = crypto.randomUUID();
-  const [tel, setTel] = useState("");
+  const [tel, setTel] = useState("validation manuelle par steph");
   const [messageModalOpen, setMessageModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
   const [hasModalBeenShown, setHasModalBeenShown] = useState(false);
@@ -411,7 +411,7 @@ const ModalPower = ({ isOpen, onClose }) => {
       Time: selectedTime,
       Comment: message,
       Email: email,
-      Phone: `n°${tel}`,
+      Phone: `reservation manuelle - voir avec responsable`,
       Status: "Confirmé",
       Acompte: "Pas Demandé",
       Source: selectedServer,
@@ -520,30 +520,7 @@ const ModalPower = ({ isOpen, onClose }) => {
               console.log(error.text);
             }
           )
-          .then(
-            alert(
-              "Réservation bien envoyé vers base de donnée. Merci de valider pour faire partir le sms"
-            )
-          );
-        const queryParams = new URLSearchParams({
-          email: email,
-          phone: tel,
-          name: name,
-          number: numberOfGuest,
-          resDate: validDateTime.format("DD-MM-YY"),
-          resTime: selectedTime,
-          Source: selectedServer,
-          msgClient: data.msgClient,
-          msgClient2: data.msgClient2,
-          msgClient3: data.msgClient3,
-          ID: ID,
-          formatData: formattedResDate2,
-        });
-
-        const url = `https://il-girasole-strasbourg.com/.netlify/functions/acceptStaff?${queryParams.toString()}`;
-
-        // Redirection ou ouverture dans un nouvel onglet
-        window.open(url, "_blank");
+          .then(alert("Réservation bien envoyé vers base de donnée."));
       } catch (error) {
         console.log(error);
         alert("réservation non enregistrée contactez David");
@@ -667,7 +644,6 @@ const ModalPower = ({ isOpen, onClose }) => {
                 name="phone"
                 onChange={handlePhoneChange}
                 className="  h-[40px]  mb-5  focus:outline-none bg-transparent border-b-[1px] px-2"
-                required
               />
             </div>
             <div className=" flex flex-col xl:w-[48%] lg:w-[48%] md:w-[48%] sm:w-[48%] w-full h-full  ">

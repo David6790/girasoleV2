@@ -407,9 +407,16 @@ const ModalReservation = ({ isOpen, onClose }) => {
       setTel(e.target.value);
     }
   };
+  // const disablePastDt = (currentDate) => {
+  //   const today = moment().startOf("day");
+  //   return currentDate.isSameOrAfter(today);
+  // };
   const disablePastDt = (currentDate) => {
     const today = moment().startOf("day");
-    return currentDate.isSameOrAfter(today);
+    const firstMay = moment().month(4).date(1).startOf("day"); // Mois 4 car janvier est 0 dans moment.js
+    return (
+      currentDate.isSameOrAfter(today) && !currentDate.isSame(firstMay, "day")
+    );
   };
 
   const isTimeValidForSelectedDate = (selectedTime, selectedDate) => {
