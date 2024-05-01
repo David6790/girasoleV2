@@ -452,8 +452,27 @@ const ModalReservation = ({ isOpen, onClose }) => {
     occStatus
   );
 
+  // Convertir la date et l'heure sélectionnées en un objet moment
+  const validDateTime = moment.isMoment(dateTime) ? dateTime : moment(dateTime);
+  validDateTime
+    .hour(parseInt(selectedTime.split(":")[0]))
+    .minute(parseInt(selectedTime.split(":")[1]));
+
+  // Vérifier si la date sélectionnée est le 1er mai 2024
+  const isClosedDay = validDateTime.isSame(
+    moment("2024-05-01", "YYYY-MM-DD"),
+    "day"
+  );
+
   const sendEmail = async (e) => {
     e.preventDefault();
+
+    if (isClosedDay) {
+      alert(
+        "Nous sommes fermés le 1er mai 2024. Veuillez choisir une autre date."
+      );
+      return; // Ne pas continuer avec l'envoi de l'email
+    }
 
     const validDateTime = moment.isMoment(dateTime)
       ? dateTime
