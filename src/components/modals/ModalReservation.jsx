@@ -844,10 +844,11 @@ const ModalReservation = ({ isOpen, onClose }) => {
             <div className=" flex flex-col xl:w-[48%] lg:w-[48%] md:w-[48%] sm:w-[48%] w-full h-full  ">
               <label className="text-white">Commentaires</label>
               <textarea
+                placeholder="Si vous souhaitez réserver une table en terrasse, merci de le préciser ici. Veuillez noter que les places en terrasse sont limitées et, par conséquent, nous ne pouvons garantir une place pour chaque demande. Toutefois, soyez assurés que nous ferons notre maximum pour satisfaire vos préférences. "
                 name="message"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                className=" h-[70%] focus:outline-none  resize-none   p-2  mb-5 bg-transparent border-b-[1px] px-2 "
+                className=" h-[70%] focus:outline-none  resize-none   p-2  mb-5 bg-transparent border-b-[1px] px-2 placeholder-gray-500  "
               />
 
               <button
