@@ -460,71 +460,41 @@ const ModalPower = ({ isOpen, onClose }) => {
 
     const dataToSend = regularData;
 
-    if (
-      (occStatus != null &&
-        occStatus[0].occupationStatus === "fullComplet" &&
-        effectDateMatches) ||
-      (occStatus != null &&
-        occStatus[1].occupationStatus === "fullComplet" &&
-        effectDateMatches2) ||
-      (occStatus != null &&
-        occStatus[2].occupationStatus === "fullComplet" &&
-        effectDateMatches3) ||
-      (occStatus != null &&
-        occStatus[3].occupationStatus === "fullComplet" &&
-        effectDateMatches4) ||
-      (occStatus != null &&
-        occStatus[4].occupationStatus === "fullComplet" &&
-        effectDateMatches5) ||
-      (occStatus != null &&
-        occStatus[5].occupationStatus === "fullComplet" &&
-        effectDateMatches6)
-    ) {
-      alert(
-        "Le restaurant est complet pour ce soir. Nous nous excusons pour le désagrément."
-      );
-    } else {
-      try {
-        await fetch(sheetURL, {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(dataToSend),
-        });
+    try {
+      await fetch(sheetURL, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(dataToSend),
+      });
 
-        emailjs
-          .send(
-            "service_6j5qs7e",
-            "template_2m99rpn",
-            data,
-            "TlcoR3tgd_o9uLj7o"
-          )
-          .then(
-            (result) => {
-              console.log(result.text);
-              setEmail("");
-              setMessage("");
-              setName("");
-              setDateTime(moment());
-              setNumberOfGuest("");
-              setSelectedTime("");
-              setTel("");
-              setSelectedTime("");
-              setSelectedServer("");
-              setIsLoading(false);
-              onClose();
-            },
-            (error) => {
-              console.log(error.text);
-            }
-          )
-          .then(alert("Réservation bien envoyé vers base de donnée."));
-      } catch (error) {
-        console.log(error);
-        alert("réservation non enregistrée contactez David");
-      }
+      emailjs
+        .send("service_6j5qs7e", "template_2m99rpn", data, "TlcoR3tgd_o9uLj7o")
+        .then(
+          (result) => {
+            console.log(result.text);
+            setEmail("");
+            setMessage("");
+            setName("");
+            setDateTime(moment());
+            setNumberOfGuest("");
+            setSelectedTime("");
+            setTel("");
+            setSelectedTime("");
+            setSelectedServer("");
+            setIsLoading(false);
+            onClose();
+          },
+          (error) => {
+            console.log(error.text);
+          }
+        )
+        .then(alert("Réservation bien envoyé vers base de donnée."));
+    } catch (error) {
+      console.log(error);
+      alert("réservation non enregistrée contactez David");
     }
   };
 
