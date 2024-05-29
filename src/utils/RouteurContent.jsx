@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useLocation, Routes, Route } from "react-router-dom";
+import React, { /* useEffect, */ useState } from "react";
+import { /* useLocation, */ Routes, Route } from "react-router-dom";
 import ModalNouveautés from "../components/modals/ModalNouveautés";
 import ModalReservation from "../components/modals/ModalReservation";
 import Home from "../page/Home";
@@ -16,10 +16,10 @@ import RecapCuisine from "../page/RecapCuisine";
 const RouteurContent = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [isResaModalOpen, setIsResaModalOpen] = useState(false);
-  const [modalDejaAffiche, setModalDejaAffiche] = useState(false);
-  const location = useLocation();
+  //const [modalDejaAffiche, setModalDejaAffiche] = useState(false);
+  //const location = useLocation();
 
-  useEffect(() => {
+  /*   useEffect(() => {
     if (
       !modalDejaAffiche &&
       location.pathname !== "/davlebg" &&
@@ -35,7 +35,7 @@ const RouteurContent = () => {
       }, 3000);
       return () => clearTimeout(timer);
     }
-  }, [location, modalDejaAffiche]);
+  }, [location, modalDejaAffiche]); */
 
   const handleModalClose = () => {
     setModalOpen(false);
