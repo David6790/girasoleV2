@@ -87,16 +87,14 @@ const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
         <div className="w-full flex xl:flex-row lg:flex-row md:flex-row sm:flex-col-reverse flex-col-reverse justify-between items-center ">
           <div className="xl:w-2/3 lg:w-2/3 md:w-2/3 sm:w-full w-full  text-justify p-10 ">
             <p className=" text-lg mb-2">
-              Parmi les bonnes résolutions de l’année 2024, il y a chez nous la
-              volonté de proposer des alternatives à la consommation de viande
-              🍽️ On vous propose donc la pizza Regina et les carbonara avec ce
-              délicieux jambon végétal 🍕🍝 Pour cela, on travaille avec la
-              marque La Vie qui mérite de notre part une vraie mise en lumière
-              💫 Une liste d’ingrédients courtes, pas d’agent de texture, pas de
-              nitrites (certo !), pas d’OGM, concocté en France. Bref, tout pour
-              plaire à nos amis végétariens mais qui sait, même certains
-              carnivores invétérés en quête d’une consommation plus raisonnable
-              ? A dopo amici ♥️
+              L'été est enfin arrivé chez IL GIRASOLE et notre nouvelle carte
+              est prête à vous faire voyager sous le soleil italien ! 🇮🇹 Cette
+              saison, nous avons travaillé dur pour vous concocter des délices
+              estivaux qui vont vous faire fondre de plaisir. Et pour ceux qui
+              veulent lever le pied sur la viande, nous avons toujours notre
+              fantastique jambon végétal de la marque La Vie.🌱 À très vite chez
+              IL GIRASOLE, où l'été ne finit jamais vraiment et où chaque
+              bouchée est un rayon de soleil ! 🌻♥️
             </p>
 
             <NavLink to="/menu">
