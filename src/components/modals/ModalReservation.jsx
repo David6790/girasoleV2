@@ -335,7 +335,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
           effectDateMatches6)
       ) {
         setModalMessage(
-          "Le restaurant est complet pour ce soir. Pour le midi ou pour une autre date, vous pouvez réserver sans problème."
+          "Le restaurant est presque complet pour ce soir. Pour garantir la disponibilité, nous avons fermé les réservations en ligne. Veuillez nous contacter directement par téléphone au 03.88.37.16.76 pour effectuer votre réservation. Pour le midi ou pour les autres jours, les réservations sont toujours possibles en ligne"
         );
         setMessageModalOpen(true);
       } else if (
@@ -674,7 +674,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
         effectDateMatches6)
     ) {
       alert(
-        "Le restaurant est complet pour ce soir. Nous nous excusons pour le désagrément."
+        "Le restaurant est presque complet pour ce soir. Pour garantir la disponibilité, nous avons fermé les réservations en ligne. Veuillez nous contacter directement par téléphone au 03.88.37.16.76 pour effectuer votre réservation."
       );
     } else {
       try {

@@ -335,7 +335,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
           effectDateMatches6)
       ) {
         setModalMessage(
-          "Le restaurant est complet pour ce soir. Ne plus prendre de résa"
+          "Le restaurant est quasiment complet pour ce soir. Bien verifier la disponibilité avant d'accepter une réservation"
         );
         setMessageModalOpen(true);
       } else if (
@@ -625,7 +625,7 @@ const ModalReservation = ({ isOpen, onClose }) => {
 
     const dataToSend = regularData;
 
-    if (
+    const fullComplet =
       (occStatus != null &&
         occStatus[0].occupationStatus === "fullComplet" &&
         effectDateMatches) ||
@@ -643,76 +643,76 @@ const ModalReservation = ({ isOpen, onClose }) => {
         effectDateMatches5) ||
       (occStatus != null &&
         occStatus[5].occupationStatus === "fullComplet" &&
-        effectDateMatches6)
-    ) {
-      alert(
-        "Le restaurant est complet pour ce soir. Nous nous excusons pour le désagrément."
+        effectDateMatches6);
+
+    if (fullComplet) {
+      const userConfirmed = window.confirm(
+        "Attention, le restaurant est quasiment complet. Êtes-vous sûr de vouloir prendre la réservation ? Avez-vous bien vérifié qu'une table est disponible ?"
       );
-    } else {
-      try {
-        await fetch(sheetURL, {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(dataToSend),
-        });
-
-        emailjs
-          .send(
-            "service_6j5qs7e",
-            "template_2m99rpn",
-            data,
-            "TlcoR3tgd_o9uLj7o"
-          )
-          .then(
-            (result) => {
-              console.log(result.text);
-              setEmail("");
-              setMessage("");
-              setName("");
-              setDateTime(moment());
-              setNumberOfGuest("");
-              setSelectedTime("");
-              setTel("");
-              setSelectedTime("");
-              setSelectedServer("");
-              setIsLoading(false);
-              onClose();
-            },
-            (error) => {
-              console.log(error.text);
-            }
-          )
-          .then(
-            alert(
-              "Réservation bien envoyé vers base de donnée. Merci de valider pour faire partir le sms"
-            )
-          );
-        const queryParams = new URLSearchParams({
-          email: email,
-          phone: tel,
-          name: name,
-          number: numberOfGuest,
-          resDate: validDateTime.format("DD-MM-YY"),
-          resTime: selectedTime,
-          Source: selectedServer,
-          msgClient: data.msgClient,
-          msgClient2: data.msgClient2,
-          msgClient3: data.msgClient3,
-          ID: ID,
-          formatData: formattedResDate2,
-        });
-
-        const url = `https://il-girasole-strasbourg.com/.netlify/functions/acceptStaff?${queryParams.toString()}`;
-
-        // Redirection ou ouverture dans un nouvel onglet
-        window.open(url, "_blank");
-      } catch (error) {
-        console.log(error);
-        alert("réservation non enregistrée contactez David");
+      if (!userConfirmed) {
+        setIsLoading(false);
+        return;
       }
+    }
+
+    try {
+      await fetch(sheetURL, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(dataToSend),
+      });
+
+      emailjs
+        .send("service_6j5qs7e", "template_2m99rpn", data, "TlcoR3tgd_o9uLj7o")
+        .then(
+          (result) => {
+            console.log(result.text);
+            setEmail("");
+            setMessage("");
+            setName("");
+            setDateTime(moment());
+            setNumberOfGuest("");
+            setSelectedTime("");
+            setTel("");
+            setSelectedTime("");
+            setSelectedServer("");
+            setIsLoading(false);
+            onClose();
+          },
+          (error) => {
+            console.log(error.text);
+          }
+        )
+        .then(
+          alert(
+            "Réservation bien envoyée vers la base de données. Merci de valider pour faire partir le SMS."
+          )
+        );
+      const queryParams = new URLSearchParams({
+        email: email,
+        phone: tel,
+        name: name,
+        number: numberOfGuest,
+        resDate: validDateTime.format("DD-MM-YY"),
+        resTime: selectedTime,
+        Source: selectedServer,
+        msgClient: data.msgClient,
+        msgClient2: data.msgClient2,
+        msgClient3: data.msgClient3,
+        ID: ID,
+        formatData: formattedResDate2,
+      });
+
+      const url = `https://il-girasole-strasbourg.com/.netlify/functions/acceptStaff?${queryParams.toString()}`;
+
+      // Redirection ou ouverture dans un nouvel onglet
+      window.open(url, "_blank");
+    } catch (error) {
+      console.log(error);
+      alert("Réservation non enregistrée, contactez David.");
     }
   };
 
