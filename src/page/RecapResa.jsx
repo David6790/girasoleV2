@@ -593,14 +593,14 @@ const RecapResa = () => {
                             <option value="" disabled>
                               Sélectionnez le serveur
                             </option>
-                            <option value="Jess">Jess</option>
+                            <option value="Jess">Amadou</option>
                             <option value="Tiffanie">Tiffanie</option>
                             <option value="Christian">Christian</option>
                             <option value="David">David</option>
-                            <option value="Bleona">Bleona</option>
+                            <option value="Bleona">Arthus</option>
                             <option value="Fanny">Fanny</option>
                             <option value="Stephane">Stephane</option>
-                            <option value="Stacy">Stacy</option>
+                            <option value="Stacy">Bérénice</option>
                             <option value="Mathieu">Mathieu</option>
                             <option value="Simon">Simon</option>
                           </select>
