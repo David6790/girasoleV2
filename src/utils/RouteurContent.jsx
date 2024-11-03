@@ -1,6 +1,9 @@
+// eslint-disable-next-line
 import React, { useEffect, useState } from "react";
 import { useLocation, Routes, Route } from "react-router-dom";
+// eslint-disable-next-line
 import ModalNouveautés from "../components/modals/ModalNouveautés";
+// eslint-disable-next-line
 import ModalReservation from "../components/modals/ModalReservation";
 import Home from "../page/Home";
 import Menu from "../page/Menu";
@@ -14,9 +17,13 @@ import Dashboard from "../page/Dashboard";
 import RecapCuisine from "../page/RecapCuisine";
 
 const RouteurContent = () => {
+  // eslint-disable-next-line
   const [isModalOpen, setModalOpen] = useState(false);
+  // eslint-disable-next-line
   const [isResaModalOpen, setIsResaModalOpen] = useState(false);
+  // eslint-disable-next-line
   const [modalDejaAffiche, setModalDejaAffiche] = useState(false);
+  // eslint-disable-next-line
   const location = useLocation();
 
   // useEffect(() => {
@@ -49,6 +56,7 @@ const RouteurContent = () => {
   // const closeResaModal = () => {
   //   setIsResaModalOpen(false);
   // };
+  //
   return (
     <>
       <Routes>
