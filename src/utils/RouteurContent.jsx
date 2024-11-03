@@ -19,45 +19,38 @@ const RouteurContent = () => {
   const [modalDejaAffiche, setModalDejaAffiche] = useState(false);
   const location = useLocation();
 
-  useEffect(() => {
-    if (
-      !modalDejaAffiche &&
-      location.pathname !== "/davlebg" &&
-      location.pathname !== "/nyg" &&
-      location.pathname !== "/recap" &&
-      location.pathname !== "/dashboard" &&
-      location.pathname !== "/staffForm" &&
-      location.pathname !== "/kitchen-2"
-    ) {
-      const timer = setTimeout(() => {
-        setModalOpen(true);
-        setModalDejaAffiche(true);
-      }, 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [location, modalDejaAffiche]);
+  // useEffect(() => {
+  //   if (
+  //     !modalDejaAffiche &&
+  //     location.pathname !== "/davlebg" &&
+  //     location.pathname !== "/nyg" &&
+  //     location.pathname !== "/recap" &&
+  //     location.pathname !== "/dashboard" &&
+  //     location.pathname !== "/staffForm" &&
+  //     location.pathname !== "/kitchen-2"
+  //   ) {
+  //     const timer = setTimeout(() => {
+  //       setModalOpen(true);
+  //       setModalDejaAffiche(true);
+  //     }, 3000);
+  //     return () => clearTimeout(timer);
+  //   }
+  // }, [location, modalDejaAffiche]);
 
-  const handleModalClose = () => {
-    setModalOpen(false);
-  };
+  // const handleModalClose = () => {
+  //   setModalOpen(false);
+  // };
 
-  const handleResaModal = () => {
-    setModalOpen(false);
-    setIsResaModalOpen(true);
-  };
+  // const handleResaModal = () => {
+  //   setModalOpen(false);
+  //   setIsResaModalOpen(true);
+  // };
 
-  const closeResaModal = () => {
-    setIsResaModalOpen(false);
-  };
+  // const closeResaModal = () => {
+  //   setIsResaModalOpen(false);
+  // };
   return (
     <>
-      <ModalNouveautés
-        isOpen={isModalOpen}
-        onClose={handleModalClose}
-        resaModal={handleResaModal}
-      />
-      <ModalReservation isOpen={isResaModalOpen} onClose={closeResaModal} />
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/reserver" element={<Home />} />
