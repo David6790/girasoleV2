@@ -4,12 +4,15 @@ import ModalReservation from "./modals/ModalReservation";
 
 const ButtonResa = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const handleClick = () => {
-    setIsModalOpen(!isModalOpen);
+    //setIsModalOpen(!isModalOpen);
+    window.location.href = "https://reserver-simplement.fr/resa-externe";
   };
   const closeModale = () => {
     setIsModalOpen(false);
   };
+
   return (
     <>
       <ModalReservation isOpen={isModalOpen} onClose={closeModale} />
