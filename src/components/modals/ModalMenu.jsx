@@ -11,6 +11,11 @@ const ModalMenu = ({ isOpen, onClose, resaModal }) => {
     skip: !isOpen,
   });
 
+  const handleClick = () => {
+    //setIsModalOpen(!isModalOpen);
+    window.location.href = "https://reserver-simplement.fr/resa-externe";
+  };
+
   useEffect(() => {
     // Si vous souhaitez toujours mettre à jour le store Redux avec les dernières données
     if (isOpen && isSuccess && menuSemaine) {
@@ -101,7 +106,7 @@ const ModalMenu = ({ isOpen, onClose, resaModal }) => {
           </span>
           <button
             className="px-5 py-2 border-solid border-black border-2 mt-5 mb-5 xl:text-xl lg:xl:text-xl md:xl:text-xl sm:text-sm rounded-md"
-            onClick={resaModal}
+            onClick={handleClick}
           >
             Réserver en ligne
           </button>
