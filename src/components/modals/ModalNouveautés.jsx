@@ -1,7 +1,6 @@
 import React from "react";
 import Modal from "react-modal";
 import { motion } from "framer-motion";
-import { NavLink } from "react-router-dom";
 
 const ModalNouveautés = ({ isOpen, onClose, resaModal }) => {
   return (
