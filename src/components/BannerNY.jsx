@@ -23,7 +23,9 @@ const BannerNy = () => {
     if (ref.current) {
       observer.observe(ref.current);
     }
+    // eslint-disable-next-line
     return () => {
+      // eslint-disable-next-line
       if (ref.current) observer.unobserve(ref.current);
     };
   }, []);
