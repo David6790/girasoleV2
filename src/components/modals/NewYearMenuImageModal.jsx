@@ -11,7 +11,7 @@ const NewYearMenuImageModal = ({ isOpen, onClose }) => {
       <div className="fixed inset-0 bg-gray-900 bg-opacity-70 z-40"></div>
 
       {/* Modal Container */}
-      <div className="relative z-50 w-full max-w-3xl h-auto max-h-[90vh] bg-white rounded-lg shadow-lg p-6 flex flex-col items-center justify-center">
+      <div className="relative z-50 w-full max-w-5xl h-auto max-h-[95vh] bg-white rounded-lg shadow-lg p-8 flex flex-col items-center justify-center">
         {/* Close Button */}
         <button
           onClick={onClose}
@@ -25,7 +25,7 @@ const NewYearMenuImageModal = ({ isOpen, onClose }) => {
           <img
             src="/img/newYear.png"
             alt="Menu Nouvel An"
-            className="w-auto h-auto max-w-full max-h-[80vh] object-contain p-4"
+            className="w-auto h-auto max-w-full max-h-[90vh] object-contain"
           />
         </div>
       </div>
