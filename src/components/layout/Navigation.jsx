@@ -61,7 +61,7 @@ const Navigation = () => {
         onClose={handleCloseMenuModal}
         resaModal={handleResa2}
       />
-      <ul className=" h-full flex-row justify-end  items-center xl:flex lg:flex md:hidden sm:hidden hidden">
+      <ul className=" h-full flex-row justify-end  items-center xl:flex lg:flex md:hidden sm:hidden hidden z-50">
         <NavLink
           to="/"
           className={(nav) => (nav.isActive ? " text-my-gold" : " text-black")}
@@ -71,7 +71,7 @@ const Navigation = () => {
         <li className="ml-20 relative">
           <button onClick={toggleDropdown}>Nos cartes</button>
           {isDropdownOpen && (
-            <div className="absolute top-full w-[200px] mt-1 bg-white shadow-md rounded-md">
+            <div className="absolute top-full w-[200px] mt-1 bg-white shadow-md rounded-md z-50">
               <NavLink
                 to="/menu"
                 className={(nav) =>

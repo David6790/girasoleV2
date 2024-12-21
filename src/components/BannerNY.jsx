@@ -74,10 +74,6 @@ const BannerNy = () => {
             -La trattoria revisitée-
           </h2>
           <ButtonResa />
-          <p className="mt-6 text-gray-700">
-            Ou par SMS au :{" "}
-            <span className="font-semibold">06.26.19.10.28</span>
-          </p>
         </div>
       </div>
       <NewYearMenuImageModal isOpen={isModalOpen} onClose={handleCloseModal} />
