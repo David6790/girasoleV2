@@ -1,0 +1,42 @@
+[
+  {
+    "type": "Semaine du:",
+    "info1": "24/02/2025",
+    "info2": "28/02/2025"
+  },
+  {
+    "type": "Lundi",
+    "info1": "Jambon de parme roquette et tomates cerises",
+    "info2": "Risotto à la crème de chorizo et buratta"
+  },
+  {
+    "type": "Mardi",
+    "info1": "Salade composée",
+    "info2": "Ragoût de viande aux petits pois et pommes de terre, carottes"
+  },
+  {
+    "type": "Mercredi",
+    "info1": "Focaccia de pommes de terre à la caprèse",
+    "info2": "Escalope de poulet grillée, sauce pizzaoila"
+  },
+  {
+    "type": "Jeudi",
+    "info1": "Bruschetta à la mozzarella et oeuf poché",
+    "info2": "Linguini alla puttanesca"
+  },
+  {
+    "type": "Vendredi",
+    "info1": "Crevettes à la catalane",
+    "info2": "Boulettes de poissons, aux épinards et ricotta"
+  },
+  {
+    "type": "Dessert:",
+    "info1": "Verrine de framboise spéculoos et crème légère",
+    "info2": ""
+  },
+  {
+    "type": "Cheesecake:",
+    "info1": "Au pistache et café",
+    "info2": ""
+  }
+]

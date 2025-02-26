@@ -1,27 +1,35 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
-import { useGetWeeklyMenusQuery } from "../../API/api"; // Assurez-vous que le chemin d'import est correct
-import { setWeeklyMenus } from "../../features/menuSlice"; // Importez l'action Redux si vous souhaitez toujours mettre à jour le store
+import { setWeeklyMenus } from "../../features/menuSlice";
 
 const ModalMenu = ({ isOpen, onClose, resaModal }) => {
   const dispatch = useDispatch();
-  const { data: menuSemaine, isSuccess } = useGetWeeklyMenusQuery(undefined, {
-    skip: !isOpen,
-  });
+
+  // On remplace la logique "menuSemaine" de l'API par un state local
+  const [menuSemaine, setMenuSemaine] = useState([]);
 
   const handleClick = () => {
-    //setIsModalOpen(!isModalOpen);
     window.location.href = "https://reserver-simplement.fr/resa-externe";
   };
 
   useEffect(() => {
-    // Si vous souhaitez toujours mettre à jour le store Redux avec les dernières données
-    if (isOpen && isSuccess && menuSemaine) {
-      dispatch(setWeeklyMenus(menuSemaine));
+    // Ne charger le JSON que si la modal est ouverte, par exemple
+    if (isOpen) {
+      fetch("/weeklyMenus.json")
+        .then((response) => response.json())
+        .then((data) => {
+          setMenuSemaine(data);
+
+          // Si vous souhaitez toujours mettre à jour le store Redux :
+          dispatch(setWeeklyMenus(data));
+        })
+        .catch((error) => {
+          console.error("Erreur lors du fetch du menu:", error);
+        });
     }
-  }, [isOpen, menuSemaine, isSuccess, dispatch]);
+  }, [isOpen, dispatch]);
 
   return (
     <Modal
@@ -32,74 +40,71 @@ const ModalMenu = ({ isOpen, onClose, resaModal }) => {
     >
       <motion.div
         className="w-full h-full flex justify-center items-center "
-        initial={{
-          opacity: 0,
-        }}
+        initial={{ opacity: 0 }}
         animate={{
           opacity: 1,
-
-          transition: {
-            ease: "easeOut",
-            duration: 0.75,
-          },
+          transition: { ease: "easeOut", duration: 0.75 },
         }}
         exit={{
           opacity: 0,
-
-          transition: {
-            ease: "easeIn",
-            duration: 0.75,
-          },
+          transition: { ease: "easeIn", duration: 0.75 },
         }}
       >
         <div className="h-auto w-[100%] flex flex-col justify-center items-center bg-myGrey rounded-3xl ">
+          {/* Affichage de la semaine (ligne 0 du JSON) */}
           <div className=" font-semibold mb-5">
-            Semaine du {menuSemaine ? menuSemaine[0].info1 : ""} au{" "}
-            {menuSemaine ? menuSemaine[0].info2 : ""}
+            Semaine du {menuSemaine.length > 0 ? menuSemaine[0].info1 : ""} au{" "}
+            {menuSemaine.length > 0 ? menuSemaine[0].info2 : ""}
           </div>
-          {menuSemaine
-            ? menuSemaine
-                .filter(
-                  (item) =>
-                    item.type !== "Semaine du:" &&
-                    item.type !== "Dessert: " &&
-                    item.type !== "CheeseCake"
-                )
-                .map((menu, index) => (
-                  <div
-                    key={index}
-                    className="w-full flex flex-col justify-center items-center xl:mb-2 lg:mb-2  text-center mb-2 "
-                  >
-                    <h1 className=" xl:text-2xl lg:text-2xl md:text-xl sm:text-lg text-base font-title-font text-my-gold mb-1">
-                      {menu.type}
-                    </h1>
-                    <p className="xl:text-base lg:text-base md:text-base sm:text-sm text-xs">
-                      <span className=" font-bold">Entrée: </span>
-                      <span>{menu.info1}</span>
-                    </p>
-                    <p className="xl:text-base lg:text-base md:text-base sm:text-sm text-xs">
-                      <span className=" font-bold">Plat: </span>
-                      <span>{menu.info2}</span>
-                    </p>
-                  </div>
-                ))
-            : ""}
-          <div>
-            <p className=" text-my-gold xl:text-base lg:text-base md:text-base sm:text-sm text-xs text-center mt-2">
-              <span className=" font-bold font-title-font ">
-                Dessert de la semaine :
-              </span>
-              <span className="text-black">
-                {menuSemaine ? menuSemaine[menuSemaine.length - 2].info1 : ""}
-              </span>
-              <br></br>
-              <span>CheeseCake de la semaine : </span>
-              <span className="text-black">
-                {menuSemaine ? menuSemaine[menuSemaine.length - 1].info1 : ""}
-              </span>
-              <br />
-            </p>
-          </div>
+
+          {/* On filtre les items pour exclure la ligne "Semaine du:", "Dessert:", et "CheeseCake" */}
+          {menuSemaine.length > 0 &&
+            menuSemaine
+              .filter(
+                (item) =>
+                  item.type !== "Semaine du:" &&
+                  item.type !== "Dessert:" &&
+                  item.type !== "CheeseCake"
+              )
+              .map((menu, index) => (
+                <div
+                  key={index}
+                  className="w-full flex flex-col justify-center items-center xl:mb-2 lg:mb-2  text-center mb-2 "
+                >
+                  <h1 className=" xl:text-2xl lg:text-2xl md:text-xl sm:text-lg text-base font-title-font text-my-gold mb-1">
+                    {menu.type}
+                  </h1>
+                  <p className="xl:text-base lg:text-base md:text-base sm:text-sm text-xs">
+                    <span className=" font-bold">Entrée: </span>
+                    <span>{menu.info1}</span>
+                  </p>
+                  <p className="xl:text-base lg:text-base md:text-base sm:text-sm text-xs">
+                    <span className=" font-bold">Plat: </span>
+                    <span>{menu.info2}</span>
+                  </p>
+                </div>
+              ))}
+
+          {/* Dessert et Cheesecake (on suppose qu’ils sont les deux derniers éléments du JSON) */}
+          {menuSemaine.length > 2 && (
+            <div>
+              <p className=" text-my-gold xl:text-base lg:text-base md:text-base sm:text-sm text-xs text-center mt-2">
+                <span className=" font-bold font-title-font ">
+                  Dessert de la semaine :
+                </span>{" "}
+                <span className="text-black">
+                  {menuSemaine[menuSemaine.length - 2].info1}
+                </span>
+                <br />
+                <span>CheeseCake de la semaine : </span>
+                <span className="text-black">
+                  {menuSemaine[menuSemaine.length - 1].info1}
+                </span>
+                <br />
+              </p>
+            </div>
+          )}
+
           <span className="mt-5 text-my-gold text-center text-xs">
             ENTREE-PLAT-DESSERT : 15.00 € || ENTREE-PLAT (ou PLAT-DESSERT) :
             13.00 € || PLAT SEUL : 11.00 €{" "}
