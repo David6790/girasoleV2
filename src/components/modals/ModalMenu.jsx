@@ -6,8 +6,6 @@ import { setWeeklyMenus } from "../../features/menuSlice";
 
 const ModalMenu = ({ isOpen, onClose, resaModal }) => {
   const dispatch = useDispatch();
-
-  // On remplace la logique "menuSemaine" de l'API par un state local
   const [menuSemaine, setMenuSemaine] = useState([]);
 
   const handleClick = () => {
@@ -15,14 +13,11 @@ const ModalMenu = ({ isOpen, onClose, resaModal }) => {
   };
 
   useEffect(() => {
-    // Ne charger le JSON que si la modal est ouverte, par exemple
     if (isOpen) {
       fetch("/weeklyMenus.json")
         .then((response) => response.json())
         .then((data) => {
           setMenuSemaine(data);
-
-          // Si vous souhaitez toujours mettre à jour le store Redux :
           dispatch(setWeeklyMenus(data));
         })
         .catch((error) => {
@@ -35,7 +30,7 @@ const ModalMenu = ({ isOpen, onClose, resaModal }) => {
     <Modal
       isOpen={isOpen}
       onRequestClose={onClose}
-      className=" p-4  shadow-lg xl:w-[60%] lg:w-[60%] md:w-[60%] sm:w-[60%] w-[80%]   h-auto rounded-2xl  bg-white overflow-scroll "
+      className=" p-4  shadow-lg xl:w-[60%] lg:w-[60%] md:w-[60%] sm:w-[60%] w-[80%] h-auto rounded-2xl bg-white overflow-scroll "
       overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
     >
       <motion.div
@@ -57,46 +52,46 @@ const ModalMenu = ({ isOpen, onClose, resaModal }) => {
             {menuSemaine.length > 0 ? menuSemaine[0].info2 : ""}
           </div>
 
-          {/* On filtre les items pour exclure la ligne "Semaine du:", "Dessert:", et "CheeseCake" */}
+          {/* On affiche les jours de la semaine en excluant "Semaine du:", "Dessert:" et "Cheesecake:" */}
           {menuSemaine.length > 0 &&
             menuSemaine
               .filter(
                 (item) =>
                   item.type !== "Semaine du:" &&
                   item.type !== "Dessert:" &&
-                  item.type !== "CheeseCake"
+                  item.type !== "Cheesecake:"
               )
               .map((menu, index) => (
                 <div
                   key={index}
-                  className="w-full flex flex-col justify-center items-center xl:mb-2 lg:mb-2  text-center mb-2 "
+                  className="w-full flex flex-col justify-center items-center xl:mb-2 lg:mb-2 text-center mb-2 "
                 >
-                  <h1 className=" xl:text-2xl lg:text-2xl md:text-xl sm:text-lg text-base font-title-font text-my-gold mb-1">
+                  <h1 className="xl:text-2xl lg:text-2xl md:text-xl sm:text-lg text-base font-title-font text-my-gold mb-1">
                     {menu.type}
                   </h1>
                   <p className="xl:text-base lg:text-base md:text-base sm:text-sm text-xs">
-                    <span className=" font-bold">Entrée: </span>
+                    <span className="font-bold">Entrée: </span>
                     <span>{menu.info1}</span>
                   </p>
                   <p className="xl:text-base lg:text-base md:text-base sm:text-sm text-xs">
-                    <span className=" font-bold">Plat: </span>
+                    <span className="font-bold">Plat: </span>
                     <span>{menu.info2}</span>
                   </p>
                 </div>
               ))}
 
-          {/* Dessert et Cheesecake (on suppose qu’ils sont les deux derniers éléments du JSON) */}
+          {/* Affichage du bloc récapitulatif pour le Dessert et le Cheesecake de la semaine */}
           {menuSemaine.length > 2 && (
             <div>
-              <p className=" text-my-gold xl:text-base lg:text-base md:text-base sm:text-sm text-xs text-center mt-2">
-                <span className=" font-bold font-title-font ">
+              <p className="text-my-gold xl:text-base lg:text-base md:text-base sm:text-sm text-xs text-center mt-2">
+                <span className="font-bold font-title-font ">
                   Dessert de la semaine :
                 </span>{" "}
                 <span className="text-black">
                   {menuSemaine[menuSemaine.length - 2].info1}
                 </span>
                 <br />
-                <span>CheeseCake de la semaine : </span>
+                <span>Cheesecake de la semaine : </span>
                 <span className="text-black">
                   {menuSemaine[menuSemaine.length - 1].info1}
                 </span>
@@ -107,7 +102,7 @@ const ModalMenu = ({ isOpen, onClose, resaModal }) => {
 
           <span className="mt-5 text-my-gold text-center text-xs">
             ENTREE-PLAT-DESSERT : 15.00 € || ENTREE-PLAT (ou PLAT-DESSERT) :
-            13.00 € || PLAT SEUL : 11.00 €{" "}
+            13.00 € || PLAT SEUL : 11.00 €
           </span>
           <button
             className="px-5 py-2 border-solid border-black border-2 mt-5 mb-5 xl:text-xl lg:xl:text-xl md:xl:text-xl sm:text-sm rounded-md"
