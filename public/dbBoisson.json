@@ -1,0 +1,157 @@
+{
+  "boissons": [
+    {
+      "category": "Café & Infusions",
+      "items": [
+        { "name": "Expresso", "price": "2,30 €" },
+        { "name": "Ristretto", "price": "2,30 €" },
+        { "name": "Rallongé", "price": "2,30 €" },
+        { "name": "Double Expresso", "price": "4,10 €" },
+        { "name": "Expresso Macchiato", "price": "2,80 €" },
+        { "name": "Latte Macchiato", "price": "4,20 €" },
+        { "name": "Cappuccino", "price": "4,20 €" },
+        { "name": "Decaffeinato", "price": "2,50 €" },
+        { "name": "Café au lait", "price": "3,80 €" },
+        { "name": "Chocolat chaud", "price": "4,00 €" },
+        { "name": "Thé ou Infusion - kusmitea", "price": "4,00 €" }
+      ]
+    },
+    {
+      "category": "DIGESTIFS",
+      "items": [
+        { "name": "Vodka", "price": "7,00 €" },
+        { "name": "Limoncello", "price": "6,00 €" },
+        { "name": "Sambuca", "price": "7,00 €" },
+        { "name": "Amaretto", "price": "7,00 €" },
+        { "name": "Grappa blanche", "price": "7,00 €" },
+        { "name": "Grappa XO", "price": "9,00 €" }
+      ]
+    },
+    {
+      "category": "WHISKY",
+      "items": [
+        { "name": "Cardhu Single Malt - 12 ans - 4 cl", "price": "8,50 €" },
+        { "name": "Lagavulin Single Malt - 16 ans - 4 cl", "price": "11,00 €" }
+      ]
+    },
+    {
+      "category": "RHUM",
+      "items": [
+        { "name": "Rhum - Zacapa - 4cl", "price": "9,50 €" },
+        { "name": "Rhum - Don papa - 4cl", "price": "8,50 €" },
+        { "name": "Rhum - Diplomatico - 4cl", "price": "8,50 €" },
+        { "name": "Rhum - Plantation 10 ans Barbade - 4cl", "price": "11,00 €" }
+      ]
+    },
+    {
+      "category": "BOISSONS FRAÎCHES",
+      "items": [
+        {
+          "name": "Eau plate - Vittel - 50 cl",
+          "price": "3,80 €",
+          "alternative": { "name": "1 litre", "price": "6,80 €" }
+        },
+        {
+          "name": "Eau gazeuse - San Pellegrino - 50 cl",
+          "price": "3,80 €",
+          "alternative": { "name": "1 litre", "price": "6,80 €" }
+        },
+        { "name": "Perrier 33cl", "price": "3,80 €" },
+        { "name": "Sirop à l’eau", "price": "2,80 €" },
+        { "name": "Diabolo", "price": "3,00 €" },
+        { "name": "Coca - Coca zéro - Fanta - Sprite 33cl", "price": "4,00 €" },
+        { "name": "Orangina, Schweppes tonic 25 cl", "price": "4,00 €" },
+        {
+          "name": "Jus de fruits: Pomme, Ananas, Orange, Abricot ou Tomate 25cl",
+          "price": "4,00 €"
+        },
+        { "name": "Fuze Tea 25 cl", "price": "4,00 €" },
+        { "name": "Citronnade", "price": "2,80 €" }
+      ]
+    },
+    {
+      "category": "BIÈRES PRESSIONS",
+      "items": [
+        {
+          "name": "Tigre Bock blonde 25 cl",
+          "price": "4,00 €",
+          "alternatives": [
+            { "name": "33 cl", "price": "4,70 €" },
+            { "name": "50 cl", "price": "6,20 €" }
+          ]
+        },
+        {
+          "name": "Bière du moment 25 cl",
+          "price": "4,20 €",
+          "alternatives": [
+            { "name": "33 cl", "price": "5,00 €" },
+            { "name": "50 cl", "price": "6,60 €" }
+          ]
+        },
+        {
+          "name": "Poretti (italienne légère) 25 cl",
+          "price": "4,00 €",
+          "alternatives": [
+            { "name": "33 cl", "price": "4,70 €" },
+            { "name": "50 cl", "price": "6,40 €" }
+          ]
+        },
+        {
+          "name": "Panaché 25 cl",
+          "price": "4,00 €",
+          "alternatives": [
+            { "name": "33 cl", "price": "4,70 €" },
+            { "name": "50 cl", "price": "6,40 €" }
+          ]
+        },
+        {
+          "name": "Picon bière 25 cl",
+          "price": "4,70 €",
+          "alternatives": [
+            { "name": "33 cl", "price": "5,70 €" },
+            { "name": "50 cl", "price": "6,80 €" }
+          ]
+        },
+        {
+          "name": "Monaco 25 cl",
+          "price": "4,00 €",
+          "alternatives": [
+            { "name": "33 cl", "price": "4,70 €" },
+            { "name": "50 cl", "price": "6,20 €" }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "APÉRITIF",
+      "items": [
+        {
+          "name": "Rhum Girasole",
+          "price": "9,00 €",
+          "description": "Fruits rouges, rhum, prosecco"
+        },
+        { "name": "Kir vin blanc", "price": "6,30 €" },
+        { "name": "Kir royal", "price": "13,00 €" },
+        { "name": "Prosecco", "price": "6,50 €" },
+        { "name": "Moscato", "price": "6,50 €" },
+        { "name": "Martini rosso ou blanco", "price": "6,50 €" },
+        {
+          "name": "Champagne - la coupe",
+          "price": "13,00 €",
+          "alternatives": [
+            { "name": "la bouteille 25cl", "price": "25,00 €" },
+            { "name": "la bouteille 37,5cl", "price": "33,00 €" },
+            { "name": "la bouteille 75cl", "price": "75,00 €" }
+          ]
+        },
+        { "name": "Campari", "price": "7,20 €" },
+        { "name": "Campari d’orange", "price": "7,50 €" },
+        {
+          "name": "RIcard",
+          "price": "5,00 €",
+          "description": "nature, tomate, perroquet, mauresque"
+        }
+      ]
+    }
+  ]
+}

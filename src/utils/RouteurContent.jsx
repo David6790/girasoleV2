@@ -15,6 +15,7 @@ import MentionLegales from "../page/MentionLegales";
 import RecapResa from "../page/RecapResa";
 import Dashboard from "../page/Dashboard";
 import RecapCuisine from "../page/RecapCuisine";
+import MenuPage from "../page/MenuPage";
 
 const RouteurContent = () => {
   // eslint-disable-next-line
@@ -71,6 +72,7 @@ const RouteurContent = () => {
         <Route path="/recap" element={<RecapResa />} />
         <Route path="/kitchen-2" element={<RecapCuisine />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/urgence" element={<MenuPage />} />
       </Routes>
     </>
   );

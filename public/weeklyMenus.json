@@ -1,42 +1,42 @@
 [
   {
     "type": "Semaine du:",
-    "info1": "24/02/2025",
-    "info2": "28/02/2025"
+    "info1": "03/03",
+    "info2": "07/03"
   },
   {
     "type": "Lundi",
-    "info1": "Jambon de parme roquette et tomates cerises",
-    "info2": "Risotto à la crème de chorizo et buratta"
+    "info1": "Crostinis au fromage de chèvre, pesto et poivrons rôtis",
+    "info2": "Risotto à la Puttanesca et panchetta"
   },
   {
     "type": "Mardi",
-    "info1": "Salade composée",
-    "info2": "Ragoût de viande aux petits pois et pommes de terre, carottes"
+    "info1": "Soupe de légumes d’hiver",
+    "info2": "Escalope de poulet farcie aux épinards, fromage et patate della nona"
   },
   {
     "type": "Mercredi",
-    "info1": "Focaccia de pommes de terre à la caprèse",
-    "info2": "Escalope de poulet grillée, sauce pizzaoila"
+    "info1": "Brusquette à la mozzarella et chiffonnades de parme",
+    "info2": "Steak de boeuf et pasta, sauce au gorgonzola"
   },
   {
     "type": "Jeudi",
-    "info1": "Bruschetta à la mozzarella et oeuf poché",
-    "info2": "Linguini alla puttanesca"
+    "info1": "Carpaccio de tomate façon caprèse",
+    "info2": "Raviolis farcie aux champignons, salsa Napoli à la truffe"
   },
   {
     "type": "Vendredi",
-    "info1": "Crevettes à la catalane",
-    "info2": "Boulettes de poissons, aux épinards et ricotta"
+    "info1": "Taosts au saumon fumé et fromage de chèvre",
+    "info2": "Filet de cabillaud sauce pêcheur, légumes grillés et salade"
   },
   {
     "type": "Dessert:",
-    "info1": "Verrine de framboise spéculoos et crème légère",
+    "info1": "Tarte au citron",
     "info2": ""
   },
   {
     "type": "Cheesecake:",
-    "info1": "Au pistache et café",
+    "info1": "A la framboise",
     "info2": ""
   }
 ]
