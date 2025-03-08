@@ -1,42 +1,42 @@
 [
   {
     "type": "Semaine du:",
-    "info1": "03/03",
-    "info2": "07/03"
+    "info1": "10/03",
+    "info2": "14/03/25"
   },
   {
     "type": "Lundi",
-    "info1": "Crostinis au fromage de chèvre, pesto et poivrons rôtis",
-    "info2": "Risotto à la Puttanesca et panchetta"
+    "info1": "Salade grècque à la mozzarella",
+    "info2": "Gratin de penné à la bolognaise, petit pois, jambon, et crème"
   },
   {
     "type": "Mardi",
-    "info1": "Soupe de légumes d’hiver",
-    "info2": "Escalope de poulet farcie aux épinards, fromage et patate della nona"
+    "info1": "Quiche au fromage de chèvre et épinards",
+    "info2": "Escalope de poulet Milanaise et pommes de terre della nona"
   },
   {
     "type": "Mercredi",
-    "info1": "Brusquette à la mozzarella et chiffonnades de parme",
-    "info2": "Steak de boeuf et pasta, sauce au gorgonzola"
+    "info1": "Soupe di pomodoro",
+    "info2": "Osso-bucco et risotto safrané"
   },
   {
     "type": "Jeudi",
-    "info1": "Carpaccio de tomate façon caprèse",
-    "info2": "Raviolis farcie aux champignons, salsa Napoli à la truffe"
+    "info1": "Carpaccio de boeuf et sa marinade aux artichauts, ail, et citrons",
+    "info2": "Gnocchis sauce trufféé et mozzarella di buffala"
   },
   {
     "type": "Vendredi",
-    "info1": "Taosts au saumon fumé et fromage de chèvre",
-    "info2": "Filet de cabillaud sauce pêcheur, légumes grillés et salade"
+    "info1": "Taosts à la mozzarella et crevettes grillées",
+    "info2": "Pasta mare monte"
   },
   {
     "type": "Dessert:",
-    "info1": "Tarte au citron",
+    "info1": "Moêlleux au chocolat",
     "info2": ""
   },
   {
     "type": "Cheesecake:",
-    "info1": "A la framboise",
+    "info1": "Oréo",
     "info2": ""
   }
 ]
