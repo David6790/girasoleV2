@@ -1,42 +1,42 @@
 [
   {
     "type": "Semaine du:",
-    "info1": "17/03",
-    "info2": "21/03/25"
+    "info1": "2/03",
+    "info2": "28/03/25"
   },
   {
     "type": "Lundi",
-    "info1": "Salade de burrata, prosciutto et roquette",
-    "info2": "Risotto au saumon et mascarpone"
+    "info1": "Salade de chèvre chaud",
+    "info2": "Tortillini à la sauce tomate crémeuse et émincé de poulet"
   },
   {
     "type": "Mardi",
-    "info1": "Feuilleté aux épinards et fromage de chèvre",
-    "info2": "Emincé de poulet sauce crémeuse au curry, et lait de coco"
+    "info1": "Soupe à la tomate, au thym, et fromage",
+    "info2": "Escalope de veau et pasta sauce crème et champignons"
   },
   {
     "type": "Mercredi",
-    "info1": "Velouté aux légumes de saison",
-    "info2": "Steak de bœuf, salade et pommes de terre della nona"
+    "info1": "Bruschetta aux poivrons grillés, chèvre et prosciutto",
+    "info2": "Burger aux saveurs Italiennes, pommes de terre et salade"
   },
   {
     "type": "Jeudi",
-    "info1": "Brownies à la carotte, chèvre et noix",
-    "info2": "Penné à la sauce tomate, olives Italienne et parmesan"
+    "info1": "Quiche aux épinards, champignons et fromage",
+    "info2": "Gnocchis de pommes de terre au pesto et burrata"
   },
   {
     "type": "Vendredi",
-    "info1": "Bruschetta al tonno et mozzarella",
-    "info2": "Mahi-mahi en croûte d’herbes et légumes grillés"
+    "info1": "Toasts au saumon fumé et ricotta",
+    "info2": "Lasagne de poisson à la méditerranéenne et salade"
   },
   {
     "type": "Dessert:",
-    "info1": "Tarte bourdalous",
+    "info1": "Salade de fruits",
     "info2": ""
   },
   {
     "type": "Cheesecake:",
-    "info1": "Oréo",
+    "info1": "Aux spéculoos",
     "info2": ""
   }
 ]
