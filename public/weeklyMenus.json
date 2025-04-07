@@ -1,42 +1,42 @@
 [
   {
     "type": "Semaine du:",
-    "info1": "2/03",
-    "info2": "28/03/25"
+    "info1": "07/04",
+    "info2": "11/04/25"
   },
   {
     "type": "Lundi",
-    "info1": "Salade de chèvre chaud",
-    "info2": "Tortillini à la sauce tomate crémeuse et émincé de poulet"
+    "info1": "Tartare de bœuf",
+    "info2": "Pasta girasoli farcie, sauce tomate à la truffe et ricottta"
   },
   {
     "type": "Mardi",
-    "info1": "Soupe à la tomate, au thym, et fromage",
-    "info2": "Escalope de veau et pasta sauce crème et champignons"
+    "info1": "Salade de Panzanella (salade Toscane)",
+    "info2": "Brochettes de boeuf, frites maison et salade"
   },
   {
     "type": "Mercredi",
-    "info1": "Bruschetta aux poivrons grillés, chèvre et prosciutto",
-    "info2": "Burger aux saveurs Italiennes, pommes de terre et salade"
+    "info1": "Toasts de crème de feta à la betterave",
+    "info2": "Saltimbocca alla Romana et linguines"
   },
   {
     "type": "Jeudi",
-    "info1": "Quiche aux épinards, champignons et fromage",
-    "info2": "Gnocchis de pommes de terre au pesto et burrata"
+    "info1": "Salade de poulet à la mexicaine",
+    "info2": "Gnocchis alla Sorrentina"
   },
   {
     "type": "Vendredi",
-    "info1": "Toasts au saumon fumé et ricotta",
-    "info2": "Lasagne de poisson à la méditerranéenne et salade"
+    "info1": "Saumon gravlax",
+    "info2": "Filet de sole à la provençale et son risotto"
   },
   {
     "type": "Dessert:",
-    "info1": "Salade de fruits",
+    "info1": "Mousse de mascarpone à la fraise",
     "info2": ""
   },
   {
     "type": "Cheesecake:",
-    "info1": "Aux spéculoos",
+    "info1": "Aux Framboises",
     "info2": ""
   }
 ]
