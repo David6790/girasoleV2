@@ -1,42 +1,42 @@
 [
   {
     "type": "Semaine du:",
-    "info1": "07/04",
-    "info2": "11/04/25"
+    "info1": "14/04",
+    "info2": "18/04/25"
   },
   {
     "type": "Lundi",
-    "info1": "Tartare de bœuf",
-    "info2": "Pasta girasoli farcie, sauce tomate à la truffe et ricottta"
+    "info1": "Quiche au thon et féta",
+    "info2": "Gnocchis à la bolognaise et ricotta"
   },
   {
     "type": "Mardi",
-    "info1": "Salade de Panzanella (salade Toscane)",
-    "info2": "Brochettes de boeuf, frites maison et salade"
+    "info1": "Roulade d’aubergine à la charcuterie Italienne et fromage",
+    "info2": "Emincé de veau au curry et linguines"
   },
   {
     "type": "Mercredi",
-    "info1": "Toasts de crème de feta à la betterave",
-    "info2": "Saltimbocca alla Romana et linguines"
+    "info1": "Toasts et charcuterie Italienne",
+    "info2": "Puttelo tonnato et salade"
   },
   {
     "type": "Jeudi",
-    "info1": "Salade de poulet à la mexicaine",
-    "info2": "Gnocchis alla Sorrentina"
+    "info1": "Mini pizza sicilienne",
+    "info2": "Raviolis farcis sauce au pesto"
   },
   {
     "type": "Vendredi",
-    "info1": "Saumon gravlax",
-    "info2": "Filet de sole à la provençale et son risotto"
+    "info1": "Avocat et crevettes grillées",
+    "info2": "Filet de colin à la méditerranéenne et son risotto"
   },
   {
     "type": "Dessert:",
-    "info1": "Mousse de mascarpone à la fraise",
+    "info1": "Moelleux au chocolat",
     "info2": ""
   },
   {
     "type": "Cheesecake:",
-    "info1": "Aux Framboises",
+    "info1": "A la fraise",
     "info2": ""
   }
 ]
