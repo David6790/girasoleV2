@@ -1,42 +1,42 @@
 [
   {
     "type": "Semaine du:",
-    "info1": "14/04",
-    "info2": "18/04/25"
+    "info1": "22/04",
+    "info2": "25/04/25"
   },
   {
     "type": "Lundi",
-    "info1": "Quiche au thon et féta",
-    "info2": "Gnocchis à la bolognaise et ricotta"
+    "info1": "Ferrié",
+    "info2": ""
   },
   {
     "type": "Mardi",
-    "info1": "Roulade d’aubergine à la charcuterie Italienne et fromage",
-    "info2": "Emincé de veau au curry et linguines"
+    "info1": "Carpaccio de tomate roquette et burrata",
+    "info2": "Escalope de veau sauce moutarde et pasta"
   },
   {
     "type": "Mercredi",
-    "info1": "Toasts et charcuterie Italienne",
-    "info2": "Puttelo tonnato et salade"
+    "info1": "Salade grecque croustillante à la féta",
+    "info2": "Brochettes de poulet marinés et pommes de terre della nona"
   },
   {
     "type": "Jeudi",
-    "info1": "Mini pizza sicilienne",
-    "info2": "Raviolis farcis sauce au pesto"
+    "info1": "Cocktail de toasts gratinée au fromage (chèvre, gorgonzola, parmesan)",
+    "info2": "Ravioli farcie au saumon et sa sauce pêcheur"
   },
   {
     "type": "Vendredi",
-    "info1": "Avocat et crevettes grillées",
+    "info1": "Salade de crevettes grillées",
     "info2": "Filet de colin à la méditerranéenne et son risotto"
   },
   {
     "type": "Dessert:",
-    "info1": "Moelleux au chocolat",
+    "info1": "Mousse au citron",
     "info2": ""
   },
   {
     "type": "Cheesecake:",
-    "info1": "A la fraise",
+    "info1": "Oréo et chocolat blanc",
     "info2": ""
   }
 ]
