@@ -1,42 +1,42 @@
 [
   {
     "type": "Semaine du:",
-    "info1": "22/04",
-    "info2": "25/04/25"
+    "info1": "28/04",
+    "info2": "02/05/25"
   },
   {
     "type": "Lundi",
-    "info1": "Ferrié",
-    "info2": ""
+    "info1": "Tartare de boeuf",
+    "info2": "Raviolis facies sauce Napoli et parmesan"
   },
   {
     "type": "Mardi",
-    "info1": "Carpaccio de tomate roquette et burrata",
-    "info2": "Escalope de veau sauce moutarde et pasta"
+    "info1": "Salade Niçoise",
+    "info2": "Bœuf sauce aux poivres vert et pommes de terre maison"
   },
   {
     "type": "Mercredi",
-    "info1": "Salade grecque croustillante à la féta",
-    "info2": "Brochettes de poulet marinés et pommes de terre della nona"
+    "info1": "Bruschetta caprèse",
+    "info2": "Escalope de poulet sauce au curry et pasta"
   },
   {
     "type": "Jeudi",
-    "info1": "Cocktail de toasts gratinée au fromage (chèvre, gorgonzola, parmesan)",
-    "info2": "Ravioli farcie au saumon et sa sauce pêcheur"
+    "info1": "Fermé",
+    "info2": ""
   },
   {
     "type": "Vendredi",
-    "info1": "Salade de crevettes grillées",
-    "info2": "Filet de colin à la méditerranéenne et son risotto"
+    "info1": "Toasts à la ricotta et saumon fumé",
+    "info2": "Lasagne au deux poissons (saumon et colin) aux poireaux et épinards"
   },
   {
     "type": "Dessert:",
-    "info1": "Mousse au citron",
+    "info1": "Tiramisu aux fruits",
     "info2": ""
   },
   {
     "type": "Cheesecake:",
-    "info1": "Oréo et chocolat blanc",
+    "info1": "Aux spéculoos",
     "info2": ""
   }
 ]
