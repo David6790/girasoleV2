@@ -1,42 +1,42 @@
 [
   {
     "type": "Semaine du:",
-    "info1": "28/04",
-    "info2": "02/05/25"
+    "info1": "05/05/25",
+    "info2": "09/05/25"
   },
   {
     "type": "Lundi",
-    "info1": "Tartare de boeuf",
-    "info2": "Raviolis facies sauce Napoli et parmesan"
+    "info1": "Salade de tomates, olives et féta",
+    "info2": "Piccata de veau et linguines sauce moutarde"
   },
   {
     "type": "Mardi",
-    "info1": "Salade Niçoise",
-    "info2": "Bœuf sauce aux poivres vert et pommes de terre maison"
+    "info1": "Charcuterie italienne",
+    "info2": "Penné à la crème de poivrons et burrata"
   },
   {
     "type": "Mercredi",
-    "info1": "Bruschetta caprèse",
-    "info2": "Escalope de poulet sauce au curry et pasta"
+    "info1": "Involtini d’aubergine, et fromage italien",
+    "info2": "Brochettes de poulet marinées et pommes de terre della nona"
   },
   {
     "type": "Jeudi",
-    "info1": "Fermé",
+    "info1": "Ferrié : Restaurant ouvert midi et soir",
     "info2": ""
   },
   {
     "type": "Vendredi",
-    "info1": "Toasts à la ricotta et saumon fumé",
-    "info2": "Lasagne au deux poissons (saumon et colin) aux poireaux et épinards"
+    "info1": "Dôme au saumon fumé et œuf mollet",
+    "info2": "Filet de poisson en sauce vierge, salade et légumes grillés"
   },
   {
     "type": "Dessert:",
-    "info1": "Tiramisu aux fruits",
+    "info1": "Panna cotta au coulis de fruits",
     "info2": ""
   },
   {
     "type": "Cheesecake:",
-    "info1": "Aux spéculoos",
+    "info1": "Fraise et chocolat",
     "info2": ""
   }
 ]
