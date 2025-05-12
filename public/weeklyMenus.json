@@ -1,42 +1,42 @@
 [
   {
     "type": "Semaine du:",
-    "info1": "05/05/25",
-    "info2": "09/05/25"
+    "info1": "12/05/25",
+    "info2": "16/05/25"
   },
   {
     "type": "Lundi",
-    "info1": "Salade de tomates, olives et féta",
-    "info2": "Piccata de veau et linguines sauce moutarde"
+    "info1": "Tarte aux poireaux, thon, et Philadelphia",
+    "info2": "Pasta Della Nona et burrata"
   },
   {
     "type": "Mardi",
-    "info1": "Charcuterie italienne",
-    "info2": "Penné à la crème de poivrons et burrata"
+    "info1": "Focaccia à la provençale",
+    "info2": "Escalope de veau farci (aux herbes et mozzarella), et purée de pommes de terre"
   },
   {
     "type": "Mercredi",
-    "info1": "Involtini d’aubergine, et fromage italien",
-    "info2": "Brochettes de poulet marinées et pommes de terre della nona"
+    "info1": "Tartines de chèvre et poires rôties au miel",
+    "info2": "Poulet et risotto crémeux au paprika et chorizo"
   },
   {
     "type": "Jeudi",
-    "info1": "Ferrié : Restaurant ouvert midi et soir",
-    "info2": ""
+    "info1": "Carpaccio de bœuf et sa marinade aux champignons",
+    "info2": "Gnocchis farcies au fromage sauce Napoli à la truffe"
   },
   {
     "type": "Vendredi",
-    "info1": "Dôme au saumon fumé et œuf mollet",
-    "info2": "Filet de poisson en sauce vierge, salade et légumes grillés"
+    "info1": "Salade de crevettes et calamars grillés",
+    "info2": "Pasta aux fruits de mer"
   },
   {
     "type": "Dessert:",
-    "info1": "Panna cotta au coulis de fruits",
+    "info1": "Tarte du jour",
     "info2": ""
   },
   {
     "type": "Cheesecake:",
-    "info1": "Fraise et chocolat",
+    "info1": "Framboise et chocolat",
     "info2": ""
   }
 ]
