@@ -1,42 +1,42 @@
 [
   {
     "type": "Semaine du:",
-    "info1": "12/05/25",
-    "info2": "16/05/25"
+    "info1": "19/05/25",
+    "info2": "23/05/25"
   },
   {
     "type": "Lundi",
-    "info1": "Tarte aux poireaux, thon, et Philadelphia",
-    "info2": "Pasta Della Nona et burrata"
+    "info1": "Salade de radis, concombre et pommes de terre",
+    "info2": "Risotto à la poire, gorgonzola et noix"
   },
   {
     "type": "Mardi",
-    "info1": "Focaccia à la provençale",
-    "info2": "Escalope de veau farci (aux herbes et mozzarella), et purée de pommes de terre"
+    "info1": "Tartare de bœuf à la mozzarella di buffala",
+    "info2": "Escalope de poulet tomate mozzarella et potatoes maison"
   },
   {
     "type": "Mercredi",
-    "info1": "Tartines de chèvre et poires rôties au miel",
-    "info2": "Poulet et risotto crémeux au paprika et chorizo"
+    "info1": "Focaccia à l’orientale",
+    "info2": "Vittelo tonnato et salade caprèse"
   },
   {
     "type": "Jeudi",
-    "info1": "Carpaccio de bœuf et sa marinade aux champignons",
-    "info2": "Gnocchis farcies au fromage sauce Napoli à la truffe"
+    "info1": "Bruschetta au pesto, chèvre et tomate",
+    "info2": "Polpettes Napoli et pasta"
   },
   {
     "type": "Vendredi",
-    "info1": "Salade de crevettes et calamars grillés",
-    "info2": "Pasta aux fruits de mer"
+    "info1": "Carpaccio de melon, saumon fumé, et burrata",
+    "info2": "Filet de poisson sur écrasé de pommes de terre et carottes"
   },
   {
     "type": "Dessert:",
-    "info1": "Tarte du jour",
+    "info1": "Verrine mangue et spéculoos",
     "info2": ""
   },
   {
     "type": "Cheesecake:",
-    "info1": "Framboise et chocolat",
+    "info1": "A la pistache",
     "info2": ""
   }
 ]
