@@ -1,42 +1,42 @@
 [
   {
     "type": "Semaine du:",
-    "info1": "19/05/25",
-    "info2": "23/05/25"
+    "info1": "26/05/25",
+    "info2": "30/05/25"
   },
   {
     "type": "Lundi",
-    "info1": "Salade de radis, concombre et pommes de terre",
-    "info2": "Risotto à la poire, gorgonzola et noix"
+    "info1": "Focaccia à l’Italienne",
+    "info2": "Brochettes de bœuf grillées et potatoes maison"
   },
   {
     "type": "Mardi",
-    "info1": "Tartare de bœuf à la mozzarella di buffala",
-    "info2": "Escalope de poulet tomate mozzarella et potatoes maison"
+    "info1": "Feuilletine au fromage",
+    "info2": "Emincé de poulet au curry et linguini rosso"
   },
   {
     "type": "Mercredi",
-    "info1": "Focaccia à l’orientale",
-    "info2": "Vittelo tonnato et salade caprèse"
+    "info1": "Carpaccio de bœuf et marinade au basilic",
+    "info2": "Rigatoni al forno"
   },
   {
     "type": "Jeudi",
-    "info1": "Bruschetta au pesto, chèvre et tomate",
-    "info2": "Polpettes Napoli et pasta"
+    "info1": "Ferrié - restaurant ouvert",
+    "info2": ""
   },
   {
     "type": "Vendredi",
-    "info1": "Carpaccio de melon, saumon fumé, et burrata",
-    "info2": "Filet de poisson sur écrasé de pommes de terre et carottes"
+    "info1": "Tosats au saumon fumé et ricotta",
+    "info2": "Risotto mare monte"
   },
   {
     "type": "Dessert:",
-    "info1": "Verrine mangue et spéculoos",
+    "info1": "Panna cotta au coulis de fruits de la passion",
     "info2": ""
   },
   {
     "type": "Cheesecake:",
-    "info1": "A la pistache",
+    "info1": "Aux pistaches et framboises",
     "info2": ""
   }
 ]
