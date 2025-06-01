@@ -1,42 +1,42 @@
 [
   {
     "type": "Semaine du:",
-    "info1": "26/05/25",
-    "info2": "30/05/25"
+    "info1": "02/06/25",
+    "info2": "06/06/25"
   },
   {
     "type": "Lundi",
-    "info1": "Focaccia à l’Italienne",
-    "info2": "Brochettes de bœuf grillées et potatoes maison"
+    "info1": "Carpaccio de bœuf",
+    "info2": "Gnocchi aux quatre fromages"
   },
   {
     "type": "Mardi",
-    "info1": "Feuilletine au fromage",
-    "info2": "Emincé de poulet au curry et linguini rosso"
+    "info1": "Salade Niçoise",
+    "info2": "Emincé de volaille au curry et pasta"
   },
   {
     "type": "Mercredi",
-    "info1": "Carpaccio de bœuf et marinade au basilic",
-    "info2": "Rigatoni al forno"
+    "info1": "Verrine au thon",
+    "info2": "Escalopine de veau a la crème et champignons et linguine"
   },
   {
     "type": "Jeudi",
-    "info1": "Ferrié - restaurant ouvert",
-    "info2": ""
+    "info1": "Assiette de charcuterie Italienne",
+    "info2": "Pasta à la crème truffé"
   },
   {
     "type": "Vendredi",
-    "info1": "Tosats au saumon fumé et ricotta",
-    "info2": "Risotto mare monte"
+    "info1": "Salade océane",
+    "info2": "Filet de poisson sauce pêcheur et risotto"
   },
   {
     "type": "Dessert:",
-    "info1": "Panna cotta au coulis de fruits de la passion",
+    "info1": "Moelleux au chocolat",
     "info2": ""
   },
   {
     "type": "Cheesecake:",
-    "info1": "Aux pistaches et framboises",
+    "info1": "Cheesecake à la mangue",
     "info2": ""
   }
 ]
