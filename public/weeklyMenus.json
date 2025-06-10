@@ -1,42 +1,47 @@
 [
   {
     "type": "Semaine du:",
-    "info1": "02/06/25",
-    "info2": "06/06/25"
+    "info1": "09/06/25",
+    "info2": "13/06/25"
   },
   {
     "type": "Lundi",
-    "info1": "Carpaccio de bœuf",
-    "info2": "Gnocchi aux quatre fromages"
+    "info1": "Férié",
+    "info2": ""
   },
   {
     "type": "Mardi",
-    "info1": "Salade Niçoise",
-    "info2": "Emincé de volaille au curry et pasta"
+    "info1": "Focaccia",
+    "info2": "Emincé de poulet à la Napolitaine et pasta"
   },
   {
     "type": "Mercredi",
-    "info1": "Verrine au thon",
-    "info2": "Escalopine de veau a la crème et champignons et linguine"
+    "info1": "Toast chèvre",
+    "info2": "Carpaccio de bœuf au pesto"
+  },
+  {
+    "type": "Lasagne",
+    "info1": "Végétarienne",
+    "info2": ""
   },
   {
     "type": "Jeudi",
-    "info1": "Assiette de charcuterie Italienne",
-    "info2": "Pasta à la crème truffé"
+    "info1": "Carpaccio de Bresaola au pesto",
+    "info2": "Gnocchi à la Bolognaise"
   },
   {
     "type": "Vendredi",
-    "info1": "Salade océane",
-    "info2": "Filet de poisson sauce pêcheur et risotto"
+    "info1": "Bruschetta aux fruits de mer et mozzarella",
+    "info2": "Tagliatelle aux 2 saumons"
   },
   {
     "type": "Dessert:",
-    "info1": "Moelleux au chocolat",
+    "info1": "Panna cotta fruits rouges",
     "info2": ""
   },
   {
     "type": "Cheesecake:",
-    "info1": "Cheesecake à la mangue",
+    "info1": "Cheesecake fruits rouges",
     "info2": ""
   }
 ]
