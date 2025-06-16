@@ -1,47 +1,42 @@
 [
   {
     "type": "Semaine du:",
-    "info1": "09/06/25",
-    "info2": "13/06/25"
+    "info1": "16/06/25",
+    "info2": "20/06/25"
   },
   {
     "type": "Lundi",
-    "info1": "Férié",
-    "info2": ""
+    "info1": "Salade aux avocats et crevettes",
+    "info2": "Tagliatelles au saumon frais"
   },
   {
     "type": "Mardi",
-    "info1": "Focaccia",
-    "info2": "Emincé de poulet à la Napolitaine et pasta"
+    "info1": "Toasts aux chèvre et miel",
+    "info2": "Piccata di vittelo sauce aux champignons et pommes de terre maison"
   },
   {
     "type": "Mercredi",
-    "info1": "Toast chèvre",
-    "info2": "Carpaccio de bœuf au pesto"
-  },
-  {
-    "type": "Lasagne",
-    "info1": "Végétarienne",
-    "info2": ""
+    "info1": "Mini pizza bianca à la scamorza et anchois",
+    "info2": "Escalope de poulet et légumes grillée sauce moutarde"
   },
   {
     "type": "Jeudi",
-    "info1": "Carpaccio de Bresaola au pesto",
-    "info2": "Gnocchi à la Bolognaise"
+    "info1": "Tomate mozzarella, l’huile d’olive et basilic",
+    "info2": "Penné Napoli à la saucisse, basilic et ricotta"
   },
   {
     "type": "Vendredi",
-    "info1": "Bruschetta aux fruits de mer et mozzarella",
-    "info2": "Tagliatelle aux 2 saumons"
+    "info1": "Bruschetta au saumon fumé, gratiné à la mozzarella",
+    "info2": "Vittelo tonnato et risotto rosso"
   },
   {
     "type": "Dessert:",
-    "info1": "Panna cotta fruits rouges",
+    "info1": "Salade de fruits d’été",
     "info2": ""
   },
   {
     "type": "Cheesecake:",
-    "info1": "Cheesecake fruits rouges",
+    "info1": "A la pistache",
     "info2": ""
   }
 ]
