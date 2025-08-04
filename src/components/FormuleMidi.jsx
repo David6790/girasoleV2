@@ -1,19 +1,14 @@
 import React, { useRef, useState } from "react";
-import ModalReservation from "./modals/ModalReservation";
+
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 
 const FormuleMidi = ({ h1, h2, p, price1, price2, price3 }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false });
-  const [resaModalOpen, setResaModalopen] = useState(false);
 
   const handleOpen = () => {
-    setResaModalopen(true);
-  };
-
-  const handleClose = () => {
-    setResaModalopen(false);
+    window.location.href = "https://reserver-simplement.fr/resa-externe";
   };
 
   return (
@@ -52,7 +47,6 @@ const FormuleMidi = ({ h1, h2, p, price1, price2, price3 }) => {
           Réserver une table
         </button>
       </div>
-      <ModalReservation isOpen={resaModalOpen} onClose={handleClose} />
     </motion.div>
   );
 };
