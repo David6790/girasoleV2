@@ -38,80 +38,107 @@ const MenuMidi = () => {
           price1={"16,50€"}
         />
         <FormuleMidi
-          h1={"BRUSCHETTA 4-SAISONS"}
-          p={
-            "Légumes grillés, olives noires, pesto vert , tomates cerises et  parmesan"
-          }
-          price1={"12,50€"}
-          price2={"+Tiramisu 14,50 €"}
-          price3={"+Tiramisu et soft   16,00 €"}
-        />
-        <FormuleMidi
-          h1={"CROQUE MONSIEUR ITALIEN "}
-          p={
-            "pâte à pizza, jambon de parme, mozzarella , pesto rosso, tomates, parmesan et roquette avec une salade verte "
-          }
-          price1={"13,50€"}
-          price2={"+Tiramisu 15,00 €"}
-          price3={"+Tiramisu et soft 16,50 €"}
-        />
-        <FormuleMidi
-          h1={"INSALATA DI PASTA"}
-          p={"Penne, pesto, tomates cerises, billes de mozzarella et basilic."}
-          price1={"12,50€"}
-          price2={"+Tiramisu 14,50 €"}
-          price3={"+Tiramisu et soft 16,00 €"}
-        />
-        <FormuleMidi
-          h1={"INSALATE ESTATE"}
-          p={"Roquette, jambon de parme et tomates séchées"}
-          price1={"14,00€"}
-          price2={"+Tiramisu 16,00 €"}
-          price3={"+Tiramisu et soft 17,50 €"}
-        />
-        <FormuleMidi
-          h1={"ANTIPASTI ITALIANI DU MIDI "}
+          h1={"BRUSCHETTA SALMONE"}
           h2={
-            "Charcuterie italienne, salade, légumes marinés et fromage italien"
+            "Base de fromage frais, saumon fumé, morceau de citron, roquette et parmesan"
           }
-          p={"FORMULE Planchette MIDI avec salade verte et ½ pizza pan "}
           price1={"14,00€"}
-          price2={"+Tiramisu 16,00 €"}
-          price3={"+Tiramisu et soft 17,50 €"}
+          price2={"+ Tiramisu ou soft 15,50€"}
+          price3={"+ Tiramisu et soft 17,00€"}
+        />
+
+        <FormuleMidi
+          h1={"BRUSCHETTA CAPRESE"}
+          p={"Tomates cerises, jambon de parme, roquette et parmesan"}
+          price1={"13,00€"}
+          price2={"+ Tiramisu ou soft 14,50€"}
+          price3={"+ Tiramisu et soft 16,00€"}
+        />
+
+        <FormuleMidi
+          h1={"INSALATA ESTIVA"}
+          p={"Salade burrata, pêches rôties, tomates cerises et parmesan"}
+          price1={"14,50€"}
+          price2={"+ Tiramisu ou soft 16,00€"}
+          price3={"+ Tiramisu et soft 17,50€"}
         />
         <FormuleMidi
-          h1={"FORMULE CARPACCIO"}
-          h2={"DI MANZO ( 1 assiette + ½ pizza pan) "}
+          h1={"ITALIAN BOWL “La Dolce Vita”"}
           p={
-            "Fines tranches de bœuf cru, marinade ail, basilic, huile d’olive et parmesan."
+            "Salade, roquette, penne, tomates cerises, pesto, olives italiennes et parmesan. Avec jambon de parme +1,00€"
+          }
+          price1={"14,00€"}
+          price2={"+ Tiramisu ou soft 15,50€"}
+          price3={"+ Tiramisu et soft 17,00€"}
+        />
+
+        <FormuleMidi
+          h1={"TAPAS MIDI"}
+          h2={"Planchette de 3 différents tapas avec salade verte"}
+          price1={"16,50€"}
+        />
+
+        <FormuleMidi
+          h1={"PLANCHETTE MIDI"}
+          h2={
+            "Charcuterie italienne, salade, légumes marinés et fromage italien avec salade verte et ½ pizza pan"
           }
           price1={"14,50€"}
-          price2={"+Tiramisu 16,50 €"}
-          price3={"+Tiramisu et soft 18,50 €"}
+          price2={"+ Tiramisu ou soft 16,00€"}
+          price3={"+ Tiramisu et soft 17,50€"}
         />
+
         <FormuleMidi
-          h1={"LES AUTRES FORMULES "}
-          h2={"Planche Salade / Pizza"}
+          h1={"FORMULE CARPACCIO DI MANZO"}
+          h2={"1 assiette + ½ pizza pan"}
           p={
-            "½ pizza ( au choix dans les classiques) + une salade verte hors pizza bufala"
+            "Fines tranches de bœuf cru, marinade ail, basilic, huile d’olive et parmesan"
           }
-          price1={"9,50€"}
-          price2={"+Tiramisu 11,50 €"}
-          price3={"+Tiramisu et soft 13,00 €"}
+          price1={"14,50€"}
+          price2={"+ Tiramisu ou soft 16,00€"}
+          price3={"+ Tiramisu et soft 17,50€"}
         />
+
         <FormuleMidi
-          h1={"LASAGNE ALLA BOLOGNESE"}
+          h1={"PLANCHE SALADE / PIZZA"}
           h2={
-            "Viande de bœuf, sauce tomate et gratiné à la mozzarella avec salade verte "
+            "½ pizza (au choix dans les classiques, hors pizza BUFALA) + une salade verte"
           }
-          p={"Quantité plus réduite que le soir "}
+          price1={"10,50€"}
+          price2={"+ Tiramisu ou soft 12,00€"}
+          price3={"+ Tiramisu et soft 13,50€"}
+        />
+
+        <FormuleMidi
+          h1={"GNOCCHIS ALLA NAPOLETANA"}
+          h2={"Sauce tomate, copeaux de parmesan, salade verte"}
+          price1={"13,00€"}
+        />
+
+        <FormuleMidi
+          h1={"PENNE ARRABIATA"}
+          h2={
+            "Sauce tomate, olives italiennes, ail, piment concassé et basilic"
+          }
           price1={"12,50€"}
         />
+
         <FormuleMidi
-          h1={"LINGUINE CAGNESCHE"}
-          h2={"Sauce tomate, olives taggiasche, piment concassé et basilic"}
-          p={"Quantité plus réduite que le soir "}
-          price1={"12,00€"}
+          h1={"PASTA BOLOGNESE GRATINÉE À LA MOZZA ET SALADE"}
+          h2={
+            "Sauce bolognaise gratinée à la mozzarella, servie avec salade verte"
+          }
+          price1={"11,50€"}
+        />
+
+        <FormuleMidi
+          h1={"CROQUE MONSIEUR ITALIEN"}
+          p={
+            "Pâte à pizza, jambon de parme, mozzarella, pesto rosso, tomates, parmesan et roquette avec une salade verte"
+          }
+          price1={"13,50€"}
+          price2={"+ Tiramisu ou soft 15,00€"}
+          price3={"+ Tiramisu et soft 16,50€"}
         />
       </div>
       <Footer />
