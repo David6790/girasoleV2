@@ -15,6 +15,7 @@ const FormuleMidi = ({ h1, h2, p, price1, price2, price3 }) => {
     <motion.div
       className="2xl:w-[30%] xl:w-[30%] lg:w-[30%] md:w-[30%] sm:w-[45%] w-[90%] py-10 2xl:px-10 xl:px-10 lg:px-10 md:px-5 px-5 bg-myGrey flex flex-col justify-between items-center text-center rounded-2xl shadow-2xl  relative group overflow-hidden hover:scale-105 transition-transform duration-300 ease-in-out"
       ref={ref}
+      // test
       style={{
         transform: isInView ? "none" : "opacity:0  ",
         opacity: isInView ? 1 : 0,
