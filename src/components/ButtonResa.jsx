@@ -7,7 +7,7 @@ const ButtonResa = () => {
 
   const handleClick = () => {
     //setIsModalOpen(!isModalOpen);
-    window.location.href = "https://reserver-simplement.fr/resa-externe/1";
+    window.location.href = "https://reserver-simplement.fr/resa-externe/";
   };
   const closeModale = () => {
     setIsModalOpen(false);
