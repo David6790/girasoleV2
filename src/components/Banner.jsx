@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import ButtonResa from "./ButtonResa";
+import ButtonVoucher from "./ButtonVoucher";
 
 const Banner = () => {
   const ref1 = useRef(null);
@@ -43,6 +44,7 @@ const Banner = () => {
           -La trattoria revisitée-
         </h2>
         <ButtonResa />
+        <ButtonVoucher />
       </motion.div>
     </>
   );
