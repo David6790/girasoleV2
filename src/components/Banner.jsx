@@ -45,6 +45,35 @@ const Banner = () => {
         </h2>
         <ButtonResa />
         <ButtonVoucher />
+        <a
+          href="#event-special"
+          className="mt-8 flex flex-col items-center gap-2 text-my-gold hover:opacity-80 transition"
+        >
+          <span className="uppercase tracking-widest text-sm font-semibold">
+            Menus des fêtes
+          </span>
+
+          <div
+            className="w-12 h-12 rounded-full flex items-center justify-center
+                  border border-my-gold
+                  shadow-[0_0_15px_rgba(212,175,55,0.6)]"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="currentColor"
+              className="w-6 h-6 animate-bounce"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </div>
+        </a>
       </motion.div>
     </>
   );
