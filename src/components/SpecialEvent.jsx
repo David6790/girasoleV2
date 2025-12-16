@@ -108,7 +108,7 @@ const SpecialEvent = () => {
             </div>
 
             <button
-              onClick={() => openImageModal("/img/gosse.jpeg", "Menu enfant")}
+              onClick={() => openImageModal("/img/gosse2.jpeg", "Menu enfant")}
               className="shrink-0 self-start sm:self-center px-3 py-1 border border-black rounded-md text-xs sm:text-sm opacity-80 hover:opacity-100 transition hover:shadow-md"
             >
               Voir le menu enfant
