@@ -37,7 +37,7 @@ const SpecialEvent = () => {
   return (
     <>
       {/* WRAPPER : mobile-first */}
-      <div className="w-full h-full flex flex-col lg:flex-row-reverse gap-6 lg:gap-10">
+      <div className="w-full h-full flex flex-col lg:flex-row gap-6 lg:gap-10">
         {/* IMAGE */}
         <motion.div
           ref={refImage}
