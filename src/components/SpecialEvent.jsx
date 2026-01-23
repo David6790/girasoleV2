@@ -51,7 +51,7 @@ const SpecialEvent = () => {
           {/* Hauteur contrôlée en mobile */}
           <div className="w-full h-[220px] sm:h-[320px] lg:h-full">
             <img
-              src="./img/zob.jpeg"
+              src="./img/valentine.PNG"
               alt="Menus de fêtes"
               className="w-full h-full object-cover"
             />
@@ -69,68 +69,36 @@ const SpecialEvent = () => {
           }}
         >
           <h1 className="font-title-font text-3xl sm:text-4xl lg:text-5xl mb-6">
-            Menus <span className="text-my-gold">de fêtes</span>
+            Menus <span className="text-my-gold">Saint Valentin</span>
           </h1>
 
           <p className="text-sm sm:text-base lg:text-xl mb-5 text-justify">
-            Pour les fêtes de fin d’année, nous vous proposons{" "}
-            <strong>deux soirées spéciales</strong>, autour de menus festifs
-            pensés pour le plaisir du partage.
+            Pour la <strong>Saint-Valentin</strong>, nous vous proposons une{" "}
+            <strong>soirée spéciale</strong> autour d’un menu raffiné, pensé
+            pour un moment à deux, dans une ambiance douce et romantique.
           </p>
 
           {/* BULLETS */}
           <ul className="text-sm sm:text-base lg:text-lg mb-5 space-y-3">
             <li>
-              🎄 <strong>Menu de Noël — 24 décembre au soir</strong>
+              ❤️ <strong>Menu Saint-Valentin</strong>
               <div className="opacity-90">
-                Menu complet (entrée + plat + dessert) à choisir dans notre
-                sélection festive. Ambiance chaleureuse et table gourmande.
-              </div>
-            </li>
-
-            <li>
-              🎆 <strong>Menu du Nouvel An — 31 décembre au soir</strong>
-              <div className="opacity-90">
-                Menu complet (entrée + plat + dessert) à choisir dans notre
-                carte festive. <strong>65€ / personne</strong>.
+                Menu complet (entrée + plat + dessert) avec des choix possibles
+                à chaque étape, mettant à l’honneur des produits fins et
+                gourmands. Ambiance romantique et table élégante.
               </div>
             </li>
           </ul>
-
-          {/* MENU ENFANT + CTA DISCRET */}
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs sm:text-sm mb-6 italic">
-            <div>
-              <p className="mb-1">
-                👶 <strong>Menu enfant disponible</strong> (24/12 & 31/12)
-              </p>
-              <p>• 30€ : Entrée + Plat + Dessert + 1 soft</p>
-              <p>• 25€ : Plat + Dessert (ou Entrée + Plat) + 1 soft</p>
-            </div>
-
-            <button
-              onClick={() => openImageModal("/img/gosse2.jpeg", "Menu enfant")}
-              className="shrink-0 self-start sm:self-center px-3 py-1 border border-black rounded-md text-xs sm:text-sm opacity-80 hover:opacity-100 transition hover:shadow-md"
-            >
-              Voir le menu enfant
-            </button>
-          </div>
 
           {/* CTA PRINCIPAUX : full width en mobile */}
           <div className="flex flex-col sm:flex-row gap-3">
             <button
               className="w-full sm:w-auto px-5 py-3 border rounded-md border-black text-sm sm:text-base lg:text-lg transform transition-transform duration-200 hover:-translate-y-1 shadow-2xl"
-              onClick={() => openImageModal("/img/Noel.jpeg", "Menu de Noël")}
-            >
-              Menu de Noël
-            </button>
-
-            <button
-              className="w-full sm:w-auto px-5 py-3 border rounded-md border-black text-sm sm:text-base lg:text-lg transform transition-transform duration-200 hover:-translate-y-1 shadow-2xl"
               onClick={() =>
-                openImageModal("/img/NouvelAn.jpeg", "Menu du Nouvel An")
+                openImageModal("/img/menuLOVE.jpg", "Menu de Noël")
               }
             >
-              Menu du Nouvel An
+              Menu Saint Valentin
             </button>
           </div>
         </motion.div>
