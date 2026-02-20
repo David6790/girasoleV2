@@ -7,7 +7,6 @@ import Chef from "../components/Chef";
 import FindUs from "../components/FindUs";
 
 import Banner from "../components/Banner";
-import SpecialEvent from "../components/SpecialEvent";
 
 const Home = () => {
   return (
