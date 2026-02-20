@@ -50,7 +50,7 @@ const Banner = () => {
           className="mt-8 flex flex-col items-center gap-2 text-my-gold hover:opacity-80 transition"
         >
           <span className="uppercase tracking-widest text-sm font-semibold">
-            Menus des fêtes
+            Menus Saint Valentin
           </span>
 
           <div
