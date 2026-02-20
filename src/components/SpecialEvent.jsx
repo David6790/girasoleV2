@@ -51,7 +51,7 @@ const SpecialEvent = () => {
           {/* Hauteur contrôlée en mobile */}
           <div className="w-full h-[220px] sm:h-[320px] lg:h-full">
             <img
-              src="./img/zob.jpeg"
+              src="./img/valentin.jpg"
               alt="Menus de fêtes"
               className="w-full h-full object-cover"
             />

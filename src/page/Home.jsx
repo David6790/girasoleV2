@@ -17,12 +17,12 @@ const Home = () => {
         <Banner />
       </div>
 
-      <div
+      {/* <div
         id="event-special"
         className="w-full bg-white px-4 sm:px-8 lg:px-10 py-10 lg:py-0 lg:h-[700px] flex"
       >
         <SpecialEvent />
-      </div>
+      </div> */}
 
       <div className="w-full xl:h-[700px] lg:h-[700px] md:h-[700px] sm:h-[700px] h-[700px] flex xl:flex-row lg:flex-row md:flex-row sm:flex-row flex-col-reverse bg-myGrey p-10">
         <MenuSemaine />

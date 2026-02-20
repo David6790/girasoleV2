@@ -45,7 +45,7 @@ const Banner = () => {
         </h2>
         <ButtonResa />
         <ButtonVoucher />
-        <a
+        {/* <a
           href="#event-special"
           className="mt-8 flex flex-col items-center gap-2 text-my-gold hover:opacity-80 transition"
         >
@@ -73,7 +73,7 @@ const Banner = () => {
               />
             </svg>
           </div>
-        </a>
+        </a> */}
       </motion.div>
     </>
   );
