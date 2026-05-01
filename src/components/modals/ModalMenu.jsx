@@ -9,7 +9,8 @@ const ModalMenu = ({ isOpen, onClose, resaModal }) => {
   const [menuSemaine, setMenuSemaine] = useState([]);
 
   const handleClick = () => {
-    window.location.href = "https://reserver-simplement.fr/resa-externe";
+    window.location.href =
+      "https://ilgirasole.reserver-simplement.fr/resa-externe/1";
   };
 
   // helper pour formater la date du jour en yyyy-MM-dd
@@ -106,7 +107,7 @@ const ModalMenu = ({ isOpen, onClose, resaModal }) => {
               (item) =>
                 item.type !== "Semaine du:" &&
                 item.type !== "Dessert:" &&
-                item.type !== "Cheesecake:"
+                item.type !== "Cheesecake:",
             )
             .map((menu, idx) => (
               <div

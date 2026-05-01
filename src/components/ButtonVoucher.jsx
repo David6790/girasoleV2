@@ -3,7 +3,8 @@ import React from "react";
 const ButtonVoucher = () => {
   const handleClick = () => {
     //setIsModalOpen(!isModalOpen);
-    window.location.href = "https://reserver-simplement.fr/voucher-externe/1";
+    window.location.href =
+      "https://ilgirasole.reserver-simplement.fr/voucher-externe/1";
   };
 
   return (

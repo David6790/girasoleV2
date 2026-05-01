@@ -8,7 +8,8 @@ const FormuleMidi = ({ h1, h2, p, price1, price2, price3 }) => {
   const isInView = useInView(ref, { once: false });
 
   const handleOpen = () => {
-    window.location.href = "https://reserver-simplement.fr/resa-externe";
+    window.location.href =
+      "https://ilgirasole.reserver-simplement.fr/resa-externe/1";
   };
 
   return (
