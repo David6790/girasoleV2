@@ -13,44 +13,56 @@ const ModalMenu = ({ isOpen, onClose, resaModal }) => {
       "https://ilgirasole.reserver-simplement.fr/resa-externe/1";
   };
 
-  // helper pour formater la date du jour en yyyy-MM-dd
+  // Helper pour formater la date du jour en yyyy-MM-dd
   const getTodayString = () => {
     const d = new Date();
     const yyyy = d.getFullYear();
     const mm = String(d.getMonth() + 1).padStart(2, "0");
     const dd = String(d.getDate()).padStart(2, "0");
+
     return `${yyyy}-${mm}-${dd}`;
   };
 
   useEffect(() => {
     if (!isOpen) return;
 
-    const today = getTodayString(); // ex: "2025-06-28"
+    const today = getTodayString();
     const accountId = 1;
+
     const url = `https://simple-mio-dmaqb7baaacrada8.francecentral-01.azurewebsites.net/api/MenuSemaine/byDate/${today}/${accountId}`;
 
-    fetch(url)
+    fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Tenant-Subdomain": "ilgirasole",
+      },
+    })
       .then((response) => {
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
         return response.json();
       })
       .then((data) => {
-        // Remapping vers { type, info1, info2 } pour ne rien changer au rendu
         const mapped = [];
 
-        // 1) entête « Semaine du: »
+        // 1) Entête « Semaine du: »
         mapped.push({
           type: "Semaine du:",
           info1: data.dateDebut,
           info2: data.dateFin,
         });
 
-        // 2) détails par jour
+        // 2) Détails par jour
         data.detailsMenus.forEach((item) => {
           const d = new Date(item.jour + "T00:00:00");
+
           const dayName = d
             .toLocaleDateString("fr-FR", { weekday: "long" })
             .replace(/^./, (m) => m.toUpperCase());
+
           mapped.push({
             type: dayName,
             info1: item.entree,
@@ -58,12 +70,13 @@ const ModalMenu = ({ isOpen, onClose, resaModal }) => {
           });
         });
 
-        // 3) dessert & cheesecake récurrents
+        // 3) Dessert & cheesecake récurrents
         mapped.push({
           type: "Dessert:",
           info1: data.elementRecurrent1,
           info2: "",
         });
+
         mapped.push({
           type: "Cheesecake:",
           info1: data.elementRecurrent2,
@@ -92,7 +105,10 @@ const ModalMenu = ({ isOpen, onClose, resaModal }) => {
           opacity: 1,
           transition: { ease: "easeOut", duration: 0.75 },
         }}
-        exit={{ opacity: 0, transition: { ease: "easeIn", duration: 0.75 } }}
+        exit={{
+          opacity: 0,
+          transition: { ease: "easeIn", duration: 0.75 },
+        }}
       >
         <div className="h-auto w-[100%] flex flex-col justify-center items-center bg-myGrey rounded-3xl">
           {/* En-tête de semaine */}
@@ -117,10 +133,12 @@ const ModalMenu = ({ isOpen, onClose, resaModal }) => {
                 <h1 className="xl:text-2xl lg:text-2xl md:text-xl sm:text-lg text-base font-title-font text-my-gold mb-1">
                   {menu.type}
                 </h1>
+
                 <p className="xl:text-base lg:text-base md:text-base sm:text-sm text-xs">
                   <span className="font-bold">Entrée: </span>
                   {menu.info1}
                 </p>
+
                 <p className="xl:text-base lg:text-base md:text-base sm:text-sm text-xs">
                   <span className="font-bold">Plat: </span>
                   {menu.info2}
@@ -152,6 +170,7 @@ const ModalMenu = ({ isOpen, onClose, resaModal }) => {
             ENTREE-PLAT-DESSERT : 15.00 € || ENTREE-PLAT (ou PLAT-DESSERT) :
             13.00 € || PLAT SEUL : 11.00 €
           </span>
+
           <button
             className="px-5 py-2 border-solid border-black border-2 mt-5 mb-5 xl:text-xl lg:xl:text-xl md:xl:text-xl sm:text-sm rounded-md"
             onClick={handleClick}
