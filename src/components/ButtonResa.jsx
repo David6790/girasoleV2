@@ -8,7 +8,7 @@ const ButtonResa = () => {
   const handleClick = () => {
     //setIsModalOpen(!isModalOpen);
     window.location.href =
-      "https://ilgirasole.reserver-simplement.fr/resa-externe/1";
+      "https://reserver-simplement.fr/resa-externe?tenant=ilgirasole";
   };
   const closeModale = () => {
     setIsModalOpen(false);

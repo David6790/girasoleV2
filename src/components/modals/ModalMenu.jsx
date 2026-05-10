@@ -10,7 +10,7 @@ const ModalMenu = ({ isOpen, onClose, resaModal }) => {
 
   const handleClick = () => {
     window.location.href =
-      "https://ilgirasole.reserver-simplement.fr/resa-externe/1";
+      "https://reserver-simplement.fr/resa-externe?tenant=ilgirasole";
   };
 
   // Helper pour formater la date du jour en yyyy-MM-dd
