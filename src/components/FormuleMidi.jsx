@@ -9,7 +9,7 @@ const FormuleMidi = ({ h1, h2, p, price1, price2, price3 }) => {
 
   const handleOpen = () => {
     window.location.href =
-      "https://reserver-simplement.fr/resa-externe?tenant=ilgirasole";
+      "https://ilgirasole.reserver-simplement.fr/resa-externe/1";
   };
 
   return (
